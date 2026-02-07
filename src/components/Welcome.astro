@@ -1,210 +1,213 @@
 ---
-import astroLogo from '../assets/astro.svg';
-import background from '../assets/background.svg';
+const navLinks = [
+  { label: 'For Businesses', href: '#businesses' },
+  { label: 'For Universities', href: '#universities' },
+  { label: 'Blog', href: '#blog' },
+  { label: 'Apply To Teach', href: '#teach' },
+//   { label: 'Pricing', href: '#pricing' },
+//   { label: 'FAQs', href: '#faqs' },
+];
+
+const cards = [
+  { name: 'Maya Brooks', title: 'Growth Marketer @ Open AI', country: 'united-states.png', flag: '/images/united-states.png', image: '/images/american-woman.png' },
+  { name: 'Obinna Nwosu', title: 'CEO @ Abba Microfinance Bank', country: 'nigeria', flag: '/images/nigeria.png', image: '/images/nigerian-man.png' },
+  { name: 'Aaliyah Jordan', title: 'Senior designer @ Google', country: 'united-kingdom', flag: '/images/united-kingdom.png', image: '/images/uk-woman.png' },
+  { name: 'Titi Adebayo', title: 'Product Designer @ MoniePoint', country: 'nigeria', flag: '/images/nigeria.png', image: '/images/nigerian-woman.png' },
+  { name: 'Caleb Wright', title: 'Software Developer @ Google', country: 'united-states', flag: '/images/united-states.png', image: '/images/american-man.png' },
+  { name: 'Rohan Gupta', title: 'AI Engineer @ Meta', country: 'india', flag: '/images/india.png', image: '/images/indian-man.png' },
+];
 ---
 
-<div id="container">
-	<img id="background" src={background.src} alt="" fetchpriority="high" />
-	<main>
-		<section id="hero">
-			<a href="https://astro.build"
-				><img src={astroLogo.src} width="115" height="48" alt="Astro Homepage" /></a
-			>
-			<h1>
-				To get started, open the <code><pre>src/pages</pre></code> directory in your project.
-			</h1>
-			<section id="links">
-				<a class="button" href="https://docs.astro.build">Read our docs</a>
-				<a href="https://astro.build/chat"
-					>Join our Discord <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 127.14 96.36"
-						><path
-							fill="currentColor"
-							d="M107.7 8.07A105.15 105.15 0 0 0 81.47 0a72.06 72.06 0 0 0-3.36 6.83 97.68 97.68 0 0 0-29.11 0A72.37 72.37 0 0 0 45.64 0a105.89 105.89 0 0 0-26.25 8.09C2.79 32.65-1.71 56.6.54 80.21a105.73 105.73 0 0 0 32.17 16.15 77.7 77.7 0 0 0 6.89-11.11 68.42 68.42 0 0 1-10.85-5.18c.91-.66 1.8-1.34 2.66-2a75.57 75.57 0 0 0 64.32 0c.87.71 1.76 1.39 2.66 2a68.68 68.68 0 0 1-10.87 5.19 77 77 0 0 0 6.89 11.1 105.25 105.25 0 0 0 32.19-16.14c2.64-27.38-4.51-51.11-18.9-72.15ZM42.45 65.69C36.18 65.69 31 60 31 53s5-12.74 11.43-12.74S54 46 53.89 53s-5.05 12.69-11.44 12.69Zm42.24 0C78.41 65.69 73.25 60 73.25 53s5-12.74 11.44-12.74S96.23 46 96.12 53s-5.04 12.69-11.43 12.69Z"
-						></path></svg
-					>
-				</a>
-			</section>
-		</section>
-	</main>
+<section class="relative min-h-screen bg-black text-white overflow-hidden">
+  <!-- ===== NAVBAR ===== -->
+  <nav class="relative z-30 flex justify-center px-4 pt-2">
+    <div class="flex items-center gap-8 bg-white rounded-full px-6 py-2.5 shadow-lg max-w-4xl w-full">
+      <!-- Logo -->
+      <a href="/" class="flex items-center gap-2 shrink-0">
+		<img
+		src="./universityx.svg"
+		alt="UniversityX Logo"
+		class="h-10 w-auto"
+		loading="lazy"
+		/>
+      </a>
 
-	<a href="https://astro.build/blog/astro-5/" id="news" class="box">
-		<svg width="32" height="32" fill="none" xmlns="http://www.w3.org/2000/svg"
-			><path
-				d="M24.667 12c1.333 1.414 2 3.192 2 5.334 0 4.62-4.934 5.7-7.334 12C18.444 28.567 18 27.456 18 26c0-4.642 6.667-7.053 6.667-14Zm-5.334-5.333c1.6 1.65 2.4 3.43 2.4 5.333 0 6.602-8.06 7.59-6.4 17.334C13.111 27.787 12 25.564 12 22.666c0-4.434 7.333-8 7.333-16Zm-6-5.333C15.111 3.555 16 5.556 16 7.333c0 8.333-11.333 10.962-5.333 22-3.488-.774-6-4-6-8 0-8.667 8.666-10 8.666-20Z"
-				fill="#111827"></path></svg
-		>
-		<h2>What's New in Astro 5.0?</h2>
-		<p>
-			From content layers to server islands, click to learn more about the new features and
-			improvements in Astro 5.0
-		</p>
-	</a>
-</div>
+      <!-- Links -->
+      <div class="hidden md:flex items-center gap-6 flex-1 justify-center">
+        {navLinks.map((link) => (
+          <a href={link.href} class="text-gray-600 hover:text-black text-md font-medium transition-colors">
+            {link.label}
+          </a>
+        ))}
+      </div>
+
+      <!-- CTA -->
+      <a
+        href="#enroll"
+        class="shrink-0 flex items-center gap-2 bg-[#BB39B4] hover:bg-[#BB39B4] text-white text-sm font-semibold px-5 py-2.5 rounded-full transition-colors"
+      >
+        Sign Up
+        <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M5 12h14M12 5l7 7-7 7"/>
+        </svg>
+      </a>
+    </div>
+  </nav>
+
+  <!-- ===== HERO CONTENT ===== -->
+  <div class="relative pt-10 z-10 grid grid-cols-1 lg:grid-cols-2 items-center min-h-[calc(100vh-80px)]">
+    <!-- Left Column: Text -->
+    <div class="pl-6 md:pl-12 lg:pl-16 xl:pl-24 py-12 lg:py-0 relative">
+      <!-- Badge -->
+      <!-- <div class="inline-flex items-center gap-2 bg-white/10 border border-white/15 rounded-full px-4 py-1.5 mb-8">
+        <span class="bg-white text-black text-xs font-semibold px-2.5 py-0.5 rounded-full">New</span>
+        <span class="text-sm text-gray-300">Registrations are now open!</span>
+      </div> -->
+
+	  <!-- Stop Sign -->
+	   <!-- <img 
+		src="/images/stop-sign.svg"
+		class="w-auto h-20 absolute left-15 -top-10"
+	   /> -->
+      <!-- Heading -->
+      <div class="text-5xl md:text-6xl lg:text-6xl font-extrabold leading-[1.05] tracking-tight mb-6 realative">
+         <!-- Stop Buying Courses You Never Finish -->
+        <span> Stop Buying Courses You Never Finish </span>
+        <img 
+        src="/images/side-eye.png"
+        class="w-auto h-15 inline-flex -mt-3"
+        />
+      </div>
+
+      <!-- Subtext -->
+      <p class="text-gray-400 text-lg md:text-2xl leading-normal mb-10">
+		Join live cohorts where real people learn together with real instructors. Build job-ready skills, whether you’re chasing a full-time job, freelance gigs, or your own business.
+      </p>
+
+      <!-- Buttons -->
+      <div class="flex flex-wrap items-center gap-4 mb-12">
+        <a
+          href="#enroll"
+          class="inline-flex items-center gap-2 bg-[#BB39B4] hover:bg-[#BB39B4] text-white font-semibold px-7 py-3.5 rounded-full transition-colors text-base"
+        >
+          Browse Courses
+          <svg class="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M5 12h14M12 5l7 7-7 7"/>
+          </svg>
+        </a>
+        <a
+          href="#curriculum"
+          class="inline-flex items-center gap-2 border border-white/20 hover:border-white/40 text-white font-semibold px-7 py-3.5 rounded-full transition-colors text-base"
+        >
+          How it Works
+        </a>
+      </div>
+
+      <!-- Feature Tags -->
+      <div class="flex flex-wrap items-center gap-6 text-sm text-gray-300 uppercase tracking-wider font-medium">
+        <span class="flex items-center gap-2">
+          <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="3" width="20" height="14" rx="2"/><path d="M8 21h8M12 17v4"/></svg>
+          Online
+        </span>
+        <span class="flex items-center gap-2">
+          <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 11 12 14 22 4"/><path d="M21 12v7a2 2 0 01-2 2H5a2 2 0 01-2-2V5a2 2 0 012-2h11"/></svg>
+          Hands-on
+        </span>
+        <span class="flex items-center gap-2">
+          <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="8" r="4"/><path d="M5.5 20a8.38 8.38 0 0113 0"/><path d="M16 16l2 2 4-4"/></svg>
+          Certificate
+        </span>
+      </div>
+    </div>
+
+    <!-- Right Column: Marquee -->
+    <div class="marquee-container relative h-125 lg:h-full overflow-hidden flex items-start!">
+      <div class="marquee-track">
+        <!-- First set of cards -->
+        {cards.map((card) => (
+          <div class="marquee-card relative rounded-2xl overflow-hidden shrink-0 w-70 h-110">
+            <img
+              src={card.image}
+              alt={card.name}
+              class="w-full h-full object-cover"
+              loading="lazy"
+            />
+            <div class="absolute bottom-0 left-0 right-0 bg-linear-to-t from-black/80 via-black/40 to-transparent p-5 pt-16">
+              <div class="flex flex-row items-center">
+				<p class="text-white font-semibold text-base">
+					{card.name} 
+				</p>
+				<img
+				src={card.flag}
+				alt={card.country}
+				class="ml-1 h-6 w-auto"
+				loading="lazy"
+				/>
+			</div>
+              <p class="text-gray-300 text-sm mt-0.5">{card.title}</p>
+            </div>
+          </div>
+        ))}
+        <!-- Duplicate set for seamless loop -->
+        {cards.map((card) => (
+          <div class="marquee-card relative rounded-2xl overflow-hidden shrink-0 w-70 h-110">
+            <img
+              src={card.image}
+              alt={card.name}
+              class="w-full h-full object-cover"
+              loading="lazy"
+            />
+            <div class="absolute bottom-0 left-0 right-0 bg-linear-to-t from-black/80 via-black/40 to-transparent p-5 pt-16">
+              <div class="flex flex-row items-center">
+				<p class="text-white font-semibold text-base">
+					{card.name} 
+				</p>
+				<img
+				src={card.flag}
+				alt={card.country}
+				class="ml-1 h-6 w-auto"
+				loading="lazy"
+				/>
+			</div>
+              <p class="text-gray-300 text-sm mt-0.5">{card.title}</p>
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+  </div>
+</section>
 
 <style>
-	#background {
-		position: fixed;
-		top: 0;
-		left: 0;
-		width: 100%;
-		height: 100%;
-		z-index: -1;
-		filter: blur(100px);
-	}
+  /* Marquee container with fade mask */
+  .marquee-container {
+    -webkit-mask-image: linear-gradient(90deg, #0000 0%, #000 70% 75%, #0000 100%);
+    mask-image: linear-gradient(90deg, #0000 0%, #000 70% 75%, #0000 100%);
+    display: flex;
+    align-items: center;
+  }
 
-	#container {
-		font-family: Inter, Roboto, 'Helvetica Neue', 'Arial Nova', 'Nimbus Sans', Arial, sans-serif;
-		height: 100%;
-	}
+  /* The scrolling track */
+  .marquee-track {
+    display: flex;
+    gap: 1.25rem;
+    animation: marquee-scroll 40s linear infinite;
+    width: max-content;
+  }
 
-	main {
-		height: 100%;
-		display: flex;
-		justify-content: center;
-	}
+  /* Keyframes: slide the entire track left by exactly one set width */
+  @keyframes marquee-scroll {
+    0% {
+      transform: translateX(0);
+    }
+    100% {
+      /* 6 cards × (280px + 20px gap) = 1800px */
+      transform: translateX(-1800px);
+    }
+  }
 
-	#hero {
-		display: flex;
-		align-items: start;
-		flex-direction: column;
-		justify-content: center;
-		padding: 16px;
-	}
-
-	h1 {
-		font-size: 22px;
-		margin-top: 0.25em;
-	}
-
-	#links {
-		display: flex;
-		gap: 16px;
-	}
-
-	#links a {
-		display: flex;
-		align-items: center;
-		padding: 10px 12px;
-		color: #111827;
-		text-decoration: none;
-		transition: color 0.2s;
-	}
-
-	#links a:hover {
-		color: rgb(78, 80, 86);
-	}
-
-	#links a svg {
-		height: 1em;
-		margin-left: 8px;
-	}
-
-	#links a.button {
-		color: white;
-		background: linear-gradient(83.21deg, #3245ff 0%, #bc52ee 100%);
-		box-shadow:
-			inset 0 0 0 1px rgba(255, 255, 255, 0.12),
-			inset 0 -2px 0 rgba(0, 0, 0, 0.24);
-		border-radius: 10px;
-	}
-
-	#links a.button:hover {
-		color: rgb(230, 230, 230);
-		box-shadow: none;
-	}
-
-	pre {
-		font-family:
-			ui-monospace, 'Cascadia Code', 'Source Code Pro', Menlo, Consolas, 'DejaVu Sans Mono',
-			monospace;
-		font-weight: normal;
-		background: linear-gradient(14deg, #d83333 0%, #f041ff 100%);
-		-webkit-background-clip: text;
-		-webkit-text-fill-color: transparent;
-		background-clip: text;
-		margin: 0;
-	}
-
-	h2 {
-		margin: 0 0 1em;
-		font-weight: normal;
-		color: #111827;
-		font-size: 20px;
-	}
-
-	p {
-		color: #4b5563;
-		font-size: 16px;
-		line-height: 24px;
-		letter-spacing: -0.006em;
-		margin: 0;
-	}
-
-	code {
-		display: inline-block;
-		background:
-			linear-gradient(66.77deg, #f3cddd 0%, #f5cee7 100%) padding-box,
-			linear-gradient(155deg, #d83333 0%, #f041ff 18%, #f5cee7 45%) border-box;
-		border-radius: 8px;
-		border: 1px solid transparent;
-		padding: 6px 8px;
-	}
-
-	.box {
-		padding: 16px;
-		background: rgba(255, 255, 255, 1);
-		border-radius: 16px;
-		border: 1px solid white;
-	}
-
-	#news {
-		position: absolute;
-		bottom: 16px;
-		right: 16px;
-		max-width: 300px;
-		text-decoration: none;
-		transition: background 0.2s;
-		backdrop-filter: blur(50px);
-	}
-
-	#news:hover {
-		background: rgba(255, 255, 255, 0.55);
-	}
-
-	@media screen and (max-height: 368px) {
-		#news {
-			display: none;
-		}
-	}
-
-	@media screen and (max-width: 768px) {
-		#container {
-			display: flex;
-			flex-direction: column;
-		}
-
-		#hero {
-			display: block;
-			padding-top: 10%;
-		}
-
-		#links {
-			flex-wrap: wrap;
-		}
-
-		#links a.button {
-			padding: 14px 18px;
-		}
-
-		#news {
-			right: 16px;
-			left: 16px;
-			bottom: 2.5rem;
-			max-width: 100%;
-		}
-
-		h1 {
-			line-height: 1.5;
-		}
-	}
+  /* Pause on hover for accessibility */
+  /* .marquee-container:hover .marquee-track {
+    animation-play-state: paused;
+  } */
 </style>
