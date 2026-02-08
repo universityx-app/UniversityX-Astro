@@ -1,8 +1,11 @@
 ---
+import SideEye from './SideEye.astro';
+
 const navLinks = [
   { label: 'For Businesses', href: '#businesses' },
   { label: 'For Universities', href: '#universities' },
-  { label: 'Blog', href: '#blog' },
+  { label: 'Workshops', href: '#workshops' },
+  // { label: 'Blog', href: '#blog' },
   { label: 'Apply To Teach', href: '#teach' },
 //   { label: 'Pricing', href: '#pricing' },
 //   { label: 'FAQs', href: '#faqs' },
@@ -11,7 +14,7 @@ const navLinks = [
 const cards = [
   { name: 'Maya Brooks', title: 'Growth Marketer @ Open AI', country: 'united-states.png', flag: '/images/united-states.png', image: '/images/american-woman.png' },
   { name: 'Obinna Nwosu', title: 'CEO @ Abba Microfinance Bank', country: 'nigeria', flag: '/images/nigeria.png', image: '/images/nigerian-man.png' },
-  { name: 'Aaliyah Jordan', title: 'Senior designer @ Google', country: 'united-kingdom', flag: '/images/united-kingdom.png', image: '/images/uk-woman.png' },
+  { name: 'Aaliyah Jordan', title: 'Freelancer @ Upwork', country: 'united-kingdom', flag: '/images/united-kingdom.png', image: '/images/uk-woman.png' },
   { name: 'Titi Adebayo', title: 'Product Designer @ MoniePoint', country: 'nigeria', flag: '/images/nigeria.png', image: '/images/nigerian-woman.png' },
   { name: 'Caleb Wright', title: 'Software Developer @ Google', country: 'united-states', flag: '/images/united-states.png', image: '/images/american-man.png' },
   { name: 'Rohan Gupta', title: 'AI Engineer @ Meta', country: 'india', flag: '/images/india.png', image: '/images/indian-man.png' },
@@ -55,7 +58,7 @@ const cards = [
   </nav>
 
   <!-- ===== HERO CONTENT ===== -->
-  <div class="relative pt-10 z-10 grid grid-cols-1 lg:grid-cols-2 items-center min-h-[calc(100vh-80px)]">
+  <div class="relative pt-10 z-10 grid grid-cols-1 lg:grid-cols-2 min-h-[calc(100vh-80px)]">
     <!-- Left Column: Text -->
     <div class="pl-6 md:pl-12 lg:pl-16 xl:pl-24 py-12 lg:py-0 relative">
       <!-- Badge -->
@@ -73,10 +76,7 @@ const cards = [
       <div class="text-5xl md:text-6xl lg:text-6xl font-extrabold leading-[1.05] tracking-tight mb-6 realative">
          <!-- Stop Buying Courses You Never Finish -->
         <span> Stop Buying Courses You Never Finish </span>
-        <img 
-        src="/images/side-eye.png"
-        class="w-auto h-15 inline-flex -mt-3"
-        />
+        <SideEye class="w-auto h-15 inline-flex" />
       </div>
 
       <!-- Subtext -->
@@ -101,22 +101,6 @@ const cards = [
         >
           How it Works
         </a>
-      </div>
-
-      <!-- Feature Tags -->
-      <div class="flex flex-wrap items-center gap-6 text-sm text-gray-300 uppercase tracking-wider font-medium">
-        <span class="flex items-center gap-2">
-          <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="3" width="20" height="14" rx="2"/><path d="M8 21h8M12 17v4"/></svg>
-          Online
-        </span>
-        <span class="flex items-center gap-2">
-          <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 11 12 14 22 4"/><path d="M21 12v7a2 2 0 01-2 2H5a2 2 0 01-2-2V5a2 2 0 012-2h11"/></svg>
-          Hands-on
-        </span>
-        <span class="flex items-center gap-2">
-          <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="8" r="4"/><path d="M5.5 20a8.38 8.38 0 0113 0"/><path d="M16 16l2 2 4-4"/></svg>
-          Certificate
-        </span>
       </div>
     </div>
 

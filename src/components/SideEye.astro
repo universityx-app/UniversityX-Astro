@@ -1,0 +1,116 @@
+---
+interface Props {
+  class?: string;
+}
+
+const { class: className = '' } = Astro.props;
+---
+
+<div class:list={["side-eye-container", className]} style="position: relative;">
+  <!-- PNG base layer (user will swap in a pupil-less version) -->
+  <img
+    src="/images/side-eye.png"
+    alt="Side-eye emoji"
+    style="display: block; width: 100%; height: 100%;"
+    draggable="false"
+  />
+
+  <!-- Transparent SVG overlay with movable pupils -->
+  <svg
+    class="side-eye-overlay"
+    xmlns="http://www.w3.org/2000/svg"
+    viewBox="0 0 100 100"
+    style="position: absolute; inset: 0; width: 100%; height: 100%; pointer-events: none;"
+  >
+    <!-- <defs> -->
+      <!-- Clip paths matching the eye white areas — tweak cx/cy/rx/ry to align with your PNG -->
+      <!-- <clipPath id="leftEyeClip">
+        <ellipse cx="30" cy="47" rx="11" ry="8" />
+      </clipPath>
+      <clipPath id="rightEyeClip">
+        <ellipse cx="63" cy="46" rx="11" ry="8" />
+      </clipPath>
+    </defs> -->
+
+    <!-- Left pupil -->
+    <circle class="pupil" cx="30" cy="47" r="7" fill="#2C2C2C" clip-path="url(#leftEyeClip)" data-cx="30" data-cy="47" />
+    <circle class="pupil-glint" cx="32" cy="44.5" r="1.5" fill="white" opacity="0.85" clip-path="url(#leftEyeClip)" />
+
+    <!-- Right pupil -->
+    <!-- <circle class="pupil" cx="63" cy="46" r="6" fill="#2C2C2C" clip-path="url(#rightEyeClip)" data-cx="63" data-cy="46" />
+    <circle class="pupil-glint" cx="65" cy="43.5" r="1.5" fill="white" opacity="0.85" clip-path="url(#rightEyeClip)" /> -->
+    <circle class="pupil" cx="68" cy="46" r="7" fill="#2C2C2C" clip-path="url(#rightEyeClip)" data-cx="68" data-cy="46" />
+    <circle class="pupil-glint" cx="70" cy="43.5" r="1.5" fill="white" opacity="0.85" clip-path="url(#rightEyeClip)" />
+  </svg>
+</div>
+
+<script>
+  function initSideEye() {
+    const svgEl = document.querySelector('.side-eye-overlay');
+    if (!svgEl) return;
+
+    const pupils = svgEl.querySelectorAll('.pupil');
+    const glints = svgEl.querySelectorAll('.pupil-glint');
+    const MAX_OFFSET = 5;
+
+    const pupilData = Array.from(pupils).map((pupil, i) => ({
+      el: pupil as SVGCircleElement,
+      glintEl: glints[i] as SVGCircleElement,
+      restX: parseFloat(pupil.getAttribute('data-cx')!),
+      restY: parseFloat(pupil.getAttribute('data-cy')!),
+      glintOffsetX: 2,
+      glintOffsetY: -2.5,
+    }));
+
+    let rafId: number | null = null;
+    let mouseX = 0;
+    let mouseY = 0;
+
+    document.addEventListener('mousemove', (e: MouseEvent) => {
+      mouseX = e.clientX;
+      mouseY = e.clientY;
+
+      if (rafId === null) {
+        rafId = requestAnimationFrame(updatePupils);
+      }
+    });
+
+    function updatePupils() {
+      rafId = null;
+
+      const rect = svgEl!.getBoundingClientRect();
+      const scaleX = 100 / rect.width;
+      const scaleY = 100 / rect.height;
+
+      for (const data of pupilData) {
+        const eyeViewportX = rect.left + data.restX / scaleX;
+        const eyeViewportY = rect.top + data.restY / scaleY;
+
+        const dx = mouseX - eyeViewportX;
+        const dy = mouseY - eyeViewportY;
+        const dist = Math.sqrt(dx * dx + dy * dy);
+
+        let offsetX = 0;
+        let offsetY = 0;
+        if (dist > 0) {
+          const clampedDist = Math.min(dist, 80);
+          const ratio = clampedDist / 80;
+          offsetX = (dx / dist) * MAX_OFFSET * ratio;
+          offsetY = (dy / dist) * MAX_OFFSET * ratio;
+        }
+
+        data.el.setAttribute('cx', String(data.restX + offsetX));
+        data.el.setAttribute('cy', String(data.restY + offsetY));
+
+        data.glintEl.setAttribute('cx', String(data.restX + offsetX + data.glintOffsetX));
+        data.glintEl.setAttribute('cy', String(data.restY + offsetY + data.glintOffsetY));
+      }
+    }
+  }
+
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', initSideEye);
+  } else {
+    initSideEye();
+  }
+</script>
