@@ -30,7 +30,8 @@ const cards = [
 		src="./universityx.svg"
 		alt="UniversityX Logo"
 		class="h-10 w-auto"
-		loading="lazy"
+    loading="eager" 
+    fetchpriority="high"
 		/>
       </a>
 
@@ -114,7 +115,8 @@ const cards = [
               src={card.image}
               alt={card.name}
               class="w-full h-full object-cover"
-              loading="lazy"
+              loading="eager" 
+              fetchpriority="high"
             />
             <div class="absolute bottom-0 left-0 right-0 bg-linear-to-t from-black/80 via-black/40 to-transparent p-5 pt-16">
               <div class="flex flex-row items-center">
@@ -126,7 +128,8 @@ const cards = [
 				src={card.flag}
 				alt={card.country}
 				class="ml-1 h-6 w-auto"
-				loading="lazy"
+        loading="eager" 
+        fetchpriority="high"
 				/>
 			</div>
               {/* Name of Workplace */}
@@ -141,7 +144,8 @@ const cards = [
               src={card.image}
               alt={card.name}
               class="w-full h-full object-cover"
-              loading="lazy"
+              loading="eager" 
+              fetchpriority="high"
             />
             <div class="absolute bottom-0 left-0 right-0 bg-linear-to-t from-black/80 via-black/40 to-transparent p-5 pt-16">
               <div class="flex flex-row items-center">
@@ -153,7 +157,8 @@ const cards = [
 				src={card.flag}
 				alt={card.country}
 				class="ml-1 h-6 w-auto"
-				loading="lazy"
+        loading="eager" 
+        fetchpriority="high"
 				/>
 			</div>  
               {/* Name of Workplace */}
