@@ -2,13 +2,11 @@
 import SideEye from './SideEye.astro';
 
 const navLinks = [
-  { label: 'For Businesses', href: '#businesses' },
-  { label: 'For Universities', href: '#universities' },
-  { label: 'Workshops', href: '#workshops' },
-  // { label: 'Blog', href: '#blog' },
+  // { label: 'For Businesses', href: '#businesses' },
+  // { label: 'For Universities', href: '#universities' },
+  // { label: 'Workshops', href: '#workshops' },
   { label: 'Apply To Teach', href: '#teach' },
-//   { label: 'Pricing', href: '#pricing' },
-//   { label: 'FAQs', href: '#faqs' },
+  { label: 'Contact Us', href: '#contact' }
 ];
 
 const cards = [
@@ -37,7 +35,7 @@ const cards = [
       </a>
 
       <!-- Links -->
-      <div class="hidden md:flex items-center gap-6 flex-1 justify-center">
+      <div class="hidden md:flex items-center gap-6 flex-1 justify-end">
         {navLinks.map((link) => (
           <a href={link.href} class="text-gray-600 hover:text-black text-md font-medium transition-colors">
             {link.label}
@@ -46,15 +44,15 @@ const cards = [
       </div>
 
       <!-- CTA -->
-      <a
+      <!-- <a
         href="#enroll"
         class="shrink-0 flex items-center gap-2 bg-[#BB39B4] hover:bg-[#BB39B4] text-white text-sm font-semibold px-5 py-2.5 rounded-full transition-colors"
       >
-        Sign Up
+        Contact Us
         <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
           <path d="M5 12h14M12 5l7 7-7 7"/>
         </svg>
-      </a>
+      </a> -->
     </div>
   </nav>
 
@@ -120,9 +118,10 @@ const cards = [
             />
             <div class="absolute bottom-0 left-0 right-0 bg-linear-to-t from-black/80 via-black/40 to-transparent p-5 pt-16">
               <div class="flex flex-row items-center">
-				<p class="text-white font-semibold text-base">
+				{/* Name of Person */}
+        {/* <p class="text-white font-semibold text-base">
 					{card.name} 
-				</p>
+				</p> */}
 				<img
 				src={card.flag}
 				alt={card.country}
@@ -130,7 +129,8 @@ const cards = [
 				loading="lazy"
 				/>
 			</div>
-              <p class="text-gray-300 text-sm mt-0.5">{card.title}</p>
+              {/* Name of Workplace */}
+              {/* <p class="text-gray-300 text-sm mt-0.5">{card.title}</p> */}
             </div>
           </div>
         ))}
@@ -145,17 +145,19 @@ const cards = [
             />
             <div class="absolute bottom-0 left-0 right-0 bg-linear-to-t from-black/80 via-black/40 to-transparent p-5 pt-16">
               <div class="flex flex-row items-center">
-				<p class="text-white font-semibold text-base">
+        {/* Name of Person */}
+				{/* <p class="text-white font-semibold text-base">
 					{card.name} 
-				</p>
+				</p> */}
 				<img
 				src={card.flag}
 				alt={card.country}
 				class="ml-1 h-6 w-auto"
 				loading="lazy"
 				/>
-			</div>
-              <p class="text-gray-300 text-sm mt-0.5">{card.title}</p>
+			</div>  
+              {/* Name of Workplace */}
+              {/* <p class="text-gray-300 text-sm mt-0.5">{card.title}</p> */}
             </div>
           </div>
         ))}

@@ -1,49 +1,76 @@
 ---
 const features = [
   {
-    title: 'Stay Ahead of Your Finances with AI-Powered Tool',
+    title: 'Learn In-Demand Skills in 4-6 Weeks',
     description:
-      "Topbox doesn\u2019t just help you create a budget\u2014it learns your habits, tracks your income and expenses,",
+      "From AI automation to web development to data analysis. Learn skills that get you paid, whether you want a job, freelance gigs, or grow your business.",
     icon: 'dollar',
   },
   {
-    title: 'Understand Where Your Money Goes Visual Insights',
+    title: 'Flexibility + Live Support + Community',
     description:
-      'No more guessing or digging through statements. Topbox breaks down your spending into categories, highlights.',
+      'Watch curated bite-sized videos on your schedule. Join weekly live sessions to ask questions and get help fast. Learn alongside other students who keep you accountable.',
     icon: 'chart',
   },
   {
-    title: 'Achieve Your Goals Faster with Automated Savings',
+    title: 'Quality Training You Can Actually Afford',
     description:
-      "Whether you\u2019re saving for a trip, an emergency fund, or just trying to build better habits, Topbox helps you progress.",
+      "Get the structure and support of expensive bootcamps at 1/10th the price. Same live instruction, same community, same outcomes. Flexible payment options available.",
     icon: 'target',
   },
 ];
 
+// const trustedLogos = [
+//   {
+//     logo: '/images/spotify.svg', alt: 'spotify', height: 'h-9'
+//   },
+//   {
+//     logo: '/images/paystack.svg', alt: 'paystack', height: 'h-7'
+//   },
+//   {
+//     logo: '/images/openai.svg', alt: 'openai',  height: 'h-8'
+//   },
+//     {
+//     logo: '/images/meta.svg', alt: 'meta',  height: 'h-6'
+//   },
+//   {
+//     logo: '/images/netflix.svg', alt: 'netflix',  height: 'h-7'
+//   },
+//   {
+//     logo: '/images/slack.svg', alt: 'slack',  height: 'h-7'
+//   },
+//   {
+//     logo: '/images/google.svg', alt: 'google',  height: 'h-9'
+//   },
+//   {
+//     logo: '/images/microsoft.svg', alt: 'microsoft',  height: 'h-7'
+//   },
+// ];
+
 const trustedLogos = [
-  {
-    logo: '/images/spotify.svg', alt: 'spotify', height: 'h-9'
-  },
   {
     logo: '/images/paystack.svg', alt: 'paystack', height: 'h-7'
   },
   {
-    logo: '/images/openai.svg', alt: 'openai',  height: 'h-8'
+    logo: '/images/wema-bank.jpg', alt: 'wema-bank',  height: 'h-8'
   },
     {
-    logo: '/images/meta.svg', alt: 'meta',  height: 'h-6'
+    logo: '/images/interswitch.svg', alt: 'interswitch',  height: 'h-10'
   },
   {
-    logo: '/images/netflix.svg', alt: 'netflix',  height: 'h-7'
+    logo: '/images/covenant-uni.png', alt: 'covenant-university',  height: 'h-16'
   },
   {
-    logo: '/images/slack.svg', alt: 'slack',  height: 'h-7'
+    logo: '/images/university-of-lagos.png', alt: 'university-of-lagos',  height: 'h-16'
   },
   {
     logo: '/images/google.svg', alt: 'google',  height: 'h-9'
   },
   {
-    logo: '/images/microsoft.svg', alt: 'microsoft',  height: 'h-7'
+    logo: '/images/microsoft-for-startups.png', alt: 'microsoft-for-startups',  height: 'h-14'
+  },
+  {
+    logo: '/images/myitura.png', alt: 'myitura',  height: 'h-14'
   },
 ];
 
@@ -168,7 +195,7 @@ const trustedLogos = [
   </div>
 
   <!-- Feature cards -->
-  <div class="max-w-7xl mx-auto mt-16 md:mt-24 px-6 md:px-12 lg:px-16 xl:px-24">
+  <div class="max-w-7xl mx-auto mt-16 md:mt-24 px-6 md:px-12 lg:px-16 xl:px-16">
     <div
       id="features-container"
       class="bg-[#F9F8F3] rounded-3xl p-8 md:p-12 lg:p-16 opacity-0 translate-y-8 transition-all duration-700 ease-out"
@@ -197,8 +224,8 @@ const trustedLogos = [
                 </svg>
               )}
             </div>
-            <h3 class="text-lg font-bold text-[#1A0533] mb-3">{feature.title}</h3>
-            <p class="text-sm leading-relaxed text-gray-500">{feature.description}</p>
+            <h3 class="text-xl font-bold text-[#1A0533] mb-3">{feature.title}</h3>
+            <p class="text-lg leading-relaxed text-gray-500">{feature.description}</p>
           </article>
         ))}
       </div>
