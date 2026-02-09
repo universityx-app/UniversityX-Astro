@@ -15,13 +15,14 @@ const cards = [
   { name: 'Maya Brooks', title: 'Growth Marketer @ Open AI', country: 'united-states.png', flag: '/images/united-states.png', image: '/images/american-woman.png' },
   { name: 'Obinna Nwosu', title: 'CEO @ Abba Microfinance Bank', country: 'nigeria', flag: '/images/nigeria.png', image: '/images/nigerian-man.png' },
   { name: 'Aaliyah Jordan', title: 'Freelancer @ Upwork', country: 'united-kingdom', flag: '/images/united-kingdom.png', image: '/images/uk-woman.png' },
-  { name: 'Titi Adebayo', title: 'Product Designer @ MoniePoint', country: 'nigeria', flag: '/images/nigeria.png', image: '/images/nigerian-woman.png' },
+  { name: 'Titi Adebayo', title: 'Product Designer @ Paystack', country: 'nigeria', flag: '/images/nigeria.png', image: '/images/nigerian-woman.png' },
   { name: 'Caleb Wright', title: 'Software Developer @ Google', country: 'united-states', flag: '/images/united-states.png', image: '/images/american-man.png' },
   { name: 'Rohan Gupta', title: 'AI Engineer @ Meta', country: 'india', flag: '/images/india.png', image: '/images/indian-man.png' },
 ];
 ---
 
-<section class="relative min-h-screen bg-black text-white overflow-hidden">
+<section class="relative bg-black text-white overflow-hidden">
+  <!-- Removed min-h-screen -->
   <!-- ===== NAVBAR ===== -->
   <nav class="relative z-30 flex justify-center px-4 pt-2">
     <div class="flex items-center gap-8 bg-white rounded-full px-6 py-2.5 shadow-lg max-w-4xl w-full">
@@ -58,7 +59,8 @@ const cards = [
   </nav>
 
   <!-- ===== HERO CONTENT ===== -->
-  <div class="relative pt-10 z-10 grid grid-cols-1 lg:grid-cols-2 min-h-[calc(100vh-80px)]">
+  <div class="relative mb-8 pt-10 z-10 grid grid-cols-1 lg:grid-cols-2">
+    <!-- Removed min-h-[calc(100vh-80px)] -->
     <!-- Left Column: Text -->
     <div class="pl-6 md:pl-12 lg:pl-16 xl:pl-24 py-12 lg:py-0 relative">
       <!-- Badge -->

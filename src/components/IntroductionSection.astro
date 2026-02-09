@@ -1,0 +1,256 @@
+---
+const features = [
+  {
+    title: 'Stay Ahead of Your Finances with AI-Powered Tool',
+    description:
+      "Topbox doesn\u2019t just help you create a budget\u2014it learns your habits, tracks your income and expenses,",
+    icon: 'dollar',
+  },
+  {
+    title: 'Understand Where Your Money Goes Visual Insights',
+    description:
+      'No more guessing or digging through statements. Topbox breaks down your spending into categories, highlights.',
+    icon: 'chart',
+  },
+  {
+    title: 'Achieve Your Goals Faster with Automated Savings',
+    description:
+      "Whether you\u2019re saving for a trip, an emergency fund, or just trying to build better habits, Topbox helps you progress.",
+    icon: 'target',
+  },
+];
+
+const trustedLogos = [
+  {
+    logo: '/images/spotify.svg', alt: 'spotify', height: 'h-9'
+  },
+  {
+    logo: '/images/paystack.svg', alt: 'paystack', height: 'h-7'
+  },
+  {
+    logo: '/images/openai.svg', alt: 'openai',  height: 'h-8'
+  },
+    {
+    logo: '/images/meta.svg', alt: 'meta',  height: 'h-6'
+  },
+  {
+    logo: '/images/netflix.svg', alt: 'netflix',  height: 'h-7'
+  },
+  {
+    logo: '/images/slack.svg', alt: 'slack',  height: 'h-7'
+  },
+  {
+    logo: '/images/google.svg', alt: 'google',  height: 'h-9'
+  },
+  {
+    logo: '/images/microsoft.svg', alt: 'microsoft',  height: 'h-7'
+  },
+];
+
+---
+
+<section class="bg-white py-20 md:py-20">
+  <!-- Trusted By logo marquee -->
+  <div class="mb-20 md:mb-28">
+    <p class="max-w-150 text-xl font-medium text-gray-500 leading-snug px-6 md:px-12 lg:px-16 xl:px-24">
+      Trusted by professionals at <br> leading organizations
+    </p>
+
+    <div class="logo-marquee-container mt-10 w-full overflow-hidden">
+      <div class="logo-marquee-track flex items-center gap-16">
+        <!-- Logo set 1 -->
+         {trustedLogos.map((trustedLogo) => (
+          <img 
+          src={trustedLogo.logo}
+          class={`w-auto ${trustedLogo.height}`}
+          />
+         ))}
+        <!-- <svg class="h-8 md:h-10 w-auto shrink-0" viewBox="0 0 160 40" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+          <rect x="2" y="6" width="28" height="28" rx="4" fill="#C4B5FD" opacity="0.5"/>
+          <rect x="12" y="12" width="16" height="16" rx="3" fill="#8B5CF6" opacity="0.6"/>
+          <text x="48" y="27" font-family="Inter, sans-serif" font-weight="700" font-size="18" fill="#A3A3A3">LOGO</text>
+        </svg>
+        <svg class="h-8 md:h-10 w-auto shrink-0" viewBox="0 0 120 40" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+          <path d="M10 20c0-8 6-14 14-14s14 6 14 6-6-6-14-6c-4 0-8 2-10 4" fill="#EF4444" opacity="0.7"/>
+          <path d="M38 20c0 8-6 14-14 14s-14-6-14-6 6 6 14 6c4 0 8-2 10-4" fill="#EF4444" opacity="0.7"/>
+          <path d="M38 20c0-8 6-14 14-14s14 6 14 6-6-6-14-6c-4 0-8 2-10 4" fill="#06B6D4" opacity="0.7"/>
+          <path d="M66 20c0 8-6 14-14 14s-14-6-14-6 6 6 14 6c4 0 8-2 10-4" fill="#06B6D4" opacity="0.7"/>
+        </svg>
+        <svg class="h-8 md:h-10 w-auto shrink-0" viewBox="0 0 200 40" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+          <path d="M8 14l6-6 6 6-6 6z" fill="#06B6D4"/>
+          <path d="M8 26l6-6 6 6-6 6z" fill="#8B5CF6"/>
+          <path d="M20 20l6-6 6 6-6 6z" fill="#EC4899"/>
+          <text x="38" y="27" font-family="Inter, sans-serif" font-weight="800" font-size="16" fill="#A3A3A3" letter-spacing="1">LOGOIPSUM</text>
+        </svg>
+        <svg class="h-8 md:h-10 w-auto shrink-0" viewBox="0 0 100 40" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+          <path d="M10 20c0-8 6-14 14-14s14 6 14 6-6-6-14-6c-4 0-8 2-10 4" fill="#7C3AED" opacity="0.8"/>
+          <path d="M38 20c0 8-6 14-14 14s-14-6-14-6 6 6 14 6c4 0 8-2 10-4" fill="#7C3AED" opacity="0.8"/>
+          <path d="M38 20c0-8 6-14 14-14s14 6 14 6-6-6-14-6c-4 0-8 2-10 4" fill="#4F46E5" opacity="0.8"/>
+          <path d="M66 20c0 8-6 14-14 14s-14-6-14-6 6 6 14 6c4 0 8-2 10-4" fill="#4F46E5" opacity="0.8"/>
+        </svg>
+        <svg class="h-8 md:h-10 w-auto shrink-0" viewBox="0 0 160 40" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+          <rect x="2" y="6" width="28" height="28" rx="4" fill="#3B82F6" opacity="0.4"/>
+          <rect x="12" y="12" width="16" height="16" rx="3" fill="#2563EB" opacity="0.6"/>
+          <text x="48" y="27" font-family="Inter, sans-serif" font-weight="700" font-size="18" fill="#A3A3A3">LOGO</text>
+        </svg>
+        <svg class="h-8 md:h-10 w-auto shrink-0" viewBox="0 0 200 40" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+          <path d="M8 14l6-6 6 6-6 6z" fill="#F472B6"/>
+          <path d="M8 26l6-6 6 6-6 6z" fill="#EC4899"/>
+          <path d="M20 20l6-6 6 6-6 6z" fill="#F472B6" opacity="0.6"/>
+          <text x="38" y="27" font-family="Inter, sans-serif" font-weight="800" font-size="16" fill="#A3A3A3" letter-spacing="1">LOGOIPSUM</text>
+        </svg> -->
+
+        <!-- Logo set 2 (duplicate for seamless loop) -->
+        {trustedLogos.map((trustedLogo) => (
+          <img 
+          src={trustedLogo.logo}
+          class=`w-auto ${trustedLogo.height}`
+          />
+         ))}
+
+        <!-- <svg class="h-8 md:h-10 w-auto shrink-0" viewBox="0 0 160 40" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+          <rect x="2" y="6" width="28" height="28" rx="4" fill="#C4B5FD" opacity="0.5"/>
+          <rect x="12" y="12" width="16" height="16" rx="3" fill="#8B5CF6" opacity="0.6"/>
+          <text x="48" y="27" font-family="Inter, sans-serif" font-weight="700" font-size="18" fill="#A3A3A3">LOGO</text>
+        </svg>
+        <svg class="h-8 md:h-10 w-auto shrink-0" viewBox="0 0 120 40" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+          <path d="M10 20c0-8 6-14 14-14s14 6 14 6-6-6-14-6c-4 0-8 2-10 4" fill="#EF4444" opacity="0.7"/>
+          <path d="M38 20c0 8-6 14-14 14s-14-6-14-6 6 6 14 6c4 0 8-2 10-4" fill="#EF4444" opacity="0.7"/>
+          <path d="M38 20c0-8 6-14 14-14s14 6 14 6-6-6-14-6c-4 0-8 2-10 4" fill="#06B6D4" opacity="0.7"/>
+          <path d="M66 20c0 8-6 14-14 14s-14-6-14-6 6 6 14 6c4 0 8-2 10-4" fill="#06B6D4" opacity="0.7"/>
+        </svg>
+        <svg class="h-8 md:h-10 w-auto shrink-0" viewBox="0 0 200 40" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+          <path d="M8 14l6-6 6 6-6 6z" fill="#06B6D4"/>
+          <path d="M8 26l6-6 6 6-6 6z" fill="#8B5CF6"/>
+          <path d="M20 20l6-6 6 6-6 6z" fill="#EC4899"/>
+          <text x="38" y="27" font-family="Inter, sans-serif" font-weight="800" font-size="16" fill="#A3A3A3" letter-spacing="1">LOGOIPSUM</text>
+        </svg>
+        <svg class="h-8 md:h-10 w-auto shrink-0" viewBox="0 0 100 40" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+          <path d="M10 20c0-8 6-14 14-14s14 6 14 6-6-6-14-6c-4 0-8 2-10 4" fill="#7C3AED" opacity="0.8"/>
+          <path d="M38 20c0 8-6 14-14 14s-14-6-14-6 6 6 14 6c4 0 8-2 10-4" fill="#7C3AED" opacity="0.8"/>
+          <path d="M38 20c0-8 6-14 14-14s14 6 14 6-6-6-14-6c-4 0-8 2-10 4" fill="#4F46E5" opacity="0.8"/>
+          <path d="M66 20c0 8-6 14-14 14s-14-6-14-6 6 6 14 6c4 0 8-2 10-4" fill="#4F46E5" opacity="0.8"/>
+        </svg>
+        <svg class="h-8 md:h-10 w-auto shrink-0" viewBox="0 0 160 40" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+          <rect x="2" y="6" width="28" height="28" rx="4" fill="#3B82F6" opacity="0.4"/>
+          <rect x="12" y="12" width="16" height="16" rx="3" fill="#2563EB" opacity="0.6"/>
+          <text x="48" y="27" font-family="Inter, sans-serif" font-weight="700" font-size="18" fill="#A3A3A3">LOGO</text>
+        </svg>
+        <svg class="h-8 md:h-10 w-auto shrink-0" viewBox="0 0 200 40" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+          <path d="M8 14l6-6 6 6-6 6z" fill="#F472B6"/>
+          <path d="M8 26l6-6 6 6-6 6z" fill="#EC4899"/>
+          <path d="M20 20l6-6 6 6-6 6z" fill="#F472B6" opacity="0.6"/>
+          <text x="38" y="27" font-family="Inter, sans-serif" font-weight="800" font-size="16" fill="#A3A3A3" letter-spacing="1">LOGOIPSUM</text>
+        </svg> -->
+      </div>
+    </div>
+  </div>
+
+  <!-- Two-column header -->
+  <div
+    class="max-w-7xl mx-auto px-6 md:px-12 lg:px-16 xl:px-24 grid grid-cols-1 md:grid-cols-2 gap-10 md:gap-16 items-start"
+  >
+    <h2
+      class="text-3xl md:text-4xl font-extrabold leading-tight text-[#1A0533]"
+    >
+      You Don't Have a Motivation Problem. You Have an{' '}
+      <em class="font-['Playfair_Display',serif] font-bold"
+        >Isolation Problem.</em
+      >
+    </h2>
+
+    <p class="text-lg md:text-xl leading-relaxed text-gray-700 md:pt-2 md:pl-[5%]">
+      Humans don't learn well alone. That's why you've quit every course you've
+      ever bought. UniversityX is not another self-paced platform, we run live
+      cohorts where 20-30 students learn together with a real instructor. You
+      show up because they show up. It's just how learning actually works.
+    </p>
+  </div>
+
+  <!-- Feature cards -->
+  <div class="max-w-7xl mx-auto mt-16 md:mt-24 px-6 md:px-12 lg:px-16 xl:px-24">
+    <div
+      id="features-container"
+      class="bg-[#F9F8F3] rounded-3xl p-8 md:p-12 lg:p-16 opacity-0 translate-y-8 transition-all duration-700 ease-out"
+    >
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+        {features.map((feature) => (
+          <article class="bg-white rounded-2xl p-6 md:p-8">
+            <div class="w-12 h-12 bg-[#1A0533] rounded-full flex items-center justify-center mb-5">
+              {feature.icon === 'dollar' && (
+                <svg class="w-6 h-6" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                  <line x1="12" y1="1" x2="12" y2="23" />
+                  <path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6" />
+                </svg>
+              )}
+              {feature.icon === 'chart' && (
+                <svg class="w-6 h-6" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                  <path d="M21.21 15.89A10 10 0 1 1 8 2.83" />
+                  <path d="M22 12A10 10 0 0 0 12 2v10z" />
+                </svg>
+              )}
+              {feature.icon === 'target' && (
+                <svg class="w-6 h-6" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                  <circle cx="12" cy="12" r="10" />
+                  <circle cx="12" cy="12" r="6" />
+                  <circle cx="12" cy="12" r="2" />
+                </svg>
+              )}
+            </div>
+            <h3 class="text-lg font-bold text-[#1A0533] mb-3">{feature.title}</h3>
+            <p class="text-sm leading-relaxed text-gray-500">{feature.description}</p>
+          </article>
+        ))}
+      </div>
+    </div>
+  </div>
+</section>
+
+<script>
+  function initScrollReveal() {
+    const container = document.getElementById('features-container');
+    if (!container) return;
+
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            container.classList.remove('opacity-0', 'translate-y-8');
+            container.classList.add('opacity-100', 'translate-y-0');
+            observer.unobserve(container);
+          }
+        });
+      },
+      { threshold: 0.1 }
+    );
+
+    observer.observe(container);
+  }
+
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', initScrollReveal);
+  } else {
+    initScrollReveal();
+  }
+</script>
+
+<style>
+  .logo-marquee-container {
+    -webkit-mask-image: linear-gradient(90deg, transparent, white 20%, white 80%, transparent);
+    mask-image: linear-gradient(90deg, transparent, white 20%, white 80%, transparent);
+  }
+
+  .logo-marquee-track {
+    animation: infinite-scroll 25s linear infinite;
+    width: max-content;
+  }
+
+  @keyframes infinite-scroll {
+    0% {
+      transform: translateX(0);
+    }
+    100% {
+      transform: translateX(-50%);
+    }
+  }
+</style>
