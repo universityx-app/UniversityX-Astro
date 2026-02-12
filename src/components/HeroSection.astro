@@ -1,13 +1,6 @@
 ---
 import SideEye from './SideEye.astro';
-
-const navLinks = [
-  // { label: 'For Businesses', href: '#businesses' },
-  // { label: 'For Universities', href: '#universities' },
-  // { label: 'Workshops', href: '#workshops' },
-  { label: 'Apply To Teach', href: '#teach' },
-  { label: 'Contact Us', href: '#contact' }
-];
+import Navbar from './Navbar.astro';
 
 const cards = [
   { name: 'Maya Brooks', title: 'Growth Marketer @ Open AI', country: 'united-states.png', flag: '/images/united-states.png', image: '/images/american-woman.png' },
@@ -20,65 +13,13 @@ const cards = [
 ---
 
 <section class="relative bg-black text-white overflow-hidden">
-  <!-- Removed min-h-screen -->
-  <!-- ===== NAVBAR ===== -->
-  <nav class="relative z-30 flex justify-center px-4 pt-2">
-    <div class="flex items-center gap-8 bg-white rounded-full px-6 py-2.5 shadow-lg max-w-4xl w-full">
-      <!-- Logo -->
-      <a href="/" class="flex items-center gap-2 shrink-0">
-		<img
-		src="./universityx.svg"
-		alt="UniversityX Logo"
-		class="h-10 w-auto"
-    loading="eager" 
-    fetchpriority="high"
-		/>
-      </a>
-
-      <!-- Links -->
-      <div class="hidden md:flex items-center gap-6 flex-1 justify-end">
-        {navLinks.map((link) => (
-          <a href={link.href} class="text-gray-600 hover:text-black text-md font-medium transition-colors">
-            {link.label}
-          </a>
-        ))}
-      </div>
-
-      <!-- CTA -->
-      <!-- <a
-        href="#enroll"
-        class="shrink-0 flex items-center gap-2 bg-[#BB39B4] hover:bg-[#BB39B4] text-white text-sm font-semibold px-5 py-2.5 rounded-full transition-colors"
-      >
-        Contact Us
-        <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-          <path d="M5 12h14M12 5l7 7-7 7"/>
-        </svg>
-      </a> -->
-    </div>
-  </nav>
+  <Navbar />
 
   <!-- ===== HERO CONTENT ===== -->
   <div class="relative mb-8 pt-10 z-10 grid grid-cols-1 lg:grid-cols-2">
-    <!-- Removed min-h-[calc(100vh-80px)] -->
     <!-- Left Column: Text -->
     <div class="px-6 md:px-12 lg:px-16 xl:px-24 py-12 lg:py-0 relative">
-      <!-- Badge -->
-      <!-- <div class="inline-flex items-center gap-2 bg-white/10 border border-white/15 rounded-full px-4 py-1.5 mb-8">
-        <span class="bg-white text-black text-xs font-semibold px-2.5 py-0.5 rounded-full">New</span>
-        <span class="text-sm text-gray-300">Registrations are now open!</span>
-      </div> -->
-
-	  <!-- Stop Sign -->
-	   <!-- <img 
-		src="/images/stop-sign.svg"
-		class="w-auto h-20 absolute left-15 -top-10"
-	   /> -->
       <!-- Heading -->
-      <!-- <div class="text-5xl md:text-6xl lg:text-6xl font-extrabold leading-[1.05] tracking-tight mb-6 realative">
-         Stop Buying Courses You Never Finish
-        <span> Stop Buying Courses You Never Finish </span>
-        <SideEye class="w-auto h-15 inline-flex" />
-      </div> -->
     <div class="text-5xl md:text-6xl font-extrabold leading-[1.1] tracking-tight mb-6">
       <span>Stop Buying Courses You Never Finish</span>
       <span class="inline-block relative">
@@ -88,7 +29,7 @@ const cards = [
 
       <!-- Subtext -->
       <p class="text-gray-400 text-lg md:text-2xl leading-normal mb-10">
-		Join live cohorts where real people learn together with real instructors. Build job-ready skills, whether you’re chasing a full-time job, freelance gigs, or your own business.
+		Join live cohorts where real people learn together with real instructors. Build job-ready skills, whether you're chasing a full-time job, freelance gigs, or your own business.
       </p>
 
       <!-- Buttons -->
@@ -121,20 +62,20 @@ const cards = [
               src={card.image}
               alt={card.name}
               class="w-full h-full object-cover"
-              loading="eager" 
+              loading="eager"
               fetchpriority="high"
             />
             <div class="absolute bottom-0 left-0 right-0 bg-linear-to-t from-black/80 via-black/40 to-transparent p-5 pt-16">
               <div class="flex flex-row items-center">
 				{/* Name of Person */}
         {/* <p class="text-white font-semibold text-base">
-					{card.name} 
+					{card.name}
 				</p> */}
 				<img
 				src={card.flag}
 				alt={card.country}
 				class="ml-1 h-6 w-auto"
-        loading="eager" 
+        loading="eager"
         fetchpriority="high"
 				/>
 			</div>
@@ -150,23 +91,23 @@ const cards = [
               src={card.image}
               alt={card.name}
               class="w-full h-full object-cover"
-              loading="eager" 
+              loading="eager"
               fetchpriority="high"
             />
             <div class="absolute bottom-0 left-0 right-0 bg-linear-to-t from-black/80 via-black/40 to-transparent p-5 pt-16">
               <div class="flex flex-row items-center">
         {/* Name of Person */}
 				{/* <p class="text-white font-semibold text-base">
-					{card.name} 
+					{card.name}
 				</p> */}
 				<img
 				src={card.flag}
 				alt={card.country}
 				class="ml-1 h-6 w-auto"
-        loading="eager" 
+        loading="eager"
         fetchpriority="high"
 				/>
-			</div>  
+			</div>
               {/* Name of Workplace */}
               {/* <p class="text-gray-300 text-sm mt-0.5">{card.title}</p> */}
             </div>

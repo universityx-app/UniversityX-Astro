@@ -34,7 +34,7 @@ const socialLinks = [
     <!-- Top: Form section -->
     <div class="py-16 md:py-20 lg:max-w-lg">
       <h2 class="text-2xl md:text-3xl font-bold text-white leading-snug mb-12">
-        Join Private WhatsApp Community
+        Join Our Private WhatsApp Community
       </h2>
 
       <form
@@ -42,15 +42,21 @@ const socialLinks = [
         name="whatsapp-community"
         method="POST"
         data-netlify="true"
+        netlify-honeypot="bot-field"
         class="space-y-10"
       >
+        <p class="hidden">
+          <label>
+            Don&#8217;t fill this out if you&#8217;re human: <input name="bot-field" type="text" />
+          </label>
+        </p>
         <input type="hidden" name="form-name" value="whatsapp-community" />
 
         <div>
           <input
             type="text"
             name="name"
-            placeholder="Your Name"
+            placeholder="What's Your Name"
             required
             class="w-full bg-transparent border-b border-[#3A3330] pb-3 text-white placeholder-gray-500 text-sm focus:border-[#D4A853] focus:outline-none transition-colors duration-200"
           />
@@ -60,7 +66,7 @@ const socialLinks = [
           <input
             type="tel"
             name="whatsapp"
-            placeholder="Your WhatsApp Number"
+            placeholder="What's Your WhatsApp Number"
             required
             class="w-full bg-transparent border-b border-[#3A3330] pb-3 text-white placeholder-gray-500 text-sm focus:border-[#D4A853] focus:outline-none transition-colors duration-200"
           />
@@ -70,7 +76,7 @@ const socialLinks = [
           <input
             type="email"
             name="email"
-            placeholder="Your Email"
+            placeholder="What's Your Email"
             required
             class="w-full bg-transparent border-b border-[#3A3330] pb-3 text-white placeholder-gray-500 text-sm focus:border-[#D4A853] focus:outline-none transition-colors duration-200"
           />
@@ -144,10 +150,10 @@ const socialLinks = [
         });
 
         // Redirect to WhatsApp after successful submission
-        window.location.href = 'https://wa.me/yourlink';
+        window.location.href = 'https://chat.whatsapp.com/LE59wydgTceDCsm8r81gXU';
       } catch {
         // Fallback: redirect anyway so the user isn't stuck
-        window.location.href = 'https://wa.me/yourlink';
+        window.location.href = 'https://chat.whatsapp.com/LE59wydgTceDCsm8r81gXU';
       }
     });
   }
