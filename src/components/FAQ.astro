@@ -1,0 +1,150 @@
+---
+const faqs = [
+  {
+    question: 'Is UniversityX safe to use?',
+    answer:
+      'UniversityX is a trusted online learning platform that helps you build job-ready skills through live cohort-based courses. All payments are processed securely, and your personal data is protected with industry-standard encryption.',
+  },
+  {
+    question: 'What is UniversityX?',
+    answer:
+      'UniversityX is a live cohort-based learning platform where 20-30 students learn together with real instructors. We run 4-6 week courses in high-demand skills like AI, web development, data analysis, and more.',
+  },
+  {
+    question: 'How does the live cohort model help me?',
+    answer:
+      'Unlike self-paced courses you never finish, our cohorts create accountability. You learn alongside peers, attend live sessions with instructors, and get real-time feedback. Students who learn in groups are significantly more likely to complete the course and land real outcomes.',
+  },
+  {
+    question: 'What happens if I miss a live session?',
+    answer:
+      'All live sessions are recorded and available within 24 hours. You can catch up on your own schedule and still participate in the community discussions and assignments for that week.',
+  },
+  {
+    question: 'Do I get a certificate when I finish?',
+    answer:
+      'Yes. Every student who completes the course and final project receives a verified certificate of completion that you can share on LinkedIn and include in your portfolio.',
+  },
+];
+---
+
+<section class="bg-white py-20 md:py-28">
+  <div class="max-w-7xl mx-auto px-6 md:px-12 lg:px-16 xl:px-24">
+    <div class="grid grid-cols-1 lg:grid-cols-5 gap-12 lg:gap-20">
+
+      <!-- Left column: Heading -->
+      <div class="lg:col-span-2">
+        <h2 class="text-4xl md:text-5xl font-extrabold leading-tight text-[#1A0533]">
+          Frequently Asked
+          <br />
+          <em class="font-['Playfair_Display',serif] font-bold">Questions</em>
+        </h2>
+        <p class="mt-6 text-lg text-gray-500 leading-relaxed max-w-sm">
+          UniversityX provides you with structured, live training to make learning real skills easier and more affordable.
+        </p>
+      </div>
+
+      <!-- Right column: Accordion -->
+      <div class="lg:col-span-3 space-y-4" id="faq-accordion">
+        {faqs.map((faq, index) => (
+          <div class="faq-item rounded-2xl bg-[#F9F8F3] overflow-hidden" data-faq-index={index}>
+            <button
+              type="button"
+              class="faq-trigger flex w-full items-center justify-between gap-4 px-6 py-5 text-left cursor-pointer"
+              aria-expanded={index === 0 ? 'true' : 'false'}
+            >
+              <span class="text-lg md:text-xl font-semibold text-[#1A0533]">{faq.question}</span>
+              <span class="faq-icon relative flex-shrink-0 w-10 h-10 rounded-full flex items-center justify-center transition-colors duration-300">
+                {/* Plus icon (shown when closed) */}
+                <svg class="faq-icon-plus w-5 h-5 text-[#1A0533] transition-opacity duration-300" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                  <line x1="12" y1="5" x2="12" y2="19" />
+                  <line x1="5" y1="12" x2="19" y2="12" />
+                </svg>
+                {/* Minus icon (shown when open) */}
+                <svg class="faq-icon-minus absolute inset-0 m-auto w-5 h-5 text-white transition-opacity duration-300 opacity-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                  <line x1="5" y1="12" x2="19" y2="12" />
+                </svg>
+              </span>
+            </button>
+            <div class="faq-content">
+              <div class="faq-content-inner">
+                <p class="px-6 pb-6 text-base md:text-lg text-gray-500 leading-relaxed">{faq.answer}</p>
+              </div>
+            </div>
+          </div>
+        ))}
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<style>
+  /* Accordion content: animate max-height for smooth open/close */
+  .faq-content {
+    display: grid;
+    grid-template-rows: 0fr;
+    transition: grid-template-rows 350ms ease;
+  }
+
+  .faq-content-inner {
+    overflow: hidden;
+  }
+
+  .faq-item.is-open .faq-content {
+    grid-template-rows: 1fr;
+  }
+
+  /* Icon states */
+  .faq-item.is-open .faq-icon {
+    background-color: #1A0533;
+  }
+
+  .faq-item.is-open .faq-icon-plus {
+    opacity: 0;
+  }
+
+  .faq-item.is-open .faq-icon-minus {
+    opacity: 1;
+  }
+</style>
+
+<script>
+  function initFaqAccordion() {
+    const accordion = document.getElementById('faq-accordion');
+    if (!accordion) return;
+
+    const items = accordion.querySelectorAll('.faq-item');
+    const triggers = accordion.querySelectorAll('.faq-trigger');
+
+    // Open the first item by default
+    items[0]?.classList.add('is-open');
+
+    triggers.forEach((trigger) => {
+      trigger.addEventListener('click', () => {
+        const parentItem = trigger.closest('.faq-item');
+        if (!parentItem) return;
+
+        const isCurrentlyOpen = parentItem.classList.contains('is-open');
+
+        // Close all items
+        items.forEach((item) => {
+          item.classList.remove('is-open');
+          item.querySelector('.faq-trigger')?.setAttribute('aria-expanded', 'false');
+        });
+
+        // If the clicked item was closed, open it
+        if (!isCurrentlyOpen) {
+          parentItem.classList.add('is-open');
+          trigger.setAttribute('aria-expanded', 'true');
+        }
+      });
+    });
+  }
+
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', initFaqAccordion);
+  } else {
+    initFaqAccordion();
+  }
+</script>
