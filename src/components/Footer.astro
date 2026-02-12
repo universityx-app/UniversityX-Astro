@@ -1,0 +1,160 @@
+---
+const socialLinks = [
+  {
+    label: 'Facebook',
+    href: '#',
+    icon: 'M18 2h-3a5 5 0 00-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 011-1h3z',
+  },
+  {
+    label: 'LinkedIn',
+    href: '#',
+    icon: 'M16 8a6 6 0 016 6v7h-4v-7a2 2 0 00-2-2 2 2 0 00-2 2v7h-4v-7a6 6 0 016-6zM2 9h4v12H2zM4 6a2 2 0 100-4 2 2 0 000 4z',
+  },
+  {
+    label: 'Instagram',
+    href: '#',
+    paths: [
+      'M7.8 2h8.4C19.4 2 22 4.6 22 7.8v8.4a5.8 5.8 0 01-5.8 5.8H7.8C4.6 22 2 19.4 2 16.2V7.8A5.8 5.8 0 017.8 2z',
+      'M16.5 11.37A4.5 4.5 0 1112.63 7.5a4.5 4.5 0 013.87 3.87z',
+      'M17.5 6.5h.01',
+    ],
+  },
+  {
+    label: 'X',
+    href: '#',
+    viewBox: '0 0 24 24',
+    pathD: 'M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z',
+  },
+];
+---
+
+<footer class="bg-[#1C1410]">
+  <div class="max-w-7xl mx-auto px-6 md:px-12 lg:px-16 xl:px-24">
+
+    <!-- Top: Form section -->
+    <div class="py-16 md:py-20 lg:max-w-lg">
+      <h2 class="text-2xl md:text-3xl font-bold text-white leading-snug mb-12">
+        Join Private WhatsApp Community
+      </h2>
+
+      <form
+        id="whatsapp-form"
+        name="whatsapp-community"
+        method="POST"
+        data-netlify="true"
+        class="space-y-10"
+      >
+        <input type="hidden" name="form-name" value="whatsapp-community" />
+
+        <div>
+          <input
+            type="text"
+            name="name"
+            placeholder="Your Name"
+            required
+            class="w-full bg-transparent border-b border-[#3A3330] pb-3 text-white placeholder-gray-500 text-sm focus:border-[#D4A853] focus:outline-none transition-colors duration-200"
+          />
+        </div>
+
+        <div>
+          <input
+            type="tel"
+            name="whatsapp"
+            placeholder="Your WhatsApp Number"
+            required
+            class="w-full bg-transparent border-b border-[#3A3330] pb-3 text-white placeholder-gray-500 text-sm focus:border-[#D4A853] focus:outline-none transition-colors duration-200"
+          />
+        </div>
+
+        <div>
+          <input
+            type="email"
+            name="email"
+            placeholder="Your Email"
+            required
+            class="w-full bg-transparent border-b border-[#3A3330] pb-3 text-white placeholder-gray-500 text-sm focus:border-[#D4A853] focus:outline-none transition-colors duration-200"
+          />
+        </div>
+
+        <button
+          type="submit"
+          class="bg-[#D4A853] text-black text-sm font-semibold rounded-full px-8 py-2.5 hover:bg-[#C49A48] transition-colors duration-200 cursor-pointer"
+        >
+          Submit
+        </button>
+      </form>
+    </div>
+
+    <!-- Divider -->
+    <div class="border-t border-[#2A2420]"></div>
+
+    <!-- Bottom: Logo + Social -->
+    <div class="flex flex-col md:flex-row items-start md:items-end justify-between gap-8 py-12 md:py-16">
+      <!-- Logo placeholder — replace with SVG when ready -->
+      <h2 class="text-7xl md:text-8xl font-extrabold text-[#F5F0E8] leading-none tracking-tight">
+        UniversityX
+      </h2>
+
+      <!-- Social icons -->
+      <div class="flex items-center gap-3">
+        {socialLinks.map((link) => (
+          <a
+            href={link.href}
+            aria-label={link.label}
+            class="w-10 h-10 rounded-full border border-gray-600 flex items-center justify-center text-gray-400 hover:text-white hover:border-gray-400 transition-colors duration-200"
+          >
+            {link.icon && (
+              <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                <path d={link.icon} />
+              </svg>
+            )}
+            {link.paths && (
+              <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                {link.paths.map((p) => <path d={p} />)}
+              </svg>
+            )}
+            {link.pathD && (
+              <svg class="w-4 h-4" viewBox={link.viewBox || '0 0 24 24'} aria-hidden="true">
+                <path d={link.pathD} fill="currentColor" />
+              </svg>
+            )}
+          </a>
+        ))}
+      </div>
+    </div>
+
+  </div>
+</footer>
+
+<script>
+  function initFooterForm() {
+    const form = document.getElementById('whatsapp-form') as HTMLFormElement | null;
+    if (!form) return;
+
+    form.addEventListener('submit', async (e) => {
+      e.preventDefault();
+
+      const formData = new FormData(form);
+
+      try {
+        await fetch('/', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+          body: new URLSearchParams(formData as any).toString(),
+        });
+
+        // Redirect to WhatsApp after successful submission
+        window.location.href = 'https://wa.me/yourlink';
+      } catch {
+        // Fallback: redirect anyway so the user isn't stuck
+        window.location.href = 'https://wa.me/yourlink';
+      }
+    });
+  }
+
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', initFooterForm);
+  } else {
+    initFooterForm();
+  }
+</script>
