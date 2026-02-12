@@ -61,7 +61,7 @@ const cards = [
   <div class="relative mb-8 pt-10 z-10 grid grid-cols-1 lg:grid-cols-2">
     <!-- Removed min-h-[calc(100vh-80px)] -->
     <!-- Left Column: Text -->
-    <div class="pl-6 md:pl-12 lg:pl-16 xl:pl-24 py-12 lg:py-0 relative">
+    <div class="px-6 md:px-12 lg:px-16 xl:px-24 py-12 lg:py-0 relative">
       <!-- Badge -->
       <!-- <div class="inline-flex items-center gap-2 bg-white/10 border border-white/15 rounded-full px-4 py-1.5 mb-8">
         <span class="bg-white text-black text-xs font-semibold px-2.5 py-0.5 rounded-full">New</span>
@@ -74,11 +74,17 @@ const cards = [
 		class="w-auto h-20 absolute left-15 -top-10"
 	   /> -->
       <!-- Heading -->
-      <div class="text-5xl md:text-6xl lg:text-6xl font-extrabold leading-[1.05] tracking-tight mb-6 realative">
-         <!-- Stop Buying Courses You Never Finish -->
+      <!-- <div class="text-5xl md:text-6xl lg:text-6xl font-extrabold leading-[1.05] tracking-tight mb-6 realative">
+         Stop Buying Courses You Never Finish
         <span> Stop Buying Courses You Never Finish </span>
         <SideEye class="w-auto h-15 inline-flex" />
-      </div>
+      </div> -->
+    <div class="text-5xl md:text-6xl font-extrabold leading-[1.1] tracking-tight mb-6">
+      <span>Stop Buying Courses You Never Finish</span>
+      <span class="inline-block relative">
+        <SideEye class="inline-flex w-15 h-15 align-middle mb-2" />
+      </span>
+    </div>
 
       <!-- Subtext -->
       <p class="text-gray-400 text-lg md:text-2xl leading-normal mb-10">
