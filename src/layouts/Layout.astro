@@ -1,5 +1,6 @@
 ---
 import '../styles/global.css';
+import PostHog from '../components/posthog.astro';
 ---
 
 <!doctype html>
@@ -22,6 +23,8 @@ import '../styles/global.css';
 
 		gtag('config', 'G-9L8NNDJ4GH');
 		</script>
+		<!-- PostHog Analytics -->
+		<PostHog />
 		<title>UniversityX</title>
 	</head>
 	<body class="font-[Inter,sans-serif] antialiased">

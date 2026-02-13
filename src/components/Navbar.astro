@@ -27,7 +27,7 @@ const navLinks = [
       <!-- Desktop links -->
       <div class="hidden md:flex items-center gap-6 flex-1 justify-end">
         {navLinks.map((link) => (
-          <a href={link.href} class="text-gray-600 hover:text-black text-md font-medium transition-colors">
+          <a href={link.href} class="desktop-nav-link text-gray-600 hover:text-black text-md font-medium transition-colors" data-nav-label={link.label}>
             {link.label}
           </a>
         ))}
@@ -64,6 +64,7 @@ const navLinks = [
               <a
                 href={link.href}
                 class="mobile-nav-link block text-[#1A0533] text-lg font-semibold py-3 border-b border-gray-100 last:border-b-0 transition-colors hover:text-[#BB39B4]"
+                data-nav-label={link.label}
               >
                 {link.label}
               </a>
@@ -142,6 +143,27 @@ const navLinks = [
     // Close menu when a mobile nav link is clicked
     menu.querySelectorAll('.mobile-nav-link').forEach((link) => {
       link.addEventListener('click', closeMenu);
+    });
+
+    // Track navigation link clicks in PostHog
+    function trackNavClick(link: Element, isMobile: boolean) {
+      const label = link.getAttribute('data-nav-label') || link.textContent?.trim() || '';
+      const href = link.getAttribute('href') || '';
+      window.posthog?.capture('navigation_link_clicked', {
+        link_label: label,
+        link_href: href,
+        navigation_type: isMobile ? 'mobile' : 'desktop'
+      });
+    }
+
+    // Desktop nav links
+    document.querySelectorAll('.desktop-nav-link').forEach((link) => {
+      link.addEventListener('click', () => trackNavClick(link, false));
+    });
+
+    // Mobile nav links
+    menu.querySelectorAll('.mobile-nav-link').forEach((link) => {
+      link.addEventListener('click', () => trackNavClick(link, true));
     });
   }
 

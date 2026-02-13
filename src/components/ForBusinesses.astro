@@ -333,9 +333,23 @@ const countryCodes = [
           headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
           body: new URLSearchParams(formData as any).toString(),
         });
+
+        // Track successful business partnership request in PostHog
+        const companySize = (document.getElementById('biz-size') as HTMLSelectElement)?.value || '';
+        const trainingAreas = (document.getElementById('biz-areas-hidden') as HTMLInputElement)?.value || '';
+        const startTimeline = (document.getElementById('biz-start') as HTMLSelectElement)?.value || '';
+        window.posthog?.capture('business_partnership_requested', {
+          form_name: 'for-businesses',
+          company_size: companySize,
+          training_areas: trainingAreas,
+          start_timeline: startTimeline
+        });
+
         formCard.classList.add('hidden');
         successMessage.classList.remove('hidden');
-      } catch {
+      } catch (err) {
+        // Capture form submission error in PostHog
+        window.posthog?.captureException(err);
         submitBtn.disabled = false;
         submitBtn.textContent = 'Get Started';
         alert('Something went wrong. Please try again.');

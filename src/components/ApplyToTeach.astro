@@ -385,9 +385,21 @@ const countryCodes = [
           headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
           body: new URLSearchParams(formData as any).toString(),
         });
+
+        // Track successful instructor application in PostHog
+        const subjects = (document.getElementById('subjects-hidden') as HTMLInputElement)?.value || '';
+        const startTimeline = (document.getElementById('apply-start') as HTMLSelectElement)?.value || '';
+        window.posthog?.capture('instructor_application_submitted', {
+          form_name: 'apply-to-teach',
+          subjects: subjects,
+          start_timeline: startTimeline
+        });
+
         formCard.classList.add('hidden');
         successMessage.classList.remove('hidden');
-      } catch {
+      } catch (err) {
+        // Capture form submission error in PostHog
+        window.posthog?.captureException(err);
         submitBtn.disabled = false;
         submitBtn.textContent = 'Submit Application';
         alert('Something went wrong. Please try again.');

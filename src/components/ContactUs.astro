@@ -197,11 +197,19 @@
           headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
           body: new URLSearchParams(formData as any).toString(),
         });
+
+        // Track successful contact form submission in PostHog
+        window.posthog?.capture('contact_form_submitted', {
+          form_name: 'contact'
+        });
+
         form.reset();
         emailError.classList.add('hidden');
         phoneError.classList.add('hidden');
         alert('Message sent successfully! We\'ll get back to you soon.');
-      } catch {
+      } catch (err) {
+        // Capture form submission error in PostHog
+        window.posthog?.captureException(err);
         alert('Something went wrong. Please try again.');
       }
     });

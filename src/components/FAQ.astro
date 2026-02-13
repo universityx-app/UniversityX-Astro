@@ -137,6 +137,14 @@ const faqs = [
         if (!isCurrentlyOpen) {
           parentItem.classList.add('is-open');
           trigger.setAttribute('aria-expanded', 'true');
+
+          // Track FAQ item expansion in PostHog
+          const faqIndex = parentItem.getAttribute('data-faq-index');
+          const questionText = trigger.querySelector('span')?.textContent || '';
+          window.posthog?.capture('faq_item_expanded', {
+            faq_index: parseInt(faqIndex || '0', 10),
+            question: questionText
+          });
         }
       });
     });

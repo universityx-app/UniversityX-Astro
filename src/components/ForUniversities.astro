@@ -351,9 +351,25 @@ const countryCodes = [
           headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
           body: new URLSearchParams(formData as any).toString(),
         });
+
+        // Track successful university partnership request in PostHog
+        const role = (document.getElementById('uni-role') as HTMLSelectElement)?.value || '';
+        const departments = (document.getElementById('uni-depts-hidden') as HTMLInputElement)?.value || '';
+        const studentCount = (document.getElementById('uni-students') as HTMLSelectElement)?.value || '';
+        const startTimeline = (document.getElementById('uni-start') as HTMLSelectElement)?.value || '';
+        window.posthog?.capture('university_partnership_requested', {
+          form_name: 'for-universities',
+          role: role,
+          departments: departments,
+          student_count: studentCount,
+          start_timeline: startTimeline
+        });
+
         formCard.classList.add('hidden');
         successMessage.classList.remove('hidden');
-      } catch {
+      } catch (err) {
+        // Capture form submission error in PostHog
+        window.posthog?.captureException(err);
         submitBtn.disabled = false;
         submitBtn.textContent = 'Request Partnership';
         alert('Something went wrong. Please try again.');

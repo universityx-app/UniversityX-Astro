@@ -35,6 +35,7 @@ const cards = [
       <!-- Buttons -->
       <div class="flex flex-wrap items-center gap-4 mb-12">
         <a
+          id="browse-courses-btn"
           href="#browse-courses"
           class="inline-flex items-center gap-2 bg-[#BB39B4] hover:bg-[#BB39B4] text-white font-semibold px-7 py-3.5 rounded-full transition-colors text-base"
         >
@@ -44,6 +45,7 @@ const cards = [
           </svg>
         </a>
         <a
+          id="how-it-works-btn"
           href="#how-it-works"
           class="inline-flex items-center gap-2 border border-white/20 hover:border-white/40 text-white font-semibold px-7 py-3.5 rounded-full transition-colors text-base"
         >
@@ -151,3 +153,28 @@ const cards = [
     animation-play-state: paused;
   } */
 </style>
+
+<script is:inline>
+  function initHeroTracking() {
+    const browseCoursesBtn = document.getElementById('browse-courses-btn');
+    const howItWorksBtn = document.getElementById('how-it-works-btn');
+
+    browseCoursesBtn?.addEventListener('click', () => {
+      window.posthog?.capture('browse_courses_clicked', {
+        location: 'hero_section'
+      });
+    });
+
+    howItWorksBtn?.addEventListener('click', () => {
+      window.posthog?.capture('how_it_works_clicked', {
+        location: 'hero_section'
+      });
+    });
+  }
+
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', initHeroTracking);
+  } else {
+    initHeroTracking();
+  }
+</script>
