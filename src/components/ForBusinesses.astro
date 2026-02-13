@@ -1,0 +1,351 @@
+---
+const benefits = [
+  {
+    title: 'Upskill Your Team',
+    description: 'Live cohort training tailored to your industry — not generic, pre-recorded content.',
+  },
+  {
+    title: 'Measurable ROI',
+    description: 'Track employee progress, course completion rates, and skill development in real time.',
+  },
+  {
+    title: 'Flexible Scheduling',
+    description: 'Train your teams without disrupting day-to-day workflows or productivity.',
+  },
+  {
+    title: 'Custom Curriculum',
+    description: 'Courses built around your business needs, tools, and growth objectives.',
+  },
+];
+
+const trainingAreas = ['Design', 'Development', 'Business', 'Data & Analytics', 'Leadership', 'Other'];
+
+const companySizes = ['1-10', '11-50', '51-200', '201-500', '500+'];
+
+const startOptions = ['Immediately', '1-3 months', '3-6 months', 'Just exploring'];
+
+const countryCodes = [
+  { code: '+234', label: 'NG +234' },
+  { code: '+1', label: 'US +1' },
+  { code: '+44', label: 'UK +44' },
+  { code: '+91', label: 'IN +91' },
+  { code: '+254', label: 'KE +254' },
+  { code: '+233', label: 'GH +233' },
+  { code: '+27', label: 'ZA +27' },
+  { code: '+971', label: 'AE +971' },
+  { code: '+61', label: 'AU +61' },
+  { code: '+49', label: 'DE +49' },
+];
+---
+
+<section id="businesses" class="bg-[#FBF8F1] py-20 md:py-28">
+  <!-- Hero Header -->
+  <div class="max-w-3xl mx-auto text-center px-6 mb-16 md:mb-20">
+    <h2 class="text-4xl md:text-5xl lg:text-6xl font-extrabold text-[#1A0533] leading-tight">
+      Train Your Team
+      <br />
+      <em class="font-['Playfair_Display',serif] font-bold">With the Best</em>
+    </h2>
+    <p class="mt-5 text-gray-500 text-base md:text-lg leading-relaxed">
+      Empower your workforce with live, expert-led courses designed to drive
+      real business results&mdash;not just certificates.
+    </p>
+  </div>
+
+  <!-- Two-column content -->
+  <div class="max-w-7xl mx-auto px-6 md:px-12 lg:px-16 xl:px-24 grid grid-cols-1 lg:grid-cols-5 gap-12 lg:gap-16 items-start">
+
+    <!-- Left column: Why Partner with Us -->
+    <div class="lg:col-span-2">
+      <h3 class="text-3xl md:text-4xl font-extrabold text-[#1A0533] leading-snug">
+        Why Partner
+        <br />
+        <em class="font-['Playfair_Display',serif] font-bold">with Us?</em>
+      </h3>
+
+      <div class="mt-8 space-y-6">
+        {benefits.map((benefit) => (
+          <div>
+            <h4 class="text-base font-bold text-[#1A0533] mb-1">{benefit.title}</h4>
+            <p class="text-sm text-gray-500 leading-relaxed">{benefit.description}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+
+    <!-- Right column: Form Card -->
+    <div class="lg:col-span-3">
+      <!-- Success message (hidden by default) -->
+      <div id="biz-success" class="hidden bg-white rounded-3xl shadow-xl p-8 md:p-10 text-center">
+        <div class="w-16 h-16 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-6">
+          <svg class="w-8 h-8 text-green-600" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M20 6L9 17l-5-5" />
+          </svg>
+        </div>
+        <h3 class="text-2xl font-bold text-[#1A0533] mb-3">Request Received!</h3>
+        <p class="text-gray-500 text-base leading-relaxed max-w-md mx-auto">
+          Thanks for your interest! Our partnerships team will reach out within 2-3 business days.
+        </p>
+      </div>
+
+      <!-- Form card -->
+      <div id="biz-form-card" class="bg-white rounded-3xl shadow-xl p-8 md:p-10">
+        <form
+          id="biz-form"
+          name="for-businesses"
+          method="POST"
+          data-netlify="true"
+          netlify-honeypot="bot-field"
+          novalidate
+          class="space-y-6"
+        >
+          <p class="hidden">
+            <label>Don&#8217;t fill this out: <input name="bot-field" type="text" /></label>
+          </p>
+          <input type="hidden" name="form-name" value="for-businesses" />
+
+          <!-- Company Name -->
+          <div>
+            <label for="biz-company" class="block text-sm font-semibold text-[#1A0533] mb-2">Company Name</label>
+            <input
+              type="text"
+              id="biz-company"
+              name="company-name"
+              placeholder="Enter your company name"
+              required
+              class="w-full bg-gray-50 rounded-xl px-4 py-3 text-sm text-gray-800 placeholder-gray-400 border border-transparent focus:outline-none focus:ring-2 focus:ring-[#D4A853] focus:border-[#D4A853] transition-all duration-200"
+            />
+          </div>
+
+          <!-- Your Full Name -->
+          <div>
+            <label for="biz-name" class="block text-sm font-semibold text-[#1A0533] mb-2">Your Full Name</label>
+            <input
+              type="text"
+              id="biz-name"
+              name="full-name"
+              placeholder="Enter your full name"
+              required
+              class="w-full bg-gray-50 rounded-xl px-4 py-3 text-sm text-gray-800 placeholder-gray-400 border border-transparent focus:outline-none focus:ring-2 focus:ring-[#D4A853] focus:border-[#D4A853] transition-all duration-200"
+            />
+          </div>
+
+          <!-- Work Email -->
+          <div>
+            <label for="biz-email" class="block text-sm font-semibold text-[#1A0533] mb-2">Work Email</label>
+            <input
+              type="email"
+              id="biz-email"
+              name="email"
+              placeholder="Enter your work email"
+              required
+              class="w-full bg-gray-50 rounded-xl px-4 py-3 text-sm text-gray-800 placeholder-gray-400 border border-transparent focus:outline-none focus:ring-2 focus:ring-[#D4A853] focus:border-[#D4A853] transition-all duration-200"
+            />
+            <p id="biz-email-error" class="text-red-500 text-xs mt-1 hidden">Please enter a valid email address.</p>
+          </div>
+
+          <!-- WhatsApp Number with country code -->
+          <div>
+            <label for="biz-whatsapp" class="block text-sm font-semibold text-[#1A0533] mb-2">WhatsApp Number</label>
+            <div class="flex gap-2">
+              <select
+                name="country-code"
+                id="biz-country-code"
+                class="bg-gray-50 rounded-xl px-3 py-3 text-sm text-gray-800 border border-transparent focus:outline-none focus:ring-2 focus:ring-[#D4A853] transition-all duration-200 shrink-0 w-28"
+              >
+                {countryCodes.map((cc) => (
+                  <option value={cc.code}>{cc.label}</option>
+                ))}
+              </select>
+              <input
+                type="tel"
+                id="biz-whatsapp"
+                name="whatsapp"
+                placeholder="Phone number"
+                required
+                class="w-full bg-gray-50 rounded-xl px-4 py-3 text-sm text-gray-800 placeholder-gray-400 border border-transparent focus:outline-none focus:ring-2 focus:ring-[#D4A853] focus:border-[#D4A853] transition-all duration-200"
+              />
+            </div>
+          </div>
+
+          <!-- Company Size -->
+          <div>
+            <label for="biz-size" class="block text-sm font-semibold text-[#1A0533] mb-2">Company Size</label>
+            <select
+              id="biz-size"
+              name="company-size"
+              required
+              class="w-full bg-gray-50 rounded-xl px-4 py-3 text-sm text-gray-800 border border-transparent focus:outline-none focus:ring-2 focus:ring-[#D4A853] transition-all duration-200 cursor-pointer"
+            >
+              <option value="" disabled selected>Select company size</option>
+              {companySizes.map((size) => (
+                <option value={size}>{size} employees</option>
+              ))}
+            </select>
+          </div>
+
+          <!-- Training Areas (Multi-select dropdown) -->
+          <div>
+            <label class="block text-sm font-semibold text-[#1A0533] mb-2">What areas are you looking to train your team in?</label>
+            <input type="hidden" name="training-areas" id="biz-areas-hidden" />
+            <div class="relative">
+              <button
+                type="button"
+                id="biz-areas-toggle"
+                class="w-full bg-gray-50 rounded-xl px-4 py-3 text-sm text-left border border-transparent focus:outline-none focus:ring-2 focus:ring-[#D4A853] transition-all duration-200 flex items-center justify-between cursor-pointer"
+              >
+                <span id="biz-areas-label" class="text-gray-400">Select training areas</span>
+                <svg class="w-4 h-4 text-gray-400 shrink-0 transition-transform duration-200" id="biz-areas-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M6 9l6 6 6-6" />
+                </svg>
+              </button>
+              <div id="biz-areas-menu" class="hidden absolute z-20 top-full left-0 right-0 mt-1 bg-white rounded-xl shadow-lg border border-gray-100 p-3 space-y-2">
+                {trainingAreas.map((area) => (
+                  <label class="flex items-center gap-3 px-2 py-1.5 rounded-lg hover:bg-gray-50 cursor-pointer transition-colors">
+                    <input type="checkbox" value={area} class="biz-area-checkbox w-4 h-4 rounded border-gray-300 text-[#D4A853] focus:ring-[#D4A853]" />
+                    <span class="text-sm text-gray-700">{area}</span>
+                  </label>
+                ))}
+              </div>
+            </div>
+          </div>
+
+          <!-- When would you like to start? -->
+          <div>
+            <label for="biz-start" class="block text-sm font-semibold text-[#1A0533] mb-2">When would you like to start?</label>
+            <select
+              id="biz-start"
+              name="start-timeline"
+              required
+              class="w-full bg-gray-50 rounded-xl px-4 py-3 text-sm text-gray-800 border border-transparent focus:outline-none focus:ring-2 focus:ring-[#D4A853] transition-all duration-200 cursor-pointer"
+            >
+              <option value="" disabled selected>Select a timeline</option>
+              {startOptions.map((opt) => (
+                <option value={opt}>{opt}</option>
+              ))}
+            </select>
+          </div>
+
+          <!-- Tell us about your training needs (optional) -->
+          <div>
+            <label for="biz-needs" class="block text-sm font-semibold text-[#1A0533] mb-2">
+              Tell us about your training needs <span class="font-normal text-gray-400">(optional)</span>
+            </label>
+            <textarea
+              id="biz-needs"
+              name="training-needs"
+              placeholder="What skills does your team need? Any specific tools, technologies, or goals..."
+              rows="3"
+              class="w-full bg-gray-50 rounded-xl px-4 py-3 text-sm text-gray-800 placeholder-gray-400 border border-transparent focus:outline-none focus:ring-2 focus:ring-[#D4A853] focus:border-[#D4A853] transition-all duration-200 resize-y"
+            ></textarea>
+          </div>
+
+          <!-- Submit button -->
+          <button
+            type="submit"
+            id="biz-submit-btn"
+            class="w-full bg-[#D4A853] hover:bg-[#C49A48] text-black font-bold text-base rounded-full py-3.5 transition-colors duration-200 cursor-pointer"
+          >
+            Get Started
+          </button>
+        </form>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<script>
+  function initBizForm() {
+    const form = document.getElementById('biz-form') as HTMLFormElement | null;
+    const formCard = document.getElementById('biz-form-card')!;
+    const successMessage = document.getElementById('biz-success')!;
+    if (!form) return;
+
+    // --- Multi-select dropdown ---
+    const areasToggle = document.getElementById('biz-areas-toggle')!;
+    const areasMenu = document.getElementById('biz-areas-menu')!;
+    const areasLabel = document.getElementById('biz-areas-label')!;
+    const areasChevron = document.getElementById('biz-areas-chevron')!;
+    const areasHidden = document.getElementById('biz-areas-hidden') as HTMLInputElement;
+    const areaCheckboxes = areasMenu.querySelectorAll<HTMLInputElement>('.biz-area-checkbox');
+
+    areasToggle.addEventListener('click', () => {
+      const isOpen = !areasMenu.classList.contains('hidden');
+      areasMenu.classList.toggle('hidden');
+      areasChevron.classList.toggle('rotate-180', !isOpen);
+    });
+
+    document.addEventListener('click', (e) => {
+      if (!areasToggle.contains(e.target as Node) && !areasMenu.contains(e.target as Node)) {
+        areasMenu.classList.add('hidden');
+        areasChevron.classList.remove('rotate-180');
+      }
+    });
+
+    function updateAreasLabel() {
+      const selected = [...areaCheckboxes].filter((c) => c.checked).map((c) => c.value);
+      areasHidden.value = selected.join(', ');
+      if (selected.length > 0) {
+        areasLabel.textContent = selected.join(', ');
+        areasLabel.classList.remove('text-gray-400');
+        areasLabel.classList.add('text-gray-800');
+      } else {
+        areasLabel.textContent = 'Select training areas';
+        areasLabel.classList.add('text-gray-400');
+        areasLabel.classList.remove('text-gray-800');
+      }
+    }
+
+    areaCheckboxes.forEach((cb) => cb.addEventListener('change', updateAreasLabel));
+
+    // --- Validation ---
+    const emailInput = form.querySelector('#biz-email') as HTMLInputElement;
+    const emailError = document.getElementById('biz-email-error')!;
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+
+    function validateEmail(): boolean {
+      const valid = emailRegex.test(emailInput.value.trim());
+      emailError.classList.toggle('hidden', valid || emailInput.value.trim() === '');
+      return valid;
+    }
+
+    emailInput.addEventListener('blur', validateEmail);
+
+    // --- Form submission ---
+    form.addEventListener('submit', async (e) => {
+      e.preventDefault();
+
+      if (!validateEmail()) {
+        emailInput.focus();
+        return;
+      }
+
+      const submitBtn = document.getElementById('biz-submit-btn') as HTMLButtonElement;
+      submitBtn.disabled = true;
+      submitBtn.textContent = 'Submitting...';
+
+      const formData = new FormData(form);
+
+      try {
+        await fetch('/', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+          body: new URLSearchParams(formData as any).toString(),
+        });
+        formCard.classList.add('hidden');
+        successMessage.classList.remove('hidden');
+      } catch {
+        submitBtn.disabled = false;
+        submitBtn.textContent = 'Get Started';
+        alert('Something went wrong. Please try again.');
+      }
+    });
+  }
+
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', initBizForm);
+  } else {
+    initBizForm();
+  }
+</script>
