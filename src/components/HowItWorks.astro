@@ -1,0 +1,117 @@
+---
+const avatars = [
+  '/images/person1.jpg',
+  '/images/person2.jpg',
+  '/images/person3.jpg',
+  '/images/person4.jpg',
+  '/images/person5.jpg',
+  '/images/person6.jpg',
+];
+---
+
+<section class="bg-white py-15 md:py-15" id="how-it-works">
+  <div class="max-w-7xl mx-auto px-6 md:px-12 lg:px-16 xl:px-24">
+    <!-- How It Works ---- Text -->
+    <div
+      class="max-w-7xl mx-auto px-6 md:px-12 lg:px-16 xl:px-24 grid grid-cols-1 gap-10 md:gap-16 items-start mb-20"
+    >
+      <h2
+        class="text-3xl md:px-[20%] md:text-4xl font-extrabold leading-tight text-[#1A0533] text-center"
+      >
+        How UniversityX Helps You Achieve{' '}
+        <em class="font-['Playfair_Display',serif] font-bold"> 
+          Your Goals
+        </em>
+      </h2>
+
+      <!-- <p class="text-lg md:text-xl leading-relaxed text-gray-700 md:pt-2 md:pl-[5%]">
+        Humans don't learn well alone. That's why you've quit every course you've
+        ever bought. UniversityX is not another self-paced platform, we run live
+        cohorts where 20-30 students learn together with a real instructor. You
+        show up because they show up. It's just how learning actually works.
+      </p> -->
+    </div>
+
+    <!-- Bento Grid -->
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+
+      <!-- ===== LIVE SESSIONS ===== -->
+      <div class="bg-[#F5F2EB] rounded-3xl flex flex-col justify-between">
+        <div class="p-8">
+          <h3 class="text-2xl font-bold text-[#1A0533]">Live Sessions</h3>
+          <p class="mt-3 text-gray-600 text-lg leading-relaxed">
+            Weekly live sessions with expert instructors. Ask questions about your
+            specific problems. Get feedback on your work.
+          </p>
+        </div>
+          <video 
+          autoplay 
+          muted 
+          loop 
+          playsinline 
+          class="w-full h-auto rounded-xl"
+        >
+          <source src="/videos/0213.mp4" type="video/mp4" />
+          <!-- Your browser does not support the video tag. -->
+        </video>
+      </div>
+
+      <!-- ===== COMMUNITY ===== -->
+      <div class="bg-[#F5F2EB] rounded-3xl flex flex-col justify-between">
+        <div class="p-8">
+        <h3 class="text-2xl font-bold text-[#1A0533]">Community</h3>
+        <p class="mt-3 text-gray-600 text-lg leading-relaxed">
+          Join cohort groups where students learn together. Ask questions, share
+          your progress. Get help when stuck.
+        </p>
+        </div>
+
+        <!-- Network illustration -->
+        <img 
+        class="rounded-2xl h-[200px] object-cover object-top"
+        src="/images/people.webp"
+        />
+
+      </div>
+
+      <!-- ===== AI POWERED (tall — spans 2 rows) ===== -->
+      <div class="bg-[#F5F2EB] rounded-3xl flex flex-col md:row-span-2">
+        <div class="p-8">
+          <h3 class="text-2xl font-bold text-[#1A0533]">AI Powered</h3>
+          <p class="mt-3 text-gray-600 text-lg leading-relaxed">
+            AI assistant answers questions 24/7. Practice scenarios with AI
+            role-play. Get personalized hints when you're stuck. Learn faster with
+            intelligent support that never sleeps.
+          </p>
+        </div>
+
+        <!-- Green gradient area with search bar -->
+        <img 
+        class="rounded-2xl h-[400px] object-contain"
+        src="/images/ai-robot-2.png"
+        />
+
+      </div>
+
+      <!-- ===== GAMIFICATION (wide — spans 2 columns) ===== -->
+      <div class="bg-[#F5F2EB] rounded-3xl p-8 md:col-span-2 flex flex-col md:flex-row md:items-center gap-6">
+        <!-- Text -->
+        <div class="md:w-1/2">
+          <h3 class="text-2xl font-bold text-[#1A0533]">Gamification</h3>
+          <p class="mt-3 text-gray-600 text-lg leading-relaxed">
+            Track your progress with daily streaks and leaderboards. Compete with
+            your cohort. See your growth. Turn learning into a habit you actually keep.
+          </p>
+        </div>
+
+        <!-- Robot / mascot placeholder -->
+        <img 
+        class="rounded-2xl h-[200px] object-cover object-top"
+        src="/images/gamification.png"
+        />
+
+      </div>
+
+    </div>
+  </div>
+</section>
