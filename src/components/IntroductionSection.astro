@@ -138,27 +138,26 @@ const trustedLogos = [
       <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
         {features.map((feature) => (
           <article class="bg-white rounded-2xl p-6 md:p-8">
-            <div class="w-12 h-12 bg-[#1A0533] rounded-full flex items-center justify-center mb-5">
+            {/* <div class="w-12 h-12 bg-[#1A0533] rounded-full flex items-center justify-center mb-5"> */}
               {feature.icon === 'dollar' && (
-                <svg class="w-6 h-6" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-                  <line x1="12" y1="1" x2="12" y2="23" />
-                  <path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6" />
-                </svg>
+                <img 
+                  class="w-16 mb-5"
+                  src="/images/calendar.png"
+                />
               )}
               {feature.icon === 'chart' && (
-                <svg class="w-6 h-6" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-                  <path d="M21.21 15.89A10 10 0 1 1 8 2.83" />
-                  <path d="M22 12A10 10 0 0 0 12 2v10z" />
-                </svg>
+                <img 
+                  class="w-16 mb-5"
+                  src="/images/chat-bubble.png"
+                />
               )}
               {feature.icon === 'target' && (
-                <svg class="w-6 h-6" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-                  <circle cx="12" cy="12" r="10" />
-                  <circle cx="12" cy="12" r="6" />
-                  <circle cx="12" cy="12" r="2" />
-                </svg>
+                <img 
+                  class="w-16 mb-5"
+                  src="/images/wallet.png"
+                />
               )}
-            </div>
+            {/* </div> */}
             <h3 class="text-xl font-bold text-[#1A0533] mb-3">{feature.title}</h3>
             <p class="text-lg leading-relaxed text-gray-500">{feature.description}</p>
           </article>
