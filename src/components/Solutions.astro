@@ -1,0 +1,107 @@
+---
+const solutions = [
+  {
+    title: 'For Businesses',
+    description:
+      'Stop settling for generic online courses that no one finishes. Upskill your teams with expert-led cohort training. Build internal talent pipelines and close skill gaps with courses designed for real-world impact.',
+    link: '/businesses',
+    icon: 'briefcase',
+  },
+  {
+    title: 'For Universities',
+    description:
+      'Your students deserve more than a degree. Partner with UniversityX to offer skill tracks that run alongside your curriculum, so when your students graduate, they are not just qualified on paper.',
+    link: '/universities',
+    icon: 'building',
+  },
+  {
+    title: 'Teach on UniversityX',
+    description:
+      "Turn your expertise into income. Whether you want to upload a course, lead a live cohort, or both. UniversityX gives you everything you need to teach, grow your audience, and get paid for what you know.",
+    link: '/teach',
+    icon: 'lightbulb',
+  },
+];
+---
+
+<section class="bg-[#F5F2EB] bg-[url('/images/bg-marble.png')] bg-cover bg-center py-20 md:py-28" id="solutions">
+  <div class="max-w-7xl mx-auto px-6 md:px-12 lg:px-16 xl:px-24">
+    <!-- Header -->
+    <div class="mb-16">
+      <h2
+        class="text-3xl md:text-4xl font-extrabold text-[#1A0533] leading-tight"
+      >
+        Education is everywhere.
+        <br />
+        <em class="font-['Playfair_Display',serif] font-bold">
+          Employable skills are not.
+        </em>
+      </h2>
+      <p class="text-lg md:text-xl mt-4 text-gray-600 max-w-2xl">
+        UniversityX is where businesses train their teams, universities prepare their students, and professionals turn their expertise into income.
+      </p>
+    </div>
+
+    <!-- Card Grid -->
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-5">
+      {
+        solutions.map((card) => (
+          <div class="bg-white rounded-2xl p-8 border border-gray-100 shadow-sm hover:shadow-lg transition-shadow duration-300 flex flex-col">
+            {/* Icon */}
+            {/* <div class="w-14 h-14 rounded-xl bg-[#F5F2EB] flex items-center justify-center mb-6"> */}
+              {card.icon === 'briefcase' && (
+                <img 
+                src="/images/briefcase.png"
+                alt="briefcase"
+                class="w-16 mb-5"
+                />
+              )}
+              {card.icon === 'building' && (
+                <img 
+                src="/images/graduation-hat.png"
+                alt="briefcase"
+                class="w-18 mb-3"
+                />
+              )}
+              {card.icon === 'lightbulb' && (
+                <img 
+                src="/images/teach-icon.png"
+                alt="briefcase"
+                class="w-16 mb-5"
+                />
+              )}
+
+            {/* Title */}
+            <h3 class="text-xl font-bold text-[#1A0533] mb-3">{card.title}</h3>
+
+            {/* Description */}
+            <p class="text-gray-600 text-lg leading-relaxed mb-6 flex-1">
+              {card.description}
+            </p>
+
+            {/* Learn More Link */}
+            <a
+              href={card.link}
+              class="inline-flex items-center gap-2 text-[#BB39B4] font-semibold hover:underline"
+            >
+              <svg
+                class="w-5 h-5"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              >
+                <circle cx="12" cy="12" r="10" />
+                <path d="M12 8l4 4-4 4" />
+                <path d="M8 12h8" />
+              </svg>
+              Learn More
+            </a>
+          </div>
+        ))
+      }
+    </div>
+  </div>
+</section>
