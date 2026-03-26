@@ -1,0 +1,514 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import Navbar from '../../components/Navbar.astro';
+import Footer from '../../components/Footer.astro';
+
+const course = {
+  title: 'The African Operator Playbook',
+  description: 'Most business education was built for Western markets. This course was built for Africa. Learn how to operate, scale, and lead businesses across the continent, from distribution and logistics to managing teams, raising capital, and navigating complex environments.',
+  price: 750000,
+  originalPrice: 800000,
+  startDate: 'Monday, April 6',
+  duration: '8 Weeks',
+  level: 'Intermediate',
+  format: 'Cohort Based',
+  rating: 4.9,
+  thumbnail: '/images/babajide-hs.png',
+  instructorPhoto: '/images/babajide.jpg',
+};
+---
+
+<Layout
+  title="The African Operator Playbook - UniversityX"
+  description="Learn how to operate, scale, and lead businesses across Africa. A live 8-week cohort with Babajide Duroshola, GM of M-KOPA Nigeria."
+>
+  <!-- Navbar -->
+  <Navbar />
+
+  <main class="bg-white">
+
+    <!-- ── HERO SECTION ─────────────────────────────────────────────── -->
+    <section class="max-w-7xl mx-auto px-6 md:px-12 lg:px-16 xl:px-24 pt-10 pb-0">
+
+      <!-- Breadcrumb -->
+      <nav class="flex items-center gap-2 text-sm text-gray-500 mb-8" aria-label="Breadcrumb">
+        <a href="/#browse-courses" class="hover:text-[#BB39B4] transition-colors">All Courses</a>
+        <svg class="w-3.5 h-3.5 text-[#BB39B4]" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+          <path d="M9 18l6-6-6-6" />
+        </svg>
+        <span class="text-[#1A0533] font-medium">The African Operator Playbook</span>
+      </nav>
+
+      <!-- Two-column layout: content left, sidebar right -->
+      <div class="grid grid-cols-1 lg:grid-cols-[1fr_360px] gap-12 xl:gap-16 items-start">
+
+        <!-- ── LEFT COLUMN ───────────────────────────────────────────── -->
+        <div>
+          <!-- Title -->
+          <h1 class="text-3xl md:text-4xl font-extrabold text-[#1A0533] leading-tight mb-5">
+            The African Operator Playbook:
+            <em class="font-['Playfair_Display',serif] font-bold"> Build, Scale, and Lead High-Growth Companies in Africa</em>
+          </h1>
+
+          <!-- Description -->
+          <p class="text-lg text-gray-700 leading-relaxed mb-6">
+            Most business education was built for Western markets. This course was built for Africa.
+            Learn how real operators run businesses across the continent, from navigating infrastructure
+            gaps and managing distributed teams, to raising capital and building customer trust in
+            low-trust environments.
+          </p>
+
+          <!-- What you'll learn -->
+          <ul class="space-y-2.5 mb-8 text-lg">
+            {[
+              'How to build operations that work in African markets, despite infrastructure, logistics, and payment challenges',
+              'Frameworks for managing teams, vendors, and stakeholders across multiple African cities',
+              'How to raise capital, manage cash flow, and structure deals that actually close',
+              'Real-world case studies from companies operating at scale across Nigeria and East Africa',
+            ].map((item) => (
+              <li class="flex items-start gap-3 text-gray-700">
+                <svg class="w-5 h-5 text-[#BB39B4] shrink-0 mt-0.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                  <polyline points="20 6 9 17 4 12" />
+                </svg>
+                {item}
+              </li>
+            ))}
+          </ul>
+
+          <!-- Metadata chips -->
+          <div class="flex flex-wrap gap-3 mb-8">
+            {[
+              { icon: 'clock', label: '8 Weeks' },
+              { icon: 'bar-chart', label: 'Intermediate' },
+              { icon: 'users', label: 'Cohort Based' },
+            ].map(({ label }) => (
+              <span class="inline-flex items-center gap-2 bg-[#F5F2EB] text-[#1A0533] text-base font-medium px-4 py-2 rounded-full">
+                {label}
+              </span>
+            ))}
+          </div>
+
+          <!-- Instructor strip -->
+          <div class="border-t border-gray-100 pt-6">
+            <p class="text-xs font-semibold text-gray-400 uppercase tracking-widest mb-4">Instructor</p>
+            <div class="flex items-center gap-4">
+              <img
+                src={course.instructorPhoto}
+                alt="Babajide Duroshola"
+                class="w-18 h-18 rounded-full object-cover object-top shrink-0"
+                loading="eager"
+              />
+              <div>
+                <p class="font-semibold text-[#1A0533] text-lg">Babajide Duroshola</p>
+                <p class="text-base text-gray-500">General Manager, M-KOPA Nigeria. Operator across tech, banking, consulting & startups</p>
+              </div>
+            </div>
+
+            <!-- Companies worked with -->
+            <div class="mt-5">
+              <p class="text-xs font-semibold text-gray-400 uppercase tracking-widest mb-3">Have operated across</p>
+              <div class="flex items-center flex-wrap gap-5">
+                <img src="/images/mkopa-logo.png" alt="Mkopa" class="h-8" loading="lazy" />
+                <img src="/images/safeboda-logo.png" alt="SafeBoda" class="h-6" loading="lazy" />
+                <img src="/images/logo-andela.svg" alt="Andela" class="h-8" loading="lazy" />
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- ── RIGHT COLUMN: STICKY SIDEBAR ─────────────────────────── -->
+        <aside class="lg:sticky lg:top-6">
+          <div class="rounded-2xl border border-gray-200 shadow-lg overflow-hidden">
+            <!-- Course thumbnail -->
+            <img
+              src={course.thumbnail}
+              alt="The African Operator Playbook"
+              class="w-full aspect-video object-cover"
+              loading="eager"
+            />
+
+            <!-- Pricing & CTA -->
+            <div class="p-6 space-y-4">
+              <!-- Price -->
+              <div class="flex items-baseline gap-3">
+                <span class="text-3xl font-extrabold text-[#1A0533]">
+                  ₦{course.price.toLocaleString()}
+                </span>
+                <span class="text-lg text-gray-400 line-through">
+                  ₦{course.originalPrice.toLocaleString()}
+                </span>
+              </div>
+
+              <!-- Start date -->
+              <div class="flex items-center gap-2 text-lg text-gray-600">
+                <svg class="w-6 h-6 text-[#BB39B4]" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                  <rect x="3" y="4" width="18" height="18" rx="2" ry="2" />
+                  <line x1="16" y1="2" x2="16" y2="6" />
+                  <line x1="8" y1="2" x2="8" y2="6" />
+                  <line x1="3" y1="10" x2="21" y2="10" />
+                </svg>
+                Starts {course.startDate}
+              </div>
+
+              <!-- Enroll CTA -->
+              <a
+                id="enroll"
+                href="#enroll-form"
+                class="block w-full text-center bg-[#BB39B4] hover:bg-[#a832a1] text-white font-semibold px-8 py-4 rounded-lg transition-colors duration-200 text-base mt-10"
+              >
+                Enroll Now
+              </a>
+
+              <!-- UniversityX Approved -->
+              <!-- <div class="flex items-start gap-3 bg-[#F5F2EB] rounded-xl p-4 mt-2">
+                <img src="/images/universityx-svg.svg" alt="" class="h-6 w-auto shrink-0 mt-0.5" loading="lazy" />
+                <div>
+                  <p class="text-sm font-semibold text-[#1A0533]">UniversityX Approved</p>
+                  <p class="text-xs text-gray-500 mt-0.5 leading-snug">Reviewed for quality, relevance, and real-world impact.</p>
+                </div>
+              </div> -->
+            </div>
+          </div>
+        </aside>
+
+      </div>
+    </section>
+
+
+    <!-- ── COURSE OVERVIEW ───────────────────────────────────────────── -->
+    <section class="bg-[#F5F2EB] mt-16 py-16 md:py-20">
+      <div class="max-w-7xl mx-auto px-6 md:px-12 lg:px-16 xl:px-24 max-w-3xl">
+        <p class="text-xs font-semibold text-[#BB39B4] uppercase tracking-widest mb-3">Course Overview</p>
+        <h2 class="text-2xl md:text-3xl font-extrabold text-[#1A0533] leading-tight mb-6">
+          Stop applying Western playbooks to African problems.
+        </h2>
+        <div class="space-y-4 text-gray-700 leading-relaxed text-lg md:text-lg">
+          <p>
+            Africa's fastest-growing companies aren't being built by MBA graduates running spreadsheets.
+            They're being built by operators, people who understand local markets, move fast with limited
+            resources, and build trust in environments where trust is earned, not assumed. This course
+            gives you the exact mental models and tactical frameworks those operators use.
+          </p>
+          <p>
+            Over 8 weeks, you'll go deep with Babajide Duroshola, General Manager of M-KOPA Nigeria
+            learning how he has scaled operations across one of Africa's most complex consumer markets.
+            Every session is hands-on, every framework is immediately applicable, and every cohort
+            member comes in with real work to do.
+          </p>
+        </div>
+      </div>
+    </section>
+
+
+    <!-- ── WHO THIS IS FOR ───────────────────────────────────────────── -->
+    <section class="py-16 md:py-20">
+      <div class="max-w-7xl mx-auto px-6 md:px-12 lg:px-16 xl:px-24">
+        <p class="text-xs font-semibold text-[#BB39B4] uppercase tracking-widest mb-3 text-center">Who This Is For</p>
+        <h2 class="text-2xl md:text-3xl font-extrabold text-[#1A0533] text-center mb-12">This Course Is For You If...</h2>
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+          {[
+            {
+              num: '01',
+              title: "You're building or running a business in Africa",
+              body: "And you're tired of watching frameworks built for Silicon Valley fail in your market. You need tools that actually work here.",
+            },
+            {
+              num: '02',
+              title: 'You work inside a growing company',
+              body: "And you want to be the person who understands how to run operations at scale, so you get noticed, promoted, and trusted with more.",
+            },
+            {
+              num: '03',
+              title: "You're a founder or early-stage operator",
+              body: "And you need to build systems, manage people, and grow revenue without burning out or making expensive mistakes.",
+            },
+          ].map(({ num, title, body }) => (
+            <div class="bg-[#F5F2EB] rounded-2xl p-7">
+              <span class="inline-block text-[#BB39B4] text-sm font-bold bg-white rounded-full px-3 py-1 mb-4">{num}</span>
+              <h3 class="text-lg font-bold text-[#1A0533] mb-2 leading-snug">{title}</h3>
+              <p class="text-base text-gray-500 leading-relaxed">{body}</p>
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+
+
+    <!-- ── WHAT'S INCLUDED ───────────────────────────────────────────── -->
+    <section class="bg-[#F5F2EB] py-16 md:py-20">
+      <div class="max-w-7xl mx-auto px-6 md:px-12 lg:px-16 xl:px-24">
+        <p class="text-xs font-semibold text-[#BB39B4] uppercase tracking-widest mb-3">What's Included</p>
+        <h2 class="text-2xl md:text-3xl font-extrabold text-[#1A0533] mb-10">Everything you need to succeed</h2>
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+          {[
+            {
+              title: 'Live classes every week',
+              body: 'Babajide teaches step-by-step in real time. Ask questions, get unstuck, and actually build things during class.',
+              icon: 'M15 10l4.553-2.069A1 1 0 0121 8.82V15a2 2 0 01-2 2H5a2 2 0 01-2-2V9a2 2 0 012-2h1',
+            },
+            {
+              title: 'Watch anytime, forever',
+              body: 'Access all learning materials, video lessons, and recordings of every live session. Rewatch as many times as you need.',
+              icon: 'M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-1 14H9V8h2v8zm4 0h-2V8h2v8z',
+            },
+            {
+              title: 'Community learning',
+              body: "Join other operators and founders figuring it out too. Help each other, share what's working, and build projects together.",
+              icon: 'M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2M23 21v-2a4 4 0 00-3-3.87M16 3.13a4 4 0 010 7.75M9 7a4 4 0 100 8 4 4 0 000-8z',
+            },
+            {
+              title: 'Certificate of completion',
+              body: 'Add it to LinkedIn, show it to employers, or use it to win clients and contracts.',
+              icon: 'M12 15l-3 3 1.5-4.5L6 9h4.5L12 4l1.5 5H18l-4.5 4.5L15 18z',
+            },
+          ].map(({ title, body, icon }) => (
+            <div class="flex items-start gap-4 bg-white rounded-2xl p-6 shadow-sm">
+              <div class="w-10 h-10 rounded-xl bg-[#BB39B4]/10 flex items-center justify-center shrink-0">
+                <svg class="w-5 h-5 text-[#BB39B4]" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                  <path d={icon} />
+                </svg>
+              </div>
+              <div>
+                <p class="font-semibold text-[#1A0533] mb-1 text-lg">{title}</p>
+                <p class="text-base text-gray-500 leading-relaxed">{body}</p>
+              </div>
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+
+
+    <!-- ── COURSE SYLLABUS ───────────────────────────────────────────── -->
+    <section class="py-16 md:py-20">
+      <div class="max-w-7xl mx-auto px-6 md:px-12 lg:px-16 xl:px-24">
+        <p class="text-xs font-semibold text-[#BB39B4] uppercase tracking-widest mb-3 text-center">Curriculum</p>
+        <h2 class="text-2xl md:text-3xl font-extrabold text-[#1A0533] text-center mb-3">Course Syllabus</h2>
+        <p class="text-center text-gray-500 mb-12">16 Lessons · 4 Modules · 4 Projects</p>
+
+        <div class="max-w-2xl mx-auto space-y-3" id="syllabus">
+          {[
+            {
+              module: 'Module 1: The Operator Mindset',
+              lessons: [
+                { title: 'What is an Operator?', duration: '12:00' },
+                { title: 'How African Markets Are Different', duration: '18:30' },
+                { title: 'Building Mental Models for Complexity', duration: '14:00' },
+                { title: 'Case Study: M-KOPA Nigeria Growth Story', duration: '22:00' },
+              ],
+            },
+            {
+              module: 'Module 2: Systems & Operations',
+              lessons: [
+                { title: 'Building Processes That Survive the Founder', duration: '20:00' },
+                { title: 'Logistics & Distribution in African Markets', duration: '16:00' },
+                { title: 'Technology Stack for the African Operator', duration: '14:30' },
+                { title: 'Project: Map Your Core Operations', duration: 'Project' },
+              ],
+            },
+            {
+              module: 'Module 3: People & Stakeholders',
+              lessons: [
+                { title: 'Hiring & Managing Distributed Teams', duration: '18:00' },
+                { title: 'Building Trust with Vendors & Partners', duration: '15:00' },
+                { title: 'Managing Up: Boards, Investors & HQ', duration: '20:00' },
+                { title: 'Project: Design Your Org Structure', duration: 'Project' },
+              ],
+            },
+            {
+              module: 'Module 4: Capital & Growth',
+              lessons: [
+                { title: 'Cash Flow Management for Operators', duration: '16:00' },
+                { title: 'Raising Capital: What Works in Africa', duration: '22:00' },
+                { title: 'Structuring Deals That Close', duration: '18:00' },
+                { title: 'Project: Build Your Operator Playbook', duration: 'Project' },
+              ],
+            },
+          ].map(({ module, lessons }, i) => (
+            <div class="accordion-item border border-gray-200 rounded-2xl overflow-hidden">
+              <button
+                class="accordion-trigger w-full flex items-center justify-between px-6 py-4 text-left bg-white hover:bg-[#F5F2EB] transition-colors duration-200"
+                aria-expanded="false"
+              >
+                <span class="font-semibold text-[#1A0533]">{module}</span>
+                <svg class="accordion-chevron w-5 h-5 text-gray-400 transition-transform duration-300 shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                  <polyline points="6 9 12 15 18 9" />
+                </svg>
+              </button>
+              <div class="accordion-body">
+                <div class="accordion-inner">
+                  <ul class="px-6 pb-4 pt-1 space-y-3 border-t border-gray-100">
+                    {lessons.map(({ title}) => (
+                      <li class="flex items-center justify-between text-base my-4">
+                        <span class="flex items-center gap-2 text-gray-700">
+                          <svg class="w-4 h-4 text-gray-300 shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                            <polygon points="5 3 19 12 5 21 5 3" />
+                          </svg>
+                          {title}
+                        </span>
+                        {/* <span class="text-gray-400 text-xs shrink-0 ml-4">
+                          {duration === 'Project' ? (
+                            <span class="bg-[#BB39B4]/10 text-[#BB39B4] font-medium px-2 py-0.5 rounded-full">Project</span>
+                          ) : duration}
+                        </span> */}
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+              </div>
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+
+
+    <!-- ── MEET THE INSTRUCTOR ────────────────────────────────────────── -->
+    <section class="bg-[#F5F2EB] py-16 md:py-20">
+      <div class="max-w-7xl mx-auto px-6 md:px-12 lg:px-16 xl:px-24">
+        <p class="text-xs font-semibold text-[#BB39B4] uppercase tracking-widest mb-10">Meet Your Instructor</p>
+        <div class="grid grid-cols-2 gap-4">
+          <div>
+            <h2 class="text-2xl md:text-3xl font-extrabold text-[#1A0533] mb-2">Babajide Duroshola</h2>
+            <p class="font-medium mb-5">General Manager, M-KOPA Nigeria</p>
+            <div class="space-y-4 text-gray-700 leading-relaxed text-lg">
+              <p>
+                Babajide has spent his career building and scaling operations across some of Africa's most
+                complex industries, from banking and consulting to fintech and consumer tech. As General
+                Manager of M-KOPA Nigeria, he oversees one of the continent's most sophisticated
+                asset-finance operations, reaching hundreds of thousands of customers across Nigeria.
+              </p>
+              <p>
+                What makes Babajide different as an instructor is that he's not teaching theory, he's
+                teaching exactly what he does every day to keep a business running and growing. He believes
+                that Africa's next generation of operators doesn't need more MBAs; it needs more people
+                who know how to get things done on the ground.
+              </p>
+            </div>
+          </div>
+          <div class="order-first md:order-last justify-self-end">
+            <img
+              src={course.instructorPhoto}
+              alt="Babajide Duroshola"
+              class="w-full max-w-xs mx-auto md:mx-0 rounded-2xl object-cover object-top aspect-[3/4]"
+              loading="lazy"
+            />
+          </div>
+        </div>
+      </div>
+    </section>
+
+
+    <!-- ── FAQ ──────────────────────────────────────────────────────── -->
+    <section class="py-16 md:py-20">
+      <div class="max-w-7xl mx-auto px-6 md:px-12 lg:px-16 xl:px-24">
+        <p class="text-xs font-semibold text-[#BB39B4] uppercase tracking-widest mb-3 text-center">FAQ</p>
+        <h2 class="text-2xl md:text-3xl font-extrabold text-[#1A0533] text-center mb-4">Frequently Asked Questions</h2>
+        <p class="text-center text-gray-500 mb-12 max-w-lg mx-auto">Quick answers to help you decide if this course is right for you.</p>
+
+        <div class="max-w-2xl mx-auto space-y-3" id="faq">
+          {[
+            {
+              q: "Do I need prior business experience to join?",
+              a: "Not at all. The course is designed for ambitious people at all stages, whether you're starting out, working inside a company, or already running a business. What matters is that you're serious about learning and willing to show up.",
+            },
+            {
+              q: "What if I can't attend the live sessions?",
+              a: "Every live session is recorded and available immediately after. You'll have lifetime access to all recordings and materials, so you can learn at your own pace. That said, showing up live gives you access to direct Q&A with Babajide, which is invaluable.",
+            },
+            {
+              q: "Is this relevant outside Nigeria?",
+              a: "Yes. While many case studies come from Nigeria, the frameworks apply across East, West, and Southern Africa. Students from Ghana, Kenya, Rwanda, and South Africa have found the content directly applicable to their markets.",
+            },
+          ].map(({ q, a }) => (
+            <div class="accordion-item border border-gray-200 rounded-2xl overflow-hidden">
+              <button
+                class="accordion-trigger w-full flex items-center justify-between px-6 py-5 text-left bg-white hover:bg-[#F5F2EB] transition-colors duration-200"
+                aria-expanded="false"
+              >
+                <span class="font-semibold text-[#1A0533] pr-4">{q}</span>
+                <svg class="accordion-chevron w-5 h-5 text-gray-400 transition-transform duration-300 shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                  <polyline points="6 9 12 15 18 9" />
+                </svg>
+              </button>
+              <div class="accordion-body">
+                <div class="accordion-inner">
+                  <p class="px-6 pb-5 pt-2 text-gray-600 leading-relaxed border-t border-gray-100">{a}</p>
+                </div>
+              </div>
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+
+
+    <!-- ── ENROLL CTA BANNER ──────────────────────────────────────────── -->
+    <section id="enroll-form" class="bg-[#1A0533] py-16 md:py-20">
+      <div class="max-w-7xl mx-auto px-6 md:px-12 lg:px-16 xl:px-24 text-center">
+        <h2 class="text-2xl md:text-3xl font-extrabold text-white mb-3 leading-tight">
+          Ready to become an African Operator?
+        </h2>
+        <p class="text-gray-400 mb-8 max-w-lg mx-auto">
+          Next cohort starts April 6. Spots are limited to 20 students to keep the quality high.
+        </p>
+        <a
+          href="https://chat.whatsapp.com/LE59wydgTceDCsm8r81gXU"
+          class="inline-flex items-center gap-2 bg-[#BB39B4] hover:bg-[#a832a1] text-white font-semibold px-10 py-4 rounded-full transition-colors duration-200 text-base"
+        >
+          Enroll Now ₦750,000
+          <svg class="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <path d="M5 12h14M12 5l7 7-7 7" />
+          </svg>
+        </a>
+      </div>
+    </section>
+
+  </main>
+
+  <Footer />
+</Layout>
+
+<style>
+  /* Accordion: grid row height animation (same pattern as FAQ component) */
+  .accordion-body {
+    display: grid;
+    grid-template-rows: 0fr;
+    transition: grid-template-rows 300ms ease;
+  }
+
+  .accordion-body.is-open {
+    grid-template-rows: 1fr;
+  }
+
+  .accordion-inner {
+    overflow: hidden;
+  }
+
+  .accordion-chevron.is-open {
+    transform: rotate(180deg);
+  }
+</style>
+
+<script>
+  function initAccordions() {
+    document.querySelectorAll('.accordion-trigger').forEach((trigger) => {
+      trigger.addEventListener('click', () => {
+        const item = trigger.closest('.accordion-item')!;
+        const body = item.querySelector('.accordion-body')!;
+        const chevron = trigger.querySelector('.accordion-chevron')!;
+        const isOpen = body.classList.contains('is-open');
+
+        body.classList.toggle('is-open', !isOpen);
+        chevron.classList.toggle('is-open', !isOpen);
+        trigger.setAttribute('aria-expanded', String(!isOpen));
+      });
+    });
+  }
+
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', initAccordions);
+  } else {
+    initAccordions();
+  }
+</script>

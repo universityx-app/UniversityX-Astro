@@ -6,7 +6,7 @@ const courses = [
     title: 'The African Operator Playbook',
     thumbnail: '/images/babajide-hs.png',
     rating: 4.9,
-    startDate: 'Apr 7',
+    startDate: 'Apr 6',
     duration: '8 weeks',
     level: 'Intermediate',
     instructors: [
@@ -101,8 +101,12 @@ const courses = [
       class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 opacity-0 translate-y-2 transition-all duration-400 ease-out"
     >
       {courses.map((course, index) => (
-        <article class="bg-white rounded-2xl overflow-hidden hover:shadow-lg shadow-lg transition-shadow duration-300">
-
+        <a
+          href={index === 0 ? '/course/african-operator-playbook' : undefined}
+          class={`block bg-white rounded-2xl overflow-hidden hover:shadow-lg shadow-lg transition-shadow duration-300${index === 0 ? ' cursor-pointer' : ''}`}
+          aria-label={index === 0 ? `View course: ${course.title}` : undefined}
+          tabindex={index === 0 ? 0 : undefined}
+        >
           <!-- Thumbnail -->
           <Image src={course.thumbnail} alt={course.title} width={600} height={338} class="w-full aspect-video object-cover" loading={index < 3 ? "eager" : "lazy"} />
 
@@ -120,7 +124,7 @@ const courses = [
                 </svg>
                 {course.rating}
               </span>
-              <img 
+              <img
               src="/images/dot.svg"
               class="w-[0.3rem] mx-1"
               alt=""
@@ -133,7 +137,7 @@ const courses = [
                 </svg>
                 {course.duration}
               </span>
-              <img 
+              <img
               src="/images/dot.svg"
               class="w-[0.3rem] mx-1"
               alt=""
@@ -162,7 +166,7 @@ const courses = [
             </div>
           </div>
 
-        </article>
+        </a>
       ))}
     </div>
 
