@@ -18,26 +18,9 @@ const benefits = [
   },
 ];
 
-const departments = ['Engineering', 'Business', 'Arts & Design', 'Sciences', 'Social Sciences', 'Other'];
-
-const roles = ['Dean / Head of Department', 'Faculty Member', 'Program Coordinator', 'Student Affairs', 'Other'];
-
 const studentCounts = ['Under 100', '100-500', '500-1,000', '1,000+'];
 
-const startOptions = ['Next semester', '3-6 months', 'Next academic year', 'Just exploring'];
 
-const countryCodes = [
-  { code: '+234', label: 'NG +234' },
-  { code: '+1', label: 'US +1' },
-  { code: '+44', label: 'UK +44' },
-  { code: '+91', label: 'IN +91' },
-  { code: '+254', label: 'KE +254' },
-  { code: '+233', label: 'GH +233' },
-  { code: '+27', label: 'ZA +27' },
-  { code: '+971', label: 'AE +971' },
-  { code: '+61', label: 'AU +61' },
-  { code: '+49', label: 'DE +49' },
-];
 ---
 
 <section id="universities" class="bg-[#FBF8F1] py-20 md:py-28">
@@ -146,70 +129,18 @@ const countryCodes = [
             <p id="uni-email-error" class="text-red-500 text-xs mt-1 hidden">Please enter a valid email address.</p>
           </div>
 
-          <!-- WhatsApp Number with country code -->
+          <!-- WhatsApp Number -->
           <div>
-            <label for="uni-whatsapp" class="block text-sm font-semibold text-[#1A0533] mb-2">WhatsApp Number</label>
-            <div class="flex gap-2">
-              <select
-                name="country-code"
-                id="uni-country-code"
-                class="bg-gray-50 rounded-xl px-3 py-3 text-sm text-gray-800 border border-transparent focus:outline-none focus:ring-2 focus:ring-[#D4A853] transition-all duration-200 shrink-0 w-28"
-              >
-                {countryCodes.map((cc) => (
-                  <option value={cc.code}>{cc.label}</option>
-                ))}
-              </select>
-              <input
-                type="tel"
-                id="uni-whatsapp"
-                name="whatsapp"
-                placeholder="Phone number"
-                required
-                class="w-full bg-gray-50 rounded-xl px-4 py-3 text-sm text-gray-800 placeholder-gray-400 border border-transparent focus:outline-none focus:ring-2 focus:ring-[#D4A853] focus:border-[#D4A853] transition-all duration-200"
-              />
-            </div>
-          </div>
-
-          <!-- Your Role -->
-          <div>
-            <label for="uni-role" class="block text-sm font-semibold text-[#1A0533] mb-2">Your Role</label>
-            <select
-              id="uni-role"
-              name="role"
-              required
-              class="w-full bg-gray-50 rounded-xl px-4 py-3 text-sm text-gray-800 border border-transparent focus:outline-none focus:ring-2 focus:ring-[#D4A853] transition-all duration-200 cursor-pointer"
-            >
-              <option value="" disabled selected>Select your role</option>
-              {roles.map((role) => (
-                <option value={role}>{role}</option>
-              ))}
-            </select>
-          </div>
-
-          <!-- Departments interested (Multi-select dropdown) -->
-          <div>
-            <label class="block text-sm font-semibold text-[#1A0533] mb-2">Departments interested</label>
-            <input type="hidden" name="departments" id="uni-depts-hidden" />
-            <div class="relative">
-              <button
-                type="button"
-                id="uni-depts-toggle"
-                class="w-full bg-gray-50 rounded-xl px-4 py-3 text-sm text-left border border-transparent focus:outline-none focus:ring-2 focus:ring-[#D4A853] transition-all duration-200 flex items-center justify-between cursor-pointer"
-              >
-                <span id="uni-depts-label" class="text-gray-400">Select departments</span>
-                <svg class="w-4 h-4 text-gray-400 shrink-0 transition-transform duration-200" id="uni-depts-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                  <path d="M6 9l6 6 6-6" />
-                </svg>
-              </button>
-              <div id="uni-depts-menu" class="hidden absolute z-20 top-full left-0 right-0 mt-1 bg-white rounded-xl shadow-lg border border-gray-100 p-3 space-y-2">
-                {departments.map((dept) => (
-                  <label class="flex items-center gap-3 px-2 py-1.5 rounded-lg hover:bg-gray-50 cursor-pointer transition-colors">
-                    <input type="checkbox" value={dept} class="uni-dept-checkbox w-4 h-4 rounded border-gray-300 text-[#D4A853] focus:ring-[#D4A853]" />
-                    <span class="text-sm text-gray-700">{dept}</span>
-                  </label>
-                ))}
-              </div>
-            </div>
+            <label for="uni-whatsapp" class="block text-sm font-semibold text-[#1A0533] mb-2">
+              WhatsApp Number <span class="font-normal text-gray-400">(optional)</span>
+            </label>
+            <input
+              type="tel"
+              id="uni-whatsapp"
+              name="whatsapp"
+              placeholder="Please enter country code..."
+              class="w-full bg-gray-50 rounded-xl px-4 py-3 text-sm text-gray-800 placeholder-gray-400 border border-transparent focus:outline-none focus:ring-2 focus:ring-[#D4A853] focus:border-[#D4A853] transition-all duration-200"
+            />
           </div>
 
           <!-- Estimated number of students -->
@@ -224,22 +155,6 @@ const countryCodes = [
               <option value="" disabled selected>Select an estimate</option>
               {studentCounts.map((count) => (
                 <option value={count}>{count} students</option>
-              ))}
-            </select>
-          </div>
-
-          <!-- When would you like to start? -->
-          <div>
-            <label for="uni-start" class="block text-sm font-semibold text-[#1A0533] mb-2">When would you like to start?</label>
-            <select
-              id="uni-start"
-              name="start-timeline"
-              required
-              class="w-full bg-gray-50 rounded-xl px-4 py-3 text-sm text-gray-800 border border-transparent focus:outline-none focus:ring-2 focus:ring-[#D4A853] transition-all duration-200 cursor-pointer"
-            >
-              <option value="" disabled selected>Select a timeline</option>
-              {startOptions.map((opt) => (
-                <option value={opt}>{opt}</option>
               ))}
             </select>
           </div>

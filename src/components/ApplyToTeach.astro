@@ -18,22 +18,7 @@ const benefits = [
   },
 ];
 
-const teachingSubjects = ['Design', 'Development', 'Business', 'Creative', 'Other'];
 
-const startOptions = ['Immediately', '1-3 months', '3-6 months', 'Just exploring'];
-
-const countryCodes = [
-  { code: '+234', label: 'NG +234' },
-  { code: '+1', label: 'US +1' },
-  { code: '+44', label: 'UK +44' },
-  { code: '+91', label: 'IN +91' },
-  { code: '+254', label: 'KE +254' },
-  { code: '+233', label: 'GH +233' },
-  { code: '+27', label: 'ZA +27' },
-  { code: '+971', label: 'AE +971' },
-  { code: '+61', label: 'AU +61' },
-  { code: '+49', label: 'DE +49' },
-];
 ---
 
 <section id="teach" class="bg-[#FBF8F1] py-20 md:py-28">
@@ -129,28 +114,18 @@ const countryCodes = [
             <p id="apply-email-error" class="text-red-500 text-xs mt-1 hidden">Please enter a valid email address.</p>
           </div>
 
-          <!-- WhatsApp Number with country code -->
+          <!-- WhatsApp Number -->
           <div>
-            <label for="apply-whatsapp" class="block text-sm font-semibold text-[#1A0533] mb-2">WhatsApp Number</label>
-            <div class="flex gap-2">
-              <select
-                name="country-code"
-                id="apply-country-code"
-                class="bg-gray-50 rounded-xl px-3 py-3 text-sm text-gray-800 border border-transparent focus:outline-none focus:ring-2 focus:ring-[#D4A853] transition-all duration-200 shrink-0 w-28"
-              >
-                {countryCodes.map((cc) => (
-                  <option value={cc.code}>{cc.label}</option>
-                ))}
-              </select>
-              <input
-                type="tel"
-                id="apply-whatsapp"
-                name="whatsapp"
-                placeholder="Phone number"
-                required
-                class="apply-input w-full bg-gray-50 rounded-xl px-4 py-3 text-sm text-gray-800 placeholder-gray-400 border border-transparent focus:outline-none focus:ring-2 focus:ring-[#D4A853] focus:border-[#D4A853] transition-all duration-200"
-              />
-            </div>
+            <label for="apply-whatsapp" class="block text-sm font-semibold text-[#1A0533] mb-2">
+              WhatsApp Number <span class="font-normal text-gray-400">(optional)</span>
+            </label>
+            <input
+              type="tel"
+              id="apply-whatsapp"
+              name="whatsapp"
+              placeholder="Please enter country code..."
+              class="apply-input w-full bg-gray-50 rounded-xl px-4 py-3 text-sm text-gray-800 placeholder-gray-400 border border-transparent focus:outline-none focus:ring-2 focus:ring-[#D4A853] focus:border-[#D4A853] transition-all duration-200"
+            />
           </div>
 
           <!-- LinkedIn URL -->
@@ -184,21 +159,6 @@ const countryCodes = [
             </div>
           </fieldset>
 
-          <!-- Have you created courses before? (conditional) -->
-          <fieldset>
-            <legend class="block text-sm font-semibold text-[#1A0533] mb-3">Have you created courses before?</legend>
-            <div class="flex gap-6">
-              <label class="flex items-center gap-2 cursor-pointer">
-                <input type="radio" name="created-courses" value="Yes" id="courses-yes" class="w-4 h-4 border-gray-300 text-[#D4A853] focus:ring-[#D4A853]" />
-                <span class="text-sm text-gray-700">Yes</span>
-              </label>
-              <label class="flex items-center gap-2 cursor-pointer">
-                <input type="radio" name="created-courses" value="No" id="courses-no" class="w-4 h-4 border-gray-300 text-[#D4A853] focus:ring-[#D4A853]" />
-                <span class="text-sm text-gray-700">No</span>
-              </label>
-            </div>
-          </fieldset>
-
           <!-- Conditional: Course links (shown when Yes) -->
           <div id="course-links-wrapper" class="hidden">
             <label for="apply-course-links" class="block text-sm font-semibold text-[#1A0533] mb-2">Share links to your courses</label>
@@ -211,51 +171,9 @@ const countryCodes = [
             ></textarea>
           </div>
 
-          <!-- What would you like to teach? (Multi-select dropdown) -->
-          <div>
-            <label class="block text-sm font-semibold text-[#1A0533] mb-2">What would you like to teach?</label>
-            <input type="hidden" name="subjects" id="subjects-hidden" />
-            <div class="relative">
-              <button
-                type="button"
-                id="subjects-toggle"
-                class="w-full bg-gray-50 rounded-xl px-4 py-3 text-sm text-left border border-transparent focus:outline-none focus:ring-2 focus:ring-[#D4A853] transition-all duration-200 flex items-center justify-between cursor-pointer"
-              >
-                <span id="subjects-label" class="text-gray-400">Select subjects</span>
-                <svg class="w-4 h-4 text-gray-400 shrink-0 transition-transform duration-200" id="subjects-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                  <path d="M6 9l6 6 6-6" />
-                </svg>
-              </button>
-              <div id="subjects-menu" class="hidden absolute z-20 top-full left-0 right-0 mt-1 bg-white rounded-xl shadow-lg border border-gray-100 p-3 space-y-2">
-                {teachingSubjects.map((subject) => (
-                  <label class="flex items-center gap-3 px-2 py-1.5 rounded-lg hover:bg-gray-50 cursor-pointer transition-colors">
-                    <input type="checkbox" value={subject} class="subject-checkbox w-4 h-4 rounded border-gray-300 text-[#D4A853] focus:ring-[#D4A853]" />
-                    <span class="text-sm text-gray-700">{subject}</span>
-                  </label>
-                ))}
-              </div>
-            </div>
-          </div>
-
-          <!-- When would you like to start? -->
-          <div>
-            <label for="apply-start" class="block text-sm font-semibold text-[#1A0533] mb-2">When would you like to start?</label>
-            <select
-              id="apply-start"
-              name="start-timeline"
-              required
-              class="w-full bg-gray-50 rounded-xl px-4 py-3 text-sm text-gray-800 border border-transparent focus:outline-none focus:ring-2 focus:ring-[#D4A853] transition-all duration-200 cursor-pointer"
-            >
-              <option value="" disabled selected>Select a timeline</option>
-              {startOptions.map((opt) => (
-                <option value={opt}>{opt}</option>
-              ))}
-            </select>
-          </div>
-
           <!-- Specific topics -->
           <div>
-            <label for="apply-topics" class="block text-sm font-semibold text-[#1A0533] mb-2">Specific topics you'd like to teach</label>
+            <label for="apply-topics" class="block text-sm font-semibold text-[#1A0533] mb-2">What course(s) would you like to teach</label>
             <textarea
               id="apply-topics"
               name="topics"
@@ -274,7 +192,7 @@ const countryCodes = [
             <textarea
               id="apply-more"
               name="more-info"
-              placeholder="Anything else you'd like us to know — your experience, teaching style, goals..."
+              placeholder="Anything else you'd like us to know, your experience, teaching style, goals..."
               rows="3"
               class="apply-input w-full bg-gray-50 rounded-xl px-4 py-3 text-sm text-gray-800 placeholder-gray-400 border border-transparent focus:outline-none focus:ring-2 focus:ring-[#D4A853] focus:border-[#D4A853] transition-all duration-200 resize-y"
             ></textarea>
