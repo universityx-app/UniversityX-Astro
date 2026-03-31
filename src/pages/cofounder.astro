@@ -15,15 +15,15 @@ import Footer from '../components/Footer.astro';
     <div class="absolute -top-20 -right-20 w-80 h-80 rounded-full bg-[#BB39B4]/10 pointer-events-none"></div>
     <div class="max-w-2xl mx-auto relative z-10">
       <div class="inline-block text-[11px] font-semibold tracking-widest uppercase text-[#D4A853] border border-[#D4A853]/40 px-4 py-1.5 rounded-sm mb-8">
-        Open role &middot; Equity-based
+        Co-founder role &middot; Equity-based
       </div>
       <h1 class="text-4xl md:text-6xl font-extrabold leading-[1.1] tracking-tight mb-5">
         We're looking for a<br>
-        <span class="italic font-extrabold text-[#D4A853]">Growth &amp; GTM</span><br>
+        <span class="italic font-extrabold text-[#D4A853]">Chief Growth Officer</span><br>
         Co-founder
       </h1>
       <p class="text-white/70 text-base md:text-lg leading-relaxed max-w-xl mb-10">
-        UniversityX is building AI-first learning infrastructure for African professionals and institutions, and we're expanding into the UK and US. Everyone who has seen the product loves it. Now we need the person who takes it to the world.
+        UniversityX is building AI-first learning infrastructure for African professionals and institutions. We need a CGO Co-founder who understands how people learn online, knows how to bring great creators to the platform, and can build the commercial engine that takes us from product to market. If that's you, or you know who that is, send this to them.
       </p>
       <div class="flex flex-wrap gap-8 border-t border-white/10 pt-7">
         <div class="flex flex-col">
@@ -48,7 +48,7 @@ import Footer from '../components/Footer.astro';
 
       <!-- Note box -->
       <div class="bg-[#D4A853]/10 border-l-4 border-[#D4A853] rounded-r-lg px-5 py-4 text-sm text-[#8a6318] leading-relaxed mb-12">
-        This is not a job application. We're looking for a co-founder, someone who wants to build this, not just work in it. If that's not you but you know who it is, please send this form to them.
+        This is not a job application. We're looking for a Chief Growth Officer Co-founder, someone who wants to build this, not just work in it. If that's not you but you know who it is, please send this form to them.
       </div>
 
       <form
@@ -79,7 +79,7 @@ import Footer from '../components/Footer.astro';
             </div>
             <div>
               <label for="location" class="block text-sm font-semibold text-[#1A0533] mb-2">Location</label>
-              <input type="text" id="location" name="Location" placeholder="City, Country"
+              <input type="text" id="location" name="Location" placeholder="City, Country" required
                 class="w-full bg-gray-50 rounded-xl px-4 py-3 text-sm text-gray-800 placeholder-gray-400 border border-transparent focus:outline-none focus:ring-2 focus:ring-[#D4A853] transition-shadow" />
             </div>
           </div>
@@ -92,7 +92,7 @@ import Footer from '../components/Footer.astro';
 
           <div class="mb-5">
             <label for="linkedin" class="block text-sm font-semibold text-[#1A0533] mb-2">LinkedIn profile URL</label>
-            <input type="url" id="linkedin" name="LinkedIn" placeholder="https://linkedin.com/in/..."
+            <input type="url" id="linkedin" name="LinkedIn" placeholder="https://linkedin.com/in/..." required
               class="w-full bg-gray-50 rounded-xl px-4 py-3 text-sm text-gray-800 placeholder-gray-400 border border-transparent focus:outline-none focus:ring-2 focus:ring-[#D4A853] transition-shadow" />
           </div>
 
@@ -100,7 +100,7 @@ import Footer from '../components/Footer.astro';
             <label for="current-role" class="block text-sm font-semibold text-[#1A0533] mb-2">
               Current role <span class="font-normal text-gray-400 text-xs ml-1">if any</span>
             </label>
-            <input type="text" id="current-role" name="Current Role" placeholder="e.g. BD Manager at TechCorp, or Freelance"
+            <input type="text" id="current-role" name="Current Role" placeholder="e.g. BD Manager at TechCorp, or Freelance" required
               class="w-full bg-gray-50 rounded-xl px-4 py-3 text-sm text-gray-800 placeholder-gray-400 border border-transparent focus:outline-none focus:ring-2 focus:ring-[#D4A853] transition-shadow" />
           </div>
 
@@ -109,133 +109,52 @@ import Footer from '../components/Footer.astro';
             <textarea id="one-liner" name="One Sentence Pitch" placeholder="Make it honest, not impressive..." rows="3" required
               class="w-full bg-gray-50 rounded-xl px-4 py-3 text-sm text-gray-800 placeholder-gray-400 border border-transparent focus:outline-none focus:ring-2 focus:ring-[#D4A853] transition-shadow resize-y"></textarea>
           </div>
-        </div>
+        </div>  
 
-        <hr class="border-gray-200 mb-14" />
-
-        <!-- Section 2: Your hunger -->
+        <!-- Section 2: Your growth DNA -->
         <div class="mb-14">
           <div class="flex items-center gap-3 mb-6">
-            <span class="text-[11px] font-semibold tracking-widest uppercase text-[#D4A853]">02. Your hunger</span>
+            <span class="text-[11px] font-semibold tracking-widest uppercase text-[#D4A853]">02. Your growth DNA</span>
             <div class="flex-1 h-px bg-gray-200"></div>
           </div>
 
           <div class="mb-5">
-            <label for="resourcefulness" class="block text-sm font-semibold text-[#1A0533] mb-2">What's the most resourceful thing you've done to make something happen with little to no resources?</label>
-            <textarea id="resourcefulness" name="Resourcefulness" placeholder="A real story, not a polished one..." rows="4" required
+            <label for="creative-growth" class="block text-sm font-semibold text-[#1A0533] mb-2">Describe the most creative way you've ever grown something, an audience, a community, a product, a revenue line. What was the result?</label>
+            <textarea id="creative-growth" name="Creative Growth Story" placeholder="A real story, not a polished one..." rows="4"
               class="w-full bg-gray-50 rounded-xl px-4 py-3 text-sm text-gray-800 placeholder-gray-400 border border-transparent focus:outline-none focus:ring-2 focus:ring-[#D4A853] transition-shadow resize-y"></textarea>
           </div>
 
           <div>
-            <label for="door-story" class="block text-sm font-semibold text-[#1A0533] mb-2">Describe a time you opened a door that wasn't open for you.</label>
-            <textarea id="door-story" name="Door Opening Story" placeholder="Who was on the other side? What happened next?" rows="4"
+            <label for="zero-budget-growth" class="block text-sm font-semibold text-[#1A0533] mb-2">Have you ever built a marketing or growth strategy from scratch with little to no budget? What did you do?</label>
+            <textarea id="zero-budget-growth" name="Zero Budget Growth" placeholder="Be specific..." rows="4"
               class="w-full bg-gray-50 rounded-xl px-4 py-3 text-sm text-gray-800 placeholder-gray-400 border border-transparent focus:outline-none focus:ring-2 focus:ring-[#D4A853] transition-shadow resize-y"></textarea>
           </div>
         </div>
 
-        <hr class="border-gray-200 mb-14" />
-
-        <!-- Section 3: Edtech & market sense -->
+        <!-- Section 3: Creator Economy & Commercial Instinct -->
         <div class="mb-14">
           <div class="flex items-center gap-3 mb-6">
-            <span class="text-[11px] font-semibold tracking-widest uppercase text-[#D4A853]">03. Edtech and market sense</span>
+            <span class="text-[11px] font-semibold tracking-widest uppercase text-[#D4A853]">03. Creator Economy & Commercial Instinct </span>
             <div class="flex-1 h-px bg-gray-200"></div>
           </div>
 
           <div class="mb-5">
-            <label for="edtech-pov" class="block text-sm font-semibold text-[#1A0533] mb-2">What do you think is broken about education in Africa? How does UniversityX fix it?</label>
-            <textarea id="edtech-pov" name="Edtech POV" placeholder="Your honest perspective..." rows="4" required
+            <label for="own-course" class="block text-sm font-semibold text-[#1A0533] mb-2">Have you ever built, designed, or taught an online course yourself? Tell us about it.</label>
+            <textarea id="own-course" name="Own Course Experience" placeholder="What was it, who was it for, what happened..." rows="4"
               class="w-full bg-gray-50 rounded-xl px-4 py-3 text-sm text-gray-800 placeholder-gray-400 border border-transparent focus:outline-none focus:ring-2 focus:ring-[#D4A853] transition-shadow resize-y"></textarea>
           </div>
 
-          <div>
-            <label for="edtech-admiration" class="block text-sm font-semibold text-[#1A0533] mb-2">What's one edtech company globally doing something right, and why?</label>
-            <textarea id="edtech-admiration" name="Edtech Admiration" placeholder="Could be big or small, local or global..." rows="3"
+          <div class="mb-5">
+            <label for="b2b-deal" class="block text-sm font-semibold text-[#1A0533] mb-2">Have you ever closed a B2B deal or partnership, even informally? What was it and how did you do it?</label>
+            <textarea id="b2b-deal" name="B2B Deal Story" placeholder="Walk us through the deal..." rows="4"
               class="w-full bg-gray-50 rounded-xl px-4 py-3 text-sm text-gray-800 placeholder-gray-400 border border-transparent focus:outline-none focus:ring-2 focus:ring-[#D4A853] transition-shadow resize-y"></textarea>
           </div>
         </div>
 
-        <hr class="border-gray-200 mb-14" />
-
-        <!-- Section 4: Networks & BD -->
+        <!-- Section 4: The co-founder conversation -->
         <div class="mb-14">
           <div class="flex items-center gap-3 mb-6">
-            <span class="text-[11px] font-semibold tracking-widest uppercase text-[#D4A853]">04. Networks and BD</span>
-            <div class="flex-1 h-px bg-gray-200"></div>
-          </div>
-
-          <div class="mb-5">
-            <label for="network-doors" class="block text-sm font-semibold text-[#1A0533] mb-2">
-              Name 3 people, companies, or institutions you could bring to the table within 60 days.
-              <span class="font-normal text-gray-400 text-xs block mt-0.5">No commitment, just shows range.</span>
-            </label>
-            <textarea id="network-doors" name="Network Doors" placeholder="e.g. I know the L&D head at X, have a contact at Y university, worked with Z organisation..." rows="4"
-              class="w-full bg-gray-50 rounded-xl px-4 py-3 text-sm text-gray-800 placeholder-gray-400 border border-transparent focus:outline-none focus:ring-2 focus:ring-[#D4A853] transition-shadow resize-y"></textarea>
-          </div>
-
-          <div>
-            <label class="block text-sm font-semibold text-[#1A0533] mb-3">Do you have connections in the UK or US education, corporate, or tech space?</label>
-            <div class="flex flex-wrap gap-3">
-              <label class="radio-pill flex items-center gap-2.5 px-4 py-2.5 bg-white border border-gray-200 rounded-xl cursor-pointer text-sm text-gray-700 hover:border-[#D4A853] hover:bg-[#D4A853]/5 transition-colors">
-                <input type="radio" name="UK/US Network" value="Yes, strong connections" class="accent-[#D4A853]" /> Yes, strong
-              </label>
-              <label class="radio-pill flex items-center gap-2.5 px-4 py-2.5 bg-white border border-gray-200 rounded-xl cursor-pointer text-sm text-gray-700 hover:border-[#D4A853] hover:bg-[#D4A853]/5 transition-colors">
-                <input type="radio" name="UK/US Network" value="A few connections" class="accent-[#D4A853]" /> A few
-              </label>
-              <label class="radio-pill flex items-center gap-2.5 px-4 py-2.5 bg-white border border-gray-200 rounded-xl cursor-pointer text-sm text-gray-700 hover:border-[#D4A853] hover:bg-[#D4A853]/5 transition-colors">
-                <input type="radio" name="UK/US Network" value="Not yet" class="accent-[#D4A853]" /> Not yet
-              </label>
-            </div>
-          </div>
-        </div>
-
-        <hr class="border-gray-200 mb-14" />
-
-        <!-- Section 5: Content & presence -->
-        <div class="mb-14">
-          <div class="flex items-center gap-3 mb-6">
-            <span class="text-[11px] font-semibold tracking-widest uppercase text-[#D4A853]">05. Content and presence</span>
-            <div class="flex-1 h-px bg-gray-200"></div>
-          </div>
-
-          <div class="mb-5">
-            <label for="content-link" class="block text-sm font-semibold text-[#1A0533] mb-2">
-              Are you comfortable on camera? Drop a link to any video, reel, pitch, or content you've made.
-              <span class="font-normal text-gray-400 text-xs block mt-0.5">Doesn't have to be professional.</span>
-            </label>
-            <input type="url" id="content-link" name="Content Link" placeholder="https://..."
-              class="w-full bg-gray-50 rounded-xl px-4 py-3 text-sm text-gray-800 placeholder-gray-400 border border-transparent focus:outline-none focus:ring-2 focus:ring-[#D4A853] transition-shadow" />
-            <p class="text-xs text-gray-400 mt-2">YouTube, Instagram, LinkedIn video, TikTok, anything that shows you in front of a camera or creating content.</p>
-          </div>
-
-          <div class="mb-5">
-            <label for="ai-tools" class="block text-sm font-semibold text-[#1A0533] mb-2">Have you used AI tools for content creation?</label>
-            <input type="text" id="ai-tools" name="AI Tools Used" placeholder="e.g. Runway, HeyGen, CapCut AI, ElevenLabs..."
-              class="w-full bg-gray-50 rounded-xl px-4 py-3 text-sm text-gray-800 placeholder-gray-400 border border-transparent focus:outline-none focus:ring-2 focus:ring-[#D4A853] transition-shadow" />
-          </div>
-
-          <div>
-            <label class="block text-sm font-semibold text-[#1A0533] mb-3">Your video editing and content creation level</label>
-            <div class="flex flex-wrap gap-3">
-              <label class="radio-pill flex items-center gap-2.5 px-4 py-2.5 bg-white border border-gray-200 rounded-xl cursor-pointer text-sm text-gray-700 hover:border-[#D4A853] hover:bg-[#D4A853]/5 transition-colors">
-                <input type="radio" name="Content Level" value="Beginner" class="accent-[#D4A853]" /> Beginner
-              </label>
-              <label class="radio-pill flex items-center gap-2.5 px-4 py-2.5 bg-white border border-gray-200 rounded-xl cursor-pointer text-sm text-gray-700 hover:border-[#D4A853] hover:bg-[#D4A853]/5 transition-colors">
-                <input type="radio" name="Content Level" value="Intermediate" class="accent-[#D4A853]" /> Intermediate
-              </label>
-              <label class="radio-pill flex items-center gap-2.5 px-4 py-2.5 bg-white border border-gray-200 rounded-xl cursor-pointer text-sm text-gray-700 hover:border-[#D4A853] hover:bg-[#D4A853]/5 transition-colors">
-                <input type="radio" name="Content Level" value="Advanced" class="accent-[#D4A853]" /> Advanced
-              </label>
-            </div>
-          </div>
-        </div>
-
-        <hr class="border-gray-200 mb-14" />
-
-        <!-- Section 6: The co-founder conversation -->
-        <div class="mb-14">
-          <div class="flex items-center gap-3 mb-6">
-            <span class="text-[11px] font-semibold tracking-widest uppercase text-[#D4A853]">06. The co-founder conversation</span>
+            <span class="text-[11px] font-semibold tracking-widest uppercase text-[#D4A853]">04. The co-founder conversation</span>
             <div class="flex-1 h-px bg-gray-200"></div>
           </div>
 
@@ -284,8 +203,6 @@ import Footer from '../components/Footer.astro';
             </div>
           </div>
         </div>
-
-        <hr class="border-gray-200 mb-14" />
 
         <!-- Submit -->
         <div class="pt-2">
