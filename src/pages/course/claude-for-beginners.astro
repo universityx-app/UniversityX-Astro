@@ -8,7 +8,7 @@ const course = {
   description: 'Learn to use Claude and other LLMs to work smarter, write better, think clearer, and get more done. No technical background required.',
   price: 0,
   originalPrice: '',
-  startDate: 'Start anytime',
+  // startDate: 'Start anytime',
   duration: 'Self Paced',
   level: 'Beginner',
   format: 'Self Paced',
@@ -130,7 +130,7 @@ const course = {
               </div>
 
               <!-- Start date -->
-              <div class="flex items-center gap-2 text-lg text-gray-600">
+              <!-- <div class="flex items-center gap-2 text-lg text-gray-600">
                 <svg class="w-6 h-6 text-[#BB39B4]" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
                   <rect x="3" y="4" width="18" height="18" rx="2" ry="2" />
                   <line x1="16" y1="2" x2="16" y2="6" />
@@ -138,15 +138,36 @@ const course = {
                   <line x1="3" y1="10" x2="21" y2="10" />
                 </svg>
                 {course.startDate}
+              </div> -->
+
+              <!-- Countdown Timer -->
+              <div class="mt-8 text-center bg-[#F5F2EB] rounded-xl p-4 border border-[#F5F2EB]/80">
+                <p class="text-sm font-bold text-[#BB39B4] uppercase tracking-wider mb-2">Course Goes Live In</p>
+                <div class="flex items-center justify-center gap-3 countdown-container">
+                  <div class="flex flex-col">
+                    <span class="text-3xl font-extrabold text-[#1A0533] hours-val">00</span>
+                    <span class="text-sm text-gray-500 uppercase tracking-widest mt-0.5">Hrs</span>
+                  </div>
+                  <span class="text-xl font-bold text-[#1A0533]/30 pb-2">:</span>
+                  <div class="flex flex-col">
+                    <span class="text-3xl font-extrabold text-[#1A0533] minutes-val">00</span>
+                    <span class="text-sm text-gray-500 uppercase tracking-widest mt-0.5">Min</span>
+                  </div>
+                  <span class="text-xl font-bold text-[#1A0533]/30 pb-2">:</span>
+                  <div class="flex flex-col">
+                    <span class="text-3xl font-extrabold text-[#1A0533] seconds-val">00</span>
+                    <span class="text-sm text-gray-500 uppercase tracking-widest mt-0.5">Sec</span>
+                  </div>
+                </div>
               </div>
 
               <!-- Enroll CTA -->
               <a
                 id="enroll"
                 href="#enroll-form"
-                class="block w-full text-center bg-[#BB39B4] hover:bg-[#a832a1] text-white font-semibold px-8 py-4 rounded-lg transition-colors duration-200 text-base mt-10"
+                class="block w-full text-center bg-[#BB39B4] hover:bg-[#a832a1] text-white font-semibold px-8 py-4 rounded-lg transition-colors duration-200 text-base mt-4"
               >
-                Start for Free
+                Access the Course
               </a>
 
               <!-- UniversityX Approved -->
@@ -388,22 +409,75 @@ const course = {
 
     <!-- ── ENROLL CTA BANNER ──────────────────────────────────────────── -->
     <section id="enroll-form" class="bg-[#1A0533] py-16 md:py-20">
-      <div class="max-w-7xl mx-auto px-6 md:px-12 lg:px-16 xl:px-24 text-center">
-        <h2 class="text-2xl md:text-3xl font-extrabold text-white mb-3 leading-tight">
-          Start learning Claude today. It's completely free.
-        </h2>
-        <p class="text-gray-400 mb-8 max-w-lg mx-auto text-lg">
-          Self-paced, beginner-friendly, and built by the team behind Claude. Start the moment you're ready.
-        </p>
-        <a
-          href="#"
-          class="inline-flex items-center gap-2 bg-[#BB39B4] hover:bg-[#a832a1] text-white font-semibold px-10 py-4 rounded-full transition-colors duration-200 text-base"
-        >
-          Start for Free
-          <svg class="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-            <path d="M5 12h14M12 5l7 7-7 7" />
-          </svg>
-        </a>
+      <div class="max-w-7xl mx-auto px-6 md:px-12 lg:px-16 xl:px-24">
+        
+        <div class="text-center mb-10 max-w-3xl mx-auto">
+          <h2 class="text-2xl md:text-3xl font-extrabold text-white mb-3 leading-tight">
+            Get Notified When The Course Goes Live
+          </h2>
+          <p class="text-gray-400 max-w-xl mx-auto text-lg">
+            Ready to transform your skills? Sign up with your email.
+          </p>
+        </div>
+
+        <!-- Countdown Timer (Bottom) -->
+        <div class="mb-10 text-center bg-white/5 rounded-2xl p-6 border border-white/10 max-w-md mx-auto">
+          <p class="text-xs font-semibold text-gray-400 uppercase tracking-widest mb-4">Course Goes Live In</p>
+          <div class="flex items-center justify-center gap-6 countdown-container">
+            <div class="flex flex-col">
+              <span class="text-4xl md:text-5xl font-bold text-white hours-val">00</span>
+              <span class="text-xs text-gray-500 uppercase tracking-wider mt-1">Hours</span>
+            </div>
+            <span class="text-3xl font-bold text-white/30 pb-4">:</span>
+            <div class="flex flex-col">
+              <span class="text-4xl md:text-5xl font-bold text-white minutes-val">00</span>
+              <span class="text-xs text-gray-500 uppercase tracking-wider mt-1">Mins</span>
+            </div>
+            <span class="text-3xl font-bold text-white/30 pb-4">:</span>
+            <div class="flex flex-col">
+              <span class="text-4xl md:text-5xl font-bold text-white seconds-val">00</span>
+              <span class="text-xs text-gray-500 uppercase tracking-wider mt-1">Secs</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Waitlist Form Card -->
+        <div class="max-w-md mx-auto">
+          <!-- Success State -->
+          <div id="waitlist-success" class="hidden bg-white/10 backdrop-blur-sm rounded-2xl border border-white/10 p-8 text-center">
+            <div class="w-12 h-12 bg-green-500/20 rounded-full flex items-center justify-center mx-auto mb-4">
+              <svg class="w-6 h-6 text-green-400" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M20 6L9 17l-5-5" />
+              </svg>
+            </div>
+            <h3 class="text-xl font-bold text-white mb-2">You're on the list!</h3>
+            <p class="text-gray-400 text-sm">We'll send you an email as soon as the course is live.</p>
+          </div>
+
+          <!-- Form Element -->
+          <form id="waitlist-form" novalidate class="bg-white/5 backdrop-blur-sm rounded-2xl border border-white/10 p-6 md:p-8">
+            <div class="mb-4">
+              <label for="waitlist-email" class="sr-only">Email Address</label>
+              <input
+                type="email"
+                id="waitlist-email"
+                name="email"
+                placeholder="Enter your email address"
+                required
+                class="w-full bg-white/10 rounded-xl px-5 py-4 text-white placeholder-gray-400 border border-transparent focus:outline-none focus:ring-2 focus:ring-[#BB39B4] focus:border-[#BB39B4] transition-all duration-200"
+              />
+              <p id="waitlist-email-error" class="text-red-400 text-xs mt-2 hidden text-left">Please enter a valid email address.</p>
+            </div>
+            <button
+              type="submit"
+              id="waitlist-submit-btn"
+              class="w-full bg-[#BB39B4] hover:bg-[#a832a1] text-white font-bold text-base rounded-xl py-4 transition-colors duration-200 cursor-pointer"
+            >
+              Access the Course
+            </button>
+          </form>
+        </div>
+
       </div>
     </section>
 
@@ -434,6 +508,12 @@ const course = {
 </style>
 
 <script>
+  import PocketBase from 'pocketbase';
+
+  declare global {
+    interface Window { posthog?: any; }
+  }
+
   function initAccordions() {
     document.querySelectorAll('.accordion-trigger').forEach((trigger) => {
       trigger.addEventListener('click', () => {
@@ -449,9 +529,112 @@ const course = {
     });
   }
 
+  function initWaitlist() {
+    const form = document.getElementById('waitlist-form') as HTMLFormElement | null;
+    const successMsg = document.getElementById('waitlist-success');
+    if (!form || !successMsg) return;
+
+    const emailInput = form.querySelector('#waitlist-email') as HTMLInputElement;
+    const emailError = document.getElementById('waitlist-email-error')!;
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+
+    function validateEmail(): boolean {
+      const valid = emailRegex.test(emailInput.value.trim());
+      emailError.classList.toggle('hidden', valid || emailInput.value.trim() === '');
+      return valid;
+    }
+
+    emailInput.addEventListener('blur', validateEmail);
+
+    const pb = new PocketBase(import.meta.env.PUBLIC_POCKETBASE_URL);
+
+    form.addEventListener('submit', async (e) => {
+      e.preventDefault();
+
+      if (!validateEmail()) {
+        emailInput.focus();
+        return;
+      }
+
+      const submitBtn = document.getElementById('waitlist-submit-btn') as HTMLButtonElement;
+      submitBtn.disabled = true;
+      submitBtn.textContent = 'Submitting...';
+
+      const formData = new FormData(form);
+      const data = {
+        email: formData.get('email') as string,
+      };
+
+      try {
+        await pb.collection('Claude_Waitlist').create(data);
+
+        window.posthog?.capture('waitlist_joined', {
+          course: 'Claude for Beginners'
+        });
+
+        form.classList.add('hidden');
+        successMsg.classList.remove('hidden');
+      } catch (err) {
+        window.posthog?.captureException(err);
+        submitBtn.disabled = false;
+        submitBtn.textContent = 'Access the Course';
+        alert('Something went wrong. Please try again or contact support.');
+      }
+    });
+  }
+
+  function initCountdown() {
+    const containers = document.querySelectorAll('.countdown-container');
+    if (!containers.length) return;
+
+    // You can edit this date to whatever target time you want the launch to be.
+    // Use the format: 'YYYY-MM-DDTHH:mm:ss±HH:mm' for timezone safety.
+    const TARGET_DATE = new Date('2026-04-02T20:05:00+01:00').getTime();
+
+    function updateCounters() {
+      const now = new Date().getTime();
+      const distance = TARGET_DATE - now;
+
+      if (distance <= 0) {
+        // Countdown finished
+        containers.forEach(container => {
+          (container.querySelector('.hours-val') as HTMLElement).textContent = '00';
+          (container.querySelector('.minutes-val') as HTMLElement).textContent = '00';
+          (container.querySelector('.seconds-val') as HTMLElement).textContent = '00';
+        });
+        return;
+      }
+
+      // Calculate time components (handles > 24 hours easily)
+      const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60)) + Math.floor(distance / (1000 * 60 * 60 * 24)) * 24;
+      const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+      const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+      const hFormatted = hours.toString().padStart(2, '0');
+      const mFormatted = minutes.toString().padStart(2, '0');
+      const sFormatted = seconds.toString().padStart(2, '0');
+
+      containers.forEach(container => {
+        (container.querySelector('.hours-val') as HTMLElement).textContent = hFormatted;
+        (container.querySelector('.minutes-val') as HTMLElement).textContent = mFormatted;
+        (container.querySelector('.seconds-val') as HTMLElement).textContent = sFormatted;
+      });
+    }
+
+    // Run first update and then run set interval
+    updateCounters();
+    setInterval(updateCounters, 1000);
+  }
+
   if (document.readyState === 'loading') {
-    document.addEventListener('DOMContentLoaded', initAccordions);
+    document.addEventListener('DOMContentLoaded', () => {
+      initAccordions();
+      initWaitlist();
+      initCountdown();
+    });
   } else {
     initAccordions();
+    initWaitlist();
+    initCountdown();
   }
 </script>
