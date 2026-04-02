@@ -258,7 +258,7 @@ const benefits = [
       submitBtn.textContent = 'Submitting...';
 
       const formData = new FormData(form);
-      const applyingAs = formData.getAll('applying_as').join(', ');
+      const applyingAs = formData.getAll('applying_as') as string[];
 
       const data = {
         full_name: formData.get('full_name') as string,

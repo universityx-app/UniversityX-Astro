@@ -284,13 +284,15 @@ const companySizes = ['1-10', '11-50', '51-200', '201-500', '500+'];
 
       const formData = new FormData(form);
 
+      const selectedAreas = [...areaCheckboxes].filter((c) => c.checked).map((c) => c.value);
+
       const data = {
         company_name: formData.get('company_name') as string,
         full_name: formData.get('full_name') as string,
         email: formData.get('email') as string,
         whatsapp: (formData.get('whatsapp') as string) || '',
         company_size: formData.get('company_size') as string,
-        training_areas: areasHidden.value,
+        training_areas: selectedAreas,
         training_needs: (formData.get('training_needs') as string) || '',
       };
 

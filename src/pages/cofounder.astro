@@ -226,35 +226,38 @@ import Footer from '../components/Footer.astro';
     interface Window { posthog?: any; }
   }
 
-  const form = document.getElementById('appForm') as HTMLFormElement | null;
-  const successState = document.getElementById('successState');
-  const submitBtn = form?.querySelector('button[type="submit"]') as HTMLButtonElement | null;
+  function initCofounderForm() {
+    const form = document.getElementById('appForm') as HTMLFormElement | null;
+    const successState = document.getElementById('successState');
+    if (!form) return;
 
-  // Highlight selected radio options
-  document.querySelectorAll('.radio-pill input[type="radio"]').forEach((radio) => {
-    radio.addEventListener('change', () => {
-      const name = (radio as HTMLInputElement).name;
-      document.querySelectorAll(`.radio-pill input[name="${name}"]`).forEach((r) => {
-        const label = r.closest('.radio-pill');
-        if (label) {
-          label.classList.remove('border-[#D4A853]', 'bg-[#D4A853]/10');
-          label.classList.add('border-gray-200');
+    const submitBtn = form.querySelector('button[type="submit"]') as HTMLButtonElement;
+
+    // Highlight selected radio pill on change
+    form.querySelectorAll<HTMLInputElement>('.radio-pill input[type="radio"]').forEach((radio) => {
+      radio.addEventListener('change', () => {
+        const groupName = radio.name;
+        form.querySelectorAll<HTMLInputElement>(`.radio-pill input[name="${groupName}"]`).forEach((r) => {
+          const label = r.closest('.radio-pill');
+          if (label) {
+            label.classList.remove('border-[#D4A853]', 'bg-[#D4A853]/10');
+            label.classList.add('border-gray-200');
+          }
+        });
+        const selectedLabel = radio.closest('.radio-pill');
+        if (selectedLabel) {
+          selectedLabel.classList.remove('border-gray-200');
+          selectedLabel.classList.add('border-[#D4A853]', 'bg-[#D4A853]/10');
         }
       });
-      const selectedLabel = radio.closest('.radio-pill');
-      if (selectedLabel) {
-        selectedLabel.classList.remove('border-gray-200');
-        selectedLabel.classList.add('border-[#D4A853]', 'bg-[#D4A853]/10');
-      }
     });
-  });
 
-  if (form) {
     const pb = new PocketBase(import.meta.env.PUBLIC_POCKETBASE_URL);
 
     form.addEventListener('submit', async (e) => {
       e.preventDefault();
-      if (submitBtn) { submitBtn.disabled = true; submitBtn.textContent = 'Submitting...'; }
+      submitBtn.disabled = true;
+      submitBtn.textContent = 'Submitting...';
 
       const formData = new FormData(form);
 
@@ -285,9 +288,16 @@ import Footer from '../components/Footer.astro';
         if (successState) successState.classList.remove('hidden');
         window.scrollTo({ top: form.offsetTop - 100, behavior: 'smooth' });
       } catch {
-        if (submitBtn) { submitBtn.disabled = false; submitBtn.textContent = 'Submit application'; }
+        submitBtn.disabled = false;
+        submitBtn.textContent = 'Submit application';
         alert('Something went wrong. Please try again or email us directly.');
       }
     });
+  }
+
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', initCofounderForm);
+  } else {
+    initCofounderForm();
   }
 </script>
