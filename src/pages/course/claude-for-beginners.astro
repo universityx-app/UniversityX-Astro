@@ -236,7 +236,7 @@ const course = {
             <div class="bg-[#F5F2EB] rounded-2xl p-7">
               <span class="inline-block text-[#BB39B4] text-sm font-bold bg-white rounded-full px-3 py-1 mb-4">{num}</span>
               <h3 class="text-lg font-bold text-[#1A0533] mb-2 leading-snug">{title}</h3>
-              <p class="text-base text-gray-500 leading-relaxed">{body}</p>
+              <p class="text-lg text-gray-500 leading-relaxed">{body}</p>
             </div>
           ))}
         </div>
@@ -273,7 +273,7 @@ const course = {
               </div>
               <div>
                 <p class="font-semibold text-[#1A0533] mb-1 text-lg">{title}</p>
-                <p class="text-base text-gray-500 leading-relaxed">{body}</p>
+                <p class="text-lg text-gray-500 leading-relaxed">{body}</p>
               </div>
             </div>
           ))}
@@ -334,7 +334,7 @@ const course = {
                 class="accordion-trigger w-full flex items-center justify-between px-6 py-4 text-left bg-white hover:bg-[#F5F2EB] transition-colors duration-200 cursor-pointer"
                 aria-expanded="false"
               >
-                <span class="font-semibold text-[#1A0533]">{module}</span>
+                <span class="font-semibold text-[#1A0533] text-lg">{module}</span>
                 <svg class="accordion-chevron w-5 h-5 text-gray-400 transition-transform duration-300 shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
                   <polyline points="6 9 12 15 18 9" />
                 </svg>
@@ -343,7 +343,7 @@ const course = {
                 <div class="accordion-inner">
                   <ul class="px-6 pb-4 pt-1 space-y-3 border-t border-gray-100">
                     {lessons.map(({ title }) => (
-                      <li class="flex items-center justify-between text-base my-4">
+                      <li class="flex items-center justify-between text-lg my-4">
                         <span class="flex items-center gap-2 text-gray-700">
                           <svg class="w-4 h-4 text-gray-300 shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
                             <polygon points="5 3 19 12 5 21 5 3" />
@@ -390,14 +390,14 @@ const course = {
                 class="accordion-trigger w-full flex items-center justify-between px-6 py-5 text-left bg-white hover:bg-[#F5F2EB] transition-colors duration-200 cursor-pointer"
                 aria-expanded="false"
               >
-                <span class="font-semibold text-[#1A0533] pr-4">{q}</span>
+                <span class="font-semibold text-lg text-[#1A0533] pr-4">{q}</span>
                 <svg class="accordion-chevron w-5 h-5 text-gray-400 transition-transform duration-300 shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
                   <polyline points="6 9 12 15 18 9" />
                 </svg>
               </button>
               <div class="accordion-body">
                 <div class="accordion-inner">
-                  <p class="px-6 pb-5 pt-2 text-gray-600 leading-relaxed border-t border-gray-100">{a}</p>
+                  <p class="px-6 pb-5 pt-2 text-gray-600 leading-relaxed border-t border-gray-100 text-lg">{a}</p>
                 </div>
               </div>
             </div>
@@ -566,7 +566,7 @@ const course = {
       };
 
       try {
-        await pb.collection('Claude_Waitlist').create(data);
+        await pb.collection('Waitlist_Form').create(data);
 
         window.posthog?.capture('waitlist_joined', {
           course: 'Claude for Beginners'
