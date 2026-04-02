@@ -53,16 +53,8 @@ import Footer from '../components/Footer.astro';
 
       <form
         id="appForm"
-        name="cofounder-application"
-        method="POST"
-        data-netlify="true"
-        netlify-honeypot="bot-field"
         class="space-y-0"
       >
-        <p class="hidden">
-          <label>Don't fill this out if you're human: <input name="bot-field" type="text" /></label>
-        </p>
-        <input type="hidden" name="form-name" value="cofounder-application" />
 
         <!-- Section 1: The basics -->
         <div class="mb-14">
@@ -74,25 +66,25 @@ import Footer from '../components/Footer.astro';
           <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-5">
             <div>
               <label for="full-name" class="block text-sm font-semibold text-[#1A0533] mb-2">Full name</label>
-              <input type="text" id="full-name" name="Full Name" placeholder="Your name" required
+              <input type="text" id="full-name" name="full_name" placeholder="Your name" required
                 class="w-full bg-gray-50 rounded-xl px-4 py-3 text-sm text-gray-800 placeholder-gray-400 border border-transparent focus:outline-none focus:ring-2 focus:ring-[#D4A853] transition-shadow" />
             </div>
             <div>
               <label for="location" class="block text-sm font-semibold text-[#1A0533] mb-2">Location</label>
-              <input type="text" id="location" name="Location" placeholder="City, Country" required
+              <input type="text" id="location" name="location" placeholder="City, Country" required
                 class="w-full bg-gray-50 rounded-xl px-4 py-3 text-sm text-gray-800 placeholder-gray-400 border border-transparent focus:outline-none focus:ring-2 focus:ring-[#D4A853] transition-shadow" />
             </div>
           </div>
 
           <div class="mb-5">
             <label for="email" class="block text-sm font-semibold text-[#1A0533] mb-2">Email address</label>
-            <input type="email" id="email" name="Email" placeholder="you@example.com" required
+            <input type="email" id="email" name="email" placeholder="you@example.com" required
               class="w-full bg-gray-50 rounded-xl px-4 py-3 text-sm text-gray-800 placeholder-gray-400 border border-transparent focus:outline-none focus:ring-2 focus:ring-[#D4A853] transition-shadow" />
           </div>
 
           <div class="mb-5">
             <label for="linkedin" class="block text-sm font-semibold text-[#1A0533] mb-2">LinkedIn profile URL</label>
-            <input type="url" id="linkedin" name="LinkedIn" placeholder="https://linkedin.com/in/..." required
+            <input type="url" id="linkedin" name="linkedin" placeholder="https://linkedin.com/in/..." required
               class="w-full bg-gray-50 rounded-xl px-4 py-3 text-sm text-gray-800 placeholder-gray-400 border border-transparent focus:outline-none focus:ring-2 focus:ring-[#D4A853] transition-shadow" />
           </div>
 
@@ -100,13 +92,13 @@ import Footer from '../components/Footer.astro';
             <label for="current-role" class="block text-sm font-semibold text-[#1A0533] mb-2">
               Current role <span class="font-normal text-gray-400 text-xs ml-1">if any</span>
             </label>
-            <input type="text" id="current-role" name="Current Role" placeholder="e.g. BD Manager at TechCorp, or Freelance" required
+            <input type="text" id="current-role" name="current_role" placeholder="e.g. BD Manager at TechCorp, or Freelance" required
               class="w-full bg-gray-50 rounded-xl px-4 py-3 text-sm text-gray-800 placeholder-gray-400 border border-transparent focus:outline-none focus:ring-2 focus:ring-[#D4A853] transition-shadow" />
           </div>
 
           <div>
             <label for="one-liner" class="block text-sm font-semibold text-[#1A0533] mb-2">In one sentence, why UniversityX, why now, why you?</label>
-            <textarea id="one-liner" name="One Sentence Pitch" placeholder="Make it honest, not impressive..." rows="3" required
+            <textarea id="one-liner" name="one_sentence_pitch" placeholder="Make it honest, not impressive..." rows="3" required
               class="w-full bg-gray-50 rounded-xl px-4 py-3 text-sm text-gray-800 placeholder-gray-400 border border-transparent focus:outline-none focus:ring-2 focus:ring-[#D4A853] transition-shadow resize-y"></textarea>
           </div>
         </div>  
@@ -120,13 +112,13 @@ import Footer from '../components/Footer.astro';
 
           <div class="mb-5">
             <label for="creative-growth" class="block text-sm font-semibold text-[#1A0533] mb-2">Describe the most creative way you've ever grown something, an audience, a community, a product, a revenue line. What was the result?</label>
-            <textarea id="creative-growth" name="Creative Growth Story" placeholder="A real story, not a polished one..." rows="4"
+            <textarea id="creative-growth" name="creative_growth_story" placeholder="A real story, not a polished one..." rows="4"
               class="w-full bg-gray-50 rounded-xl px-4 py-3 text-sm text-gray-800 placeholder-gray-400 border border-transparent focus:outline-none focus:ring-2 focus:ring-[#D4A853] transition-shadow resize-y"></textarea>
           </div>
 
           <div>
             <label for="zero-budget-growth" class="block text-sm font-semibold text-[#1A0533] mb-2">Have you ever built a marketing or growth strategy from scratch with little to no budget? What did you do?</label>
-            <textarea id="zero-budget-growth" name="Zero Budget Growth" placeholder="Be specific..." rows="4"
+            <textarea id="zero-budget-growth" name="zero_budget_growth" placeholder="Be specific..." rows="4"
               class="w-full bg-gray-50 rounded-xl px-4 py-3 text-sm text-gray-800 placeholder-gray-400 border border-transparent focus:outline-none focus:ring-2 focus:ring-[#D4A853] transition-shadow resize-y"></textarea>
           </div>
         </div>
@@ -140,13 +132,13 @@ import Footer from '../components/Footer.astro';
 
           <div class="mb-5">
             <label for="own-course" class="block text-sm font-semibold text-[#1A0533] mb-2">Have you ever built, designed, or taught an online course yourself? Tell us about it.</label>
-            <textarea id="own-course" name="Own Course Experience" placeholder="What was it, who was it for, what happened..." rows="4"
+            <textarea id="own-course" name="own_course_experience" placeholder="What was it, who was it for, what happened..." rows="4"
               class="w-full bg-gray-50 rounded-xl px-4 py-3 text-sm text-gray-800 placeholder-gray-400 border border-transparent focus:outline-none focus:ring-2 focus:ring-[#D4A853] transition-shadow resize-y"></textarea>
           </div>
 
           <div class="mb-5">
             <label for="b2b-deal" class="block text-sm font-semibold text-[#1A0533] mb-2">Have you ever closed a B2B deal or partnership, even informally? What was it and how did you do it?</label>
-            <textarea id="b2b-deal" name="B2B Deal Story" placeholder="Walk us through the deal..." rows="4"
+            <textarea id="b2b-deal" name="b2b_deal_story" placeholder="Walk us through the deal..." rows="4"
               class="w-full bg-gray-50 rounded-xl px-4 py-3 text-sm text-gray-800 placeholder-gray-400 border border-transparent focus:outline-none focus:ring-2 focus:ring-[#D4A853] transition-shadow resize-y"></textarea>
           </div>
         </div>
@@ -162,15 +154,15 @@ import Footer from '../components/Footer.astro';
             <label class="block text-sm font-semibold text-[#1A0533] mb-3">This is equity-first with a lean early salary. Are you at a life stage where that works for you?</label>
             <div class="flex flex-col gap-3">
               <label class="radio-pill flex items-center gap-3 px-4 py-3 bg-white border border-gray-200 rounded-xl cursor-pointer text-sm text-gray-700 hover:border-[#D4A853] hover:bg-[#D4A853]/5 transition-colors">
-                <input type="radio" name="Equity Readiness" value="Yes, fully" class="accent-[#D4A853] shrink-0" />
+                <input type="radio" name="equity_readiness" value="Yes, fully" class="accent-[#D4A853] shrink-0" />
                 Yes, fully. I can operate without a big salary right now.
               </label>
               <label class="radio-pill flex items-center gap-3 px-4 py-3 bg-white border border-gray-200 rounded-xl cursor-pointer text-sm text-gray-700 hover:border-[#D4A853] hover:bg-[#D4A853]/5 transition-colors">
-                <input type="radio" name="Equity Readiness" value="Partly" class="accent-[#D4A853] shrink-0" />
+                <input type="radio" name="equity_readiness" value="Partly" class="accent-[#D4A853] shrink-0" />
                 Partly. I need some base but equity is the real draw.
               </label>
               <label class="radio-pill flex items-center gap-3 px-4 py-3 bg-white border border-gray-200 rounded-xl cursor-pointer text-sm text-gray-700 hover:border-[#D4A853] hover:bg-[#D4A853]/5 transition-colors">
-                <input type="radio" name="Equity Readiness" value="Need to discuss" class="accent-[#D4A853] shrink-0" />
+                <input type="radio" name="equity_readiness" value="Need to discuss" class="accent-[#D4A853] shrink-0" />
                 I need to discuss the specifics.
               </label>
             </div>
@@ -178,7 +170,7 @@ import Footer from '../components/Footer.astro';
 
           <div class="mb-5">
             <label for="cofounder-vision" class="block text-sm font-semibold text-[#1A0533] mb-2">What does a great co-founder relationship look like to you?</label>
-            <textarea id="cofounder-vision" name="Cofounder Vision" rows="4" placeholder="Be honest. What do you need and what do you bring..."
+            <textarea id="cofounder-vision" name="cofounder_vision" rows="4" placeholder="Be honest. What do you need and what do you bring..."
               class="w-full bg-gray-50 rounded-xl px-4 py-3 text-sm text-gray-800 placeholder-gray-400 border border-transparent focus:outline-none focus:ring-2 focus:ring-[#D4A853] transition-shadow resize-y"></textarea>
           </div>
 
@@ -186,13 +178,13 @@ import Footer from '../components/Footer.astro';
             <label class="block text-sm font-semibold text-[#1A0533] mb-3">Availability</label>
             <div class="flex flex-wrap gap-3">
               <label class="radio-pill flex items-center gap-2.5 px-4 py-2.5 bg-white border border-gray-200 rounded-xl cursor-pointer text-sm text-gray-700 hover:border-[#D4A853] hover:bg-[#D4A853]/5 transition-colors">
-                <input type="radio" name="Availability" value="Full-time" class="accent-[#D4A853]" /> Full-time
+                <input type="radio" name="availability" value="Full-time" class="accent-[#D4A853]" /> Full-time
               </label>
               <label class="radio-pill flex items-center gap-2.5 px-4 py-2.5 bg-white border border-gray-200 rounded-xl cursor-pointer text-sm text-gray-700 hover:border-[#D4A853] hover:bg-[#D4A853]/5 transition-colors">
-                <input type="radio" name="Availability" value="Part-time to start" class="accent-[#D4A853]" /> Part-time to start
+                <input type="radio" name="availability" value="Part-time to start" class="accent-[#D4A853]" /> Part-time to start
               </label>
               <label class="radio-pill flex items-center gap-2.5 px-4 py-2.5 bg-white border border-gray-200 rounded-xl cursor-pointer text-sm text-gray-700 hover:border-[#D4A853] hover:bg-[#D4A853]/5 transition-colors">
-                <input type="radio" name="Availability" value="Open to discuss" class="accent-[#D4A853]" /> Open to discuss
+                <input type="radio" name="availability" value="Open to discuss" class="accent-[#D4A853]" /> Open to discuss
               </label>
             </div>
           </div>
@@ -228,8 +220,15 @@ import Footer from '../components/Footer.astro';
 </Layout>
 
 <script>
+  import PocketBase from 'pocketbase';
+
+  declare global {
+    interface Window { posthog?: any; }
+  }
+
   const form = document.getElementById('appForm') as HTMLFormElement | null;
   const successState = document.getElementById('successState');
+  const submitBtn = form?.querySelector('button[type="submit"]') as HTMLButtonElement | null;
 
   // Highlight selected radio options
   document.querySelectorAll('.radio-pill input[type="radio"]').forEach((radio) => {
@@ -250,22 +249,43 @@ import Footer from '../components/Footer.astro';
     });
   });
 
-  // Handle Netlify form submission with success state
   if (form) {
+    const pb = new PocketBase(import.meta.env.PUBLIC_POCKETBASE_URL);
+
     form.addEventListener('submit', async (e) => {
       e.preventDefault();
+      if (submitBtn) { submitBtn.disabled = true; submitBtn.textContent = 'Submitting...'; }
+
       const formData = new FormData(form);
 
+      const data = {
+        full_name: formData.get('full_name') as string,
+        location: formData.get('location') as string,
+        email: formData.get('email') as string,
+        linkedin: formData.get('linkedin') as string,
+        current_role: formData.get('current_role') as string,
+        one_sentence_pitch: formData.get('one_sentence_pitch') as string,
+        creative_growth_story: (formData.get('creative_growth_story') as string) || '',
+        zero_budget_growth: (formData.get('zero_budget_growth') as string) || '',
+        own_course_experience: (formData.get('own_course_experience') as string) || '',
+        b2b_deal_story: (formData.get('b2b_deal_story') as string) || '',
+        equity_readiness: (formData.get('equity_readiness') as string) || '',
+        cofounder_vision: (formData.get('cofounder_vision') as string) || '',
+        availability: (formData.get('availability') as string) || '',
+      };
+
       try {
-        await fetch('/', {
-          method: 'POST',
-          headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
-          body: new URLSearchParams(formData as any).toString(),
+        await pb.collection('Cofounder_Applications').create(data);
+
+        window.posthog?.capture('cofounder_application_submitted', {
+          form_name: 'cofounder-application',
         });
+
         form.classList.add('hidden');
         if (successState) successState.classList.remove('hidden');
         window.scrollTo({ top: form.offsetTop - 100, behavior: 'smooth' });
       } catch {
+        if (submitBtn) { submitBtn.disabled = false; submitBtn.textContent = 'Submit application'; }
         alert('Something went wrong. Please try again or email us directly.');
       }
     });

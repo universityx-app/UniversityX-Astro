@@ -77,25 +77,16 @@ const studentCounts = ['Under 100', '100-500', '500-1,000', '1,000+'];
       <div id="uni-form-card" class="bg-white rounded-3xl shadow-xl p-8 md:p-10">
         <form
           id="uni-form"
-          name="for-universities"
-          method="POST"
-          data-netlify="true"
-          netlify-honeypot="bot-field"
           novalidate
           class="space-y-6"
         >
-          <p class="hidden">
-            <label>Don&#8217;t fill this out: <input name="bot-field" type="text" /></label>
-          </p>
-          <input type="hidden" name="form-name" value="for-universities" />
-
           <!-- University / Institution Name -->
           <div>
             <label for="uni-institution" class="block text-sm font-semibold text-[#1A0533] mb-2">University / Institution Name</label>
             <input
               type="text"
               id="uni-institution"
-              name="institution-name"
+              name="institution_name"
               placeholder="Enter your university or institution name"
               required
               class="w-full bg-gray-50 rounded-xl px-4 py-3 text-sm text-gray-800 placeholder-gray-400 border border-transparent focus:outline-none focus:ring-2 focus:ring-[#D4A853] focus:border-[#D4A853] transition-all duration-200"
@@ -108,7 +99,7 @@ const studentCounts = ['Under 100', '100-500', '500-1,000', '1,000+'];
             <input
               type="text"
               id="uni-name"
-              name="full-name"
+              name="full_name"
               placeholder="Enter your full name"
               required
               class="w-full bg-gray-50 rounded-xl px-4 py-3 text-sm text-gray-800 placeholder-gray-400 border border-transparent focus:outline-none focus:ring-2 focus:ring-[#D4A853] focus:border-[#D4A853] transition-all duration-200"
@@ -148,7 +139,7 @@ const studentCounts = ['Under 100', '100-500', '500-1,000', '1,000+'];
             <label for="uni-students" class="block text-sm font-semibold text-[#1A0533] mb-2">Estimated number of students</label>
             <select
               id="uni-students"
-              name="student-count"
+              name="student_count"
               required
               class="w-full bg-gray-50 rounded-xl px-4 py-3 text-sm text-gray-800 border border-transparent focus:outline-none focus:ring-2 focus:ring-[#D4A853] transition-all duration-200 cursor-pointer"
             >
@@ -189,54 +180,13 @@ const studentCounts = ['Under 100', '100-500', '500-1,000', '1,000+'];
 </section>
 
 <script>
-  declare global {
-    interface Window {
-      posthog?: any;
-    }
-  }
+  import PocketBase from 'pocketbase';
 
   function initUniForm() {
     const form = document.getElementById('uni-form') as HTMLFormElement | null;
     const formCard = document.getElementById('uni-form-card')!;
     const successMessage = document.getElementById('uni-success')!;
     if (!form) return;
-
-    // --- Multi-select dropdown ---
-    const deptsToggle = document.getElementById('uni-depts-toggle')!;
-    const deptsMenu = document.getElementById('uni-depts-menu')!;
-    const deptsLabel = document.getElementById('uni-depts-label')!;
-    const deptsChevron = document.getElementById('uni-depts-chevron')!;
-    const deptsHidden = document.getElementById('uni-depts-hidden') as HTMLInputElement;
-    const deptCheckboxes = deptsMenu.querySelectorAll<HTMLInputElement>('.uni-dept-checkbox');
-
-    deptsToggle.addEventListener('click', () => {
-      const isOpen = !deptsMenu.classList.contains('hidden');
-      deptsMenu.classList.toggle('hidden');
-      deptsChevron.classList.toggle('rotate-180', !isOpen);
-    });
-
-    document.addEventListener('click', (e) => {
-      if (!deptsToggle.contains(e.target as Node) && !deptsMenu.contains(e.target as Node)) {
-        deptsMenu.classList.add('hidden');
-        deptsChevron.classList.remove('rotate-180');
-      }
-    });
-
-    function updateDeptsLabel() {
-      const selected = [...deptCheckboxes].filter((c) => c.checked).map((c) => c.value);
-      deptsHidden.value = selected.join(', ');
-      if (selected.length > 0) {
-        deptsLabel.textContent = selected.join(', ');
-        deptsLabel.classList.remove('text-gray-400');
-        deptsLabel.classList.add('text-gray-800');
-      } else {
-        deptsLabel.textContent = 'Select departments';
-        deptsLabel.classList.add('text-gray-400');
-        deptsLabel.classList.remove('text-gray-800');
-      }
-    }
-
-    deptCheckboxes.forEach((cb) => cb.addEventListener('change', updateDeptsLabel));
 
     // --- Validation ---
     const emailInput = form.querySelector('#uni-email') as HTMLInputElement;
@@ -250,6 +200,8 @@ const studentCounts = ['Under 100', '100-500', '500-1,000', '1,000+'];
     }
 
     emailInput.addEventListener('blur', validateEmail);
+
+    const pb = new PocketBase(import.meta.env.PUBLIC_POCKETBASE_URL);
 
     // --- Form submission ---
     form.addEventListener('submit', async (e) => {
@@ -266,30 +218,26 @@ const studentCounts = ['Under 100', '100-500', '500-1,000', '1,000+'];
 
       const formData = new FormData(form);
 
-      try {
-        await fetch('/', {
-          method: 'POST',
-          headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
-          body: new URLSearchParams(formData as any).toString(),
-        });
+      const data = {
+        institution_name: formData.get('institution_name') as string,
+        full_name: formData.get('full_name') as string,
+        email: formData.get('email') as string,
+        whatsapp: (formData.get('whatsapp') as string) || '',
+        student_count: formData.get('student_count') as string,
+        goals: (formData.get('goals') as string) || '',
+      };
 
-        // Track successful university partnership request in PostHog
-        const role = (document.getElementById('uni-role') as HTMLSelectElement)?.value || '';
-        const departments = (document.getElementById('uni-depts-hidden') as HTMLInputElement)?.value || '';
-        const studentCount = (document.getElementById('uni-students') as HTMLSelectElement)?.value || '';
-        const startTimeline = (document.getElementById('uni-start') as HTMLSelectElement)?.value || '';
+      try {
+        await pb.collection('For_Universities').create(data);
+
         window.posthog?.capture('university_partnership_requested', {
           form_name: 'for-universities',
-          role: role,
-          departments: departments,
-          student_count: studentCount,
-          start_timeline: startTimeline
+          student_count: data.student_count,
         });
 
         formCard.classList.add('hidden');
         successMessage.classList.remove('hidden');
       } catch (err) {
-        // Capture form submission error in PostHog
         window.posthog?.captureException(err);
         submitBtn.disabled = false;
         submitBtn.textContent = 'Request Partnership';

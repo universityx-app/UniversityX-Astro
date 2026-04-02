@@ -75,25 +75,16 @@ const benefits = [
       <div id="apply-form-card" class="bg-white rounded-3xl shadow-xl p-8 md:p-10">
         <form
           id="apply-form"
-          name="apply-to-teach"
-          method="POST"
-          data-netlify="true"
-          netlify-honeypot="bot-field"
           novalidate
           class="space-y-6"
         >
-          <p class="hidden">
-            <label>Don&#8217;t fill this out: <input name="bot-field" type="text" /></label>
-          </p>
-          <input type="hidden" name="form-name" value="apply-to-teach" />
-
           <!-- Full Name -->
           <div>
             <label for="apply-name" class="block text-sm font-semibold text-[#1A0533] mb-2">Full Name</label>
             <input
               type="text"
               id="apply-name"
-              name="full-name"
+              name="full_name"
               placeholder="Enter your full name"
               required
               class="apply-input w-full bg-gray-50 rounded-xl px-4 py-3 text-sm text-gray-800 placeholder-gray-400 border border-transparent focus:outline-none focus:ring-2 focus:ring-[#D4A853] focus:border-[#D4A853] transition-all duration-200"
@@ -145,26 +136,26 @@ const benefits = [
             <legend class="block text-sm font-semibold text-[#1A0533] mb-3">I'm applying as:</legend>
             <div class="flex flex-wrap gap-4">
               <label class="flex items-center gap-2 cursor-pointer">
-                <input type="checkbox" name="applying-as" value="Course Creator" class="w-4 h-4 rounded border-gray-300 text-[#D4A853] focus:ring-[#D4A853]" />
+                <input type="checkbox" name="applying_as" value="Course Creator" id="applying-course-creator" class="w-4 h-4 rounded border-gray-300 text-[#D4A853] focus:ring-[#D4A853]" />
                 <span class="text-sm text-gray-700">Course Creator</span>
               </label>
               <label class="flex items-center gap-2 cursor-pointer">
-                <input type="checkbox" name="applying-as" value="Instructor" class="w-4 h-4 rounded border-gray-300 text-[#D4A853] focus:ring-[#D4A853]" />
+                <input type="checkbox" name="applying_as" value="Instructor" class="w-4 h-4 rounded border-gray-300 text-[#D4A853] focus:ring-[#D4A853]" />
                 <span class="text-sm text-gray-700">Instructor</span>
               </label>
               <label class="flex items-center gap-2 cursor-pointer">
-                <input type="checkbox" name="applying-as" value="Both" class="w-4 h-4 rounded border-gray-300 text-[#D4A853] focus:ring-[#D4A853]" />
+                <input type="checkbox" name="applying_as" value="Both" id="applying-both" class="w-4 h-4 rounded border-gray-300 text-[#D4A853] focus:ring-[#D4A853]" />
                 <span class="text-sm text-gray-700">Both</span>
               </label>
             </div>
           </fieldset>
 
-          <!-- Conditional: Course links (shown when Yes) -->
+          <!-- Conditional: Course links (shown when Course Creator or Both is checked) -->
           <div id="course-links-wrapper" class="hidden">
             <label for="apply-course-links" class="block text-sm font-semibold text-[#1A0533] mb-2">Share links to your courses</label>
             <textarea
               id="apply-course-links"
-              name="course-links"
+              name="course_links"
               placeholder="Paste links to your existing courses (one per line)"
               rows="3"
               class="apply-input w-full bg-gray-50 rounded-xl px-4 py-3 text-sm text-gray-800 placeholder-gray-400 border border-transparent focus:outline-none focus:ring-2 focus:ring-[#D4A853] focus:border-[#D4A853] transition-all duration-200 resize-y"
@@ -191,7 +182,7 @@ const benefits = [
             </label>
             <textarea
               id="apply-more"
-              name="more-info"
+              name="more_info"
               placeholder="Anything else you'd like us to know, your experience, teaching style, goals..."
               rows="3"
               class="apply-input w-full bg-gray-50 rounded-xl px-4 py-3 text-sm text-gray-800 placeholder-gray-400 border border-transparent focus:outline-none focus:ring-2 focus:ring-[#D4A853] focus:border-[#D4A853] transition-all duration-200 resize-y"
@@ -214,60 +205,29 @@ const benefits = [
 </section>
 
 <script>
+  import PocketBase from 'pocketbase';
+
+  declare global {
+    interface Window { posthog?: any; }
+  }
+
   function initApplyForm() {
     const form = document.getElementById('apply-form') as HTMLFormElement | null;
     const formCard = document.getElementById('apply-form-card')!;
     const successMessage = document.getElementById('apply-success')!;
     if (!form) return;
 
-    // --- Conditional: course links visibility ---
-    const coursesYes = document.getElementById('courses-yes') as HTMLInputElement;
-    const coursesNo = document.getElementById('courses-no') as HTMLInputElement;
+    // --- Conditional: show course links when Course Creator or Both is checked ---
     const courseLinksWrapper = document.getElementById('course-links-wrapper')!;
+    const applyingAsCheckboxes = form.querySelectorAll<HTMLInputElement>('input[name="applying_as"]');
 
-    coursesYes.addEventListener('change', () => {
-      if (coursesYes.checked) courseLinksWrapper.classList.remove('hidden');
-    });
-    coursesNo.addEventListener('change', () => {
-      if (coursesNo.checked) courseLinksWrapper.classList.add('hidden');
-    });
-
-    // --- Multi-select dropdown ---
-    const subjectsToggle = document.getElementById('subjects-toggle')!;
-    const subjectsMenu = document.getElementById('subjects-menu')!;
-    const subjectsLabel = document.getElementById('subjects-label')!;
-    const subjectsChevron = document.getElementById('subjects-chevron')!;
-    const subjectsHidden = document.getElementById('subjects-hidden') as HTMLInputElement;
-    const subjectCheckboxes = subjectsMenu.querySelectorAll<HTMLInputElement>('.subject-checkbox');
-
-    subjectsToggle.addEventListener('click', () => {
-      const isOpen = !subjectsMenu.classList.contains('hidden');
-      subjectsMenu.classList.toggle('hidden');
-      subjectsChevron.classList.toggle('rotate-180', !isOpen);
-    });
-
-    document.addEventListener('click', (e) => {
-      if (!subjectsToggle.contains(e.target as Node) && !subjectsMenu.contains(e.target as Node)) {
-        subjectsMenu.classList.add('hidden');
-        subjectsChevron.classList.remove('rotate-180');
-      }
-    });
-
-    function updateSubjectsLabel() {
-      const selected = [...subjectCheckboxes].filter((c) => c.checked).map((c) => c.value);
-      subjectsHidden.value = selected.join(', ');
-      if (selected.length > 0) {
-        subjectsLabel.textContent = selected.join(', ');
-        subjectsLabel.classList.remove('text-gray-400');
-        subjectsLabel.classList.add('text-gray-800');
-      } else {
-        subjectsLabel.textContent = 'Select subjects';
-        subjectsLabel.classList.add('text-gray-400');
-        subjectsLabel.classList.remove('text-gray-800');
-      }
+    function updateCourseLinksVisibility() {
+      const checked = [...applyingAsCheckboxes].filter((c) => c.checked).map((c) => c.value);
+      const showLinks = checked.includes('Course Creator') || checked.includes('Both');
+      courseLinksWrapper.classList.toggle('hidden', !showLinks);
     }
 
-    subjectCheckboxes.forEach((cb) => cb.addEventListener('change', updateSubjectsLabel));
+    applyingAsCheckboxes.forEach((cb) => cb.addEventListener('change', updateCourseLinksVisibility));
 
     // --- Validation ---
     const emailInput = form.querySelector('#apply-email') as HTMLInputElement;
@@ -281,6 +241,8 @@ const benefits = [
     }
 
     emailInput.addEventListener('blur', validateEmail);
+
+    const pb = new PocketBase(import.meta.env.PUBLIC_POCKETBASE_URL);
 
     // --- Form submission ---
     form.addEventListener('submit', async (e) => {
@@ -296,27 +258,30 @@ const benefits = [
       submitBtn.textContent = 'Submitting...';
 
       const formData = new FormData(form);
+      const applyingAs = formData.getAll('applying_as').join(', ');
+
+      const data = {
+        full_name: formData.get('full_name') as string,
+        email: formData.get('email') as string,
+        whatsapp: (formData.get('whatsapp') as string) || '',
+        linkedin: (formData.get('linkedin') as string) || '',
+        applying_as: applyingAs,
+        course_links: (formData.get('course_links') as string) || '',
+        topics: formData.get('topics') as string,
+        more_info: (formData.get('more_info') as string) || '',
+      };
 
       try {
-        await fetch('/', {
-          method: 'POST',
-          headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
-          body: new URLSearchParams(formData as any).toString(),
-        });
+        await pb.collection('Apply_To_Teach').create(data);
 
-        // Track successful instructor application in PostHog
-        const subjects = (document.getElementById('subjects-hidden') as HTMLInputElement)?.value || '';
-        const startTimeline = (document.getElementById('apply-start') as HTMLSelectElement)?.value || '';
         window.posthog?.capture('instructor_application_submitted', {
           form_name: 'apply-to-teach',
-          subjects: subjects,
-          start_timeline: startTimeline
+          applying_as: data.applying_as,
         });
 
         formCard.classList.add('hidden');
         successMessage.classList.remove('hidden');
       } catch (err) {
-        // Capture form submission error in PostHog
         window.posthog?.captureException(err);
         submitBtn.disabled = false;
         submitBtn.textContent = 'Submit Application';
