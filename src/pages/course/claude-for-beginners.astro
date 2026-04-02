@@ -4,23 +4,22 @@ import Navbar from '../../components/Navbar.astro';
 import Footer from '../../components/Footer.astro';
 
 const course = {
-  title: 'The African Operator Playbook',
-  description: 'Most business education was built for Western markets. This course was built for Africa. Learn how to operate, scale, and lead businesses across the continent, from distribution and logistics to managing teams, raising capital, and navigating complex environments.',
-  price: 750000,
-  originalPrice: 800000,
-  startDate: 'Monday, April 6',
-  duration: '8 Weeks',
-  level: 'Intermediate',
-  format: 'Cohort Based',
+  title: 'Claude for Beginners',
+  description: 'Learn to use Claude and other LLMs to work smarter, write better, think clearer, and get more done. No technical background required.',
+  price: 0,
+  originalPrice: '',
+  startDate: 'Start anytime',
+  duration: 'Self Paced',
+  level: 'Beginner',
+  format: 'Self Paced',
   rating: 4.9,
-  thumbnail: '/images/babatunde-cover.png',
-  instructorPhoto: '/images/babatunde-hs.png',
+  thumbnail: '/images/claude-for-beginners.png',
 };
 ---
 
 <Layout
-  title="The African Operator Playbook - UniversityX"
-  description="Learn how to operate, scale, and lead businesses across Africa. A live 8-week cohort with Babatunde Durotoye, GM of M-KOPA Nigeria."
+  title="Claude for Beginners - UniversityX"
+  description="A free, self-paced course by Anthropic Academy. Learn to use Claude and other LLMs to work smarter, write better, and get more done. No technical skills needed."
 >
   <!-- Navbar -->
   <Navbar />
@@ -36,7 +35,7 @@ const course = {
         <svg class="w-3.5 h-3.5 text-[#BB39B4]" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
           <path d="M9 18l6-6-6-6" />
         </svg>
-        <span class="text-[#1A0533] font-medium">The African Operator Playbook</span>
+        <span class="text-[#1A0533] font-medium">Claude for Beginners</span>
       </nav>
 
       <!-- Two-column layout: content left, sidebar right -->
@@ -46,25 +45,24 @@ const course = {
         <div>
           <!-- Title -->
           <h1 class="text-3xl md:text-4xl font-extrabold text-[#1A0533] leading-tight mb-5">
-            The African Operator Playbook:
-            <em class="font-['Playfair_Display',serif] font-bold"> Build, Scale, and Lead High-Growth Companies in Africa</em>
+            Claude for Beginners
+            <em class="font-['Playfair_Display',serif] font-bold">- A Practical Handbook for Beginners on Leveraging LLMs for Everyday Tasks.</em>
           </h1>
 
           <!-- Description -->
           <p class="text-lg text-gray-700 leading-relaxed mb-6">
-            Most business education was built for Western markets. This course was built for Africa.
-            Learn how real operators run businesses across the continent, from navigating infrastructure
-            gaps and managing distributed teams, to raising capital and building customer trust in
-            low-trust environments.
+            Most people use AI the same way they used Google, typing a quick question and hoping for the best.
+            This course teaches you a better way. You will learn how to have real conversations with Claude,
+            give it context that matters, and turn it into a tool that actually fits the way you think and work.
           </p>
 
           <!-- What you'll learn -->
           <ul class="space-y-2.5 mb-8 text-lg">
             {[
-              'How to build operations that work in African markets, despite infrastructure, logistics, and payment challenges',
-              'Frameworks for managing teams, vendors, and stakeholders across multiple African cities',
-              'How to raise capital, manage cash flow, and structure deals that actually close',
-              'Real-world case studies from companies operating at scale across Nigeria and East Africa',
+              'How to write effective prompts that get useful, accurate results from Claude every time',
+              'How to use Claude as a thinking partner for research, writing, and decision-making',
+              'Practical workflows to automate repetitive tasks and save hours every week',
+              'How to apply LLMs confidently across work, learning, and personal projects',
             ].map((item) => (
               <li class="flex items-start gap-3 text-gray-700">
                 <svg class="w-5 h-5 text-[#BB39B4] shrink-0 mt-0.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
@@ -78,9 +76,9 @@ const course = {
           <!-- Metadata chips -->
           <div class="flex flex-wrap gap-3 mb-8">
             {[
-              { icon: 'clock', label: '8 Weeks' },
-              { icon: 'bar-chart', label: 'Intermediate' },
-              { icon: 'users', label: 'Cohort Based' },
+              { label: '⏱️ Self Paced' },
+              { label: '🌱 Beginner' },
+              { label: '👥 500+ Enrolled' },
             ].map(({ label }) => (
               <span class="inline-flex items-center gap-2 bg-[#F5F2EB] text-[#1A0533] text-base font-medium px-4 py-2 rounded-full">
                 {label}
@@ -93,24 +91,14 @@ const course = {
             <p class="text-xs font-semibold text-gray-400 uppercase tracking-widest mb-4">Instructor</p>
             <div class="flex items-center gap-4">
               <img
-                src={course.instructorPhoto}
+                src="/images/anthropic-logo.png"
                 alt="Babatunde Durotoye"
                 class="w-18 h-18 rounded-full object-cover object-top shrink-0"
                 loading="eager"
               />
               <div>
-                <p class="font-semibold text-[#1A0533] text-lg">Babatunde Durotoye</p>
-                <p class="text-base text-gray-500">General Manager, M-KOPA Nigeria. Operator across tech, banking, consulting & startups</p>
-              </div>
-            </div>
-
-            <!-- Companies worked with -->
-            <div class="mt-5">
-              <p class="text-xs font-semibold text-gray-400 uppercase tracking-widest mb-3">Have operated across</p>
-              <div class="flex items-center flex-wrap gap-5">
-                <img src="/images/mkopa-logo.png" alt="Mkopa" class="h-8" loading="lazy" />
-                <img src="/images/safeboda-logo.png" alt="SafeBoda" class="h-6" loading="lazy" />
-                <img src="/images/logo-andela.svg" alt="Andela" class="h-8" loading="lazy" />
+                <p class="font-semibold text-[#1A0533] text-lg">Anthropic Academy</p>
+                <p class="text-base text-gray-500">The official learning team behind Claude, building courses that make AI accessible to everyone.</p>
               </div>
             </div>
           </div>
@@ -122,7 +110,7 @@ const course = {
             <!-- Course thumbnail -->
             <img
               src={course.thumbnail}
-              alt="The African Operator Playbook"
+              alt="Claude for Beginners"
               class="w-full aspect-video object-cover"
               loading="eager"
             />
@@ -149,7 +137,7 @@ const course = {
                   <line x1="8" y1="2" x2="8" y2="6" />
                   <line x1="3" y1="10" x2="21" y2="10" />
                 </svg>
-                Starts {course.startDate}
+                {course.startDate}
               </div>
 
               <!-- Enroll CTA -->
@@ -158,7 +146,7 @@ const course = {
                 href="#enroll-form"
                 class="block w-full text-center bg-[#BB39B4] hover:bg-[#a832a1] text-white font-semibold px-8 py-4 rounded-lg transition-colors duration-200 text-base mt-10"
               >
-                Enroll Now
+                Start for Free
               </a>
 
               <!-- UniversityX Approved -->
@@ -182,20 +170,19 @@ const course = {
       <div class="max-w-7xl mx-auto px-6 md:px-12 lg:px-16 xl:px-24 max-w-3xl">
         <p class="text-xs font-semibold text-[#BB39B4] uppercase tracking-widest mb-3">Course Overview</p>
         <h2 class="text-2xl md:text-3xl font-extrabold text-[#1A0533] leading-tight mb-6">
-          Stop applying Western playbooks to African problems.
+          AI is already changing how people work. This is where you start.
         </h2>
         <div class="space-y-4 text-gray-700 leading-relaxed text-lg md:text-lg">
           <p>
-            Africa's fastest-growing companies aren't being built by MBA graduates running spreadsheets.
-            They're being built by operators, people who understand local markets, move fast with limited
-            resources, and build trust in environments where trust is earned, not assumed. This course
-            gives you the exact mental models and tactical frameworks those operators use.
+            Claude is one of the most capable AI assistants in the world, but most people are only using
+            10% of what it can do. The difference between a frustrating AI experience and a genuinely useful
+            one comes down to how you communicate. This course teaches you exactly that: how to ask better
+            questions, give better context, and structure conversations that produce results you can actually use.
           </p>
           <p>
-            Over 8 weeks, you'll go deep with Babatunde Durotoye, General Manager of M-KOPA Nigeria
-            learning how he has scaled operations across one of Africa's most complex consumer markets.
-            Every session is hands-on, every framework is immediately applicable, and every cohort
-            member comes in with real work to do.
+            Whether you are a student, a professional, a creative, or just someone who wants to get more done
+            in less time, this handbook meets you where you are. No code, no jargon, no prerequisite knowledge
+            required. Just practical skills you can apply the moment you finish each lesson.
           </p>
         </div>
       </div>
@@ -211,18 +198,18 @@ const course = {
           {[
             {
               num: '01',
-              title: "You're building or running a business in Africa",
-              body: "And you're tired of watching frameworks built for Silicon Valley fail in your market. You need tools that actually work here.",
+              title: "You're brand new to AI tools",
+              body: "You've heard the buzz but haven't known where to start. This course gives you a clear, structured entry point; no prior experience needed, no jargon to wade through.",
             },
             {
               num: '02',
-              title: 'You work inside a growing company',
-              body: "And you want to be the person who understands how to run operations at scale, so you get noticed, promoted, and trusted with more.",
+              title: "You use AI occasionally but want more",
+              body: "You've tried ChatGPT or Claude a few times but the results feel hit-or-miss. You want to unlock what these tools can actually do when used intentionally.",
             },
             {
               num: '03',
-              title: "You're a founder or early-stage operator",
-              body: "And you need to build systems, manage people, and grow revenue without burning out or making expensive mistakes.",
+              title: "You have real work you want AI to help with",
+              body: "Writing, research, summarising, planning, brainstorming. You have actual tasks and you want to build repeatable AI-powered workflows around them.",
             },
           ].map(({ num, title, body }) => (
             <div class="bg-[#F5F2EB] rounded-2xl p-7">
@@ -244,31 +231,24 @@ const course = {
         <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
           {[
             {
-              title: 'Live classes every week',
-              body: 'Babajide teaches step-by-step in real time. Ask questions, get unstuck, and actually build things during class.',
-              icon: 'M15 10l4.553-2.069A1 1 0 0121 8.82V15a2 2 0 01-2 2H5a2 2 0 01-2-2V9a2 2 0 012-2h1',
+              title: 'Learn at your own pace',
+              body: 'All lessons are available the moment you enroll. No schedule, no deadlines. Go as fast or as slow as you need to.',
+              emoji: '⏳',
             },
             {
-              title: 'Watch anytime, forever',
-              body: 'Access all learning materials, video lessons, and recordings of every live session. Rewatch as many times as you need.',
-              icon: 'M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-1 14H9V8h2v8zm4 0h-2V8h2v8z',
-            },
-            {
-              title: 'Community learning',
-              body: "Join other operators and founders figuring it out too. Help each other, share what's working, and build projects together.",
-              icon: 'M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2M23 21v-2a4 4 0 00-3-3.87M16 3.13a4 4 0 010 7.75M9 7a4 4 0 100 8 4 4 0 000-8z',
+              title: 'Hands-on exercises',
+              body: 'Every module includes real prompts, practical challenges, and scenarios drawn from actual use cases, so you learn by doing, not just reading.',
+              emoji: '🛠️',
             },
             {
               title: 'Certificate of completion',
-              body: 'Add it to LinkedIn, show it to employers, or use it to win clients and contracts.',
-              icon: 'M12 15l-3 3 1.5-4.5L6 9h4.5L12 4l1.5 5H18l-4.5 4.5L15 18z',
+              body: 'Finish the course and earn a shareable certificate. Add it to your LinkedIn, CV, or portfolio to show you know how to work with AI.',
+              emoji: '📜',
             },
-          ].map(({ title, body, icon }) => (
+          ].map(({ title, body, emoji }) => (
             <div class="flex items-start gap-4 bg-white rounded-2xl p-6 shadow-sm">
               <div class="w-10 h-10 rounded-xl bg-[#BB39B4]/10 flex items-center justify-center shrink-0">
-                <svg class="w-5 h-5 text-[#BB39B4]" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-                  <path d={icon} />
-                </svg>
+                <span class="text-xl">{emoji}</span>
               </div>
               <div>
                 <p class="font-semibold text-[#1A0533] mb-1 text-lg">{title}</p>
@@ -286,50 +266,51 @@ const course = {
       <div class="max-w-7xl mx-auto px-6 md:px-12 lg:px-16 xl:px-24">
         <p class="text-xs font-semibold text-[#BB39B4] uppercase tracking-widest mb-3 text-center">Curriculum</p>
         <h2 class="text-2xl md:text-3xl font-extrabold text-[#1A0533] text-center mb-3">Course Syllabus</h2>
-        <p class="text-center text-gray-500 mb-12">16 Lessons · 4 Modules · 4 Projects</p>
+        <p class="text-center text-gray-500 mb-12">16 Lessons · 4 Modules · 3 Projects</p>
 
         <div class="max-w-2xl mx-auto space-y-3" id="syllabus">
           {[
             {
-              module: 'Module 1: The Operator Mindset',
+              module: 'Module 1: Understanding Claude & LLMs',
               lessons: [
-                { title: 'What is an Operator?', duration: '12:00' },
-                { title: 'How African Markets Are Different', duration: '18:30' },
-                { title: 'Building Mental Models for Complexity', duration: '14:00' },
-                { title: 'Case Study: M-KOPA Nigeria Growth Story', duration: '22:00' },
+                { title: 'What is Claude and how does it actually work?' },
+                { title: 'How LLMs think: tokens, context, and memory' },
+                { title: 'What Claude is great at (and what it is not)' },
+                { title: 'Setting yourself up: accounts, interfaces, and settings' },
               ],
             },
             {
-              module: 'Module 2: Systems & Operations',
+              module: 'Module 2: Prompting Like a Pro',
               lessons: [
-                { title: 'Building Processes That Survive the Founder', duration: '20:00' },
-                { title: 'Logistics & Distribution in African Markets', duration: '16:00' },
-                { title: 'Technology Stack for the African Operator', duration: '14:30' },
-                { title: 'Project: Map Your Core Operations', duration: 'Project' },
+                { title: 'The anatomy of a great prompt' },
+                { title: 'Giving Claude the right context and role' },
+                { title: 'Iterating: how to refine until you get what you need' },
+                { title: 'Project: Build your personal prompt library' },
               ],
             },
             {
-              module: 'Module 3: People & Stakeholders',
+              module: 'Module 3: Real-World Workflows',
               lessons: [
-                { title: 'Hiring & Managing Distributed Teams', duration: '18:00' },
-                { title: 'Building Trust with Vendors & Partners', duration: '15:00' },
-                { title: 'Managing Up: Boards, Investors & HQ', duration: '20:00' },
-                { title: 'Project: Design Your Org Structure', duration: 'Project' },
+                { title: 'Using Claude for writing, editing, and feedback' },
+                { title: 'Research, summarising, and making sense of long documents' },
+                { title: 'Planning, brainstorming, and thinking through hard decisions' },
+                { title: 'Project: Automate one task from your real life or work' },
               ],
             },
             {
-              module: 'Module 4: Capital & Growth',
+              module: 'Module 4: Going Further',
               lessons: [
-                { title: 'Cash Flow Management for Operators', duration: '16:00' },
-                { title: 'Raising Capital: What Works in Africa', duration: '22:00' },
-                { title: 'Structuring Deals That Close', duration: '18:00' },
-                { title: 'Project: Build Your Operator Playbook', duration: 'Project' },
+                { title: 'Advanced techniques: few-shot prompting, chaining, and formatting' },
+                { title: 'Using Claude with other tools and workflows' },
+                { title: 'Staying safe: what to trust, what to verify, and when not to use AI' },
+                { title: 'Project: Design your personal AI-powered workflow' },
               ],
             },
-          ].map(({ module, lessons }, i) => (
+          ].map(({ module, lessons }) => (
             <div class="accordion-item border border-gray-200 rounded-2xl overflow-hidden">
               <button
-                class="accordion-trigger w-full flex items-center justify-between px-6 py-4 text-left bg-white hover:bg-[#F5F2EB] transition-colors duration-200"
+                type="button"
+                class="accordion-trigger w-full flex items-center justify-between px-6 py-4 text-left bg-white hover:bg-[#F5F2EB] transition-colors duration-200 cursor-pointer"
                 aria-expanded="false"
               >
                 <span class="font-semibold text-[#1A0533]">{module}</span>
@@ -340,7 +321,7 @@ const course = {
               <div class="accordion-body">
                 <div class="accordion-inner">
                   <ul class="px-6 pb-4 pt-1 space-y-3 border-t border-gray-100">
-                    {lessons.map(({ title}) => (
+                    {lessons.map(({ title }) => (
                       <li class="flex items-center justify-between text-base my-4">
                         <span class="flex items-center gap-2 text-gray-700">
                           <svg class="w-4 h-4 text-gray-300 shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
@@ -348,11 +329,6 @@ const course = {
                           </svg>
                           {title}
                         </span>
-                        {/* <span class="text-gray-400 text-xs shrink-0 ml-4">
-                          {duration === 'Project' ? (
-                            <span class="bg-[#BB39B4]/10 text-[#BB39B4] font-medium px-2 py-0.5 rounded-full">Project</span>
-                          ) : duration}
-                        </span> */}
                       </li>
                     ))}
                   </ul>
@@ -365,44 +341,8 @@ const course = {
     </section>
 
 
-    <!-- ── MEET THE INSTRUCTOR ────────────────────────────────────────── -->
-    <section class="bg-[#F5F2EB] py-16 md:py-20">
-      <div class="max-w-7xl mx-auto px-6 md:px-12 lg:px-16 xl:px-24">
-        <p class="text-xs font-semibold text-[#BB39B4] uppercase tracking-widest mb-10">Meet Your Instructor</p>
-        <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
-          <div>
-            <h2 class="text-2xl md:text-3xl font-extrabold text-[#1A0533] mb-2">Babatunde Durotoye</h2>
-            <p class="font-medium mb-5">General Manager, M-KOPA Nigeria</p>
-            <div class="space-y-4 text-gray-700 leading-relaxed text-lg">
-              <p>
-                Babajide has spent his career building and scaling operations across some of Africa's most
-                complex industries, from banking and consulting to fintech and consumer tech. As General
-                Manager of M-KOPA Nigeria, he oversees one of the continent's most sophisticated
-                asset-finance operations, reaching hundreds of thousands of customers across Nigeria.
-              </p>
-              <p>
-                What makes Babajide different as an instructor is that he's not teaching theory, he's
-                teaching exactly what he does every day to keep a business running and growing. He believes
-                that Africa's next generation of operators doesn't need more MBAs; it needs more people
-                who know how to get things done on the ground.
-              </p>
-            </div>
-          </div>
-          <div class="order-first md:order-last md:justify-self-end justify-self-center">
-            <img
-              src={course.instructorPhoto}
-              alt="Babatunde Durotoye "
-              class="w-full max-w-xs mx-auto md:mx-0 rounded-2xl object-cover object-top aspect-[3/4]"
-              loading="lazy"
-            />
-          </div>
-        </div>
-      </div>
-    </section>
-
-
     <!-- ── FAQ ──────────────────────────────────────────────────────── -->
-    <section class="py-16 md:py-20">
+    <section class="py-16 md:py-20 bg-[#F5F2EB]">
       <div class="max-w-7xl mx-auto px-6 md:px-12 lg:px-16 xl:px-24">
         <p class="text-xs font-semibold text-[#BB39B4] uppercase tracking-widest mb-3 text-center">FAQ</p>
         <h2 class="text-2xl md:text-3xl font-extrabold text-[#1A0533] text-center mb-4">Frequently Asked Questions</h2>
@@ -411,21 +351,22 @@ const course = {
         <div class="max-w-2xl mx-auto space-y-3" id="faq">
           {[
             {
-              q: "Do I need prior business experience to join?",
-              a: "Not at all. The course is designed for ambitious people at all stages, whether you're starting out, working inside a company, or already running a business. What matters is that you're serious about learning and willing to show up.",
+              q: "Do I need any technical skills to take this course?",
+              a: "Not at all. This course was designed from the ground up for complete beginners. If you can type a message and read a response, you have everything you need. No coding, no data science, no prior AI experience required.",
             },
             {
-              q: "What if I can't attend the live sessions?",
-              a: "Every live session is recorded and available immediately after. You'll have lifetime access to all recordings and materials, so you can learn at your own pace. That said, showing up live gives you access to direct Q&A with Babajide, which is invaluable.",
+              q: "How long does the course take to complete?",
+              a: "The course is fully self-paced, so you set your own timeline. Most students work through all four modules in one to two weeks, spending about 30 to 45 minutes per lesson. You can go faster or slower depending on how much time you have.",
             },
             {
-              q: "Is this relevant outside Nigeria?",
-              a: "Yes. While many case studies come from Nigeria, the frameworks apply across East, West, and Southern Africa. Students from Ghana, Kenya, Rwanda, and South Africa have found the content directly applicable to their markets.",
+              q: "Is this only about Claude, or will I learn skills that apply to other AI tools?",
+              a: "The course uses Claude as its primary example, but the prompting frameworks and workflow strategies you will learn apply to all major LLMs, including ChatGPT, Gemini, and others. The thinking skills transfer everywhere.",
             },
           ].map(({ q, a }) => (
-            <div class="accordion-item border border-gray-200 rounded-2xl overflow-hidden">
+            <div class="accordion-item border border-gray-200 rounded-2xl overflow-hidden bg-white">
               <button
-                class="accordion-trigger w-full flex items-center justify-between px-6 py-5 text-left bg-white hover:bg-[#F5F2EB] transition-colors duration-200"
+                type="button"
+                class="accordion-trigger w-full flex items-center justify-between px-6 py-5 text-left bg-white hover:bg-[#F5F2EB] transition-colors duration-200 cursor-pointer"
                 aria-expanded="false"
               >
                 <span class="font-semibold text-[#1A0533] pr-4">{q}</span>
@@ -449,16 +390,16 @@ const course = {
     <section id="enroll-form" class="bg-[#1A0533] py-16 md:py-20">
       <div class="max-w-7xl mx-auto px-6 md:px-12 lg:px-16 xl:px-24 text-center">
         <h2 class="text-2xl md:text-3xl font-extrabold text-white mb-3 leading-tight">
-          Ready to become an African Operator?
+          Start learning Claude today. It's completely free.
         </h2>
-        <p class="text-gray-400 mb-8 max-w-lg mx-auto">
-          Next cohort starts April 6. Spots are limited to 20 students to keep the quality high.
+        <p class="text-gray-400 mb-8 max-w-lg mx-auto text-lg">
+          Self-paced, beginner-friendly, and built by the team behind Claude. Start the moment you're ready.
         </p>
         <a
-          href="https://chat.whatsapp.com/LE59wydgTceDCsm8r81gXU"
+          href="#"
           class="inline-flex items-center gap-2 bg-[#BB39B4] hover:bg-[#a832a1] text-white font-semibold px-10 py-4 rounded-full transition-colors duration-200 text-base"
         >
-          Enroll Now ₦750,000
+          Start for Free
           <svg class="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
             <path d="M5 12h14M12 5l7 7-7 7" />
           </svg>
