@@ -3,6 +3,10 @@ import Layout from '../../layouts/Layout.astro';
 import Navbar from '../../components/Navbar.astro';
 import Footer from '../../components/Footer.astro';
 
+const courseId = 'fac29aa3-4516-472c-b61c-7bc20d96c183';
+const sourceUrl = 'https://universityx.app/course/claude-for-beginners';
+const joinUrl = `/join/open-learning?courseId=${courseId}&source=${encodeURIComponent(sourceUrl)}`;
+
 const course = {
   title: 'Claude for Beginners',
   description: 'Learn to use Claude and other LLMs to work smarter, write better, think clearer, and get more done. No technical background required.',
@@ -164,7 +168,7 @@ const course = {
               <!-- Enroll CTA -->
               <a
                 id="enroll"
-                href="#enroll-form"
+                href={joinUrl}
                 class="block w-full text-center bg-[#BB39B4] hover:bg-[#a832a1] text-white font-semibold px-8 py-4 rounded-lg transition-colors duration-200 text-base mt-4"
               >
                 Access the Course
