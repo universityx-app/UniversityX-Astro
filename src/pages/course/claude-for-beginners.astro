@@ -82,7 +82,7 @@ const course = {
             {[
               { label: '⏱️ Self Paced' },
               { label: '🌱 Beginner' },
-              { label: '👥 500+ Enrolled' },
+              { label: '👥 100+ Enrolled' },
             ].map(({ label }) => (
               <span class="inline-flex items-center gap-2 bg-[#F5F2EB] text-[#1A0533] text-base font-medium px-4 py-2 rounded-full">
                 {label}
@@ -135,17 +135,12 @@ const course = {
 
               <!-- Start date -->
               <div class="flex items-center gap-2 text-lg text-gray-600 font-medium">
-                <svg class="w-6 h-6 text-[#BB39B4]" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-                  <rect x="3" y="4" width="18" height="18" rx="2" ry="2" />
-                  <line x1="16" y1="2" x2="16" y2="6" />
-                  <line x1="8" y1="2" x2="8" y2="6" />
-                  <line x1="3" y1="10" x2="21" y2="10" />
-                </svg>
-                Saturday, 11th April
+                <svg class="w-6 h-6" xmlns="http://www.w3.org/2000/svg" version="1.1" xmlns:xlink="http://www.w3.org/1999/xlink" width="512" height="512" x="0" y="0" viewBox="0 0 469.336 469.336" xml:space="preserve" class=""><path d="M459.951 137.147 331.972 9.083c-12.063-12.112-33.219-12.102-45.26-.01l-42.656 42.684c-6.052 6.035-9.385 14.082-9.385 22.65 0 8.568 3.333 16.615 9.375 22.64l1.279 1.279c-25.742 17.781-82.48 50.797-149.32 50.797-4.76 0-8.948 3.158-10.26 7.745L.409 455.732a10.68 10.68 0 0 0 10.261 13.603c.979 0 1.969-.135 2.927-.407l298.667-85.39a10.682 10.682 0 0 0 7.74-10.267c0-66.884 32.993-123.66 50.763-149.419l1.268 1.269c6.031 6.056 14.073 9.392 22.635 9.392s16.604-3.336 22.625-9.381l42.656-42.684c6.052-6.035 9.385-14.082 9.385-22.65 0-8.569-3.333-16.616-9.385-22.651zM298.815 365.251 47.317 437.104l123.147-123.147c6.345 3.746 13.65 6.044 21.539 6.044 23.531 0 42.667-19.135 42.667-42.667s-19.135-42.667-42.667-42.667-42.667 19.135-42.667 42.667c0 7.889 2.298 15.194 6.044 21.539L32.233 422.021l71.853-251.499c72.027-2.594 131.564-38.892 156.555-56.633l94.807 94.807c-17.741 24.992-54.039 84.528-56.633 156.555zM170.67 277.335c0-11.76 9.573-21.333 21.333-21.333 11.76 0 21.333 9.573 21.333 21.333 0 11.76-9.573 21.333-21.333 21.333-11.76 0-21.333-9.573-21.333-21.333zm274.208-109.792-42.677 42.677c-4 4.021-11.052 4.031-15.073-.01L259.118 82.2c-2.01-2-3.115-4.677-3.115-7.531s1.104-5.531 3.125-7.542l42.677-42.677c2-2.01 4.677-3.115 7.531-3.115s5.531 1.104 7.542 3.125l128 128 .01.01c2.01 2 3.115 4.677 3.115 7.531 0 2.855-1.104 5.532-3.125 7.542z" fill="#BB39B4" opacity="1" data-original="#BB39B4"/></svg>
+                Hands-On Learning
               </div>
 
               <!-- Countdown Timer -->
-              <div class="mt-8 text-center bg-[#F5F2EB] rounded-xl p-4 border border-[#F5F2EB]/80">
+              <!-- <div class="mt-8 text-center bg-[#F5F2EB] rounded-xl p-4 border border-[#F5F2EB]/80">
                 <p class="text-sm font-bold text-[#BB39B4] uppercase tracking-wider mb-2">Course Goes Live In</p>
                 <div class="flex items-center justify-center gap-3 countdown-container">
                   <div class="flex flex-col">
@@ -163,7 +158,7 @@ const course = {
                     <span class="text-sm text-gray-500 uppercase tracking-widest mt-0.5">Sec</span>
                   </div>
                 </div>
-              </div>
+              </div> -->
 
               <!-- Enroll CTA -->
               <a
@@ -171,7 +166,7 @@ const course = {
                 href={joinUrl}
                 class="block w-full text-center bg-[#BB39B4] hover:bg-[#a832a1] text-white font-semibold px-8 py-4 rounded-lg transition-colors duration-200 text-base mt-4"
               >
-                Access the Course
+                Enroll Now for FREE
               </a>
 
               <!-- UniversityX Approved -->
@@ -192,7 +187,7 @@ const course = {
 
     <!-- ── COURSE OVERVIEW ───────────────────────────────────────────── -->
     <section class="bg-[#F5F2EB] mt-16 py-16 md:py-20">
-      <div class="max-w-7xl mx-auto px-6 md:px-12 lg:px-16 xl:px-24">
+      <div class="max-w-7xl w-3/4 px-6 md:px-12 lg:px-16 xl:px-24">
         <p class="text-xs font-semibold text-[#BB39B4] uppercase tracking-widest mb-3">Course Overview</p>
         <h2 class="text-2xl md:text-3xl font-extrabold text-[#1A0533] leading-tight mb-6">
           AI is already changing how people work. This is where you start.
@@ -381,7 +376,7 @@ const course = {
             },
             {
               q: "How long does the course take to complete?",
-              a: "The course is fully self-paced, so you set your own timeline. Most students work through all four modules in one to two weeks, spending about 30 to 45 minutes per lesson. You can go faster or slower depending on how much time you have.",
+              a: "The course is fully self-paced, so you set your own timeline. Most students work through all four modules in one to two weeks, spending about 30 to 45 minutes per module. You can go faster or slower depending on how much time you have.",
             },
             {
               q: "Is this only about Claude, or will I learn skills that apply to other AI tools?",
@@ -412,6 +407,8 @@ const course = {
 
 
     <!-- ── ENROLL CTA BANNER ──────────────────────────────────────────── -->
+    {
+    /*
     <section id="enroll-form" class="bg-[#1A0533] py-16 md:py-20">
       <div class="max-w-7xl mx-auto px-6 md:px-12 lg:px-16 xl:px-24">
         
@@ -482,6 +479,27 @@ const course = {
           </form>
         </div>
 
+      </div>
+    </section>
+    */
+   }
+
+    <!-- ── ENROLL CTA BANNER ──────────────────────────────────────────── -->
+    <section id="enroll-form" class="bg-[#1A0533] py-16 md:py-20">
+      <div class="max-w-7xl mx-auto px-6 md:px-12 lg:px-16 xl:px-24 text-center">
+        <h2 class="text-2xl md:text-3xl font-extrabold text-white mb-3 leading-tight">
+          Most people use AI wrong. You don&rsquo;t have to.
+        </h2>
+        <p class="text-gray-400 mx-auto text-lg">
+                    Start learning Claude today and build skills you&rsquo;ll actually use.
+        </p>
+
+        <a
+          href={joinUrl}
+          class="mt-8 inline-flex items-center gap-2 bg-[#BB39B4] hover:bg-[#a832a1] text-white font-semibold px-10 py-4 rounded-full transition-colors duration-200 text-base"
+        >
+          Enroll Now for FREE
+        </a>
       </div>
     </section>
 
@@ -581,7 +599,7 @@ const course = {
       } catch (err) {
         window.posthog?.captureException(err);
         submitBtn.disabled = false;
-        submitBtn.textContent = 'Access the Course';
+        submitBtn.textContent = 'Enroll Now for FREE';
         alert('Something went wrong. Please try again or contact support.');
       }
     });
