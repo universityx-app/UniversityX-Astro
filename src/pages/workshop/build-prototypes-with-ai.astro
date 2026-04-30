@@ -1,0 +1,594 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import Navbar from '../../components/Navbar.astro';
+import Footer from '../../components/Footer.astro';
+
+const workshop = {
+  title: 'How to Build Prototypes with AI',
+  price: 0,
+  startDate: 'Saturday, May 9th',
+  duration: '1-Day Live Workshop',
+  level: 'Beginner – Intermediate',
+  format: 'Free Live Event',
+  thumbnail: '/images/afolabi-workshop-cover.png',
+  instructorPhoto: '/images/afolabi-hs.png',
+};
+---
+
+<Layout
+  title="How to Build Prototypes with AI – UniversityX Workshop"
+  description="A free live workshop with Afolabi Sokeye. Learn to use AI for research, design, planning, documentation, and vibe coding — the complete prototype lifecycle."
+>
+  <!-- Navbar -->
+  <Navbar />
+
+  <main class="bg-white">
+
+    <!-- ── HERO SECTION ─────────────────────────────────────────────── -->
+    <section class="max-w-7xl mx-auto px-6 md:px-12 lg:px-16 xl:px-24 pt-10 pb-0">
+
+      <!-- Breadcrumb -->
+      <nav class="flex items-center gap-2 text-sm text-gray-500 mb-8" aria-label="Breadcrumb">
+        <a href="/" class="hover:text-[#BB39B4] transition-colors">Home</a>
+        <svg class="w-3.5 h-3.5 text-[#BB39B4]" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+          <path d="M9 18l6-6-6-6" />
+        </svg>
+        <span class="text-[#1A0533] font-medium">How to Build Prototypes with AI</span>
+      </nav>
+
+      <!-- Two-column layout: content left, sidebar right -->
+      <div class="grid grid-cols-1 lg:grid-cols-[1fr_360px] gap-12 xl:gap-16 items-start">
+
+        <!-- ── LEFT COLUMN ───────────────────────────────────────────── -->
+        <div>
+          <!-- Label -->
+          <span class="inline-block text-[#BB39B4] text-sm font-bold bg-[#BB39B4]/10 rounded-full px-4 py-1.5 mb-5">Free Workshop</span>
+
+          <!-- Title -->
+          <h1 class="text-3xl md:text-4xl font-extrabold text-[#1A0533] leading-tight mb-5">
+            How to Build Prototypes with AI:
+            <em class="font-['Playfair_Display',serif] font-bold"> Research, Design, Plan, Document &amp; Vibe Code</em>
+          </h1>
+
+          <!-- Description -->
+          <p class="text-lg text-gray-700 leading-relaxed mb-6">
+            Most people think building with AI means typing prompts and watching code appear.
+            That's vibe coding — and it's just 20% of the picture. The builders who actually
+            ship are using AI across the entire product lifecycle: research, design systems,
+            documentation, sprint planning, and yes, the build itself. This workshop shows you all of it.
+          </p>
+
+          <!-- What you'll learn -->
+          <ul class="space-y-2.5 mb-8 text-lg">
+            {[
+              'Use AI to research markets, users, and competitors in hours instead of weeks',
+              'Generate design systems and wireframes with AI tools like v0.dev',
+              'Write PRDs, user stories, and technical specs with AI assistance',
+              'Plan sprints and manage product scope using AI',
+              'Vibe code your prototype end-to-end with Cursor and Claude',
+              'Document your product so developers, investors, and users all understand it',
+            ].map((item) => (
+              <li class="flex items-start gap-3 text-gray-700">
+                <svg class="w-5 h-5 text-[#BB39B4] shrink-0 mt-0.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                  <polyline points="20 6 9 17 4 12" />
+                </svg>
+                {item}
+              </li>
+            ))}
+          </ul>
+
+          <!-- Metadata chips -->
+          <div class="flex flex-wrap gap-3 mb-8">
+            {[
+              { label: '🗓️ 1-Day Live Workshop' },
+              { label: '🌱 Beginner – Intermediate' },
+              { label: '🎁 Free' },
+            ].map(({ label }) => (
+              <span class="inline-flex items-center gap-2 bg-[#F5F2EB] text-[#1A0533] text-base font-medium px-4 py-2 rounded-full">
+                {label}
+              </span>
+            ))}
+          </div>
+
+          <!-- Instructor strip -->
+          <div class="border-t border-gray-100 pt-6">
+            <p class="text-xs font-semibold text-gray-400 uppercase tracking-widest mb-4">Instructor</p>
+            <div class="flex items-center gap-4">
+              <img
+                src={workshop.instructorPhoto}
+                alt="Afolabi Sokeye"
+                class="w-18 h-18 rounded-full object-cover object-top shrink-0"
+                loading="eager"
+              />
+              <div>
+                <p class="font-semibold text-[#1A0533] text-lg">Afolabi Sokeye</p>
+                <p class="text-base text-gray-500">Product Manager &amp; AI Tinkerer · MSc AI, Nottingham Trent University</p>
+              </div>
+            </div>
+
+            <!-- Orgs -->
+            <div class="mt-5">
+              <p class="text-xs font-semibold text-gray-400 uppercase tracking-widest mb-3">Has built &amp; shipped at</p>
+              <div class="flex items-center flex-wrap gap-5">
+                <img src="/images/trakka-logo.png" alt="Trakka" class="h-8" loading="lazy" />
+                <img src="/images/genz-techies-logo.png" alt="GenZ Techies" class="h-12" loading="lazy" />
+                <img src="/images/riverscope-logo.png" alt="Riverscope" class="h-10" loading="lazy" />
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- ── RIGHT COLUMN: STICKY SIDEBAR ─────────────────────────── -->
+        <aside class="lg:sticky lg:top-6">
+          <div class="rounded-2xl border border-gray-200 shadow-lg overflow-hidden">
+            <!-- Workshop thumbnail -->
+            <img
+              src={workshop.thumbnail}
+              alt="How to Build Prototypes with AI"
+              class="w-full aspect-video object-cover"
+              loading="eager"
+            />
+
+            <!-- Pricing & CTA -->
+            <div class="p-6 space-y-4">
+              <!-- Price -->
+              <div class="flex items-baseline gap-3">
+                <span class="text-3xl font-extrabold text-[#1A0533]">FREE</span>
+                <span class="text-base text-gray-400">Live Workshop</span>
+              </div>
+
+              <!-- Start date -->
+              <div class="flex items-center gap-2 text-lg text-gray-600">
+                <svg class="w-6 h-6 text-[#BB39B4]" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                  <rect x="3" y="4" width="18" height="18" rx="2" ry="2" />
+                  <line x1="16" y1="2" x2="16" y2="6" />
+                  <line x1="8" y1="2" x2="8" y2="6" />
+                  <line x1="3" y1="10" x2="21" y2="10" />
+                </svg>
+                {workshop.startDate}
+              </div>
+
+              <!-- Register CTA -->
+              <a
+                id="enroll"
+                href="#enroll-form"
+                class="block w-full text-center bg-[#BB39B4] hover:bg-[#a832a1] text-white font-semibold px-8 py-4 rounded-lg transition-colors duration-200 text-base mt-10"
+              >
+                Register for Free
+              </a>
+            </div>
+          </div>
+        </aside>
+
+      </div>
+    </section>
+
+
+    <!-- ── WORKSHOP OVERVIEW ─────────────────────────────────────────── -->
+    <section class="bg-[#F5F2EB] mt-16 py-16 md:py-20">
+      <div class="max-w-7xl mx-auto px-6 md:px-12 lg:px-16 xl:px-24 max-w-3xl">
+        <p class="text-xs font-semibold text-[#BB39B4] uppercase tracking-widest mb-3">Workshop Overview</p>
+        <h2 class="text-2xl md:text-3xl font-extrabold text-[#1A0533] leading-tight mb-6">
+          Vibe coding is just the tip of the iceberg.
+        </h2>
+        <div class="space-y-4 text-gray-700 leading-relaxed text-lg md:text-lg">
+          <p>
+            Everyone is talking about vibe coding — dropping prompts into Cursor and watching an app
+            appear. It's exciting. But the builders who actually ship successful prototypes aren't just
+            vibe coding. They're using AI to research their market before writing a single line, generate
+            design systems before opening Figma, plan sprints before building, and document as they go.
+            That's what separates prototypes that get traction from ones that get abandoned.
+          </p>
+          <p>
+            In this workshop, Afolabi Sokeye — Product Manager, AI Tinkerer, and MSc AI student at
+            Nottingham Trent University — walks you through the complete AI-powered prototype lifecycle.
+            You'll leave with a hands-on understanding of how to use AI at every stage: from "what problem
+            am I actually solving?" all the way to a working, shareable product.
+          </p>
+        </div>
+      </div>
+    </section>
+
+
+    <!-- ── WHO THIS IS FOR ───────────────────────────────────────────── -->
+    <section class="py-16 md:py-20">
+      <div class="max-w-7xl mx-auto px-6 md:px-12 lg:px-16 xl:px-24">
+        <p class="text-xs font-semibold text-[#BB39B4] uppercase tracking-widest mb-3 text-center">Who This Is For</p>
+        <h2 class="text-2xl md:text-3xl font-extrabold text-[#1A0533] text-center mb-12">This Workshop Is For You If...</h2>
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+          {[
+            {
+              num: '01',
+              title: "You're a founder or builder with an idea",
+              body: "You want to go from idea to working prototype fast — without hiring a full team or spending months in Figma and Jira. AI can close that gap.",
+            },
+            {
+              num: '02',
+              title: "You're a PM who wants to build, not just spec",
+              body: "You're tired of waiting for engineering bandwidth to validate ideas. Learn how to build and test prototypes yourself, faster than you can write a brief.",
+            },
+            {
+              num: '03',
+              title: "You're a designer or dev going full-stack",
+              body: "You already know one side of the stack. This workshop shows you how AI fills in the gaps — so you can own the whole product lifecycle, not just a slice of it.",
+            },
+          ].map(({ num, title, body }) => (
+            <div class="bg-[#F5F2EB] rounded-2xl p-7">
+              <span class="inline-block text-[#BB39B4] text-base font-bold bg-white rounded-full px-3 py-1 mb-4">{num}</span>
+              <h3 class="text-lg font-bold text-[#1A0533] mb-2 leading-snug">{title}</h3>
+              <p class="text-base text-gray-700 leading-relaxed">{body}</p>
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+
+
+    <!-- ── WHAT'S INCLUDED ───────────────────────────────────────────── -->
+    <section class="bg-[#F5F2EB] py-16 md:py-20">
+      <div class="max-w-7xl mx-auto px-6 md:px-12 lg:px-16 xl:px-24">
+        <p class="text-xs font-semibold text-[#BB39B4] uppercase tracking-widest mb-3">What's Included</p>
+        <h2 class="text-2xl md:text-3xl font-extrabold text-[#1A0533] mb-10">Everything you need, at zero cost</h2>
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+          {[
+            {
+              title: 'Live session with Afolabi',
+              body: 'Interactive, hands-on, and packed with real examples. Ask questions and get unstuck in real time.',
+              icon: 'M15 10l4.553-2.069A1 1 0 0121 8.82V15a2 2 0 01-2 2H5a2 2 0 01-2-2V9a2 2 0 012-2h1',
+            },
+            {
+              title: 'Full recording access',
+              body: "Can't make every part? The full recording lands in your inbox after the event. Rewatch anytime.",
+              icon: 'M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-1 14H9V8h2v8zm4 0h-2V8h2v8z',
+            },
+            {
+              title: 'Templates & frameworks',
+              body: 'Leave with a PRD template, research brief, and design system starter — all built for AI-assisted workflows.',
+              icon: 'M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2',
+            },
+            {
+              title: 'Community access',
+              body: 'Join a room of fellow builders via the GenZtechies network. Keep the conversation going after the workshop.',
+              icon: 'M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2M23 21v-2a4 4 0 00-3-3.87M16 3.13a4 4 0 010 7.75M9 7a4 4 0 100 8 4 4 0 000-8z',
+            },
+          ].map(({ title, body, icon }) => (
+            <div class="flex items-start gap-4 bg-white rounded-2xl p-6 shadow-sm">
+              <div class="w-10 h-10 rounded-xl bg-[#BB39B4]/10 flex items-center justify-center shrink-0">
+                <svg class="w-5 h-5 text-[#BB39B4]" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                  <path d={icon} />
+                </svg>
+              </div>
+              <div>
+                <p class="font-semibold text-[#1A0533] mb-1 text-lg">{title}</p>
+                <p class="text-base text-gray-500 leading-relaxed">{body}</p>
+              </div>
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+
+
+    <!-- ── WORKSHOP AGENDA ───────────────────────────────────────────── -->
+    <section class="py-16 md:py-20">
+      <div class="max-w-7xl mx-auto px-6 md:px-12 lg:px-16 xl:px-24">
+        <p class="text-xs font-semibold text-[#BB39B4] uppercase tracking-widest mb-3 text-center">Curriculum</p>
+        <h2 class="text-2xl md:text-3xl font-extrabold text-[#1A0533] text-center mb-3">Workshop Agenda</h2>
+        <p class="text-center text-gray-500 mb-12">4 Modules · The full AI prototype stack</p>
+
+        <div class="max-w-2xl mx-auto space-y-3" id="syllabus">
+          {[
+            {
+              module: 'Module 1: Research with AI',
+              lessons: [
+                { title: 'Defining the problem and user persona with AI' },
+                { title: 'Competitive analysis using Perplexity and Claude' },
+                { title: 'Synthesizing user interviews into insights in minutes' },
+              ],
+            },
+            {
+              module: 'Module 2: Design with AI',
+              lessons: [
+                { title: 'Building a design system from a single prompt' },
+                { title: 'Generating wireframes and UI components with v0.dev' },
+                { title: 'Iterating on designs without a dedicated designer' },
+              ],
+            },
+            {
+              module: 'Module 3: Plan & Document with AI',
+              lessons: [
+                { title: 'Writing a PRD that engineers actually want to read' },
+                { title: 'Turning product ideas into user stories and sprint tasks' },
+                { title: 'Creating technical specs, changelogs, and README docs' },
+              ],
+            },
+            {
+              module: 'Module 4: Build & Ship (Vibe Coding)',
+              lessons: [
+                { title: 'Setting up your stack in minutes with Cursor' },
+                { title: 'Vibe coding your prototype end-to-end' },
+                { title: 'Deploying, sharing, and collecting your first feedback' },
+              ],
+            },
+          ].map(({ module, lessons }, i) => (
+            <div class="accordion-item border border-gray-200 rounded-2xl overflow-hidden">
+              <button
+                class="accordion-trigger w-full flex items-center justify-between px-6 py-4 text-left bg-white hover:bg-[#F5F2EB] transition-colors duration-200"
+                aria-expanded="false"
+              >
+                <span class="font-semibold text-[#1A0533]">{module}</span>
+                <svg class="accordion-chevron w-5 h-5 text-gray-400 transition-transform duration-300 shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                  <polyline points="6 9 12 15 18 9" />
+                </svg>
+              </button>
+              <div class="accordion-body">
+                <div class="accordion-inner">
+                  <ul class="px-6 pb-4 pt-1 space-y-3 border-t border-gray-100">
+                    {lessons.map(({ title }) => (
+                      <li class="flex items-center justify-between text-base my-4">
+                        <span class="flex items-center gap-2 text-gray-700">
+                          <svg class="w-4 h-4 text-gray-300 shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                            <polygon points="5 3 19 12 5 21 5 3" />
+                          </svg>
+                          {title}
+                        </span>
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+              </div>
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+
+
+    <!-- ── MEET THE INSTRUCTOR ────────────────────────────────────────── -->
+    <section class="bg-[#F5F2EB] py-16 md:py-20">
+      <div class="max-w-7xl mx-auto px-6 md:px-12 lg:px-16 xl:px-24">
+        <p class="text-xs font-semibold text-[#BB39B4] uppercase tracking-widest mb-10">Meet Your Instructor</p>
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+          <div>
+            <h2 class="text-2xl md:text-3xl font-extrabold text-[#1A0533] mb-2">Afolabi Sokeye</h2>
+            <p class="font-medium mb-5">Product Manager &amp; AI Tinkerer</p>
+            <div class="space-y-4 text-gray-700 leading-relaxed text-lg">
+              <p>
+                Afolabi is a Product Manager who builds things with AI — not just talks about it.
+                He has shipped products used by 8,000+ users at Trakka, led product development at
+                TechWings Global and Riverscope Technologies, and built side projects including Vauch,
+                Oserin, and Tabseditor. He is currently pursuing a Master's in Artificial Intelligence
+                at Nottingham Trent University, UK.
+              </p>
+              <p>
+                Beyond his PM work, Afolabi serves as Head of Programs &amp; Partnerships at GenZtechies —
+                Africa's largest network for Gen Z techies — where he has organized hackathons attended
+                by over 3,000 people. In 2025, he was named Rising Star Product Manager at The Dive Awards.
+              </p>
+              <p>
+                This workshop is built on everything he has learned using AI the right way: not as a
+                shortcut, but as a systematic tool across the full product lifecycle.
+              </p>
+            </div>
+          </div>
+          <div class="order-first md:order-last md:justify-self-end justify-self-center">
+            <img
+              src={workshop.instructorPhoto}
+              alt="Afolabi Sokeye"
+              class="w-full max-w-xs mx-auto md:mx-0 rounded-2xl object-cover object-top aspect-[3/4]"
+              loading="lazy"
+            />
+          </div>
+        </div>
+      </div>
+    </section>
+
+
+    <!-- ── FAQ ──────────────────────────────────────────────────────── -->
+    <section class="py-16 md:py-20">
+      <div class="max-w-7xl mx-auto px-6 md:px-12 lg:px-16 xl:px-24">
+        <p class="text-xs font-semibold text-[#BB39B4] uppercase tracking-widest mb-3 text-center">FAQ</p>
+        <h2 class="text-2xl md:text-3xl font-extrabold text-[#1A0533] text-center mb-4">Frequently Asked Questions</h2>
+        <p class="text-center text-gray-500 mb-12 max-w-lg mx-auto">Quick answers before you register.</p>
+
+        <div class="max-w-2xl mx-auto space-y-3" id="faq">
+          {[
+            {
+              q: 'Do I need to know how to code?',
+              a: "No. The workshop is designed for builders at all levels — developers, designers, PMs, and founders who've never written a line of code. AI tools handle the heavy lifting. What matters is how you think about the problem.",
+            },
+            {
+              q: 'What AI tools will we be using?',
+              a: "We'll work with Cursor, Claude, Perplexity, v0.dev, and a few others. Most have free tiers. We'll send you a setup checklist before the workshop so you're ready to go on the day.",
+            },
+            {
+              q: "Will I get a recording if I can't attend live?",
+              a: "Yes. All registered attendees receive a full recording after the session. That said, showing up live is where you get the real value — direct Q&A with Afolabi and working alongside other builders in the room.",
+            },
+          ].map(({ q, a }) => (
+            <div class="accordion-item border border-gray-200 rounded-2xl overflow-hidden">
+              <button
+                class="accordion-trigger w-full flex items-center justify-between px-6 py-5 text-left bg-white hover:bg-[#F5F2EB] transition-colors duration-200"
+                aria-expanded="false"
+              >
+                <span class="font-semibold text-[#1A0533] pr-4">{q}</span>
+                <svg class="accordion-chevron w-5 h-5 text-gray-400 transition-transform duration-300 shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                  <polyline points="6 9 12 15 18 9" />
+                </svg>
+              </button>
+              <div class="accordion-body">
+                <div class="accordion-inner">
+                  <p class="px-6 pb-5 pt-2 text-gray-600 leading-relaxed border-t border-gray-100">{a}</p>
+                </div>
+              </div>
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+
+
+    <!-- ── REGISTER CTA BANNER ───────────────────────────────────────── -->
+    <section id="enroll-form" class="bg-[#1A0533] py-16 md:py-20">
+      <div class="max-w-7xl mx-auto px-6 md:px-12 lg:px-16 xl:px-24">
+        <div class="text-center mb-10 max-w-2xl mx-auto">
+          <h2 class="text-2xl md:text-3xl font-extrabold text-white mb-3 leading-tight">
+            Ready to build your prototype?
+          </h2>
+          <p class="text-gray-400 max-w-lg mx-auto">
+            Register free. We'll send you the event link and an AI tools setup checklist before the day.
+          </p>
+        </div>
+
+        <!-- Success State -->
+        <div id="register-success" class="hidden max-w-md mx-auto bg-white/10 backdrop-blur-sm rounded-2xl border border-white/10 p-8 text-center">
+          <div class="w-12 h-12 bg-green-500/20 rounded-full flex items-center justify-center mx-auto mb-4">
+            <svg class="w-6 h-6 text-green-400" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M20 6L9 17l-5-5" />
+            </svg>
+          </div>
+          <h3 class="text-xl font-bold text-white mb-2">You're registered!</h3>
+          <p class="text-gray-400 text-sm">We'll send you the event link and setup checklist closer to the date.</p>
+        </div>
+
+        <!-- Form -->
+        <form id="register-form" novalidate class="max-w-md mx-auto bg-white/5 backdrop-blur-sm rounded-2xl border border-white/10 p-6 md:p-8">
+          <div class="mb-4">
+            <label for="register-email" class="sr-only">Email Address</label>
+            <input
+              type="email"
+              id="register-email"
+              name="email"
+              placeholder="Enter your email address"
+              required
+              class="w-full bg-white/10 rounded-xl px-5 py-4 text-white placeholder-gray-400 border border-transparent focus:outline-none focus:ring-2 focus:ring-[#BB39B4] focus:border-[#BB39B4] transition-all duration-200"
+            />
+            <p id="register-email-error" class="text-red-400 text-xs mt-2 hidden text-left">Please enter a valid email address.</p>
+          </div>
+          <button
+            type="submit"
+            id="register-submit-btn"
+            class="w-full bg-[#BB39B4] hover:bg-[#a832a1] text-white font-bold text-base rounded-xl py-4 transition-colors duration-200 cursor-pointer"
+          >
+            Register for Free
+          </button>
+          <p class="text-center text-gray-500 text-xs mt-3">No payment. No credit card. We'll never spam you.</p>
+        </form>
+      </div>
+    </section>
+
+  </main>
+
+  <Footer />
+</Layout>
+
+<style>
+  /* Accordion: grid row height animation (same pattern as FAQ component) */
+  .accordion-body {
+    display: grid;
+    grid-template-rows: 0fr;
+    transition: grid-template-rows 300ms ease;
+  }
+
+  .accordion-body.is-open {
+    grid-template-rows: 1fr;
+  }
+
+  .accordion-inner {
+    overflow: hidden;
+  }
+
+  .accordion-chevron.is-open {
+    transform: rotate(180deg);
+  }
+</style>
+
+<script>
+  function initAccordions() {
+    document.querySelectorAll('.accordion-trigger').forEach((trigger) => {
+      trigger.addEventListener('click', () => {
+        const item = trigger.closest('.accordion-item')!;
+        const body = item.querySelector('.accordion-body')!;
+        const chevron = trigger.querySelector('.accordion-chevron')!;
+        const isOpen = body.classList.contains('is-open');
+
+        body.classList.toggle('is-open', !isOpen);
+        chevron.classList.toggle('is-open', !isOpen);
+        trigger.setAttribute('aria-expanded', String(!isOpen));
+      });
+    });
+  }
+
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', initAccordions);
+  } else {
+    initAccordions();
+  }
+</script>
+
+<script>
+  import PocketBase from 'pocketbase';
+
+  declare global {
+    interface Window { posthog?: any; }
+  }
+
+  function initRegistrationForm() {
+    const form = document.getElementById('register-form') as HTMLFormElement | null;
+    const successMsg = document.getElementById('register-success');
+    if (!form || !successMsg) return;
+
+    const emailInput = form.querySelector('#register-email') as HTMLInputElement;
+    const emailError = document.getElementById('register-email-error')!;
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+
+    function validateEmail(): boolean {
+      const valid = emailRegex.test(emailInput.value.trim());
+      emailError.classList.toggle('hidden', valid || emailInput.value.trim() === '');
+      return valid;
+    }
+
+    emailInput.addEventListener('blur', validateEmail);
+
+    const pb = new PocketBase(import.meta.env.PUBLIC_POCKETBASE_URL);
+
+    form.addEventListener('submit', async (e) => {
+      e.preventDefault();
+
+      if (!validateEmail()) {
+        emailInput.focus();
+        return;
+      }
+
+      const submitBtn = document.getElementById('register-submit-btn') as HTMLButtonElement;
+      submitBtn.disabled = true;
+      submitBtn.textContent = 'Registering...';
+
+      try {
+        await pb.collection('workshop_registrations').create({
+          email: emailInput.value.trim(),
+          workshop: 'build-prototypes-with-ai',
+        });
+
+        window.posthog?.capture('workshop_registered', {
+          workshop: 'build-prototypes-with-ai',
+        });
+
+        form.classList.add('hidden');
+        successMsg.classList.remove('hidden');
+      } catch (err) {
+        console.error('Registration error:', err);
+        submitBtn.disabled = false;
+        submitBtn.textContent = 'Register for Free';
+        emailError.textContent = 'Something went wrong. Please try again.';
+        emailError.classList.remove('hidden');
+      }
+    });
+  }
+
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', initRegistrationForm);
+  } else {
+    initRegistrationForm();
+  }
+</script>
