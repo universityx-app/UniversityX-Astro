@@ -564,7 +564,7 @@ const workshop = {
       submitBtn.textContent = 'Registering...';
 
       try {
-        await pb.collection('workshop_registrations').create({
+        await pb.collection('Afolabi_Waitlist_Form').create({
           email: emailInput.value.trim(),
           workshop: 'build-prototypes-with-ai',
         });
