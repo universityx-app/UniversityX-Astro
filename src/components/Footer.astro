@@ -97,7 +97,7 @@ const socialLinks = [
     <!-- Bottom: Logo + Social -->
     <div class="flex flex-col md:flex-row items-start md:items-end justify-between gap-8 py-12 md:py-16">
       <!-- UniversityX Logo -->
-      <img 
+      <img
       src="/images/universityx-svg.svg"
       class="w-full md:w-1/2"
       alt=""
@@ -129,6 +129,15 @@ const socialLinks = [
             )}
           </a>
         ))}
+      </div>
+    </div>
+
+    <!-- Legal links -->
+    <div class="border-t border-[#2A2420] py-8 flex flex-col sm:flex-row items-center justify-between gap-4">
+      <p class="text-gray-400 text-base">© {new Date().getFullYear()} UniversityX. All rights reserved.</p>
+      <div class="flex items-center gap-6">
+        <a href="/privacy-policy" class="text-gray-400 text-base hover:text-white transition-colors duration-200">Privacy Policy</a>
+        <a href="/terms-of-service" class="text-gray-400 text-base hover:text-white transition-colors duration-200">Terms of Service</a>
       </div>
     </div>
 
