@@ -149,6 +149,15 @@ const workshop = {
                 {workshop.startDate}
               </div>
 
+              <!-- Start time -->
+              <div class="flex items-center gap-2 text-lg text-gray-600">
+                <svg class="w-6 h-6 text-[#BB39B4]" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                  <circle cx="12" cy="12" r="10" />
+                  <polyline points="12 6 12 12 16 14" />
+                </svg>
+                6:00 PM WAT
+              </div>
+
               <!-- Register CTA -->
               <a
                 id="enroll"
@@ -364,6 +373,32 @@ const workshop = {
           </p>
         </div>
 
+        <!-- Countdown Timer -->
+        <div class="mb-10 text-center bg-white/5 rounded-2xl p-6 border border-white/10 max-w-md mx-auto">
+          <p class="text-xs font-semibold text-gray-400 uppercase tracking-widest mb-4">Workshop Starts In</p>
+          <div class="flex items-center justify-center gap-6 countdown-container">
+            <div class="flex flex-col days-group">
+              <span class="text-4xl md:text-5xl font-bold text-white days-val">00</span>
+              <span class="text-xs text-gray-500 uppercase tracking-wider mt-1">Days</span>
+            </div>
+            <span class="text-3xl font-bold text-white/30 pb-4 days-sep">:</span>
+            <div class="flex flex-col">
+              <span class="text-4xl md:text-5xl font-bold text-white hours-val">00</span>
+              <span class="text-xs text-gray-500 uppercase tracking-wider mt-1">Hours</span>
+            </div>
+            <span class="text-3xl font-bold text-white/30 pb-4">:</span>
+            <div class="flex flex-col">
+              <span class="text-4xl md:text-5xl font-bold text-white minutes-val">00</span>
+              <span class="text-xs text-gray-500 uppercase tracking-wider mt-1">Mins</span>
+            </div>
+            <span class="text-3xl font-bold text-white/30 pb-4">:</span>
+            <div class="flex flex-col">
+              <span class="text-4xl md:text-5xl font-bold text-white seconds-val">00</span>
+              <span class="text-xs text-gray-500 uppercase tracking-wider mt-1">Secs</span>
+            </div>
+          </div>
+        </div>
+
         <!-- Success State -->
         <div id="register-success" class="hidden max-w-md mx-auto bg-white/10 backdrop-blur-sm rounded-2xl border border-white/10 p-8 text-center">
           <div class="w-12 h-12 bg-green-500/20 rounded-full flex items-center justify-center mx-auto mb-4">
@@ -457,6 +492,10 @@ const workshop = {
     interface Window { posthog?: any; }
   }
 
+  const courseId = 'd58c9fec-a93f-49ae-a2c1-f90e3446c2f2';
+  const sourceUrl = 'https://universityx.app/workshop/build-prototypes-with-ai';
+  const joinUrl = `/join/open-learning?courseId=${courseId}&source=${encodeURIComponent(sourceUrl)}`;
+
   function initRegistrationForm() {
     const form = document.getElementById('register-form') as HTMLFormElement | null;
     const successMsg = document.getElementById('register-success');
@@ -498,8 +537,7 @@ const workshop = {
           workshop: 'build-prototypes-with-ai',
         });
 
-        form.classList.add('hidden');
-        successMsg.classList.remove('hidden');
+        window.location.href = joinUrl;
       } catch (err) {
         console.error('Registration error:', err);
         submitBtn.disabled = false;
@@ -510,9 +548,55 @@ const workshop = {
     });
   }
 
+  function initCountdown() {
+    const containers = document.querySelectorAll('.countdown-container');
+    if (!containers.length) return;
+
+    const TARGET_DATE = new Date('2026-05-09T18:00:00+01:00').getTime();
+
+    function updateCounters() {
+      const now = new Date().getTime();
+      const distance = TARGET_DATE - now;
+
+      if (distance <= 0) {
+        containers.forEach(container => {
+          (container.querySelector('.days-group') as HTMLElement).classList.add('hidden');
+          (container.querySelector('.days-sep') as HTMLElement).classList.add('hidden');
+          (container.querySelector('.hours-val') as HTMLElement).textContent = '00';
+          (container.querySelector('.minutes-val') as HTMLElement).textContent = '00';
+          (container.querySelector('.seconds-val') as HTMLElement).textContent = '00';
+        });
+        return;
+      }
+
+      const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+      const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+      const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+      const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+      containers.forEach(container => {
+        const daysGroup = container.querySelector('.days-group') as HTMLElement;
+        const daysSep = container.querySelector('.days-sep') as HTMLElement;
+        daysGroup.classList.toggle('hidden', days === 0);
+        daysSep.classList.toggle('hidden', days === 0);
+        (container.querySelector('.days-val') as HTMLElement).textContent = days.toString().padStart(2, '0');
+        (container.querySelector('.hours-val') as HTMLElement).textContent = hours.toString().padStart(2, '0');
+        (container.querySelector('.minutes-val') as HTMLElement).textContent = minutes.toString().padStart(2, '0');
+        (container.querySelector('.seconds-val') as HTMLElement).textContent = seconds.toString().padStart(2, '0');
+      });
+    }
+
+    updateCounters();
+    setInterval(updateCounters, 1000);
+  }
+
   if (document.readyState === 'loading') {
-    document.addEventListener('DOMContentLoaded', initRegistrationForm);
+    document.addEventListener('DOMContentLoaded', () => {
+      initRegistrationForm();
+      initCountdown();
+    });
   } else {
     initRegistrationForm();
+    initCountdown();
   }
 </script>

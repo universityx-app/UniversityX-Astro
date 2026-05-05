@@ -3,6 +3,18 @@ import { Image } from 'astro:assets';
 
 const courses = [
   {
+    title: 'How to Build Prototypes with AI',
+    thumbnail: '/images/afolabi-workshop-cover.png',
+    rating: 5.0,
+    startDate: 'May 9',
+    duration: 'Workshop',
+    level: 'Beginner',
+    url: 'workshop/build-prototypes-with-ai',
+    instructors: [
+      { name: 'Afolabi Sokeye', bio: 'Product Manager who builds things with AI, not just talks about it. He has shipped products used by 8,000+ users at Trakka, led product development at TechWings Global and Riverscope Technologies' },
+    ],
+  },
+  {
     title: 'Claude for Beginners',
     thumbnail: '/images/claude-for-beginners.png',
     rating: 4.9,
@@ -11,17 +23,6 @@ const courses = [
     level: 'Beginner',
     instructors: [
       { name: 'Anthropic Academy', bio: 'The official learning team behind Claude, building courses that make AI accessible to everyone.' },
-    ],
-  },
-  {
-    title: 'The African Operator Playbook',
-    thumbnail: '/images/babatunde-cover.png',
-    rating: 4.9,
-    startDate: 'Apr 6',
-    duration: 'Coming Soon',
-    level: 'Intermediate',
-    instructors: [
-      { name: 'Babatunde Daniels', bio: 'General Manager of PayShare, with a career spanning tech, banking, consulting, and startups.' },
     ],
   },
   {
@@ -102,7 +103,7 @@ const courses = [
     >
       {courses.map((course, index) => (
         <a
-          href={index === 0 ? '/course/claude-for-beginners' : undefined}
+          href={course.url || undefined}
           class={`block bg-white rounded-2xl overflow-hidden hover:shadow-lg shadow-lg transition-shadow duration-300${index === 0 ? ' cursor-pointer' : ''}`}
           aria-label={index === 0 ? `View course: ${course.title}` : undefined}
           tabindex={index === 0 ? 0 : undefined}
