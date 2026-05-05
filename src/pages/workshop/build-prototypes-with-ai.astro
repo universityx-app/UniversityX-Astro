@@ -537,7 +537,7 @@ const workshop = {
           workshop: 'build-prototypes-with-ai',
         });
 
-        window.location.href = joinUrl;
+        window.location.href = `${joinUrl}&email=${encodeURIComponent(emailInput.value.trim())}`;
       } catch (err) {
         console.error('Registration error:', err);
         submitBtn.disabled = false;
