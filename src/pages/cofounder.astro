@@ -5,8 +5,8 @@ import Footer from '../components/Footer.astro';
 ---
 
 <Layout
-  title="Co-founder Application - UniversityX"
-  description="UniversityX is looking for a Growth & GTM Co-founder to help take AI-first learning infrastructure to Africa, the UK, and the US."
+  title="Growth Co-founder Conversation - UniversityX"
+  description="UniversityX is live and looking for a growth and commercial co-founder to help build the distribution engine for AI-first learning in Africa."
 >
   <Navbar />
 
@@ -23,20 +23,20 @@ import Footer from '../components/Footer.astro';
         Co-founder
       </h1>
       <p class="text-white/70 text-base md:text-lg leading-relaxed max-w-xl mb-10">
-        UniversityX is building AI-first learning infrastructure for African professionals and institutions. We need a CGO Co-founder who understands how people learn online, knows how to bring great creators to the platform, and can build the commercial engine that takes us from product to market. If that's you, or you know who that is, send this to them.
+        We're building AI-first learning infrastructure for African professionals, creators, universities, and businesses. The product is already live, we've hosted programs and workshops, and we're now looking for a growth/commercial co-founder to help turn this into a serious distribution engine.
       </p>
       <div class="flex flex-wrap gap-8 border-t border-white/10 pt-7">
         <div class="flex flex-col">
-          <span class="text-2xl font-bold text-white leading-none">AI-first</span>
-          <span class="text-xs text-white/50 mt-1 tracking-wide">Learning platform</span>
+          <span class="text-2xl font-bold text-white leading-none">Live product</span>
+          <span class="text-xs text-white/50 mt-1 tracking-wide">Already in market</span>
         </div>
         <div class="flex flex-col">
-          <span class="text-2xl font-bold text-white leading-none">Africa to UK/US</span>
-          <span class="text-xs text-white/50 mt-1 tracking-wide">Expansion path</span>
+          <span class="text-2xl font-bold text-white leading-none">Programs run</span>
+          <span class="text-xs text-white/50 mt-1 tracking-wide">Courses and workshops</span>
         </div>
         <div class="flex flex-col">
-          <span class="text-2xl font-bold text-white leading-none">Equity</span>
-          <span class="text-xs text-white/50 mt-1 tracking-wide">Co-founder role</span>
+          <span class="text-2xl font-bold text-white leading-none">Growth gap</span>
+          <span class="text-xs text-white/50 mt-1 tracking-wide">Distribution and revenue</span>
         </div>
       </div>
     </div>
@@ -48,30 +48,26 @@ import Footer from '../components/Footer.astro';
 
       <!-- Note box -->
       <div class="bg-[#D4A853]/10 border-l-4 border-[#D4A853] rounded-r-lg px-5 py-4 text-sm text-[#8a6318] leading-relaxed mb-12">
-        This is not a job application. We're looking for a Chief Growth Officer Co-founder, someone who wants to build this, not just work in it. If that's not you but you know who it is, please send this form to them.
+        This is not a job application. It's the start of a conversation with someone who may want to build UniversityX from the ground up with us. If that's not you but you know who it is, please send this to them.
       </div>
 
       <form
         id="appForm"
+        novalidate
         class="space-y-0"
       >
 
-        <!-- Section 1: The basics -->
+        <!-- Section 1: A bit about you -->
         <div class="mb-14">
           <div class="flex items-center gap-3 mb-6">
-            <span class="text-[11px] font-semibold tracking-widest uppercase text-[#D4A853]">01. The basics</span>
+            <span class="text-[11px] font-semibold tracking-widest uppercase text-[#D4A853]">01. A bit about you</span>
             <div class="flex-1 h-px bg-gray-200"></div>
           </div>
 
-          <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-5">
+          <div class="mb-5">
             <div>
               <label for="full-name" class="block text-sm font-semibold text-[#1A0533] mb-2">Full name</label>
               <input type="text" id="full-name" name="full_name" placeholder="Your name" required
-                class="w-full bg-gray-50 rounded-xl px-4 py-3 text-sm text-gray-800 placeholder-gray-400 border border-transparent focus:outline-none focus:ring-2 focus:ring-[#D4A853] transition-shadow" />
-            </div>
-            <div>
-              <label for="location" class="block text-sm font-semibold text-[#1A0533] mb-2">Location</label>
-              <input type="text" id="location" name="location" placeholder="City, Country" required
                 class="w-full bg-gray-50 rounded-xl px-4 py-3 text-sm text-gray-800 placeholder-gray-400 border border-transparent focus:outline-none focus:ring-2 focus:ring-[#D4A853] transition-shadow" />
             </div>
           </div>
@@ -96,97 +92,31 @@ import Footer from '../components/Footer.astro';
               class="w-full bg-gray-50 rounded-xl px-4 py-3 text-sm text-gray-800 placeholder-gray-400 border border-transparent focus:outline-none focus:ring-2 focus:ring-[#D4A853] transition-shadow" />
           </div>
 
-          <div>
-            <label for="one-liner" class="block text-sm font-semibold text-[#1A0533] mb-2">In one sentence, why UniversityX, why now, why you?</label>
-            <textarea id="one-liner" name="one_sentence_pitch" placeholder="Make it honest, not impressive..." rows="3" required
-              class="w-full bg-gray-50 rounded-xl px-4 py-3 text-sm text-gray-800 placeholder-gray-400 border border-transparent focus:outline-none focus:ring-2 focus:ring-[#D4A853] transition-shadow resize-y"></textarea>
-          </div>
         </div>  
 
-        <!-- Section 2: Your growth DNA -->
+        <!-- Section 2: The conversation starter -->
         <div class="mb-14">
           <div class="flex items-center gap-3 mb-6">
-            <span class="text-[11px] font-semibold tracking-widest uppercase text-[#D4A853]">02. Your growth DNA</span>
+            <span class="text-[11px] font-semibold tracking-widest uppercase text-[#D4A853]">02. The conversation starter</span>
             <div class="flex-1 h-px bg-gray-200"></div>
           </div>
 
           <div class="mb-5">
-            <label for="creative-growth" class="block text-sm font-semibold text-[#1A0533] mb-2">Describe the most creative way you've ever grown something, an audience, a community, a product, a revenue line. What was the result?</label>
-            <textarea id="creative-growth" name="creative_growth_story" placeholder="A real story, not a polished one..." rows="4"
+            <label for="creative-growth" class="block text-sm font-semibold text-[#1A0533] mb-2">What have you grown before?</label>
+            <textarea id="creative-growth" name="creative_growth_story" placeholder="An audience, community, product, revenue line, partnership channel, creator brand..." rows="4" required
+              class="w-full bg-gray-50 rounded-xl px-4 py-3 text-sm text-gray-800 placeholder-gray-400 border border-transparent focus:outline-none focus:ring-2 focus:ring-[#D4A853] transition-shadow resize-y"></textarea>
+          </div>
+
+          <div class="mb-5">
+            <label for="universityx-interest" class="block text-sm font-semibold text-[#1A0533] mb-2">Why does UniversityX interest you?</label>
+            <textarea id="universityx-interest" name="one_sentence_pitch" placeholder="What about the problem, market, product, or mission pulls you in?" rows="4" required
               class="w-full bg-gray-50 rounded-xl px-4 py-3 text-sm text-gray-800 placeholder-gray-400 border border-transparent focus:outline-none focus:ring-2 focus:ring-[#D4A853] transition-shadow resize-y"></textarea>
           </div>
 
           <div>
-            <label for="zero-budget-growth" class="block text-sm font-semibold text-[#1A0533] mb-2">Have you ever built a marketing or growth strategy from scratch with little to no budget? What did you do?</label>
-            <textarea id="zero-budget-growth" name="zero_budget_growth" placeholder="Be specific..." rows="4"
+            <label for="anything-else" class="block text-sm font-semibold text-[#1A0533] mb-2">Anything else you want us to know?</label>
+            <textarea id="anything-else" name="cofounder_vision" rows="4" placeholder="Context, links, questions, constraints, referrals, anything useful..."
               class="w-full bg-gray-50 rounded-xl px-4 py-3 text-sm text-gray-800 placeholder-gray-400 border border-transparent focus:outline-none focus:ring-2 focus:ring-[#D4A853] transition-shadow resize-y"></textarea>
-          </div>
-        </div>
-
-        <!-- Section 3: Creator Economy & Commercial Instinct -->
-        <div class="mb-14">
-          <div class="flex items-center gap-3 mb-6">
-            <span class="text-[11px] font-semibold tracking-widest uppercase text-[#D4A853]">03. Creator Economy & Commercial Instinct </span>
-            <div class="flex-1 h-px bg-gray-200"></div>
-          </div>
-
-          <div class="mb-5">
-            <label for="own-course" class="block text-sm font-semibold text-[#1A0533] mb-2">Have you ever built, designed, or taught an online course yourself? Tell us about it.</label>
-            <textarea id="own-course" name="own_course_experience" placeholder="What was it, who was it for, what happened..." rows="4"
-              class="w-full bg-gray-50 rounded-xl px-4 py-3 text-sm text-gray-800 placeholder-gray-400 border border-transparent focus:outline-none focus:ring-2 focus:ring-[#D4A853] transition-shadow resize-y"></textarea>
-          </div>
-
-          <div class="mb-5">
-            <label for="b2b-deal" class="block text-sm font-semibold text-[#1A0533] mb-2">Have you ever closed a B2B deal or partnership, even informally? What was it and how did you do it?</label>
-            <textarea id="b2b-deal" name="b2b_deal_story" placeholder="Walk us through the deal..." rows="4"
-              class="w-full bg-gray-50 rounded-xl px-4 py-3 text-sm text-gray-800 placeholder-gray-400 border border-transparent focus:outline-none focus:ring-2 focus:ring-[#D4A853] transition-shadow resize-y"></textarea>
-          </div>
-        </div>
-
-        <!-- Section 4: The co-founder conversation -->
-        <div class="mb-14">
-          <div class="flex items-center gap-3 mb-6">
-            <span class="text-[11px] font-semibold tracking-widest uppercase text-[#D4A853]">04. The co-founder conversation</span>
-            <div class="flex-1 h-px bg-gray-200"></div>
-          </div>
-
-          <div class="mb-5">
-            <label class="block text-sm font-semibold text-[#1A0533] mb-3">This is equity-first with a lean early salary. Are you at a life stage where that works for you?</label>
-            <div class="flex flex-col gap-3">
-              <label class="radio-pill flex items-center gap-3 px-4 py-3 bg-white border border-gray-200 rounded-xl cursor-pointer text-sm text-gray-700 hover:border-[#D4A853] hover:bg-[#D4A853]/5 transition-colors">
-                <input type="radio" name="equity_readiness" value="Yes, fully" class="accent-[#D4A853] shrink-0" />
-                Yes, fully. I can operate without a big salary right now.
-              </label>
-              <label class="radio-pill flex items-center gap-3 px-4 py-3 bg-white border border-gray-200 rounded-xl cursor-pointer text-sm text-gray-700 hover:border-[#D4A853] hover:bg-[#D4A853]/5 transition-colors">
-                <input type="radio" name="equity_readiness" value="Partly" class="accent-[#D4A853] shrink-0" />
-                Partly. I need some base but equity is the real draw.
-              </label>
-              <label class="radio-pill flex items-center gap-3 px-4 py-3 bg-white border border-gray-200 rounded-xl cursor-pointer text-sm text-gray-700 hover:border-[#D4A853] hover:bg-[#D4A853]/5 transition-colors">
-                <input type="radio" name="equity_readiness" value="Need to discuss" class="accent-[#D4A853] shrink-0" />
-                I need to discuss the specifics.
-              </label>
-            </div>
-          </div>
-
-          <div class="mb-5">
-            <label for="cofounder-vision" class="block text-sm font-semibold text-[#1A0533] mb-2">What does a great co-founder relationship look like to you?</label>
-            <textarea id="cofounder-vision" name="cofounder_vision" rows="4" placeholder="Be honest. What do you need and what do you bring..."
-              class="w-full bg-gray-50 rounded-xl px-4 py-3 text-sm text-gray-800 placeholder-gray-400 border border-transparent focus:outline-none focus:ring-2 focus:ring-[#D4A853] transition-shadow resize-y"></textarea>
-          </div>
-
-          <div>
-            <label class="block text-sm font-semibold text-[#1A0533] mb-3">Availability</label>
-            <div class="flex flex-wrap gap-3">
-              <label class="radio-pill flex items-center gap-2.5 px-4 py-2.5 bg-white border border-gray-200 rounded-xl cursor-pointer text-sm text-gray-700 hover:border-[#D4A853] hover:bg-[#D4A853]/5 transition-colors">
-                <input type="radio" name="availability" value="Full-time" class="accent-[#D4A853]" /> Full-time
-              </label>
-              <label class="radio-pill flex items-center gap-2.5 px-4 py-2.5 bg-white border border-gray-200 rounded-xl cursor-pointer text-sm text-gray-700 hover:border-[#D4A853] hover:bg-[#D4A853]/5 transition-colors">
-                <input type="radio" name="availability" value="Part-time to start" class="accent-[#D4A853]" /> Part-time to start
-              </label>
-              <label class="radio-pill flex items-center gap-2.5 px-4 py-2.5 bg-white border border-gray-200 rounded-xl cursor-pointer text-sm text-gray-700 hover:border-[#D4A853] hover:bg-[#D4A853]/5 transition-colors">
-                <input type="radio" name="availability" value="Open to discuss" class="accent-[#D4A853]" /> Open to discuss
-              </label>
-            </div>
           </div>
         </div>
 
@@ -194,10 +124,10 @@ import Footer from '../components/Footer.astro';
         <div class="pt-2">
           <button type="submit"
             class="w-full bg-[#BB39B4] hover:bg-[#a030a0] text-white font-bold text-base rounded-full py-4 transition-colors duration-200 cursor-pointer">
-            Submit application
+            Start the conversation
           </button>
           <p class="text-xs text-gray-400 text-center mt-4 leading-relaxed">
-            Applications are reviewed personally by the CEO. Every submission gets a response within 7 days. Your information is used only for this co-founder search.
+            Every note is reviewed personally. If there is a potential fit, Damilare or someone from UniversityX will follow up for a real conversation.
           </p>
         </div>
       </form>
@@ -209,8 +139,8 @@ import Footer from '../components/Footer.astro';
             <polyline points="20 6 9 17 4 12"></polyline>
           </svg>
         </div>
-        <h2 class="text-3xl font-extrabold text-[#1A0533] mb-3">Application received.</h2>
-        <p class="text-gray-500 text-base max-w-sm mx-auto">Thanks for completing this appllication. You'll hear back within 7 days.</p>
+        <h2 class="text-3xl font-extrabold text-[#1A0533] mb-3">Conversation started.</h2>
+        <p class="text-gray-500 text-base max-w-sm mx-auto">Thanks for reaching out. Damilare or someone from UniversityX will follow up if there is a potential fit.</p>
       </div>
 
     </div>
@@ -220,42 +150,40 @@ import Footer from '../components/Footer.astro';
 </Layout>
 
 <script>
-  import PocketBase from 'pocketbase';
-
-  declare global {
-    interface Window { posthog?: any; }
-  }
-
   function initCofounderForm() {
-    const form = document.getElementById('appForm') as HTMLFormElement | null;
+    const form = document.getElementById('appForm');
     const successState = document.getElementById('successState');
     if (!form) return;
 
-    const submitBtn = form.querySelector('button[type="submit"]') as HTMLButtonElement;
+    const submitBtn = form.querySelector('button[type="submit"]');
+    const pbUrl = import.meta.env.PUBLIC_POCKETBASE_URL;
+    const endpoint = `${pbUrl}/api/collections/Cofounder_Applications/records`;
+    const emailInput = form.querySelector('#email');
+    const linkedInInput = form.querySelector('#linkedin');
+    const requiredTextInputs = form.querySelectorAll('input[required], textarea[required]');
 
-    // Highlight selected radio pill on change
-    form.querySelectorAll<HTMLInputElement>('.radio-pill input[type="radio"]').forEach((radio) => {
-      radio.addEventListener('change', () => {
-        const groupName = radio.name;
-        form.querySelectorAll<HTMLInputElement>(`.radio-pill input[name="${groupName}"]`).forEach((r) => {
-          const label = r.closest('.radio-pill');
-          if (label) {
-            label.classList.remove('border-[#D4A853]', 'bg-[#D4A853]/10');
-            label.classList.add('border-gray-200');
-          }
-        });
-        const selectedLabel = radio.closest('.radio-pill');
-        if (selectedLabel) {
-          selectedLabel.classList.remove('border-gray-200');
-          selectedLabel.classList.add('border-[#D4A853]', 'bg-[#D4A853]/10');
+    function validateForm() {
+      let isValid = true;
+
+      requiredTextInputs.forEach((field) => {
+        if (!field.value.trim()) {
+          field.reportValidity();
+          isValid = false;
         }
       });
-    });
 
-    const pb = new PocketBase(import.meta.env.PUBLIC_POCKETBASE_URL);
+      if (!isValid) return false;
+      if (emailInput && !emailInput.checkValidity()) return emailInput.reportValidity(), false;
+      if (linkedInInput && !linkedInInput.checkValidity()) return linkedInInput.reportValidity(), false;
+
+      return true;
+    }
 
     form.addEventListener('submit', async (e) => {
       e.preventDefault();
+      if (!submitBtn) return;
+      if (!validateForm()) return;
+
       submitBtn.disabled = true;
       submitBtn.textContent = 'Submitting...';
 
@@ -263,25 +191,31 @@ import Footer from '../components/Footer.astro';
 
       const data = {
         full_name: formData.get('full_name') as string,
-        location: formData.get('location') as string,
         email: formData.get('email') as string,
         linkedin: formData.get('linkedin') as string,
         current_role: formData.get('current_role') as string,
         one_sentence_pitch: formData.get('one_sentence_pitch') as string,
         creative_growth_story: (formData.get('creative_growth_story') as string) || '',
-        zero_budget_growth: (formData.get('zero_budget_growth') as string) || '',
-        own_course_experience: (formData.get('own_course_experience') as string) || '',
-        b2b_deal_story: (formData.get('b2b_deal_story') as string) || '',
-        equity_readiness: (formData.get('equity_readiness') as string) || '',
         cofounder_vision: (formData.get('cofounder_vision') as string) || '',
-        availability: (formData.get('availability') as string) || '',
       };
 
       try {
-        await pb.collection('Cofounder_Applications').create(data);
+        const response = await fetch(endpoint, {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify(data),
+        });
+
+        if (!response.ok) {
+          const error = await response.json().catch(() => null);
+          console.error('Cofounder form submission failed:', error);
+          throw new Error('Failed to submit cofounder form');
+        }
 
         window.posthog?.capture('cofounder_application_submitted', {
-          form_name: 'cofounder-application',
+          form_name: 'cofounder-conversation',
         });
 
         form.classList.add('hidden');
@@ -289,7 +223,7 @@ import Footer from '../components/Footer.astro';
         window.scrollTo({ top: form.offsetTop - 100, behavior: 'smooth' });
       } catch {
         submitBtn.disabled = false;
-        submitBtn.textContent = 'Submit application';
+        submitBtn.textContent = 'Start the conversation';
         alert('Something went wrong. Please try again or email us directly.');
       }
     });
