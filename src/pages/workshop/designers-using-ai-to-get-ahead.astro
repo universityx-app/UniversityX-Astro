@@ -475,6 +475,9 @@ const workshop = {
   }
 
   const workshopSlug = 'designers-using-ai-to-get-ahead';
+  const courseId = '4ccce78f-ae18-4734-aff5-07bd3dcd4da7';
+  const sourceUrl = 'https://universityx.app/workshop/designers-using-ai-to-get-ahead';
+  const joinUrl = `/join/open-learning?courseId=${courseId}&source=${encodeURIComponent(sourceUrl)}`;
 
   function initCountdown() {
     const containers = document.querySelectorAll('.countdown-container');
@@ -521,8 +524,7 @@ const workshop = {
 
   function initRegistrationForm() {
     const form = document.getElementById('register-form') as HTMLFormElement | null;
-    const successMsg = document.getElementById('register-success');
-    if (!form || !successMsg) return;
+    if (!form) return;
 
     const emailInput = form.querySelector('#register-email') as HTMLInputElement;
     const emailError = document.getElementById('register-email-error')!;
@@ -551,7 +553,7 @@ const workshop = {
       submitBtn.textContent = 'Loading...';
 
       try {
-        await pb.collection('Tayo_Waitlist_Form').create({
+        await pb.collection('Tayotane_Waitlist').create({
           email: emailInput.value.trim(),
           workshop: workshopSlug,
         });
@@ -560,8 +562,7 @@ const workshop = {
           workshop: workshopSlug,
         });
 
-        form.classList.add('hidden');
-        successMsg.classList.remove('hidden');
+        window.location.href = `${joinUrl}&email=${encodeURIComponent(emailInput.value.trim())}`;
       } catch (err) {
         console.error('Registration error:', err);
         submitBtn.disabled = false;
