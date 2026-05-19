@@ -1,0 +1,584 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import Navbar from '../../components/Navbar.astro';
+import Footer from '../../components/Footer.astro';
+
+const workshop = {
+  title: 'How Designers Are Using AI to Get Ahead',
+  price: 0,
+  startDate: 'Saturday, May 23rd',
+  duration: '1-Day Live Workshop',
+  level: 'Beginner - Intermediate',
+  format: 'Free Live Event',
+  thumbnail: '/images/tayo-workshop-cover.png',
+  instructorPhoto: '/images/tayo-hs.png',
+};
+---
+
+<Layout
+  title="How Designers Are Using AI to Get Ahead - UniversityX Workshop"
+  description="A free live workshop with Temitayo Eleyinmi, Tayotane. Learn how modern designers use AI for research, UX thinking, ideation, UI direction, portfolio work, communication, and speed."
+  image="/images/tayo-workshop-cover.png"
+  url="https://universityx.app/workshop/designers-using-ai-to-get-ahead"
+>
+  <Navbar />
+
+  <main class="bg-white">
+    <section class="max-w-7xl mx-auto px-6 md:px-12 lg:px-16 xl:px-24 pt-10 pb-0">
+      <nav class="flex items-center gap-2 text-sm text-gray-500 mb-8" aria-label="Breadcrumb">
+        <a href="/" class="hover:text-[#BB39B4] transition-colors">Home</a>
+        <svg class="w-3.5 h-3.5 text-[#BB39B4]" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+          <path d="M9 18l6-6-6-6" />
+        </svg>
+        <span class="text-[#1A0533] font-medium">{workshop.title}</span>
+      </nav>
+
+      <div class="grid grid-cols-1 lg:grid-cols-[1fr_360px] gap-12 xl:gap-16 items-start">
+        <div>
+          <span class="inline-block text-[#BB39B4] text-sm font-bold bg-[#BB39B4]/10 rounded-full px-4 py-1.5 mb-5">Free Workshop</span>
+
+          <h1 class="text-3xl md:text-4xl font-extrabold text-[#1A0533] leading-tight mb-5">
+            How Designers Are Using AI
+            <em class="font-['Playfair_Display',serif] font-bold"> to Get Ahead</em>
+          </h1>
+
+          <p class="text-lg text-gray-700 leading-relaxed mb-6">
+            AI is changing what it means to be a designer. The designers getting ahead are not
+            just generating pretty screens. They are using AI to think clearer, research faster,
+            explore stronger directions, communicate better, and build proof of their ideas
+            before everyone else is done overthinking.
+          </p>
+
+          <ul class="space-y-2.5 mb-8 text-lg">
+            {[
+              'Use AI to move from vague briefs to sharper product and user insights',
+              'Generate better UX flows, product angles, and interface directions faster',
+              'Improve your design communication, case studies, and portfolio storytelling',
+              'Use AI as a thinking partner without losing your taste, judgment, or originality',
+            ].map((item) => (
+              <li class="flex items-start gap-3 text-gray-700">
+                <svg class="w-5 h-5 text-[#BB39B4] shrink-0 mt-0.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                  <polyline points="20 6 9 17 4 12" />
+                </svg>
+                {item}
+              </li>
+            ))}
+          </ul>
+
+          <div class="flex flex-wrap gap-3 mb-8">
+            {[
+              { label: '🗓️ 1-Day Live Workshop' },
+              { label: '🌱 Beginner – Intermediate' },
+              { label: '🎁 Free' },
+            ].map(({ label }) => (
+              <span class="inline-flex items-center gap-2 bg-[#F5F2EB] text-[#1A0533] text-base font-medium px-4 py-2 rounded-full">
+                {label}
+              </span>
+            ))}
+          </div>
+
+          <div class="border-t border-gray-100 pt-6">
+            <p class="text-xs font-semibold text-gray-400 uppercase tracking-widest mb-4">Instructor</p>
+            <div class="flex items-center gap-4">
+              <img
+                src={workshop.instructorPhoto}
+                alt="Temitayo Eleyinmi"
+                class="w-18 h-18 rounded-full object-cover object-top shrink-0"
+                loading="eager"
+              />
+              <div>
+                <p class="font-semibold text-[#1A0533] text-lg">Temitayo Eleyinmi</p>
+                <p class="text-base text-gray-500">Product Designer at SunFi, Founder &amp; CEO of Lenr</p>
+              </div>
+            </div>
+
+            <div class="mt-5">
+              <p class="text-xs font-semibold text-gray-400 uppercase tracking-widest mb-3">Has designed, built &amp; mentored at</p>
+              <div class="flex items-center flex-wrap gap-5">
+                <img src="/images/sunfi-logo.png" alt="SunFi" class="h-8" loading="lazy" />
+                <img src="/images/lenr-logo.png" alt="Lenr" class="h-8" loading="lazy" />
+                <img src="/images/gdg-logo.png" alt="Google Developers Group" class="h-10" loading="lazy" />
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <aside class="lg:sticky lg:top-6">
+          <div class="rounded-2xl border border-gray-200 shadow-lg overflow-hidden">
+            <img
+              src={workshop.thumbnail}
+              alt={workshop.title}
+              class="w-full aspect-video object-cover"
+              loading="eager"
+            />
+
+            <div class="p-6 space-y-4">
+              <div class="flex items-baseline gap-3">
+                <span class="text-3xl font-extrabold text-[#1A0533]">FREE</span>
+                <span class="text-base text-gray-400">Live Workshop</span>
+              </div>
+
+              <div class="flex items-center gap-2 text-lg text-gray-600">
+                <svg class="w-6 h-6 text-[#BB39B4]" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                  <rect x="3" y="4" width="18" height="18" rx="2" ry="2" />
+                  <line x1="16" y1="2" x2="16" y2="6" />
+                  <line x1="8" y1="2" x2="8" y2="6" />
+                  <line x1="3" y1="10" x2="21" y2="10" />
+                </svg>
+                {workshop.startDate}
+              </div>
+
+              <div class="flex items-center gap-2 text-lg text-gray-600">
+                <svg class="w-6 h-6 text-[#BB39B4]" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                  <circle cx="12" cy="12" r="10" />
+                  <polyline points="12 6 12 12 16 14" />
+                </svg>
+                6:00 PM WAT
+              </div>
+
+              <div class="mt-8 text-center bg-[#F5F2EB] rounded-xl p-4 border border-[#F5F2EB]/80">
+                <p class="text-sm font-bold text-[#BB39B4] uppercase tracking-wider mb-2">Workshop Starts In</p>
+                <div class="flex items-center justify-center gap-3 countdown-container">
+                  <div class="flex flex-col days-group">
+                    <span class="text-3xl font-extrabold text-[#1A0533] days-val">00</span>
+                    <span class="text-sm text-gray-500 uppercase tracking-widest mt-0.5">Days</span>
+                  </div>
+                  <span class="text-xl font-bold text-[#1A0533]/30 pb-2 days-sep">:</span>
+                  <div class="flex flex-col">
+                    <span class="text-3xl font-extrabold text-[#1A0533] hours-val">00</span>
+                    <span class="text-sm text-gray-500 uppercase tracking-widest mt-0.5">Hrs</span>
+                  </div>
+                  <span class="text-xl font-bold text-[#1A0533]/30 pb-2">:</span>
+                  <div class="flex flex-col">
+                    <span class="text-3xl font-extrabold text-[#1A0533] minutes-val">00</span>
+                    <span class="text-sm text-gray-500 uppercase tracking-widest mt-0.5">Min</span>
+                  </div>
+                  <span class="text-xl font-bold text-[#1A0533]/30 pb-2">:</span>
+                  <div class="flex flex-col">
+                    <span class="text-3xl font-extrabold text-[#1A0533] seconds-val">00</span>
+                    <span class="text-sm text-gray-500 uppercase tracking-widest mt-0.5">Sec</span>
+                  </div>
+                </div>
+              </div>
+
+              <a
+                id="enroll"
+                href="#enroll-form"
+                class="block w-full text-center bg-[#BB39B4] hover:bg-[#a832a1] text-white font-semibold px-8 py-4 rounded-lg transition-colors duration-200 text-base mt-6"
+              >
+                Reserve Your Free Seat
+              </a>
+            </div>
+          </div>
+        </aside>
+      </div>
+    </section>
+
+    <section class="bg-[#F5F2EB] mt-16 py-16 md:py-20">
+      <div class="max-w-7xl mx-auto px-6 md:px-12 lg:px-16 xl:px-24 max-w-3xl">
+        <p class="text-xs font-semibold text-[#BB39B4] uppercase tracking-widest mb-3">Workshop Overview</p>
+        <h2 class="text-2xl md:text-3xl font-extrabold text-[#1A0533] leading-tight mb-6">
+          AI will not replace designers with taste. It will expose designers who only wait for instructions.
+        </h2>
+        <div class="space-y-4 text-gray-700 leading-relaxed text-lg md:text-lg">
+          <p>
+            The design market is moving quickly. Teams want designers who can understand problems,
+            generate options, explain decisions, and keep momentum. AI gives designers a way to
+            compress the slow parts of the work, but only if they know how to use it with judgment.
+          </p>
+          <p>
+            In this workshop, Temitayo Eleyinmi, Tayotane, will show how designers can use AI as
+            a practical edge: for research, UX thinking, ideation, UI direction, portfolio work,
+            communication, and speed. The goal is not to become less creative. The goal is to
+            stop staying stuck when you could be moving.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <section class="py-16 md:py-20">
+      <div class="max-w-7xl mx-auto px-6 md:px-12 lg:px-16 xl:px-24">
+        <p class="text-xs font-semibold text-[#BB39B4] uppercase tracking-widest mb-3 text-center">Who This Is For</p>
+        <h2 class="text-2xl md:text-3xl font-extrabold text-[#1A0533] text-center mb-12">This Workshop Is For You If...</h2>
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+          {[
+            {
+              num: '01',
+              title: 'You are a product designer trying to stay relevant',
+              body: 'You want to understand how AI fits into real design work, from research and flows to visual direction, critique, and stakeholder communication.',
+            },
+            {
+              num: '02',
+              title: 'You are learning UI/UX and need clarity',
+              body: 'You have watched tutorials, saved resources, and still feel unsure about what to do next. This gives you a practical way to move with structure.',
+            },
+            {
+              num: '03',
+              title: 'You want speed without losing quality',
+              body: 'You do not want AI to make you generic. You want to use it to explore faster, think better, and make sharper design decisions.',
+            },
+          ].map(({ num, title, body }) => (
+            <div class="bg-[#F5F2EB] rounded-2xl p-7">
+              <span class="inline-block text-[#BB39B4] text-base font-bold bg-white rounded-full px-3 py-1 mb-4">{num}</span>
+              <h3 class="text-lg font-bold text-[#1A0533] mb-2 leading-snug">{title}</h3>
+              <p class="text-base text-gray-700 leading-relaxed">{body}</p>
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <section class="bg-[#F5F2EB] py-16 md:py-20">
+      <div class="max-w-7xl mx-auto px-6 md:px-12 lg:px-16 xl:px-24">
+        <p class="text-xs font-semibold text-[#BB39B4] uppercase tracking-widest mb-3">What's Included</p>
+        <h2 class="text-2xl md:text-3xl font-extrabold text-[#1A0533] mb-10">A practical session for designers who want momentum</h2>
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+          {[
+            {
+              title: 'Live session with Tayo',
+              body: 'A focused workshop with practical examples from design, learning, community, and building in public.',
+              icon: '🎙️',
+            },
+            {
+              title: 'AI workflow breakdown',
+              body: 'See where AI helps in research, UX thinking, ideation, UI direction, writing, and portfolio communication.',
+              icon: '🧠',
+            },
+            {
+              title: 'Small-wins approach',
+              body: 'Learn how to stop overthinking, start rough, improve as you go, and build confidence through visible progress.',
+              icon: '🏆',
+            },
+            {
+              title: 'Recording access',
+              body: "Can't attend live? Register and we will send the replay after the session.",
+              icon: '🎬',
+            },
+          ].map(({ title, body, icon }) => (
+            <div class="flex items-start gap-4 bg-white rounded-2xl p-6 shadow-sm">
+              <div class="w-10 h-10 rounded-xl bg-[#BB39B4]/10 flex items-center justify-center shrink-0">
+                <span class="text-xl">{icon}</span>
+              </div>
+              <div>
+                <p class="font-semibold text-[#1A0533] mb-1 text-lg">{title}</p>
+                <p class="text-base text-gray-500 leading-relaxed">{body}</p>
+              </div>
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <section class="bg-white py-16 md:py-20">
+      <div class="max-w-7xl mx-auto px-6 md:px-12 lg:px-16 xl:px-24">
+        <p class="text-xs font-semibold text-[#BB39B4] uppercase tracking-widest mb-10">Meet Your Instructor</p>
+        <div class="grid grid-cols-1 md:grid-cols-[1fr_320px] gap-10 items-start">
+          <div>
+            <h2 class="text-2xl md:text-3xl font-extrabold text-[#1A0533] mb-2">Temitayo Eleyinmi (Tayotane)</h2>
+            <p class="font-medium mb-5">Product Designer at SunFi, Founder &amp; CEO of Lenr</p>
+            <div class="space-y-4 text-gray-700 leading-relaxed text-lg">
+              <p>
+                Tayotane designs for ease. He works as a Product Designer at SunFi and leads Lenr,
+                a learning platform focused on helping people transition into tech with more clarity,
+                structure, and community.
+              </p>
+              <p>
+                His work sits at the intersection of product design, Framer development, design
+                mentorship, tech education, and community building. He has also mentored designers
+                through developer and student communities, helping early designers find direction
+                and build confidence.
+              </p>
+              <p>
+                This workshop brings that same practical energy into AI for designers: start small,
+                move fast, use the tools well, and keep improving as you go.
+              </p>
+            </div>
+          </div>
+
+          <div class="order-first md:order-last md:justify-self-end justify-self-center">
+            <img
+              src={workshop.instructorPhoto}
+              alt="Temitayo Eleyinmi"
+              class="w-full max-w-xs mx-auto md:mx-0 rounded-2xl object-cover object-top aspect-[3/4]"
+              loading="lazy"
+            />
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="py-16 md:py-20">
+      <div class="max-w-7xl mx-auto px-6 md:px-12 lg:px-16 xl:px-24">
+        <p class="text-xs font-semibold text-[#BB39B4] uppercase tracking-widest mb-3 text-center">FAQ</p>
+        <h2 class="text-2xl md:text-3xl font-extrabold text-[#1A0533] text-center mb-4">Frequently Asked Questions</h2>
+        <p class="text-center text-gray-500 mb-12 max-w-lg mx-auto">Quick answers before you register.</p>
+
+        <div class="max-w-2xl mx-auto space-y-3" id="faq">
+          {[
+            {
+              q: 'Do I need advanced design experience?',
+              a: 'No. This is useful for product designers, UI/UX beginners, aspiring designers, and creative builders. You only need curiosity and a willingness to try a better workflow.',
+            },
+            {
+              q: 'Is this only about making UI screens with AI?',
+              a: 'No. UI generation is only one piece. The workshop covers research, UX thinking, ideation, critique, communication, portfolio work, and how designers can use AI without losing their own judgment.',
+            },
+            {
+              q: "Will I get a recording if I can't attend live?",
+              a: 'Yes. Registered attendees will receive the replay after the session. Showing up live is still best because you can ask questions and learn in the room.',
+            },
+          ].map(({ q, a }) => (
+            <div class="accordion-item border border-gray-200 rounded-2xl overflow-hidden">
+              <button
+                class="accordion-trigger w-full flex items-center justify-between px-6 py-5 text-left bg-white hover:bg-[#F5F2EB] transition-colors duration-200"
+                aria-expanded="false"
+              >
+                <span class="font-semibold text-[#1A0533] pr-4">{q}</span>
+                <svg class="accordion-chevron w-5 h-5 text-gray-400 transition-transform duration-300 shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                  <polyline points="6 9 12 15 18 9" />
+                </svg>
+              </button>
+              <div class="accordion-body">
+                <div class="accordion-inner">
+                  <p class="px-6 pb-5 pt-2 text-gray-600 leading-relaxed border-t border-gray-100">{a}</p>
+                </div>
+              </div>
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <section id="enroll-form" class="bg-[#1A0533] py-16 md:py-20">
+      <div class="max-w-7xl mx-auto px-6 md:px-12 lg:px-16 xl:px-24">
+        <div class="text-center mb-10 max-w-2xl mx-auto">
+          <h2 class="text-2xl md:text-3xl font-extrabold text-white mb-3 leading-tight">
+            Save your seat for Saturday
+          </h2>
+          <p class="text-gray-400 max-w-lg mx-auto">
+            Enter your email and we will send you the event link and setup details before the workshop.
+          </p>
+        </div>
+
+        <div class="mb-10 text-center bg-white/5 rounded-2xl p-6 border border-white/10 max-w-md mx-auto">
+          <p class="text-xs font-semibold text-gray-400 uppercase tracking-widest mb-4">Workshop Starts In</p>
+          <div class="flex items-center justify-center gap-3 countdown-container">
+            <div class="flex flex-col days-group">
+              <span class="text-4xl md:text-5xl font-bold text-white days-val">00</span>
+              <span class="text-xs text-gray-500 uppercase tracking-wider mt-1">Days</span>
+            </div>
+            <span class="text-3xl font-bold text-white/30 pb-4 days-sep">:</span>
+            <div class="flex flex-col">
+              <span class="text-4xl md:text-5xl font-bold text-white hours-val">00</span>
+              <span class="text-xs text-gray-500 uppercase tracking-wider mt-1">Hours</span>
+            </div>
+            <span class="text-3xl font-bold text-white/30 pb-4">:</span>
+            <div class="flex flex-col">
+              <span class="text-4xl md:text-5xl font-bold text-white minutes-val">00</span>
+              <span class="text-xs text-gray-500 uppercase tracking-wider mt-1">Mins</span>
+            </div>
+            <span class="text-3xl font-bold text-white/30 pb-4">:</span>
+            <div class="flex flex-col">
+              <span class="text-4xl md:text-5xl font-bold text-white seconds-val">00</span>
+              <span class="text-xs text-gray-500 uppercase tracking-wider mt-1">Secs</span>
+            </div>
+          </div>
+        </div>
+
+        <div id="register-success" class="hidden max-w-md mx-auto bg-white/10 backdrop-blur-sm rounded-2xl border border-white/10 p-8 text-center">
+          <div class="w-12 h-12 bg-green-500/20 rounded-full flex items-center justify-center mx-auto mb-4">
+            <svg class="w-6 h-6 text-green-400" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M20 6L9 17l-5-5" />
+            </svg>
+          </div>
+          <h3 class="text-xl font-bold text-white mb-2">You're registered!</h3>
+          <p class="text-gray-400 text-sm">We'll send you the event link and setup details before the workshop.</p>
+        </div>
+
+        <form id="register-form" novalidate class="max-w-md mx-auto bg-white/5 backdrop-blur-sm rounded-2xl border border-white/10 p-6 md:p-8">
+          <div class="mb-4">
+            <label for="register-email" class="sr-only">Email Address</label>
+            <input
+              type="email"
+              id="register-email"
+              name="email"
+              placeholder="Enter your email address"
+              required
+              class="w-full bg-white/10 rounded-xl px-5 py-4 text-white placeholder-gray-400 border border-transparent focus:outline-none focus:ring-2 focus:ring-[#BB39B4] focus:border-[#BB39B4] transition-all duration-200"
+            />
+            <p id="register-email-error" class="text-red-400 text-xs mt-2 hidden text-left">Please enter a valid email address.</p>
+          </div>
+          <button
+            type="submit"
+            id="register-submit-btn"
+            class="w-full bg-[#BB39B4] hover:bg-[#a832a1] text-white font-bold text-base rounded-xl py-4 transition-colors duration-200 cursor-pointer"
+          >
+            Reserve Your Free Seat
+          </button>
+          <p class="text-center text-gray-500 text-xs mt-3">No payment. No credit card. We'll never spam you.</p>
+        </form>
+      </div>
+    </section>
+  </main>
+
+  <Footer />
+</Layout>
+
+<style>
+  .accordion-body {
+    display: grid;
+    grid-template-rows: 0fr;
+    transition: grid-template-rows 300ms ease;
+  }
+
+  .accordion-body.is-open {
+    grid-template-rows: 1fr;
+  }
+
+  .accordion-inner {
+    overflow: hidden;
+  }
+
+  .accordion-chevron.is-open {
+    transform: rotate(180deg);
+  }
+</style>
+
+<script>
+  function initAccordions() {
+    document.querySelectorAll('.accordion-trigger').forEach((trigger) => {
+      trigger.addEventListener('click', () => {
+        const item = trigger.closest('.accordion-item')!;
+        const body = item.querySelector('.accordion-body')!;
+        const chevron = trigger.querySelector('.accordion-chevron')!;
+        const isOpen = body.classList.contains('is-open');
+
+        body.classList.toggle('is-open', !isOpen);
+        chevron.classList.toggle('is-open', !isOpen);
+        trigger.setAttribute('aria-expanded', String(!isOpen));
+      });
+    });
+  }
+
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', initAccordions);
+  } else {
+    initAccordions();
+  }
+</script>
+
+<script>
+  import PocketBase from 'pocketbase';
+
+  declare global {
+    interface Window { posthog?: any; }
+  }
+
+  const workshopSlug = 'designers-using-ai-to-get-ahead';
+
+  function initCountdown() {
+    const containers = document.querySelectorAll('.countdown-container');
+    if (!containers.length) return;
+
+    const targetDate = new Date('2026-05-23T18:00:00+01:00').getTime();
+
+    function updateCounters() {
+      const now = new Date().getTime();
+      const distance = targetDate - now;
+
+      if (distance <= 0) {
+        containers.forEach((container) => {
+          (container.querySelector('.days-group') as HTMLElement).classList.add('hidden');
+          (container.querySelector('.days-sep') as HTMLElement).classList.add('hidden');
+          (container.querySelector('.hours-val') as HTMLElement).textContent = '00';
+          (container.querySelector('.minutes-val') as HTMLElement).textContent = '00';
+          (container.querySelector('.seconds-val') as HTMLElement).textContent = '00';
+        });
+        return;
+      }
+
+      const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+      const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+      const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+      const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+      containers.forEach((container) => {
+        const daysGroup = container.querySelector('.days-group') as HTMLElement;
+        const daysSep = container.querySelector('.days-sep') as HTMLElement;
+
+        daysGroup.classList.toggle('hidden', days === 0);
+        daysSep.classList.toggle('hidden', days === 0);
+        (container.querySelector('.days-val') as HTMLElement).textContent = days.toString().padStart(2, '0');
+        (container.querySelector('.hours-val') as HTMLElement).textContent = hours.toString().padStart(2, '0');
+        (container.querySelector('.minutes-val') as HTMLElement).textContent = minutes.toString().padStart(2, '0');
+        (container.querySelector('.seconds-val') as HTMLElement).textContent = seconds.toString().padStart(2, '0');
+      });
+    }
+
+    updateCounters();
+    setInterval(updateCounters, 1000);
+  }
+
+  function initRegistrationForm() {
+    const form = document.getElementById('register-form') as HTMLFormElement | null;
+    const successMsg = document.getElementById('register-success');
+    if (!form || !successMsg) return;
+
+    const emailInput = form.querySelector('#register-email') as HTMLInputElement;
+    const emailError = document.getElementById('register-email-error')!;
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+
+    function validateEmail(): boolean {
+      const valid = emailRegex.test(emailInput.value.trim());
+      emailError.classList.toggle('hidden', valid || emailInput.value.trim() === '');
+      return valid;
+    }
+
+    emailInput.addEventListener('blur', validateEmail);
+
+    const pb = new PocketBase(import.meta.env.PUBLIC_POCKETBASE_URL);
+
+    form.addEventListener('submit', async (e) => {
+      e.preventDefault();
+
+      if (!validateEmail()) {
+        emailInput.focus();
+        return;
+      }
+
+      const submitBtn = document.getElementById('register-submit-btn') as HTMLButtonElement;
+      submitBtn.disabled = true;
+      submitBtn.textContent = 'Loading...';
+
+      try {
+        await pb.collection('Tayo_Waitlist_Form').create({
+          email: emailInput.value.trim(),
+          workshop: workshopSlug,
+        });
+
+        window.posthog?.capture('workshop_registered', {
+          workshop: workshopSlug,
+        });
+
+        form.classList.add('hidden');
+        successMsg.classList.remove('hidden');
+      } catch (err) {
+        console.error('Registration error:', err);
+        submitBtn.disabled = false;
+        submitBtn.textContent = 'Reserve Your Free Seat';
+        emailError.textContent = 'Something went wrong. Please try again.';
+        emailError.classList.remove('hidden');
+      }
+    });
+  }
+
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', () => {
+      initCountdown();
+      initRegistrationForm();
+    });
+  } else {
+    initCountdown();
+    initRegistrationForm();
+  }
+</script>
