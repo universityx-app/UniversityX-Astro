@@ -19,13 +19,18 @@ const cards = [
   <div class="relative mb-8 pt-10 z-10 grid grid-cols-1 lg:grid-cols-2">
     <!-- Left Column: Text -->
     <div class="px-6 lg:pl-24 lg:pr-0 py-12 lg:py-0 relative">
+      <p class="hero-eyebrow mb-5 inline-flex items-center gap-3 rounded-full border border-white/10 bg-white/7 px-5 py-2.5 text-sm font-semibold text-white/92 backdrop-blur-md">
+        <span class="hero-eyebrow-dot h-2.5 w-2.5 rounded-full bg-[#BB39B4]"></span>
+        Tired of watching tutorials?
+      </p>
+
       <!-- Heading -->
-    <div class="text-5xl md:text-6xl font-extrabold leading-[1.1] tracking-tight mb-6">
-      <span>Build real-world projects that get you hired.</span>
-      <!-- <span class="inline-block relative">
-        <SideEye class="inline-flex w-15 h-15 align-middle mb-2" />
-      </span> -->
-    </div>
+      <div class="text-5xl md:text-6xl font-extrabold leading-[1.1] tracking-tight mb-6">
+        <span>Build real-world projects that get you hired.</span>
+        <!-- <span class="inline-block relative">
+          <SideEye class="inline-flex w-15 h-15 align-middle mb-2" />
+        </span> -->
+      </div>
 
       <!-- Subtext -->
       <p class="text-gray-400 text-lg md:text-2xl mb-10">
@@ -121,6 +126,19 @@ const cards = [
 </section>
 
 <style>
+  .hero-eyebrow {
+    box-shadow:
+      inset 0 1px 0 rgba(255, 255, 255, 0.08),
+      0 0 0 1px rgba(187, 57, 180, 0.08),
+      0 14px 40px rgba(0, 0, 0, 0.28);
+    animation: eyebrow-pulse 3.2s ease-in-out infinite;
+  }
+
+  .hero-eyebrow-dot {
+    box-shadow: 0 0 14px rgba(187, 57, 180, 0.9);
+    animation: eyebrow-dot-pulse 1.8s ease-in-out infinite;
+  }
+
   /* Marquee container with fade mask */
   .marquee-container {
     -webkit-mask-image: linear-gradient(90deg, #0000 0%, #000 70% 75%, #0000 100%);
@@ -145,6 +163,39 @@ const cards = [
     100% {
       /* 6 cards × (280px + 20px gap) = 1800px */
       transform: translateX(-1800px);
+    }
+  }
+
+  @keyframes eyebrow-pulse {
+    0%,
+    100% {
+      box-shadow:
+        inset 0 1px 0 rgba(255, 255, 255, 0.08),
+        0 0 0 1px rgba(187, 57, 180, 0.08),
+        0 14px 40px rgba(0, 0, 0, 0.28);
+      transform: translateY(0);
+    }
+    50% {
+      box-shadow:
+        inset 0 1px 0 rgba(255, 255, 255, 0.1),
+        0 0 0 1px rgba(187, 57, 180, 0.16),
+        0 0 28px rgba(187, 57, 180, 0.18),
+        0 16px 44px rgba(0, 0, 0, 0.3);
+      transform: translateY(-1px);
+    }
+  }
+
+  @keyframes eyebrow-dot-pulse {
+    0%,
+    100% {
+      opacity: 0.82;
+      transform: scale(1);
+      box-shadow: 0 0 10px rgba(187, 57, 180, 0.55);
+    }
+    50% {
+      opacity: 1;
+      transform: scale(1.18);
+      box-shadow: 0 0 18px rgba(187, 57, 180, 0.95);
     }
   }
 
