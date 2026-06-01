@@ -1,5 +1,4 @@
 ---
-import SideEye from './SideEye.astro';
 import Navbar from './Navbar.astro';
 
 const cards = [
@@ -16,46 +15,41 @@ const cards = [
   <Navbar />
 
   <!-- ===== HERO CONTENT ===== -->
-  <div class="relative mb-8 pt-10 z-10 grid grid-cols-1 lg:grid-cols-2">
+  <div class="relative mb-8 pt-10 z-10 grid grid-cols-1 lg:grid-cols-[minmax(0,3fr)_minmax(0,2fr)]">
     <!-- Left Column: Text -->
-    <div class="px-6 lg:pl-24 lg:pr-0 py-12 lg:py-0 relative">
-      <!-- Heading -->
-    <div class="text-5xl md:text-6xl font-extrabold leading-[1.1] tracking-tight mb-6">
-      <span>Master In-Demand Skills Today. Stop Wasting Time</span>
-      <span class="inline-block relative">
-        <SideEye class="inline-flex w-15 h-15 align-middle mb-2" />
-      </span>
-    </div>
-
-      <!-- Subtext -->
-      <p class="text-gray-400 text-lg md:text-2xl mb-10">
-        Join interactive live cohorts or learn at your own pace with expert-led courses. Build job-ready skills for your next role, freelance career, or business.
+    <div class="px-6 lg:pl-24 lg:pr-0 py-12 lg:py-0 relative z-20">
+      <p class="mb-7 inline-flex items-center gap-3 rounded-full border border-white/15 bg-white/10 px-4 py-2 text-sm md:text-base font-semibold text-white shadow-[inset_0_1px_0_rgba(255,255,255,0.08)]">
+        <span aria-hidden="true">😩</span>
+        Tired of watching tutorials?
       </p>
 
-      <!-- Buttons -->
-      <div class="flex flex-wrap items-center gap-4 mb-12">
+      <h1 class="max-w-3xl text-5xl md:text-6xl font-extrabold leading-[1.05] mb-8">
+        Build real-world projects that get you hired.
+      </h1>
+
+      <p class="max-w-2xl text-gray-300 text-lg md:text-2xl leading-relaxed mb-12">
+        UniversityX helps you build real projects with live guidance from expert instructors and an AI coach.
+      </p>
+
+      <div class="flex flex-col items-start gap-5 mb-12">
         <a
           id="browse-courses-btn"
           href="#browse-courses"
-          class="inline-flex items-center gap-2 bg-[#BB39B4] hover:bg-[#BB39B4] text-white font-semibold px-7 py-3.5 rounded-full transition-colors text-base"
+          class="inline-flex items-center gap-3 bg-[#BB39B4] hover:bg-[#A92EA2] text-white font-semibold px-8 py-4 rounded-full transition-colors text-base shadow-[0_18px_50px_rgba(187,57,180,0.35)]"
         >
-          Browse Courses
+          Explore Sprints
           <svg class="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
             <path d="M5 12h14M12 5l7 7-7 7"/>
           </svg>
         </a>
-        <a
-          id="how-it-works-btn"
-          href="#how-it-works"
-          class="inline-flex items-center gap-2 border border-white/20 hover:border-white/40 text-white font-semibold px-7 py-3.5 rounded-full transition-colors text-base"
-        >
-          How it Works
-        </a>
+        <p class="max-w-xl text-sm md:text-base leading-relaxed text-gray-400">
+          Join a project-led course, build your portfolio, and prove to employers you can actually do the job.
+        </p>
       </div>
     </div>
 
     <!-- Right Column: Marquee -->
-    <div class="marquee-container relative h-125 lg:h-full overflow-hidden flex items-start!">
+    <div class="marquee-container relative z-0 h-125 lg:h-full overflow-hidden flex items-start! lg:-ml-40">
       <div class="marquee-track">
         <!-- First set of cards -->
         {cards.map((card) => (
@@ -123,8 +117,8 @@ const cards = [
 <style>
   /* Marquee container with fade mask */
   .marquee-container {
-    -webkit-mask-image: linear-gradient(90deg, #0000 0%, #000 70% 75%, #0000 100%);
-    mask-image: linear-gradient(90deg, #0000 0%, #000 70% 75%, #0000 100%);
+    -webkit-mask-image: linear-gradient(90deg, transparent 0%, rgba(0,0,0,0.08) 6%, rgba(0,0,0,0.28) 14%, rgba(0,0,0,0.62) 24%, #000 38%, #000 88%, transparent 100%);
+    mask-image: linear-gradient(90deg, transparent 0%, rgba(0,0,0,0.08) 6%, rgba(0,0,0,0.28) 14%, rgba(0,0,0,0.62) 24%, #000 38%, #000 88%, transparent 100%);
     display: flex;
     align-items: center;
   }
