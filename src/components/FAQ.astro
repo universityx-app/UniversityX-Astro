@@ -1,43 +1,31 @@
 ---
 const faqs = [
-  // {
-  //   question: 'Is UniversityX safe to use?',
-  //   answer:
-  //     'UniversityX is a trusted online learning platform that helps you build job-ready skills through live cohort-based courses. All payments are processed securely, and your personal data is protected with industry-standard encryption.',
-  // },
   {
     question: 'What is UniversityX?',
     answer:
-      'UniversityX is a dynamic learning platform offering both live cohort-based programs and flexible self-paced courses. We provide expert-led training in high-demand skills like AI, web development, data analysis, and more, designed to fit your learning style and schedule.',
+      'UniversityX is a skills-to-employment platform that helps African tech professionals build practical skills, verify their competence and create credible proof of what they can do.',
   },
   {
-    question: 'How does the UniversityX model help me?',
+    question: 'Does one four-week course guarantee a job?',
     answer:
-      'Our hybrid model is built for success. Live cohorts foster accountability through peer interaction and direct instructor engagement, significantly increasing completion rates and outcomes. For those who need flexibility, our self-paced tracks offer structured content and continuous support, ensuring you stay on track and achieve your goals without rigid deadlines.',
+      'No. UniversityX does not guarantee employment after one course. The first course helps you build a credible project, strengthen your practical skills and prepare for freelance micro-projects, internships and the next courses in the Software Engineering path.',
   },
   {
-    question: 'What happens if I miss a live session or need more time?',
+    question: 'Will I receive a certificate?',
     answer:
-      'All live sessions are recorded and made available within 24 hours, allowing you to catch up at your convenience. For self-paced learners, all content is available on-demand. Our flexible approach ensures you can always access materials and participate in discussions, regardless of your schedule.',
+      'Completion may be recognised, but the primary outcome is not a certificate. The focus is the project you build, the skills you demonstrate and the evidence you can show.',
   },
   {
-    question: 'Do I get a certificate when I finish?',
+    question: 'Are other career paths available?',
     answer:
-      'Yes. Upon successful completion of any course, whether live cohort or self-paced, and its final project, you will receive a verified certificate of completion. This certificate is perfect for showcasing your new skills on LinkedIn and in your professional portfolio.',
-  },
-  {
-    question: 'How does UniversityX handle my personal data?',
-    answer:
-      'UniversityX uses Google Sign-In to create and manage your learning account. When you sign in with Google, we receive only your name, email address, and profile picture — nothing else. We do not access your Gmail, Google Drive, or any other Google services. Your data is used solely to set up your account, enrol you in courses, and send you relevant learning updates. We never sell your data to third parties. You can read our full Privacy Policy at https://universityx.app/privacy-policy.',
+      'Software Engineering is the first active career path. AI & Data Science, Product, Design, Marketing, Sales, Business and Security are planned for later. You can join the programme waitlist to receive updates.',
   },
 ];
 ---
 
-<section class="bg-white py-20 md:py-28">
+<section id="faq" class="scroll-mt-28 bg-white py-20 md:py-28">
   <div class="max-w-7xl mx-auto px-6 md:px-12 lg:px-16 xl:px-24">
     <div class="grid grid-cols-1 lg:grid-cols-5 gap-12 lg:gap-20">
-
-      <!-- Left column: Heading -->
       <div class="lg:col-span-2">
         <h2 class="text-4xl md:text-5xl font-extrabold leading-tight text-[#1A0533]">
           Frequently Asked
@@ -45,27 +33,24 @@ const faqs = [
           <em class="font-['Playfair_Display',serif] font-bold">Questions</em>
         </h2>
         <p class="mt-6 text-lg text-gray-500 leading-relaxed max-w-sm">
-          UniversityX offers structured, flexible learning paths designed to make acquiring job-ready skills both accessible and affordable.
+          Quick answers before you join the first AI-Native Software Engineering cohort.
         </p>
       </div>
 
-      <!-- Right column: Accordion -->
       <div class="lg:col-span-3 space-y-4" id="faq-accordion">
         {faqs.map((faq, index) => (
           <div class="faq-item rounded-2xl bg-[#F9F8F3] overflow-hidden" data-faq-index={index}>
             <button
               type="button"
-              class="faq-trigger flex w-full items-center justify-between gap-4 px-6 py-5 text-left cursor-pointer"
+              class="faq-trigger flex w-full items-center justify-between gap-4 px-6 py-5 text-left cursor-pointer focus:outline-none focus:ring-2 focus:ring-[#8A40F5] focus:ring-inset"
               aria-expanded={index === 0 ? 'true' : 'false'}
             >
               <span class="text-lg md:text-xl font-semibold text-[#1A0533]">{faq.question}</span>
               <span class="faq-icon relative flex-shrink-0 w-10 h-10 rounded-full flex items-center justify-center transition-colors duration-300">
-                {/* Plus icon (shown when closed) */}
                 <svg class="faq-icon-plus w-5 h-5 text-[#1A0533] transition-opacity duration-300" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
                   <line x1="12" y1="5" x2="12" y2="19" />
                   <line x1="5" y1="12" x2="19" y2="12" />
                 </svg>
-                {/* Minus icon (shown when open) */}
                 <svg class="faq-icon-minus absolute inset-0 m-auto w-5 h-5 text-white transition-opacity duration-300 opacity-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
                   <line x1="5" y1="12" x2="19" y2="12" />
                 </svg>
@@ -79,13 +64,11 @@ const faqs = [
           </div>
         ))}
       </div>
-
     </div>
   </div>
 </section>
 
 <style>
-  /* Accordion content: animate max-height for smooth open/close */
   .faq-content {
     display: grid;
     grid-template-rows: 0fr;
@@ -100,7 +83,6 @@ const faqs = [
     grid-template-rows: 1fr;
   }
 
-  /* Icon states */
   .faq-item.is-open .faq-icon {
     background-color: #1A0533;
   }
@@ -122,7 +104,6 @@ const faqs = [
     const items = accordion.querySelectorAll('.faq-item');
     const triggers = accordion.querySelectorAll('.faq-trigger');
 
-    // Open the first item by default
     items[0]?.classList.add('is-open');
 
     triggers.forEach((trigger) => {
@@ -132,18 +113,15 @@ const faqs = [
 
         const isCurrentlyOpen = parentItem.classList.contains('is-open');
 
-        // Close all items
         items.forEach((item) => {
           item.classList.remove('is-open');
           item.querySelector('.faq-trigger')?.setAttribute('aria-expanded', 'false');
         });
 
-        // If the clicked item was closed, open it
         if (!isCurrentlyOpen) {
           parentItem.classList.add('is-open');
           trigger.setAttribute('aria-expanded', 'true');
 
-          // Track FAQ item expansion in PostHog
           const faqIndex = parentItem.getAttribute('data-faq-index');
           const questionText = trigger.querySelector('span')?.textContent || '';
           window.posthog?.capture('faq_item_expanded', {

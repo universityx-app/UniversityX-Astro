@@ -1,20 +1,23 @@
 ---
 import HeroSection from '../components/HeroSection.astro';
-import IntroductionSection from '../components/IntroductionSection.astro';
-import HomeCourses from '../components/HomeCourses.astro';
-import HowItWorks from '../components/HowItWorks.astro';
-import Solutions from '../components/Solutions.astro';
+import ProblemSection from '../components/ProblemSection.astro';
+import CareerPathsSection from '../components/CareerPathsSection.astro';
+import ProgrammeWaitlistSection from '../components/ProgrammeWaitlistSection.astro';
+import SoftwareEngineeringPathSection from '../components/SoftwareEngineeringPathSection.astro';
 import FAQ from '../components/FAQ.astro';
 import Footer from '../components/Footer.astro';
 import Layout from '../layouts/Layout.astro';
 ---
 
-<Layout>
+<Layout
+	title="Build real-world projects that get you hired | UniversityX"
+	description="UniversityX is a skills-to-employment pipeline for African tech professionals, starting with AI-Native Software Engineering cohorts."
+>
 	<HeroSection />
-	<IntroductionSection />
-	<HomeCourses />
-	<HowItWorks />
-	<Solutions />
+	<ProblemSection />
+	<CareerPathsSection />
+	<ProgrammeWaitlistSection />
+	<SoftwareEngineeringPathSection />
 	<FAQ />
 	<Footer />
 </Layout>

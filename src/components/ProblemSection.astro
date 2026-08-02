@@ -1,0 +1,50 @@
+---
+const cards = [
+  {
+    icon: '🛠️',
+    title: 'Build, don\'t just watch',
+    copy: 'Work from practical briefs and produce something visible instead of spending weeks moving from one tutorial to another.',
+  },
+  {
+    icon: '💬',
+    title: 'Get expert feedback',
+    copy: 'Learn what good work looks like, identify gaps you may not see on your own and improve your project before an interview or code review exposes them.',
+  },
+  {
+    icon: '✅',
+    title: 'Prove you understand it',
+    copy: 'Explain your decisions, complete skill checks and leave with evidence that goes beyond a certificate or a finished interface.',
+  },
+];
+---
+
+<section class="bg-white py-20 md:py-28 px-6 md:px-12 lg:px-24">
+  <div class="max-w-7xl mx-auto">
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-10 md:gap-16 items-start mb-14 md:mb-18">
+      <h2 class="text-3xl md:text-5xl font-extrabold leading-tight text-[#1A0533]">
+        AI will build your project. It won&rsquo;t build your skills.
+      </h2>
+
+      <div class="space-y-5 text-lg md:text-xl leading-relaxed text-gray-700 md:pt-2">
+        <p>
+          AI can help you ship working software while hiding gaps in what you understand. A project may work even when the architecture, reasoning and best practices behind it are unclear.
+        </p>
+        <p>
+          UniversityX gives you structured projects, expert feedback, daily accountability and skill verification so you can build with AI without becoming dependent on it.
+        </p>
+      </div>
+    </div>
+
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+      {cards.map((card) => (
+        <article class="bg-[#F5F2EB] rounded-3xl p-7 md:p-8">
+          <div class="w-12 h-12 rounded-2xl bg-white flex items-center justify-center text-2xl mb-6" aria-hidden="true">
+            {card.icon}
+          </div>
+          <h3 class="text-xl font-bold text-[#1A0533] mb-3">{card.title}</h3>
+          <p class="text-gray-600 text-base md:text-lg leading-relaxed">{card.copy}</p>
+        </article>
+      ))}
+    </div>
+  </div>
+</section>

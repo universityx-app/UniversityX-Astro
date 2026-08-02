@@ -26,91 +26,25 @@ const socialLinks = [
     pathD: 'M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z',
   },
 ];
+
 ---
 
 <footer class="bg-[#1C1410]">
   <div class="max-w-7xl mx-auto px-6 md:px-12 lg:px-16 xl:px-24">
-
-    <!-- Top: Form section -->
-    <div class="py-16 md:py-20 lg:max-w-lg">
-      <h2 class="text-2xl md:text-3xl font-bold text-white leading-snug mb-12">
-        Join Our Private WhatsApp Community
-      </h2>
-
-      <form
-        id="whatsapp-form"
-        name="whatsapp-community"
-        method="POST"
-        data-netlify="true"
-        netlify-honeypot="bot-field"
-        class="space-y-10"
-      >
-        <p class="hidden">
-          <label>
-            Don&#8217;t fill this out if you&#8217;re human: <input name="bot-field" type="text" />
-          </label>
-        </p>
-        <input type="hidden" name="form-name" value="whatsapp-community" />
-
-        <div>
-          <input
-            type="text"
-            name="name"
-            placeholder="What's Your Name"
-            required
-            class="w-full bg-transparent border-b border-[#3A3330] pb-3 text-white placeholder-gray-500 text-sm focus:border-[#D4A853] focus:outline-none transition-colors duration-200"
-          />
-        </div>
-
-        <div>
-          <input
-            type="tel"
-            name="whatsapp"
-            placeholder="What's Your WhatsApp Number"
-            required
-            class="w-full bg-transparent border-b border-[#3A3330] pb-3 text-white placeholder-gray-500 text-sm focus:border-[#D4A853] focus:outline-none transition-colors duration-200"
-          />
-        </div>
-
-        <div>
-          <input
-            type="email"
-            name="email"
-            placeholder="What's Your Email"
-            required
-            class="w-full bg-transparent border-b border-[#3A3330] pb-3 text-white placeholder-gray-500 text-sm focus:border-[#D4A853] focus:outline-none transition-colors duration-200"
-          />
-        </div>
-
-        <button
-          type="submit"
-          class="bg-[#BB39B4] text-white text-sm font-semibold rounded-full px-8 py-2.5 hover:bg-[#C49A48] transition-colors duration-200 cursor-pointer"
-        >
-          Submit
-        </button>
-      </form>
-    </div>
-
-    <!-- Divider -->
-    <div class="border-t border-[#2A2420]"></div>
-
-    <!-- Bottom: Logo + Social -->
     <div class="flex flex-col md:flex-row items-start md:items-end justify-between gap-8 py-12 md:py-16">
-      <!-- UniversityX Logo -->
       <img
-      src="/images/universityx-svg.svg"
-      class="w-full md:w-1/2"
-      alt=""
-      loading="lazy"
+        src="/images/universityx-svg.svg"
+        class="w-full md:w-1/2"
+        alt="UniversityX"
+        loading="lazy"
       />
 
-      <!-- Social icons -->
       <div class="flex items-center gap-3">
         {socialLinks.map((link) => (
           <a
             href={link.href}
             aria-label={link.label}
-            class="w-10 h-10 rounded-full border border-gray-600 flex items-center justify-center text-gray-400 hover:text-white hover:border-gray-400 transition-colors duration-200"
+            class="w-10 h-10 rounded-full border border-gray-600 flex items-center justify-center text-gray-400 hover:text-white hover:border-gray-400 transition-colors duration-200 focus:outline-none focus:ring-2 focus:ring-white/40"
           >
             {link.icon && (
               <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
@@ -132,47 +66,15 @@ const socialLinks = [
       </div>
     </div>
 
-    <!-- Legal links -->
-    <div class="border-t border-[#2A2420] py-8 flex flex-col sm:flex-row items-center justify-between gap-4">
+    <div class="border-t border-[#2A2420] py-8 flex flex-col lg:flex-row items-start lg:items-center justify-between gap-6">
       <p class="text-gray-400 text-base">© {new Date().getFullYear()} UniversityX. All rights reserved.</p>
-      <div class="flex items-center gap-6">
-        <a href="https://universityx.app/privacy-policy" class="text-gray-400 text-base hover:text-white transition-colors duration-200">Privacy Policy</a>
-        <a href="https://universityx.app/terms-of-service" class="text-gray-400 text-base hover:text-white transition-colors duration-200">Terms of Service</a>
-      </div>
+      <nav class="flex flex-wrap items-center gap-x-6 gap-y-3" aria-label="Footer">
+        <a href="/#career-paths" class="text-gray-400 text-base hover:text-white transition-colors duration-200">Career Paths</a>
+        <a href="/#faq" class="text-gray-400 text-base hover:text-white transition-colors duration-200">FAQ</a>
+        <a href="/contact" class="text-gray-400 text-base hover:text-white transition-colors duration-200">Contact</a>
+        <a href="/privacy-policy" class="text-gray-400 text-base hover:text-white transition-colors duration-200">Privacy Policy</a>
+        <a href="/terms-of-service" class="text-gray-400 text-base hover:text-white transition-colors duration-200">Terms of Service</a>
+      </nav>
     </div>
-
   </div>
 </footer>
-
-<script>
-  function initFooterForm() {
-    const form = document.getElementById('whatsapp-form') as HTMLFormElement | null;
-    if (!form) return;
-
-    form.addEventListener('submit', async (e) => {
-      e.preventDefault();
-
-      const formData = new FormData(form);
-
-      try {
-        await fetch('/', {
-          method: 'POST',
-          headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
-          body: new URLSearchParams(formData as any).toString(),
-        });
-
-        // Redirect to WhatsApp after successful submission
-        window.location.href = 'https://chat.whatsapp.com/LE59wydgTceDCsm8r81gXU';
-      } catch {
-        // Fallback: redirect anyway so the user isn't stuck
-        window.location.href = 'https://chat.whatsapp.com/LE59wydgTceDCsm8r81gXU';
-      }
-    });
-  }
-
-  if (document.readyState === 'loading') {
-    document.addEventListener('DOMContentLoaded', initFooterForm);
-  } else {
-    initFooterForm();
-  }
-</script>

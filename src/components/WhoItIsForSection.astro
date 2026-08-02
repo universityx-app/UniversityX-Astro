@@ -1,0 +1,82 @@
+---
+---
+
+<section class="bg-[#F5F2EB] py-24 px-6 md:px-12 lg:px-24">
+  <div class="max-w-5xl mx-auto">
+
+    <!-- Heading -->
+    <div class="mb-12">
+      <h2 class="text-3xl md:text-4xl font-extrabold text-[#1A0533] leading-tight">
+        This is for you. Or it isn't.<br />We'll be direct.
+      </h2>
+    </div>
+
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+
+      <!-- Right person -->
+      <div class="bg-white rounded-3xl p-8 md:p-10">
+        <h3 class="text-lg font-bold text-[#1A0533] mb-7">You're in the right place if...</h3>
+        <ul class="flex flex-col gap-6">
+          {[
+            ["You use AI to code, daily.", "Cursor, Copilot, Claude — you're already in the workflow. This isn't about going back."],
+            ["You've shipped things that work but felt uneasy about the code.", "That quiet sense that something is off — and you're not quite sure what."],
+            ["You couldn't explain why state management exists.", "You've used Redux or Zustand because someone told you to. The why is still fuzzy."],
+            ["You want to grow as an engineer, not just get faster.", "Speed is great. Understanding what you're building is better."],
+            ["You want code review that actually challenges you.", "Not just 'looks good.' Someone asking hard questions about your choices."],
+          ].map(([title, desc]) => (
+            <li class="flex gap-3 items-start">
+              <span class="mt-1 w-2 h-2 rounded-full bg-[#8A40F5] shrink-0 mt-1.5"></span>
+              <div>
+                <p class="text-[#1A0533] font-semibold text-sm mb-0.5">{title}</p>
+                <p class="text-gray-500 text-sm leading-relaxed">{desc}</p>
+              </div>
+            </li>
+          ))}
+        </ul>
+      </div>
+
+      <!-- Wrong person -->
+      <div class="bg-[#F9F8F3] rounded-3xl p-8 md:p-10">
+        <h3 class="text-lg font-bold text-[#1A0533]/70 mb-7">This probably isn't for you if...</h3>
+        <ul class="flex flex-col gap-6">
+          {[
+            {
+              title: "You're just starting out.",
+              desc: "We're not a beginner course. If you're still learning the basics,",
+              link: { text: "freeCodeCamp", href: "https://www.freecodecamp.org" },
+              after: "is the right starting point.",
+            },
+            {
+              title: "You want someone to build your project for you.",
+              desc: "We're here to make you a better engineer. If you need something shipped fast, that's a different tool.",
+              link: null,
+              after: "",
+            },
+            {
+              title: "You're looking for a quick certificate with no challenge.",
+              desc: "PrepCoach will ask hard questions about your own code. That's not optional — it's the point.",
+              link: null,
+              after: "",
+            },
+          ].map((item) => (
+            <li class="flex gap-3 items-start">
+              <span class="mt-1 w-2 h-2 rounded-full bg-[#1A0533]/20 shrink-0 mt-1.5"></span>
+              <div>
+                <p class="text-[#1A0533]/70 font-semibold text-sm mb-0.5">{item.title}</p>
+                <p class="text-gray-400 text-sm leading-relaxed">
+                  {item.desc}{" "}
+                  {item.link && (
+                    <a href={item.link.href} class="text-[#8A40F5] font-semibold hover:underline" target="_blank" rel="noopener noreferrer">{item.link.text}</a>
+                  )}
+                  {item.after && <span> {item.after}</span>}
+                </p>
+              </div>
+            </li>
+          ))}
+        </ul>
+      </div>
+
+    </div>
+
+  </div>
+</section>

@@ -1,0 +1,61 @@
+UniversityX homepage snapshot before the 2026-08-01 relaunch update
+
+Original homepage file:
+src/pages/index.astro
+
+Active homepage composition before this relaunch pass:
+
+---
+import HeroSection from '../components/HeroSection.astro';
+import ProblemSection from '../components/ProblemSection.astro';
+import HonestComparisonSection from '../components/HonestComparisonSection.astro';
+import WhatWeDoDifferentlySection from '../components/WhatWeDoDifferentlySection.astro';
+import CoursePathSection from '../components/CoursePathSection.astro';
+import WhoItIsForSection from '../components/WhoItIsForSection.astro';
+import FinalCTASection from '../components/FinalCTASection.astro';
+import IntroductionSection from '../components/IntroductionSection.astro';
+import HomeCourses from '../components/HomeCourses.astro';
+import HowItWorks from '../components/HowItWorks.astro';
+import Solutions from '../components/Solutions.astro';
+import FAQ from '../components/FAQ.astro';
+import Footer from '../components/Footer.astro';
+import Layout from '../layouts/Layout.astro';
+---
+
+<Layout>
+  <HeroSection />
+  <ProblemSection />
+  <HonestComparisonSection />
+  <WhatWeDoDifferentlySection />
+  <CoursePathSection />
+  <WhoItIsForSection />
+  <FinalCTASection />
+  <IntroductionSection />
+  <HomeCourses />
+  <HowItWorks />
+  <Solutions />
+  <FAQ />
+  <Footer />
+</Layout>
+
+Sections removed from the active homepage render for the launch:
+- HonestComparisonSection
+- WhatWeDoDifferentlySection
+- WhoItIsForSection
+- IntroductionSection
+- HomeCourses
+- Solutions
+
+Legacy component files preserved for reuse:
+- src/components/HonestComparisonSection.astro
+- src/components/WhatWeDoDifferentlySection.astro
+- src/components/WhoItIsForSection.astro
+- src/components/IntroductionSection.astro
+- src/components/HomeCourses.astro
+- src/components/Solutions.astro
+- src/components/ForBusinesses.astro
+- src/components/ForUniversities.astro
+- src/components/ApplyToTeach.astro
+
+The workshop route is preserved:
+- src/pages/workshop/build-prototypes-with-ai.astro

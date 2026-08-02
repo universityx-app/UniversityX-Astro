@@ -1,0 +1,70 @@
+---
+---
+
+<section class="bg-white py-24 px-6 md:px-12 lg:px-24">
+  <div class="max-w-5xl mx-auto">
+
+    <!-- Heading -->
+    <div class="text-center mb-14">
+      <h2 class="text-3xl md:text-4xl font-extrabold text-[#1A0533] leading-tight">
+        AI is incredible.<br />Let's be honest about what it actually does.
+      </h2>
+    </div>
+
+    <!-- Two columns -->
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+
+      <!-- Left: What AI does well -->
+      <div class="bg-[#F5F2EB] rounded-3xl p-8 md:p-10">
+        <div class="flex items-center gap-3 mb-6">
+          <span class="w-8 h-8 rounded-full bg-emerald-100 flex items-center justify-center text-emerald-600 text-sm font-bold">✓</span>
+          <h3 class="text-lg font-bold text-[#1A0533]">What AI genuinely does well</h3>
+        </div>
+        <ul class="flex flex-col gap-4">
+          {[
+            ["Writes boilerplate fast", "Scaffolds files, configs, and repetitive code in seconds."],
+            ["Explains concepts on demand", "Ask it anything. It gives you a decent answer instantly."],
+            ["Debugs syntax errors", "Finds typos, missing brackets, and obvious mistakes quickly."],
+            ["Scaffolds project structure", "Gets a project to a runnable state without much effort."],
+            ["Generates first drafts", "Gives you something to react to, even if it needs rework."],
+          ].map(([title, desc]) => (
+            <li class="flex gap-3">
+              <span class="mt-1 w-1.5 h-1.5 rounded-full bg-emerald-500 shrink-0 mt-2"></span>
+              <div>
+                <p class="text-[#1A0533] font-semibold text-sm">{title}</p>
+                <p class="text-gray-500 text-sm leading-relaxed">{desc}</p>
+              </div>
+            </li>
+          ))}
+        </ul>
+      </div>
+
+      <!-- Right: What AI doesn't do -->
+      <div class="bg-[#F5F2EB] rounded-3xl p-8 md:p-10">
+        <div class="flex items-center gap-3 mb-6">
+          <span class="w-8 h-8 rounded-full bg-[#1A0533]/8 flex items-center justify-center text-[#1A0533]/60 text-sm font-bold">—</span>
+          <h3 class="text-lg font-bold text-[#1A0533]">What AI doesn't do</h3>
+        </div>
+        <ul class="flex flex-col gap-4">
+          {[
+            ["Teach you why a pattern exists", "It uses useReducer when appropriate, but it won't explain when you should reach for it."],
+            ["Build architectural intuition", "It makes choices. It doesn't build your judgment for making them yourself."],
+            ["Push back when your approach is wrong", "It builds what you ask for. It does not challenge your design decisions."],
+            ["Prepare you for code review", "A senior dev asking \"why did you do it this way?\" is a different pressure entirely."],
+            ["Make you able to defend your decisions", "Understanding your own code well enough to explain it is a skill you have to build."],
+          ].map(([title, desc]) => (
+            <li class="flex gap-3">
+              <span class="mt-1 w-1.5 h-1.5 rounded-full bg-[#1A0533]/30 shrink-0 mt-2"></span>
+              <div>
+                <p class="text-[#1A0533] font-semibold text-sm">{title}</p>
+                <p class="text-gray-500 text-sm leading-relaxed">{desc}</p>
+              </div>
+            </li>
+          ))}
+        </ul>
+      </div>
+
+    </div>
+
+  </div>
+</section>

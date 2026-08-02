@@ -1,14 +1,13 @@
 ---
-import SideEye from './SideEye.astro';
 import Navbar from './Navbar.astro';
 
 const cards = [
-  { name: 'Maya Brooks', title: 'Growth Marketer @ Open AI', country: 'united-states.png', flag: '/images/united-states.png', image: '/images/american-woman.png' },
-  { name: 'Obinna Nwosu', title: 'CEO @ Abba Microfinance Bank', country: 'nigeria', flag: '/images/nigeria.png', image: '/images/nigerian-man.png' },
-  { name: 'Aaliyah Jordan', title: 'Freelancer @ Upwork', country: 'united-kingdom', flag: '/images/united-kingdom.png', image: '/images/uk-woman.png' },
-  { name: 'Titi Adebayo', title: 'Product Designer @ Paystack', country: 'nigeria', flag: '/images/nigeria.png', image: '/images/nigerian-woman.png' },
-  { name: 'Caleb Wright', title: 'Software Developer @ Google', country: 'united-states', flag: '/images/united-states.png', image: '/images/american-man.png' },
-  { name: 'Rohan Gupta', title: 'AI Engineer @ Meta', country: 'india', flag: '/images/india.png', image: '/images/indian-man.png' },
+  { country: 'United States', flag: '/images/united-states.png', image: '/images/american-woman.png' },
+  { country: 'Nigeria', flag: '/images/nigeria.png', image: '/images/nigerian-man.png' },
+  { country: 'United Kingdom', flag: '/images/united-kingdom.png', image: '/images/uk-woman.png' },
+  { country: 'Nigeria', flag: '/images/nigeria.png', image: '/images/nigerian-woman.png' },
+  { country: 'United States', flag: '/images/united-states.png', image: '/images/american-man.png' },
+  { country: 'India', flag: '/images/india.png', image: '/images/indian-man.png' },
 ];
 ---
 
@@ -20,7 +19,7 @@ const cards = [
     <!-- Left Column: Text -->
     <div class="px-6 lg:pl-24 lg:pr-0 py-12 lg:py-0 relative">
       <p class="hero-eyebrow mb-5 inline-flex items-center gap-3 rounded-full border border-white/10 bg-white/7 px-5 py-2.5 text-sm font-semibold text-white/92 backdrop-blur-md">
-        <span class="hero-eyebrow-dot h-2.5 w-2.5 rounded-full bg-[#BB39B4]"></span>
+        <span class="hero-eyebrow-dot h-2.5 w-2.5 rounded-full bg-[#8A40F5]"></span>
         Tired of watching tutorials?
       </p>
 
@@ -34,27 +33,27 @@ const cards = [
 
       <!-- Subtext -->
       <p class="text-gray-400 text-lg md:text-2xl mb-10">
-        With live guidance from expert instructors and an AI coach, you're never learning alone. Join a project-led course, build your portfolio, and prove to employers you can do the job.
+        UniversityX combines real projects, expert guidance, daily accountability and AI-powered skill verification so you can build practical skills with evidence employers can trust.
       </p>
 
       <!-- Buttons -->
       <div class="flex flex-wrap items-center gap-4 mb-12">
         <a
           id="browse-courses-btn"
-          href="#browse-courses"
-          class="inline-flex items-center gap-2 bg-[#BB39B4] hover:bg-[#BB39B4] text-white font-semibold px-7 py-3.5 rounded-full transition-colors text-base"
+          href="/paths/software-engineering/build-your-first-ai-application"
+          class="inline-flex items-center gap-2 bg-[#8A40F5] hover:bg-[#7434D8] text-white font-semibold px-7 py-3.5 rounded-full transition-colors text-base focus:outline-none focus:ring-2 focus:ring-[#8A40F5] focus:ring-offset-2 focus:ring-offset-black"
         >
-          Browse Courses
+          Join the next cohort
           <svg class="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
             <path d="M5 12h14M12 5l7 7-7 7"/>
           </svg>
         </a>
         <a
           id="how-it-works-btn"
-          href="/workshops"
-          class="inline-flex items-center gap-2 border border-white/20 hover:border-white/40 text-white font-semibold px-7 py-3.5 rounded-full transition-colors text-base"
+          href="#career-paths"
+          class="inline-flex items-center gap-2 border border-white/20 hover:border-white/40 text-white font-semibold px-7 py-3.5 rounded-full transition-colors text-base focus:outline-none focus:ring-2 focus:ring-white/60 focus:ring-offset-2 focus:ring-offset-black"
         >
-          Join a Free Workshop
+          Explore other programs
         </a>
       </div>
     </div>
@@ -67,7 +66,7 @@ const cards = [
           <div class="marquee-card relative rounded-2xl overflow-hidden shrink-0 w-70 h-110">
             <img
               src={card.image}
-              alt={card.name}
+              alt="UniversityX learner portrait"
               class="w-full h-full object-cover"
               loading="eager"
               fetchpriority="high"
@@ -96,7 +95,7 @@ const cards = [
           <div class="marquee-card relative rounded-2xl overflow-hidden shrink-0 w-70 h-110">
             <img
               src={card.image}
-              alt={card.name}
+              alt="UniversityX learner portrait"
               class="w-full h-full object-cover"
               loading="eager"
               fetchpriority="high"
@@ -129,13 +128,13 @@ const cards = [
   .hero-eyebrow {
     box-shadow:
       inset 0 1px 0 rgba(255, 255, 255, 0.08),
-      0 0 0 1px rgba(187, 57, 180, 0.08),
+      0 0 0 1px rgba(138, 64, 245, 0.08),
       0 14px 40px rgba(0, 0, 0, 0.28);
     animation: eyebrow-pulse 3.2s ease-in-out infinite;
   }
 
   .hero-eyebrow-dot {
-    box-shadow: 0 0 14px rgba(187, 57, 180, 0.9);
+    box-shadow: 0 0 14px rgba(138, 64, 245, 0.9);
     animation: eyebrow-dot-pulse 1.8s ease-in-out infinite;
   }
 
@@ -171,15 +170,15 @@ const cards = [
     100% {
       box-shadow:
         inset 0 1px 0 rgba(255, 255, 255, 0.08),
-        0 0 0 1px rgba(187, 57, 180, 0.08),
+        0 0 0 1px rgba(138, 64, 245, 0.08),
         0 14px 40px rgba(0, 0, 0, 0.28);
       transform: translateY(0);
     }
     50% {
       box-shadow:
         inset 0 1px 0 rgba(255, 255, 255, 0.1),
-        0 0 0 1px rgba(187, 57, 180, 0.16),
-        0 0 28px rgba(187, 57, 180, 0.18),
+        0 0 0 1px rgba(138, 64, 245, 0.16),
+        0 0 28px rgba(138, 64, 245, 0.18),
         0 16px 44px rgba(0, 0, 0, 0.3);
       transform: translateY(-1px);
     }
@@ -190,12 +189,12 @@ const cards = [
     100% {
       opacity: 0.82;
       transform: scale(1);
-      box-shadow: 0 0 10px rgba(187, 57, 180, 0.55);
+      box-shadow: 0 0 10px rgba(138, 64, 245, 0.55);
     }
     50% {
       opacity: 1;
       transform: scale(1.18);
-      box-shadow: 0 0 18px rgba(187, 57, 180, 0.95);
+      box-shadow: 0 0 18px rgba(138, 64, 245, 0.95);
     }
   }
 
@@ -211,13 +210,13 @@ const cards = [
     const howItWorksBtn = document.getElementById('how-it-works-btn');
 
     browseCoursesBtn?.addEventListener('click', () => {
-      window.posthog?.capture('browse_courses_clicked', {
+      window.posthog?.capture('cohort_cta_clicked', {
         location: 'hero_section'
       });
     });
 
     howItWorksBtn?.addEventListener('click', () => {
-      window.posthog?.capture('how_it_works_clicked', {
+      window.posthog?.capture('career_paths_clicked', {
         location: 'hero_section'
       });
     });
