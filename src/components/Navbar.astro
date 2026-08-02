@@ -1,10 +1,8 @@
 ---
 const navLinks = [
-  // { label: 'For Businesses', href: '/businesses' },
-  // { label: 'For Universities', href: '/universities' },
-  { label: 'Workshops', href: '/workshops' },
-  { label: 'Apply To Teach', href: '/teach' },
-  { label: 'Contact Us', href: '/contact' }
+  { label: 'Career Paths', href: '/#career-paths' },
+  { label: 'FAQ', href: '/#faq' },
+  { label: 'GetHiredX', href: 'https://gethiredx.app/' },
 ];
 ---
 
@@ -12,13 +10,13 @@ const navLinks = [
 <nav class="relative z-30 flex justify-center px-4 pt-2">
   <div id="nav-container" class="bg-white rounded-full shadow-lg max-w-4xl w-full">
     <!-- Top bar -->
-    <div class="flex items-center gap-8 px-6 py-2.5">
+    <div class="flex items-center gap-8 px-6 py-4">
       <!-- Logo -->
       <a href="/" class="flex items-center gap-2 shrink-0">
         <img
           src="/universityx.svg"
           alt="UniversityX Logo"
-          class="h-11 w-auto"
+          class="h-7 w-auto"
           loading="eager"
           fetchpriority="high"
         />
@@ -63,22 +61,13 @@ const navLinks = [
             {navLinks.map((link) => (
               <a
                 href={link.href}
-                class="mobile-nav-link block text-[#1A0533] text-lg font-semibold py-3 border-b border-gray-100 last:border-b-0 transition-colors hover:text-[#BB39B4]"
+                class="mobile-nav-link block text-[#1A0533] text-lg font-semibold py-3 border-b border-gray-100 last:border-b-0 transition-colors hover:text-[#8A40F5]"
                 data-nav-label={link.label}
               >
                 {link.label}
               </a>
             ))}
           </div>
-          <a
-            href="#enroll"
-            class="mobile-nav-link inline-flex items-center justify-center gap-2 bg-[#BB39B4] text-white font-semibold px-8 py-3.5 rounded-full transition-colors text-base mt-6 w-full sm:w-auto hover:bg-[#a832a1]"
-          >
-            Browse Courses
-            <svg class="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-              <path d="M5 12h14M12 5l7 7-7 7"/>
-            </svg>
-          </a>
         </div>
       </div>
     </div>
