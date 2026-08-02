@@ -13,7 +13,7 @@ const levels = [
   'Beginner',
   'Intermediate',
   'Advanced',
-  'Working professional',
+  'Professional',
   'Not sure yet',
 ];
 ---
@@ -39,18 +39,8 @@ const levels = [
 
       <form
         id="programme-waitlist-form"
-        name="programme-waitlist"
-        method="POST"
-        data-netlify="true"
-        netlify-honeypot="bot-field"
         class="space-y-5"
       >
-        <p class="hidden">
-          <label>Don&rsquo;t fill this out if you&rsquo;re human: <input name="bot-field" type="text" /></label>
-        </p>
-        <input type="hidden" name="form-name" value="programme-waitlist" />
-        <input type="hidden" name="source" value="homepage-programme-waitlist" />
-
         <div>
           <label for="waitlist-program" class="block text-sm font-semibold text-[#1A0533] mb-2">Programme</label>
           <select
@@ -124,12 +114,16 @@ const levels = [
 </section>
 
 <script>
+  import PocketBase from 'pocketbase';
+
   function initProgrammeWaitlistForm() {
     const form = document.getElementById('programme-waitlist-form') as HTMLFormElement | null;
     const success = document.getElementById('programme-waitlist-success');
     const error = document.getElementById('programme-waitlist-error');
     const submit = document.getElementById('programme-waitlist-submit') as HTMLButtonElement | null;
     if (!form || !success || !error || !submit) return;
+
+    const pb = new PocketBase(import.meta.env.PUBLIC_POCKETBASE_URL);
 
     form.addEventListener('submit', async (event) => {
       event.preventDefault();
@@ -145,16 +139,17 @@ const levels = [
       submit.textContent = 'Joining...';
 
       try {
-        await fetch('/', {
-          method: 'POST',
-          headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
-          body: new URLSearchParams(formData as any).toString(),
+        await pb.collection('UniversityX_Future_Programs').create({
+          Select_a_Program: formData.get('program') as string,
+          Full_Name: formData.get('name') as string,
+          Email: formData.get('email') as string,
+          Select_Your_Level: formData.get('currentLevel') as string,
         });
 
         window.posthog?.capture('programme_waitlist_joined', {
           program: formData.get('program'),
           current_level: formData.get('currentLevel'),
-          source: formData.get('source'),
+          source: 'homepage-programme-waitlist',
         });
 
         form.classList.add('hidden');

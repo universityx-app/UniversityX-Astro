@@ -3,326 +3,217 @@ import Layout from '../../../layouts/Layout.astro';
 import Navbar from '../../../components/Navbar.astro';
 import Footer from '../../../components/Footer.astro';
 
+const checkIcon = 'M20 6 9 17l-5-5';
+const codeIcon = 'm16 18 6-6-6-6M8 6l-6 6 6 6';
+const routeIcon = 'M3 6h6a4 4 0 0 1 4 4v4a4 4 0 0 0 4 4h4M17 14l4 4-4 4M3 18h4';
+const searchIcon = 'm21 21-4.35-4.35M10.5 18a7.5 7.5 0 1 1 0-15 7.5 7.5 0 0 1 0 15Z';
+const shieldIcon = 'M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10Z';
+const playIcon = 'M7 4v16l13-8L7 4Z';
+const clockIcon = 'M12 6v6l4 2M21 12a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z';
+const usersIcon = 'M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2M9 11a4 4 0 1 0 0-8 4 4 0 0 0 0 8ZM22 21v-2a4 4 0 0 0-3-3.87M16 3.13a4 4 0 0 1 0 7.75';
+const trophyIcon = 'M8 21h8M12 17v4M7 4h10v5a5 5 0 0 1-10 0V4ZM5 6H3v2a4 4 0 0 0 4 4M19 6h2v2a4 4 0 0 1-4 4';
+const calendarIcon = 'M8 2v4M16 2v4M3 10h18M5 4h14a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2Z';
+const messageIcon = 'M21 15a4 4 0 0 1-4 4H8l-5 3V7a4 4 0 0 1 4-4h10a4 4 0 0 1 4 4v8Z';
+
+const heroStats = [
+  { icon: calendarIcon, value: '6 weeks', label: 'Live online sprint' },
+  { icon: clockIcon, value: '8-12 hrs', label: 'Focused weekly build time' },
+  { icon: usersIcon, value: '15 max', label: 'Small cohort' },
+];
+
+const stack = ['Python', 'LangChain', 'LangGraph', 'RAG', 'Guardrails', 'Evals'];
+
 const outcomes = [
-  'Build agents that call tools and APIs',
-  'Create LangGraph workflows with state and routing',
-  'Build RAG assistants over documents',
-  'Add guardrails, tracing and evaluations',
-  'Present a capstone repo, README and demo',
+  {
+    icon: codeIcon,
+    title: 'Tool-using agents',
+    text: 'Assistants that call APIs and return structured outputs.',
+  },
+  {
+    icon: routeIcon,
+    title: 'Agent workflows',
+    text: 'State, routing, memory, and human approval with LangGraph.',
+  },
+  {
+    icon: searchIcon,
+    title: 'Document intelligence',
+    text: 'RAG and exact-section retrieval with cited answers.',
+  },
+  {
+    icon: shieldIcon,
+    title: 'Production habits',
+    text: 'Guardrails, tracing, evaluations, and clear demo evidence.',
+  },
 ];
 
 const projects = [
-  {
-    title: 'Tool-Using Assistant',
-    description: 'Build an assistant that knows when to call an external tool.',
-    skills: ['LangChain', 'Tools', 'APIs'],
-  },
-  {
-    title: 'Workflow Agent',
-    description: 'Design a stateful agent flow with routing and human approval.',
-    skills: ['LangGraph', 'State', 'Routing'],
-  },
-  {
-    title: 'Document RAG Assistant',
-    description: 'Let users ask questions over uploaded documents with source context.',
-    skills: ['RAG', 'Embeddings', 'Vector DBs'],
-  },
-  {
-    title: 'Vectorless Research Assistant',
-    description: 'Retrieve exact document sections without depending only on vectors.',
-    skills: ['Retrieval', 'PageIndex-style search', 'Citations'],
-  },
-  {
-    title: 'Guardrailed AI System',
-    description: 'Add checks for PII, unsafe inputs and weak answers.',
-    skills: ['Guardrails', 'Tracing', 'Evals'],
-  },
-  {
-    title: 'AI Support Operations Agent',
-    description: 'Combine the sprint into one capstone that answers, routes and escalates support requests.',
-    skills: ['Capstone', 'LLM routing', 'Demo'],
-  },
-];
-
-const freeResourceItems = [
-  'Helpful explanations and demos',
-  'Flexible independent learning',
-  'Reference material you can revisit',
-  'A starting point for technical exploration',
-];
-
-const universityXAdds = [
-  'A clear six-week path',
-  'Live instructor guidance',
-  'Weekly project deadlines',
-  'Office hours and feedback',
-  'Code review and revision',
-  'Portfolio-ready capstone evidence',
-];
-
-const proofItems = [
-  'Working repositories',
-  'Capstone README',
-  'Architecture notes',
-  'Demo presentation',
+  { title: 'Tool Assistant', build: 'API-calling assistant', icon: codeIcon },
+  { title: 'Workflow Agent', build: 'Routed LangGraph flow', icon: routeIcon },
+  { title: 'Document RAG', build: 'Ask questions over files', icon: searchIcon },
+  { title: 'Research Assistant', build: 'Find exact sections', icon: messageIcon },
+  { title: 'Guardrailed System', build: 'Checks, traces, evals', icon: shieldIcon },
+  { title: 'Support Ops Agent', build: 'Capstone demo repo', icon: trophyIcon },
 ];
 
 const weeks = [
-  {
-    label: 'Setup',
-    title: 'Python Readiness and Environment',
-    build: 'Working local AI development setup',
-    lessons: [
-      'Confirm basic Python readiness',
-      'Set up Python and a virtual environment',
-      'Configure model API keys safely',
-      'Prepare Git and the course repository',
-    ],
-  },
-  {
-    label: 'Week 1',
-    title: 'Agents, Models and Tool Calling',
-    build: 'Tool-Using Assistant',
-    lessons: [
-      'What makes an AI system an agent',
-      'Model providers and message types',
-      'Custom tools and API calls',
-      'Structured outputs and safe key handling',
-    ],
-  },
-  {
-    label: 'Week 2',
-    title: 'LangGraph Workflows',
-    build: 'Workflow Agent',
-    lessons: [
-      'Graph state, nodes and edges',
-      'Conditional routing',
-      'Memory and persistence',
-      'Human approval in a workflow',
-    ],
-  },
-  {
-    label: 'Week 3',
-    title: 'RAG and Document Retrieval',
-    build: 'Document RAG Assistant',
-    lessons: [
-      'Document loading and chunking',
-      'Embeddings and vector databases',
-      'Retrieval and grounded answers',
-      'Source context and citations',
-    ],
-  },
-  {
-    label: 'Week 4',
-    title: 'Vectorless Retrieval',
-    build: 'Vectorless Research Assistant',
-    lessons: [
-      'Limits of vector-only search',
-      'Hierarchical document search',
-      'Finding exact sections',
-      'Research-style answer generation',
-    ],
-  },
-  {
-    label: 'Week 5',
-    title: 'Guardrails, Security and Evals',
-    build: 'Guardrailed AI System',
-    lessons: [
-      'Input and output checks',
-      'PII handling',
-      'Prompt-injection awareness',
-      'Evaluation datasets and tracing',
-    ],
-  },
-  {
-    label: 'Week 6',
-    title: 'Capstone and Demo',
-    build: 'AI Support Operations Agent',
-    lessons: [
-      'LLM routing and fallbacks',
-      'Cost and latency tracking',
-      'Capstone integration',
-      'Demo and technical explanation',
-    ],
-  },
+  { label: 'Setup', title: 'Python environment', build: 'Ready local AI workspace' },
+  { label: '01', title: 'Agents + tools', build: 'Tool-using assistant' },
+  { label: '02', title: 'LangGraph workflows', build: 'Stateful workflow agent' },
+  { label: '03', title: 'RAG retrieval', build: 'Document Q&A assistant' },
+  { label: '04', title: 'Vectorless search', build: 'Research assistant' },
+  { label: '05', title: 'Guardrails + evals', build: 'Safer AI system' },
+  { label: '06', title: 'Capstone demo', build: 'Support operations agent' },
 ];
 
 const tuitionIncludes = [
-  'Six-week live online cohort',
-  'Free, open-source resource guide',
-  'Live concept sessions',
-  'Office hours',
-  'Six applied projects',
-  'Capstone feedback',
-  'Certificate after completing the requirements',
+  { icon: calendarIcon, text: 'Six live weeks' },
+  { icon: codeIcon, text: 'Six project repos' },
+  { icon: messageIcon, text: 'Office hours' },
+  { icon: shieldIcon, text: 'Code feedback' },
+  { icon: trophyIcon, text: 'Capstone review' },
+  { icon: checkIcon, text: 'Certificate' },
 ];
 
 const faqs = [
   {
-    q: 'Is this for complete beginners?',
-    a: 'No. You should already understand basic Python. The course is beginner-friendly for agentic AI, not beginner programming.',
+    q: 'Can a complete beginner join?',
+    a: 'Not yet. You should already know basic Python, packages, JSON, and Git.',
   },
   {
-    q: 'How much Python do I need?',
-    a: 'You should be comfortable with functions, dictionaries, imports, packages, JSON, virtual environments and basic Git.',
+    q: 'What do I leave with?',
+    a: 'Six small AI systems, one capstone repo, a README, and a demo you can explain.',
   },
   {
-    q: 'What will I build?',
-    a: 'You will build six small AI systems and one capstone: an AI Support Operations Agent that can retrieve context, use tools, route requests and run basic checks.',
-  },
-  {
-    q: 'Why not just use free resources?',
-    a: 'Free resources are useful. UniversityX adds structure, deadlines, live help, feedback and a finished portfolio project you can explain.',
-  },
-  {
-    q: 'Which technologies will we use?',
-    a: 'Python, LangChain, LangGraph, RAG, vector databases, vectorless retrieval, guardrails, tracing, evaluations and model APIs.',
-  },
-  {
-    q: 'How much time should I set aside?',
-    a: 'Plan for 8-12 focused hours each week across lessons, live sessions, building, feedback and revision.',
-  },
-  {
-    q: 'Will I receive a certificate?',
-    a: 'Yes, after completing the required work. The stronger proof is your repo, capstone, README and demo.',
+    q: 'Why pay if resources are free?',
+    a: 'The resources support you. The value is structure, deadlines, feedback, and finished work.',
   },
   {
     q: 'Does this guarantee a job?',
-    a: 'No. It is designed to make you stronger by giving you practical AI engineering experience and work you can show.',
+    a: 'No. It gives you practical AI engineering proof and better project conversations.',
   },
 ];
 ---
 
 <Layout
-  title="Agentic AI Engineering Sprint | UniversityX"
+  title="Build and Ship Agentic AI Applications in 6 Weeks | UniversityX"
   description="Build tool-using AI agents, LangGraph workflows, RAG systems, guardrails, evaluations, and a portfolio-ready capstone in a six-week UniversityX sprint."
 >
   <Navbar />
 
-  <main class="bg-white text-[#1A0533]">
+  <main class="overflow-x-hidden bg-white text-[#1A0533]">
     <section class="max-w-7xl mx-auto px-6 md:px-12 lg:px-16 xl:px-24 pt-10 pb-0">
-      <nav class="flex items-center gap-2 text-sm text-gray-500 mb-8" aria-label="Breadcrumb">
-        <a href="/" class="hover:text-[#8A40F5] transition-colors">Home</a>
-        <svg class="w-3.5 h-3.5 text-[#8A40F5]" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+      <nav class="mb-8 flex items-center gap-2 overflow-x-auto whitespace-nowrap text-sm text-gray-500" aria-label="Breadcrumb">
+        <a href="/" class="transition-colors hover:text-[#8A40F5]">Home</a>
+        <svg class="h-3.5 w-3.5 shrink-0 text-[#8A40F5]" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
           <path d="M9 18l6-6-6-6" />
         </svg>
-        <a href="/paths/software-engineering" class="hover:text-[#8A40F5] transition-colors">Software Engineering</a>
-        <svg class="w-3.5 h-3.5 text-[#8A40F5]" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+        <a href="/paths/software-engineering" class="transition-colors hover:text-[#8A40F5]">Software Engineering</a>
+        <svg class="h-3.5 w-3.5 shrink-0 text-[#8A40F5]" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
           <path d="M9 18l6-6-6-6" />
         </svg>
-        <span class="text-[#1A0533] font-medium">Agentic AI Engineering Sprint</span>
+        <span class="font-medium text-[#1A0533] sm:hidden">AI Sprint</span>
+        <span class="hidden font-medium text-[#1A0533] sm:inline">Agentic AI Engineering Sprint</span>
       </nav>
 
-      <div class="grid grid-cols-1 lg:grid-cols-[1fr_360px] gap-12 xl:gap-16 items-start">
+      <div class="grid grid-cols-1 gap-12 xl:gap-16 lg:grid-cols-[1fr_380px] lg:items-start">
         <div>
-          <span class="inline-block text-[#8A40F5] text-sm font-bold bg-[#8A40F5]/10 rounded-full px-4 py-1.5 mb-5">
+          <span class="mb-5 inline-block rounded-full bg-[#8A40F5]/10 px-4 py-1.5 text-sm font-bold text-[#8A40F5]">
             Six-week live engineering sprint
           </span>
 
-          <h1 class="text-3xl md:text-5xl font-extrabold text-[#1A0533] leading-tight mb-5">
-            Become an Agentic AI Builder in 6 Weeks:
-            <em class="font-['Playfair_Display',serif] font-bold"> build agents, RAG systems and evals.</em>
+          <h1 class="mb-5 text-3xl font-extrabold leading-tight text-[#1A0533] md:text-4xl">
+            Build and Ship Agentic AI Applications in 6 Weeks
           </h1>
 
-          <p class="text-lg text-gray-700 leading-relaxed mb-6 max-w-3xl">
-            Build AI systems that do more than reply to prompts. Learn how agents use tools,
-            follow workflows, retrieve knowledge, apply checks and show their work.
+          <p class="mb-6 max-w-3xl text-lg leading-relaxed text-gray-700">
+            A practical sprint for developers who already know basic Python and want to build AI systems that can use tools,
+            retrieve knowledge, follow workflows, and show proof of quality.
           </p>
 
-          <ul class="space-y-2.5 mb-8 text-lg">
+          <ul class="mb-8 space-y-2.5 text-lg">
             {[
-              'Build with Python, LangChain and LangGraph',
-              'Create RAG and vectorless retrieval systems',
-              'Add guardrails, tracing and evaluations',
-              'Get live feedback on real projects',
-              'Leave with a capstone you can explain',
+              'Build tool-using assistants with Python, LangChain, and model APIs',
+              'Create LangGraph workflows with state, routing, and human approval',
+              'Ship RAG and vectorless retrieval systems with cited answers',
+              'Add guardrails, tracing, evaluations, and a portfolio-ready capstone',
             ].map((item) => (
               <li class="flex items-start gap-3 text-gray-700">
-                <svg class="w-5 h-5 text-[#8A40F5] shrink-0 mt-0.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-                  <polyline points="20 6 9 17 4 12" />
+                <svg class="mt-0.5 h-5 w-5 shrink-0 text-[#8A40F5]" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                  <path d={checkIcon} />
                 </svg>
-                {item}
+                <span>{item}</span>
               </li>
             ))}
           </ul>
 
-          <div class="flex flex-wrap gap-3 mb-8">
+          <div class="mb-8 flex flex-wrap gap-3">
             {[
-              { label: '6-week live cohort' },
-              { label: 'Basic Python required' },
-              { label: 'Maximum 15 learners' },
-            ].map(({ label }) => (
-              <span class="inline-flex items-center gap-2 bg-[#F5F2EB] text-[#1A0533] text-base font-medium px-4 py-2 rounded-full">
+              { icon: calendarIcon, label: '6-week live cohort' },
+              { icon: clockIcon, label: '8-12 hours/week' },
+              { icon: usersIcon, label: '15 learners max' },
+            ].map(({ icon, label }) => (
+              <span class="inline-flex items-center gap-2 rounded-full bg-[#F5F2EB] px-4 py-2 text-base font-medium text-[#1A0533]">
+                <svg class="h-4.5 w-4.5 text-[#8A40F5]" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                  <path d={icon} />
+                </svg>
                 {label}
               </span>
             ))}
           </div>
 
           <div class="border-t border-gray-100 pt-6">
-            <p class="text-xs font-semibold text-gray-400 uppercase tracking-widest mb-4">Instructor</p>
+            <p class="mb-4 text-xs font-semibold uppercase tracking-widest text-gray-400">Instructor</p>
             <div class="flex items-center gap-4">
-              <div class="w-18 h-18 rounded-full bg-[#F5F2EB] border border-gray-100 flex items-center justify-center shrink-0">
-                <svg class="w-8 h-8 text-[#8A40F5]" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-                  <path d="M16 18l6-6-6-6" />
-                  <path d="M8 6l-6 6 6 6" />
+              <div class="flex h-18 w-18 shrink-0 items-center justify-center rounded-full bg-[#8A40F5]/10 text-[#8A40F5]">
+                <svg class="h-8 w-8" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                  <path d={codeIcon} />
                 </svg>
               </div>
               <div>
-                <p class="font-semibold text-[#1A0533] text-lg">Practising software developer</p>
-                <p class="text-base text-gray-500">Python applications, AI integrations and live code review.</p>
+                <p class="text-lg font-semibold text-[#1A0533]">Practising software developer</p>
+                <p class="text-base text-gray-500">Python applications, AI integrations, and live code review.</p>
               </div>
             </div>
           </div>
         </div>
 
         <aside class="lg:sticky lg:top-6">
-          <div class="rounded-2xl border border-gray-200 shadow-lg overflow-hidden bg-white">
-            <img
-              src="/images/claude-for-beginners.png"
-              alt="Agentic AI Engineering Sprint"
-              class="w-full aspect-video object-cover"
-              loading="eager"
-            />
+          <div class="overflow-hidden rounded-2xl border border-gray-200 bg-white shadow-lg">
+            <div class="relative aspect-video overflow-hidden bg-[#F5F2EB]">
+              <div class="absolute inset-0 bg-[radial-gradient(circle_at_20%_18%,rgba(138,64,245,0.24),transparent_30%),linear-gradient(135deg,#FBFAF7_0%,#F5F2EB_58%,#ECE5FA_100%)]"></div>
+              <div class="absolute left-5 top-5 z-10 rounded-xl bg-white/92 px-4 py-3 shadow-md backdrop-blur">
+                <p class="text-xs font-extrabold uppercase tracking-widest text-gray-500">Capstone</p>
+                <p class="mt-1 text-sm font-extrabold text-[#1A0533]">AI Support Ops Agent</p>
+              </div>
+              <img
+                src="/images/ai-robot-2.png"
+                alt="Humanoid AI robot representing the sprint's agentic AI systems"
+                class="absolute bottom-[-26px] right-1 h-[118%] w-auto object-contain drop-shadow-xl"
+                loading="eager"
+                fetchpriority="high"
+              />
+            </div>
 
-            <div class="p-6 space-y-4">
-              <div class="flex items-baseline gap-3">
-                <span class="text-xl font-bold text-gray-400 line-through">₦30,000</span>
-                <span class="text-3xl font-extrabold text-[#1A0533]">₦25,000</span>
+            <div class="space-y-4 p-6">
+              <div class="flex flex-wrap items-baseline gap-3">
+                <span class="text-3xl font-extrabold text-[#1A0533]">&#8358;25,000</span>
+                <span class="text-xl font-bold text-gray-400 line-through">&#8358;30,000</span>
                 <span class="text-base text-gray-400">Live Cohort</span>
               </div>
 
-              <div class="flex items-center gap-2 text-lg text-gray-600">
-                <svg class="w-6 h-6 text-[#8A40F5]" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-                  <rect x="3" y="4" width="18" height="18" rx="2" ry="2" />
-                  <line x1="16" y1="2" x2="16" y2="6" />
-                  <line x1="8" y1="2" x2="8" y2="6" />
-                  <line x1="3" y1="10" x2="21" y2="10" />
-                </svg>
-                6-week live online cohort
-              </div>
-
-              <div class="flex items-center gap-2 text-lg text-gray-600">
-                <svg class="w-6 h-6 text-[#8A40F5]" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-                  <circle cx="12" cy="12" r="10" />
-                  <polyline points="12 6 12 12 16 14" />
-                </svg>
-                8-12 focused hours/week
-              </div>
-
-              <div class="flex items-center gap-2 text-lg text-gray-600">
-                <svg class="w-6 h-6 text-[#8A40F5]" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-                  <path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2" />
-                  <circle cx="9" cy="7" r="4" />
-                  <path d="M22 21v-2a4 4 0 0 0-3-3.87" />
-                  <path d="M16 3.13a4 4 0 0 1 0 7.75" />
-                </svg>
-                Maximum 15 learners
-              </div>
+              {heroStats.map((stat) => (
+                <div class="flex items-center gap-2 text-lg text-gray-600">
+                  <svg class="h-6 w-6 text-[#8A40F5]" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                    <path d={stat.icon} />
+                  </svg>
+                  <span>{stat.value} - {stat.label}</span>
+                </div>
+              ))}
 
               <a
                 id="enroll"
                 href="#registration"
-                class="block w-full text-center bg-[#8A40F5] hover:bg-[#7434D8] text-white font-semibold px-8 py-4 rounded-lg transition-colors duration-200 text-base mt-8"
+                class="mt-8 block w-full rounded-lg bg-[#8A40F5] px-8 py-4 text-center text-base font-semibold text-white transition-colors duration-200 hover:bg-[#7434D8]"
               >
                 Join the next cohort
               </a>
@@ -332,262 +223,180 @@ const faqs = [
       </div>
     </section>
 
-    <section class="py-16 md:py-20">
-      <div class="max-w-7xl mx-auto px-6 md:px-12 lg:px-16 xl:px-24">
-        <div class="grid grid-cols-1 lg:grid-cols-[0.8fr_1fr] gap-10 xl:gap-16 items-start">
+    <section class="py-14 md:py-18">
+      <div class="mx-auto max-w-7xl px-6 md:px-12 lg:px-16 xl:px-24">
+        <div class="grid gap-8 lg:grid-cols-[0.72fr_1.28fr] lg:items-start">
           <div>
-            <p class="text-xs font-semibold text-[#8A40F5] uppercase tracking-widest mb-3">What you will build</p>
-            <h2 class="text-2xl md:text-3xl font-extrabold leading-tight">
-              Practical AI systems, not theory overload.
-            </h2>
-            <p class="mt-4 text-lg text-gray-700 leading-relaxed">
-              The sprint is built around outputs you can show, review and explain.
-            </p>
+            <p class="text-xs font-extrabold uppercase tracking-widest text-[#8A40F5]">What you build</p>
+            <h2 class="mt-3 text-3xl font-extrabold leading-tight md:text-4xl">Less reading. More shipped systems.</h2>
           </div>
 
-          <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
+          <div class="grid gap-4 sm:grid-cols-2">
             {outcomes.map((item) => (
-              <div class="rounded-2xl bg-[#F5F2EB] p-5">
-                <p class="font-semibold leading-relaxed text-[#1A0533]">{item}</p>
-              </div>
-            ))}
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <section class="bg-[#F5F2EB] py-16 md:py-20">
-      <div class="max-w-7xl mx-auto px-6 md:px-12 lg:px-16 xl:px-24">
-        <div class="max-w-3xl mb-10">
-          <p class="text-xs font-semibold text-[#8A40F5] uppercase tracking-widest mb-3">Why UniversityX</p>
-          <h2 class="text-2xl md:text-3xl font-extrabold leading-tight">Not just free resources. Finished work.</h2>
-          <p class="mt-4 text-lg text-gray-700 leading-relaxed">
-            UniversityX uses free, open-source learning resources as support material. The resources support the work.
-            The projects are the work.
-          </p>
-        </div>
-
-        <div class="grid grid-cols-1 lg:grid-cols-2 gap-6">
-          <article class="rounded-2xl bg-white p-6 md:p-7 border border-[#1A0533]/10">
-            <h3 class="text-xl font-extrabold mb-5">What free resources give you</h3>
-            <ul class="space-y-3">
-              {freeResourceItems.map((item) => (
-                <li class="flex gap-3 text-gray-700 leading-relaxed">
-                  <span class="mt-2 h-2 w-2 rounded-full bg-gray-400 shrink-0"></span>
-                  <span>{item}</span>
-                </li>
-              ))}
-            </ul>
-          </article>
-
-          <article class="rounded-2xl bg-white p-6 md:p-7 border border-[#8A40F5]/20">
-            <h3 class="text-xl font-extrabold mb-5">What UniversityX adds</h3>
-            <ul class="space-y-3">
-              {universityXAdds.map((item) => (
-                <li class="flex gap-3 text-gray-700 leading-relaxed">
-                  <svg class="w-5 h-5 text-[#8A40F5] shrink-0 mt-0.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-                    <polyline points="20 6 9 17 4 12" />
+              <article class="rounded-lg border border-[#1A0533]/8 bg-white p-5 shadow-sm">
+                <div class="mb-5 flex h-12 w-12 items-center justify-center rounded-lg bg-[#8A40F5]/10 text-[#8A40F5]">
+                  <svg class="h-6 w-6" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                    <path d={item.icon} />
                   </svg>
-                  <span>{item}</span>
-                </li>
-              ))}
-            </ul>
-          </article>
-        </div>
-
-        <div class="mt-8 rounded-2xl bg-white p-6 md:p-7">
-          <h3 class="text-xl font-extrabold mb-4">Proof you leave with</h3>
-          <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3">
-            {proofItems.map((item) => (
-              <div class="rounded-xl bg-[#F5F2EB] p-4 font-semibold text-[#1A0533]">{item}</div>
+                </div>
+                <h3 class="text-lg font-extrabold">{item.title}</h3>
+                <p class="mt-2 leading-7 text-gray-600">{item.text}</p>
+              </article>
             ))}
           </div>
         </div>
       </div>
     </section>
 
-    <section id="projects" class="scroll-mt-28 py-16 md:py-20">
-      <div class="max-w-7xl mx-auto px-6 md:px-12 lg:px-16 xl:px-24">
-        <div class="max-w-3xl mb-10">
-          <p class="text-xs font-semibold text-[#8A40F5] uppercase tracking-widest mb-3">Projects</p>
-          <h2 class="text-2xl md:text-3xl font-extrabold leading-tight">Six builds, one clear capstone.</h2>
+    <section id="projects" class="scroll-mt-28 bg-white py-14 md:py-18">
+      <div class="mx-auto max-w-7xl px-6 md:px-12 lg:px-16 xl:px-24">
+        <div class="mb-8 flex flex-col gap-4 md:flex-row md:items-end md:justify-between">
+          <div>
+            <p class="text-xs font-extrabold uppercase tracking-widest text-[#8A40F5]">Project track</p>
+            <h2 class="mt-3 text-3xl font-extrabold leading-tight md:text-4xl">Six builds, one capstone.</h2>
+          </div>
+          <div class="flex flex-wrap gap-2">
+            {stack.map((item) => (
+              <span class="rounded-lg bg-[#F5F2EB] px-3 py-2 text-sm font-bold text-[#1A0533]">{item}</span>
+            ))}
+          </div>
         </div>
 
-        <div class="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-5">
+        <div class="grid gap-4 md:grid-cols-2 xl:grid-cols-3">
           {projects.map((project, index) => (
-            <article class="rounded-2xl border border-gray-200 bg-white p-6 shadow-sm">
-              <span class="inline-flex h-9 w-9 items-center justify-center rounded-xl bg-[#8A40F5] text-sm font-extrabold text-white">
-                {index + 1}
-              </span>
-              <h3 class="mt-5 text-xl font-extrabold leading-tight">{project.title}</h3>
-              <p class="mt-3 text-gray-700 leading-relaxed">{project.description}</p>
-              <div class="mt-5 flex flex-wrap gap-2">
-                {project.skills.map((skill) => (
-                  <span class="rounded-full bg-[#F5F2EB] px-3 py-1.5 text-xs font-bold text-[#1A0533]">
-                    {skill}
-                  </span>
-                ))}
+            <article class="group rounded-lg border border-gray-200 bg-[#F5F2EB] p-5 transition-transform duration-200 hover:-translate-y-1">
+              <div class="flex items-start justify-between gap-4">
+                <span class="text-sm font-extrabold text-gray-400">0{index + 1}</span>
+                <span class="flex h-10 w-10 items-center justify-center rounded-lg bg-white text-[#8A40F5] shadow-sm">
+                  <svg class="h-5 w-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                    <path d={project.icon} />
+                  </svg>
+                </span>
               </div>
+              <h3 class="mt-8 text-xl font-extrabold">{project.title}</h3>
+              <p class="mt-2 text-gray-600">{project.build}</p>
             </article>
           ))}
         </div>
       </div>
     </section>
 
-    <section class="bg-[#F5F2EB] py-16 md:py-20">
-      <div class="max-w-7xl mx-auto px-6 md:px-12 lg:px-16 xl:px-24">
-        <div class="max-w-3xl mx-auto text-center mb-10">
-          <p class="text-xs font-semibold text-[#8A40F5] uppercase tracking-widest mb-3">Curriculum</p>
-          <h2 class="text-2xl md:text-3xl font-extrabold leading-tight">Six weeks from setup to demo.</h2>
-          <p class="text-gray-500 mt-3">Open each week to see the key topics.</p>
+    <section id="curriculum" class="scroll-mt-28 py-14 md:py-18">
+      <div class="mx-auto max-w-7xl px-6 md:px-12 lg:px-16 xl:px-24">
+        <div class="mb-8 max-w-2xl">
+          <p class="text-xs font-extrabold uppercase tracking-widest text-[#8A40F5]">Curriculum</p>
+          <h2 class="mt-3 text-3xl font-extrabold leading-tight md:text-4xl">A week-by-week path you can scan.</h2>
         </div>
 
-        <div class="max-w-3xl mx-auto space-y-3" id="curriculum">
+        <div class="grid gap-3">
           {weeks.map((week) => (
-            <div class="accordion-item border border-gray-200 rounded-2xl overflow-hidden bg-white">
-              <button
-                type="button"
-                class="accordion-trigger w-full flex items-center justify-between px-6 py-5 text-left bg-white hover:bg-[#F5F2EB] transition-colors duration-200 cursor-pointer focus:outline-none focus:ring-2 focus:ring-[#8A40F5] focus:ring-inset"
-                aria-expanded="false"
-              >
-                <span class="pr-4">
-                  <span class="block text-xs font-extrabold uppercase tracking-widest text-[#8A40F5]">{week.label}</span>
-                  <span class="block mt-1 text-lg font-bold text-[#1A0533]">{week.title}</span>
-                  <span class="block mt-2 text-sm text-gray-500">Build: {week.build}</span>
-                </span>
-                <svg class="accordion-chevron w-5 h-5 text-gray-400 transition-transform duration-300 shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-                  <polyline points="6 9 12 15 18 9" />
-                </svg>
-              </button>
-              <div class="accordion-body">
-                <div class="accordion-inner">
-                  <ul class="px-6 pb-5 pt-4 space-y-3 border-t border-gray-100">
-                    {week.lessons.map((lesson) => (
-                      <li class="flex items-start gap-3 text-gray-700 leading-relaxed">
-                        <span class="mt-2 h-1.5 w-1.5 rounded-full bg-[#8A40F5] shrink-0"></span>
-                        <span>{lesson}</span>
-                      </li>
-                    ))}
-                  </ul>
-                </div>
+            <article class="grid gap-4 rounded-lg border border-[#1A0533]/8 bg-white p-4 shadow-sm md:grid-cols-[92px_1fr_auto] md:items-center md:p-5">
+              <span class="flex h-12 w-16 items-center justify-center rounded-lg bg-[#1A0533] text-sm font-extrabold text-white md:w-16">
+                {week.label}
+              </span>
+              <div>
+                <h3 class="text-lg font-extrabold md:text-xl">{week.title}</h3>
+                <p class="mt-1 text-gray-600">Build: {week.build}</p>
               </div>
-            </div>
+              <svg class="hidden h-5 w-5 text-[#8A40F5] md:block" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                <path d="M5 12h14M13 5l7 7-7 7" />
+              </svg>
+            </article>
           ))}
         </div>
       </div>
     </section>
 
-    <section id="registration" class="scroll-mt-28 bg-[#120525] py-16 md:py-20 text-white">
-      <div class="max-w-7xl mx-auto px-6 md:px-12 lg:px-16 xl:px-24">
-        <div class="grid grid-cols-1 lg:grid-cols-[0.9fr_520px] gap-10 xl:gap-16 items-start">
-          <div>
-            <p class="text-xs font-semibold text-[#B98BFF] uppercase tracking-widest mb-3">Cohort tuition</p>
-            <h2 class="text-4xl md:text-5xl font-extrabold leading-none">
-              <span class="text-white/35 line-through">₦30,000</span>
-              <span class="block mt-2">₦25,000</span>
-            </h2>
-            <p class="mt-5 text-xl font-semibold text-white">You are paying to finish, not just to watch.</p>
-            <p class="mt-4 text-lg text-white/72 leading-relaxed">
-              Live online cohort. Basic Python required. Maximum 15 learners.
-            </p>
+    <section id="registration" class="scroll-mt-28 bg-[#1A0533] py-14 text-white md:py-18">
+      <div class="mx-auto grid max-w-7xl gap-10 px-6 md:px-12 lg:grid-cols-[0.88fr_520px] lg:px-16 xl:px-24">
+        <div>
+          <p class="text-xs font-extrabold uppercase tracking-widest text-[#B98BFF]">Cohort tuition</p>
+          <div class="mt-4 flex flex-wrap items-end gap-4">
+            <span class="text-5xl font-extrabold leading-none md:text-6xl">&#8358;25,000</span>
+            <span class="pb-2 text-2xl font-bold text-white/35 line-through">&#8358;30,000</span>
+          </div>
+          <p class="mt-5 max-w-xl text-xl font-semibold text-white">Pay for momentum, feedback, and a finished capstone.</p>
 
-            <div class="mt-8 grid grid-cols-1 sm:grid-cols-2 gap-3">
-              {tuitionIncludes.map((item) => (
-                <div class="rounded-2xl border border-white/10 bg-white/[0.06] p-4 font-semibold text-white/88">
-                  {item}
-                </div>
-              ))}
-            </div>
+          <div class="mt-8 grid gap-3 sm:grid-cols-2">
+            {tuitionIncludes.map((item) => (
+              <div class="flex items-center gap-3 rounded-lg border border-white/10 bg-white/[0.06] p-4 font-semibold text-white/88">
+                <span class="flex h-9 w-9 shrink-0 items-center justify-center rounded-lg bg-white/10 text-[#B98BFF]">
+                  <svg class="h-4.5 w-4.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                    <path d={item.icon} />
+                  </svg>
+                </span>
+                {item.text}
+              </div>
+            ))}
+          </div>
+        </div>
+
+        <div class="rounded-lg border border-white/10 bg-white/[0.07] p-6 shadow-2xl shadow-[#8A40F5]/15 md:p-8">
+          <h3 class="text-2xl font-extrabold leading-tight md:text-3xl">Join the next cohort</h3>
+          <p class="mt-3 leading-7 text-white/70">Drop your details. We will send payment and onboarding instructions.</p>
+
+          <div id="course-register-success" class="mt-6 hidden rounded-lg border border-[#8A40F5]/30 bg-[#8A40F5]/15 p-5 text-white">
+            Thanks. We have your details and will follow up with next steps.
           </div>
 
-          <div class="rounded-3xl border border-white/10 bg-white/[0.06] p-6 md:p-8 shadow-2xl shadow-[#8A40F5]/15">
-            <h3 class="text-2xl md:text-3xl font-extrabold leading-tight">Join the next cohort</h3>
-            <p class="mt-3 text-white/70 leading-relaxed">
-              Submit your details and the UniversityX team will follow up with payment and onboarding instructions.
-            </p>
-
-            <div id="course-register-success" class="hidden mt-6 rounded-2xl border border-[#8A40F5]/30 bg-[#8A40F5]/15 p-6 text-white">
-              Thanks. We have your details for the Agentic AI Engineering Sprint and will follow up with next steps.
+          <form
+            id="course-register-form"
+            class="mt-6 space-y-4"
+          >
+            <div>
+              <label for="course-name" class="sr-only">Full name</label>
+              <input id="course-name" name="name" type="text" required placeholder="Full name" class="w-full rounded-lg border border-white/10 bg-white/10 px-5 py-4 text-white placeholder-white/45 focus:border-[#8A40F5] focus:outline-none focus:ring-2 focus:ring-[#8A40F5]" />
             </div>
-
-            <form
-              id="course-register-form"
-              name="agentic-ai-engineering-sprint-registration"
-              method="POST"
-              data-netlify="true"
-              netlify-honeypot="bot-field"
-              class="mt-6 space-y-5"
-            >
-              <p class="hidden">
-                <label>Don&rsquo;t fill this out if you&rsquo;re human: <input name="bot-field" type="text" /></label>
-              </p>
-              <input type="hidden" name="form-name" value="agentic-ai-engineering-sprint-registration" />
-              <input type="hidden" name="courseName" value="Agentic AI Engineering Sprint" />
-              <input type="hidden" name="slug" value="agentic-ai-engineering-sprint" />
-              <input type="hidden" name="path" value="software-engineering" />
-              <input type="hidden" name="cohort" value="next-cohort" />
-              <input type="hidden" name="duration" value="6 weeks" />
-              <input type="hidden" name="price" value="25000" />
-              <input type="hidden" name="currency" value="NGN" />
-
-              <div>
-                <label for="course-name" class="sr-only">Full name</label>
-                <input id="course-name" name="name" type="text" required placeholder="Full name" class="w-full rounded-xl border border-white/10 bg-white/10 px-5 py-4 text-white placeholder-white/45 focus:border-[#8A40F5] focus:outline-none focus:ring-2 focus:ring-[#8A40F5]" />
-              </div>
-              <div>
-                <label for="course-email" class="sr-only">Email address</label>
-                <input id="course-email" name="email" type="email" required placeholder="Email address" class="w-full rounded-xl border border-white/10 bg-white/10 px-5 py-4 text-white placeholder-white/45 focus:border-[#8A40F5] focus:outline-none focus:ring-2 focus:ring-[#8A40F5]" />
-              </div>
-              <div>
-                <label for="course-whatsapp" class="sr-only">WhatsApp number</label>
-                <input id="course-whatsapp" name="whatsapp" type="tel" required placeholder="WhatsApp number" class="w-full rounded-xl border border-white/10 bg-white/10 px-5 py-4 text-white placeholder-white/45 focus:border-[#8A40F5] focus:outline-none focus:ring-2 focus:ring-[#8A40F5]" />
-              </div>
-              <div>
-                <label for="course-experience" class="sr-only">Python background</label>
-                <select id="course-experience" name="pythonExperience" required class="w-full rounded-xl border border-white/10 bg-[#2A0C4F] px-5 py-4 text-white focus:border-[#8A40F5] focus:outline-none focus:ring-2 focus:ring-[#8A40F5]">
-                  <option value="">Python background</option>
-                  <option value="basic-python">I understand basic Python</option>
-                  <option value="backend-developer">I am a backend/software developer</option>
-                  <option value="data-or-ml">I am a data or ML practitioner</option>
-                  <option value="not-ready">I am not sure I meet the prerequisite</option>
-                </select>
-              </div>
-              <button id="course-register-submit" type="submit" class="w-full cursor-pointer rounded-xl bg-[#8A40F5] py-4 text-base font-bold text-white transition-colors duration-200 hover:bg-[#7434D8] focus:outline-none focus:ring-2 focus:ring-[#8A40F5] focus:ring-offset-2 focus:ring-offset-[#120525]">
-                Join the next cohort
-              </button>
-              <p id="course-register-error" class="hidden text-center text-sm text-red-300">
-                We couldn&rsquo;t capture your application. Please check your details and try again.
-              </p>
-            </form>
-          </div>
+            <div>
+              <label for="course-email" class="sr-only">Email address</label>
+              <input id="course-email" name="email" type="email" required placeholder="Email address" class="w-full rounded-lg border border-white/10 bg-white/10 px-5 py-4 text-white placeholder-white/45 focus:border-[#8A40F5] focus:outline-none focus:ring-2 focus:ring-[#8A40F5]" />
+            </div>
+            <div>
+              <label for="course-whatsapp" class="sr-only">WhatsApp number</label>
+              <input id="course-whatsapp" name="whatsapp" type="tel" required placeholder="WhatsApp number" class="w-full rounded-lg border border-white/10 bg-white/10 px-5 py-4 text-white placeholder-white/45 focus:border-[#8A40F5] focus:outline-none focus:ring-2 focus:ring-[#8A40F5]" />
+            </div>
+            <div>
+              <label for="course-experience" class="sr-only">Python background</label>
+              <select id="course-experience" name="pythonExperience" required class="w-full rounded-lg border border-white/10 bg-[#2A0C4F] px-5 py-4 text-white focus:border-[#8A40F5] focus:outline-none focus:ring-2 focus:ring-[#8A40F5]">
+                <option value="">Python background</option>
+                <option value="I understand basic Python">I understand basic Python</option>
+                <option value="I am a backend/software developer">I am a backend/software developer</option>
+                <option value="I am a data or ML practitioner">I am a data or ML practitioner</option>
+                <option value="I am not sure I meet the prerequisite">I am not sure I meet the prerequisite</option>
+              </select>
+            </div>
+            <button id="course-register-submit" type="submit" class="w-full cursor-pointer rounded-lg bg-[#8A40F5] py-4 text-base font-extrabold text-white transition-colors duration-200 hover:bg-[#7434D8] focus:outline-none focus:ring-2 focus:ring-[#8A40F5] focus:ring-offset-2 focus:ring-offset-[#1A0533]">
+              Join the next cohort
+            </button>
+            <p id="course-register-error" class="hidden text-center text-sm text-red-300">
+              We couldn&rsquo;t capture your application. Please check your details and try again.
+            </p>
+          </form>
         </div>
       </div>
     </section>
 
-    <section class="py-16 md:py-20">
-      <div class="max-w-7xl mx-auto px-6 md:px-12 lg:px-16 xl:px-24">
-        <p class="text-xs font-semibold text-[#8A40F5] uppercase tracking-widest mb-3 text-center">FAQ</p>
-        <h2 class="text-2xl md:text-3xl font-extrabold leading-tight text-center mb-10">Frequently Asked Questions</h2>
+    <section class="bg-white py-14 md:py-18">
+      <div class="mx-auto max-w-7xl px-6 md:px-12 lg:px-16 xl:px-24">
+        <div class="mb-8 flex flex-col gap-3 md:flex-row md:items-end md:justify-between">
+          <div>
+            <p class="text-xs font-extrabold uppercase tracking-widest text-[#8A40F5]">FAQ</p>
+            <h2 class="mt-3 text-3xl font-extrabold leading-tight md:text-4xl">Short answers. Promise.</h2>
+          </div>
+          <a href="#registration" class="inline-flex items-center gap-2 text-base font-extrabold text-[#8A40F5] hover:text-[#7434D8]">
+            Enroll
+            <svg class="h-4 w-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <path d="M5 12h14M13 5l7 7-7 7" />
+            </svg>
+          </a>
+        </div>
 
-        <div class="max-w-3xl mx-auto space-y-3" id="course-faq">
+        <div class="grid gap-4 md:grid-cols-2">
           {faqs.map(({ q, a }) => (
-            <div class="accordion-item overflow-hidden rounded-2xl border border-gray-200 bg-white">
-              <button
-                type="button"
-                class="accordion-trigger flex w-full cursor-pointer items-center justify-between bg-white px-6 py-5 text-left transition-colors duration-200 hover:bg-[#F5F2EB] focus:outline-none focus:ring-2 focus:ring-[#8A40F5] focus:ring-inset"
-                aria-expanded="false"
-              >
-                <span class="pr-4 text-lg font-semibold text-[#1A0533]">{q}</span>
-                <svg class="accordion-chevron h-5 w-5 shrink-0 text-[#8A40F5] transition-transform duration-300" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-                  <polyline points="6 9 12 15 18 9" />
-                </svg>
-              </button>
-              <div class="accordion-body">
-                <div class="accordion-inner">
-                  <p class="border-t border-gray-100 px-6 pb-5 pt-4 text-lg leading-relaxed text-gray-700">{a}</p>
-                </div>
-              </div>
-            </div>
+            <article class="rounded-lg border border-gray-200 bg-[#F5F2EB] p-5">
+              <h3 class="text-lg font-extrabold">{q}</h3>
+              <p class="mt-2 leading-7 text-gray-600">{a}</p>
+            </article>
           ))}
         </div>
       </div>
@@ -598,27 +407,7 @@ const faqs = [
 </Layout>
 
 <style>
-  .accordion-body {
-    display: grid;
-    grid-template-rows: 0fr;
-    transition: grid-template-rows 300ms ease;
-  }
-
-  .accordion-body.is-open {
-    grid-template-rows: 1fr;
-  }
-
-  .accordion-inner {
-    overflow: hidden;
-  }
-
-  .accordion-chevron.is-open {
-    transform: rotate(180deg);
-  }
-
   @media (prefers-reduced-motion: reduce) {
-    .accordion-body,
-    .accordion-chevron,
     a,
     button,
     article {
@@ -628,20 +417,7 @@ const faqs = [
 </style>
 
 <script>
-  function initCourseAccordions() {
-    document.querySelectorAll('.accordion-trigger').forEach((trigger) => {
-      trigger.addEventListener('click', () => {
-        const item = trigger.closest('.accordion-item')!;
-        const body = item.querySelector('.accordion-body')!;
-        const chevron = trigger.querySelector('.accordion-chevron')!;
-        const isOpen = body.classList.contains('is-open');
-
-        body.classList.toggle('is-open', !isOpen);
-        chevron.classList.toggle('is-open', !isOpen);
-        trigger.setAttribute('aria-expanded', String(!isOpen));
-      });
-    });
-  }
+  import PocketBase from 'pocketbase';
 
   function initCourseRegistration() {
     const form = document.getElementById('course-register-form') as HTMLFormElement | null;
@@ -649,6 +425,8 @@ const faqs = [
     const error = document.getElementById('course-register-error');
     const submit = document.getElementById('course-register-submit') as HTMLButtonElement | null;
     if (!form || !success || !error || !submit) return;
+
+    const pb = new PocketBase(import.meta.env.PUBLIC_POCKETBASE_URL);
 
     form.addEventListener('submit', async (event) => {
       event.preventDefault();
@@ -664,10 +442,11 @@ const faqs = [
       submit.textContent = 'Submitting...';
 
       try {
-        await fetch('/', {
-          method: 'POST',
-          headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
-          body: new URLSearchParams(formData as any).toString(),
+        await pb.collection('Join_The_Next_Cohort').create({
+          Full_Name: formData.get('name') as string,
+          Email: formData.get('email') as string,
+          WhatsApp_Number: formData.get('whatsapp') as string,
+          Python_Background: formData.get('pythonExperience') as string,
         });
 
         window.posthog?.capture('course_registration_interest_submitted', {
@@ -687,12 +466,8 @@ const faqs = [
   }
 
   if (document.readyState === 'loading') {
-    document.addEventListener('DOMContentLoaded', () => {
-      initCourseAccordions();
-      initCourseRegistration();
-    });
+    document.addEventListener('DOMContentLoaded', initCourseRegistration);
   } else {
-    initCourseAccordions();
     initCourseRegistration();
   }
 </script>
