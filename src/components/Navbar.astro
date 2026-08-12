@@ -1,14 +1,18 @@
 ---
 const navLinks = [
-  { label: 'Career Paths', href: '/#career-paths' },
-  { label: 'FAQ', href: '/#faq' },
-  { label: 'GetHiredX', href: 'https://gethiredx.app/' },
+  { label: "Workshops", href: "/workshops" },
+  { label: "Career Paths", href: "/#career-paths" },
+  { label: "FAQ", href: "/#faq" },
+  { label: "GetHiredX", href: "https://gethiredx.app/" },
 ];
 ---
 
 <!-- ===== NAVBAR ===== -->
 <nav class="relative z-30 flex justify-center px-4 pt-2">
-  <div id="nav-container" class="bg-white rounded-full shadow-lg max-w-4xl w-full">
+  <div
+    id="nav-container"
+    class="bg-white rounded-full shadow-lg max-w-4xl w-full"
+  >
     <!-- Top bar -->
     <div class="flex items-center gap-8 px-6 py-4">
       <!-- Logo -->
@@ -24,11 +28,17 @@ const navLinks = [
 
       <!-- Desktop links -->
       <div class="hidden md:flex items-center gap-6 flex-1 justify-end">
-        {navLinks.map((link) => (
-          <a href={link.href} class="desktop-nav-link text-gray-600 hover:text-black text-md font-medium transition-colors" data-nav-label={link.label}>
-            {link.label}
-          </a>
-        ))}
+        {
+          navLinks.map((link) => (
+            <a
+              href={link.href}
+              class="desktop-nav-link text-gray-600 hover:text-black text-md font-medium transition-colors"
+              data-nav-label={link.label}
+            >
+              {link.label}
+            </a>
+          ))
+        }
       </div>
 
       <!-- Hamburger toggle (mobile only) -->
@@ -40,15 +50,35 @@ const navLinks = [
         aria-expanded="false"
       >
         <!-- Hamburger icon -->
-        <svg id="icon-hamburger" class="w-6 h-6 text-[#1A0533]" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-          <line x1="3" y1="6" x2="21" y2="6" />
-          <line x1="3" y1="12" x2="21" y2="12" />
-          <line x1="3" y1="18" x2="21" y2="18" />
+        <svg
+          id="icon-hamburger"
+          class="w-6 h-6 text-[#1A0533]"
+          viewBox="0 0 24 24"
+          fill="none"
+          stroke="currentColor"
+          stroke-width="2"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+          aria-hidden="true"
+        >
+          <line x1="3" y1="6" x2="21" y2="6"></line>
+          <line x1="3" y1="12" x2="21" y2="12"></line>
+          <line x1="3" y1="18" x2="21" y2="18"></line>
         </svg>
         <!-- Close icon -->
-        <svg id="icon-close" class="w-6 h-6 text-[#1A0533] hidden" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-          <line x1="18" y1="6" x2="6" y2="18" />
-          <line x1="6" y1="6" x2="18" y2="18" />
+        <svg
+          id="icon-close"
+          class="w-6 h-6 text-[#1A0533] hidden"
+          viewBox="0 0 24 24"
+          fill="none"
+          stroke="currentColor"
+          stroke-width="2.5"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+          aria-hidden="true"
+        >
+          <line x1="18" y1="6" x2="6" y2="18"></line>
+          <line x1="6" y1="6" x2="18" y2="18"></line>
         </svg>
       </button>
     </div>
@@ -58,15 +88,17 @@ const navLinks = [
       <div class="mobile-menu-inner">
         <div class="px-6 pb-6 pt-3 border-t border-gray-100">
           <div class="flex flex-col gap-1">
-            {navLinks.map((link) => (
-              <a
-                href={link.href}
-                class="mobile-nav-link block text-[#1A0533] text-lg font-semibold py-3 border-b border-gray-100 last:border-b-0 transition-colors hover:text-[#8A40F5]"
-                data-nav-label={link.label}
-              >
-                {link.label}
-              </a>
-            ))}
+            {
+              navLinks.map((link) => (
+                <a
+                  href={link.href}
+                  class="mobile-nav-link block text-[#1A0533] text-lg font-semibold py-3 border-b border-gray-100 last:border-b-0 transition-colors hover:text-[#8A40F5]"
+                  data-nav-label={link.label}
+                >
+                  {link.label}
+                </a>
+              ))
+            }
           </div>
         </div>
       </div>
@@ -93,35 +125,35 @@ const navLinks = [
 
 <script>
   function initMobileMenu() {
-    const toggle = document.getElementById('menu-toggle')!;
-    const menu = document.getElementById('mobile-menu')!;
-    const container = document.getElementById('nav-container')!;
-    const iconHamburger = document.getElementById('icon-hamburger')!;
-    const iconClose = document.getElementById('icon-close')!;
+    const toggle = document.getElementById("menu-toggle")!;
+    const menu = document.getElementById("mobile-menu")!;
+    const container = document.getElementById("nav-container")!;
+    const iconHamburger = document.getElementById("icon-hamburger")!;
+    const iconClose = document.getElementById("icon-close")!;
 
     function openMenu() {
-      menu.classList.add('is-open');
-      iconHamburger.classList.add('hidden');
-      iconClose.classList.remove('hidden');
-      container.classList.remove('rounded-full');
-      container.classList.add('rounded-3xl');
-      toggle.setAttribute('aria-expanded', 'true');
+      menu.classList.add("is-open");
+      iconHamburger.classList.add("hidden");
+      iconClose.classList.remove("hidden");
+      container.classList.remove("rounded-full");
+      container.classList.add("rounded-3xl");
+      toggle.setAttribute("aria-expanded", "true");
     }
 
     function closeMenu() {
-      menu.classList.remove('is-open');
-      iconHamburger.classList.remove('hidden');
-      iconClose.classList.add('hidden');
-      toggle.setAttribute('aria-expanded', 'false');
+      menu.classList.remove("is-open");
+      iconHamburger.classList.remove("hidden");
+      iconClose.classList.add("hidden");
+      toggle.setAttribute("aria-expanded", "false");
       // Wait for the grid slide animation (300ms) to finish before snapping to pill
       setTimeout(() => {
-        container.classList.remove('rounded-3xl');
-        container.classList.add('rounded-full');
+        container.classList.remove("rounded-3xl");
+        container.classList.add("rounded-full");
       }, 300);
     }
 
-    toggle.addEventListener('click', () => {
-      const isOpen = menu.classList.contains('is-open');
+    toggle.addEventListener("click", () => {
+      const isOpen = menu.classList.contains("is-open");
       if (isOpen) {
         closeMenu();
       } else {
@@ -130,34 +162,35 @@ const navLinks = [
     });
 
     // Close menu when a mobile nav link is clicked
-    menu.querySelectorAll('.mobile-nav-link').forEach((link) => {
-      link.addEventListener('click', closeMenu);
+    menu.querySelectorAll(".mobile-nav-link").forEach((link) => {
+      link.addEventListener("click", closeMenu);
     });
 
     // Track navigation link clicks in PostHog
     function trackNavClick(link: Element, isMobile: boolean) {
-      const label = link.getAttribute('data-nav-label') || link.textContent?.trim() || '';
-      const href = link.getAttribute('href') || '';
-      window.posthog?.capture('navigation_link_clicked', {
+      const label =
+        link.getAttribute("data-nav-label") || link.textContent?.trim() || "";
+      const href = link.getAttribute("href") || "";
+      window.posthog?.capture("navigation_link_clicked", {
         link_label: label,
         link_href: href,
-        navigation_type: isMobile ? 'mobile' : 'desktop'
+        navigation_type: isMobile ? "mobile" : "desktop",
       });
     }
 
     // Desktop nav links
-    document.querySelectorAll('.desktop-nav-link').forEach((link) => {
-      link.addEventListener('click', () => trackNavClick(link, false));
+    document.querySelectorAll(".desktop-nav-link").forEach((link) => {
+      link.addEventListener("click", () => trackNavClick(link, false));
     });
 
     // Mobile nav links
-    menu.querySelectorAll('.mobile-nav-link').forEach((link) => {
-      link.addEventListener('click', () => trackNavClick(link, true));
+    menu.querySelectorAll(".mobile-nav-link").forEach((link) => {
+      link.addEventListener("click", () => trackNavClick(link, true));
     });
   }
 
-  if (document.readyState === 'loading') {
-    document.addEventListener('DOMContentLoaded', initMobileMenu);
+  if (document.readyState === "loading") {
+    document.addEventListener("DOMContentLoaded", initMobileMenu);
   } else {
     initMobileMenu();
   }
