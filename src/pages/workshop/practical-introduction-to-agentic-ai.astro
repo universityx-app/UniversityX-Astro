@@ -1,0 +1,825 @@
+---
+import Layout from "../../layouts/Layout.astro";
+import Navbar from "../../components/Navbar.astro";
+import Footer from "../../components/Footer.astro";
+
+const workshop = {
+  title: "A Practical Introduction to Agentic AI",
+  price: 0,
+  startDate: "Saturday, August 15th",
+  time: "6:00 PM WAT",
+  duration: "1-Hour Live Workshop",
+  level: "Beginner to Intermediate",
+  format: "Free Live Event",
+  thumbnail: "/images/agentic-ai-workshop-cover.png",
+  instructorName: "Damilare Ololade",
+  instructorRole: "Co-Founder UniversityX",
+  instructorPhoto: "/images/damilare-hs.jfif",
+  courseUrl: "/paths/software-engineering/build-your-first-ai-application",
+};
+---
+
+<Layout
+  title="A Practical Introduction to Agentic AI - UniversityX Workshop"
+  description="A free 1-hour live workshop with Damilare Ololade introducing tool-using AI agents, stateful workflows, RAG, and production habits."
+  image={workshop.thumbnail}
+>
+  <Navbar />
+
+  <main class="bg-white">
+    <!-- ── HERO SECTION ─────────────────────────────────────────────── -->
+    <section
+      class="max-w-7xl mx-auto px-6 md:px-12 lg:px-16 xl:px-24 pt-10 pb-0"
+    >
+      <!-- Breadcrumb -->
+      <nav
+        class="flex items-center gap-2 text-sm text-gray-500 mb-8"
+        aria-label="Breadcrumb"
+      >
+        <a href="/" class="hover:text-[#8A40F5] transition-colors">Home</a>
+        <svg
+          class="w-3.5 h-3.5 text-[#8A40F5]"
+          viewBox="0 0 24 24"
+          fill="none"
+          stroke="currentColor"
+          stroke-width="2.5"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+          aria-hidden="true"
+        >
+          <path d="M9 18l6-6-6-6"></path>
+        </svg>
+        <a href="/workshops" class="hover:text-[#8A40F5] transition-colors"
+          >Workshops</a
+        >
+        <svg
+          class="w-3.5 h-3.5 text-[#8A40F5]"
+          viewBox="0 0 24 24"
+          fill="none"
+          stroke="currentColor"
+          stroke-width="2.5"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+          aria-hidden="true"
+        >
+          <path d="M9 18l6-6-6-6"></path>
+        </svg>
+        <span class="text-[#1A0533] font-medium">{workshop.title}</span>
+      </nav>
+
+      <!-- Two-column layout: content left, sidebar right -->
+      <div
+        class="grid grid-cols-1 lg:grid-cols-[1fr_360px] gap-12 xl:gap-16 items-start"
+      >
+        <!-- ── LEFT COLUMN ───────────────────────────────────────────── -->
+        <div>
+          <!-- Label -->
+          <span
+            class="inline-block text-[#8A40F5] text-sm font-bold bg-[#8A40F5]/10 rounded-full px-4 py-1.5 mb-5"
+          >
+            Free 1-Hour Live Workshop
+          </span>
+
+          <!-- Title -->
+          <h1
+            class="text-3xl md:text-4xl font-extrabold text-[#1A0533] leading-tight mb-5"
+          >
+            A Practical Introduction to
+            <em class="font-['Playfair_Display',serif] font-bold">
+              Agentic AI</em
+            >
+          </h1>
+
+          <!-- Description -->
+          <p class="text-lg text-gray-700 leading-relaxed mb-6">
+            Most developers start out with basic ChatGPT or Claude prompts. It
+            feels magical at first, but when you try building real-world
+            software, single prompts hit a wall fast. That's where Agentic AI
+            comes in. Instead of just generating text, agentic systems can
+            reason through steps, run tools, call APIs, search knowledge bases,
+            and make decisions on their own.
+          </p>
+
+          <!-- What you'll learn -->
+          <ul class="space-y-2.5 mb-8 text-lg">
+            {
+              [
+                "The fundamental difference between basic prompt wrappers and real tool-using AI agents",
+                "How state machines and routing give agents memory and decision-making superpowers",
+                "How RAG retrieval connects AI models to private documents with exact citations",
+                "A clear preview of our full 6-Week Live Engineering Sprint for developers who want to go deeper",
+              ].map((item) => (
+                <li class="flex items-start gap-3 text-gray-700">
+                  <svg
+                    class="w-5 h-5 text-[#8A40F5] shrink-0 mt-0.5"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-width="2.5"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    aria-hidden="true"
+                  >
+                    <polyline points="20 6 9 17 4 12" />
+                  </svg>
+                  {item}
+                </li>
+              ))
+            }
+          </ul>
+
+          <!-- Metadata chips -->
+          <div class="flex flex-wrap gap-3 mb-8">
+            {
+              [
+                { label: `🗓️ ${workshop.startDate}` },
+                { label: `⏰ ${workshop.time}` },
+                { label: "🌱 Beginner to Intermediate" },
+                { label: "🎁 Free Live Event" },
+              ].map(({ label }) => (
+                <span class="inline-flex items-center gap-2 bg-[#F5F2EB] text-[#1A0533] text-base font-medium px-4 py-2 rounded-full">
+                  {label}
+                </span>
+              ))
+            }
+          </div>
+
+          <!-- Instructor strip -->
+          <div class="border-t border-gray-100 pt-6">
+            <p
+              class="text-xs font-semibold text-gray-400 uppercase tracking-widest mb-4"
+            >
+              Instructor
+            </p>
+            <div class="flex items-center gap-4">
+              <img
+                src={workshop.instructorPhoto}
+                alt={workshop.instructorName}
+                class="w-18 h-18 rounded-full object-cover object-top shrink-0"
+                loading="eager"
+              />
+              <div>
+                <p class="font-semibold text-[#1A0533] text-lg">
+                  {workshop.instructorName}
+                </p>
+                <p class="text-base text-gray-500">{workshop.instructorRole}</p>
+              </div>
+            </div>
+
+            <!-- Credentials -->
+            <div class="mt-5">
+              <p
+                class="text-xs font-semibold text-gray-400 uppercase tracking-widest mb-3"
+              >
+                Backed &amp; Recognized by
+              </p>
+              <div class="flex items-center flex-wrap gap-5">
+                <img
+                  src="/images/wema-bank-logo.png"
+                  alt="Wema Bank"
+                  class="h-14 object-contain rounded"
+                  loading="lazy"
+                />
+                <img
+                  src="/images/tie-dubai.png"
+                  alt="TiE Dubai"
+                  class="h-16 object-contain"
+                  loading="lazy"
+                />
+                <img
+                  src="/images/UN-Tourism.svg"
+                  alt="UN Tourism"
+                  class="h-16 object-contain"
+                  loading="lazy"
+                />
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- ── RIGHT COLUMN: STICKY SIDEBAR ─────────────────────────── -->
+        <aside class="lg:sticky lg:top-6">
+          <div
+            class="rounded-2xl border border-gray-200 shadow-lg overflow-hidden bg-white"
+          >
+            <!-- Workshop thumbnail -->
+            <img
+              src={workshop.thumbnail}
+              alt="A Practical Introduction to Agentic AI"
+              class="w-full aspect-video object-cover"
+              loading="eager"
+            />
+
+            <!-- Pricing & CTA -->
+            <div class="p-6 space-y-4">
+              <!-- Price -->
+              <div class="flex items-baseline gap-3">
+                <span class="text-3xl font-extrabold text-[#1A0533]">FREE</span>
+                <span class="text-base text-gray-400">Live 1-Hour Session</span>
+              </div>
+
+              <!-- Start date -->
+              <div class="flex items-center gap-2 text-lg text-gray-600">
+                <svg
+                  class="w-6 h-6 text-[#8A40F5]"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="2"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  aria-hidden="true"
+                >
+                  <rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect>
+                  <line x1="16" y1="2" x2="16" y2="6"></line>
+                  <line x1="8" y1="2" x2="8" y2="6"></line>
+                  <line x1="3" y1="10" x2="21" y2="10"></line>
+                </svg>
+                {workshop.startDate}
+              </div>
+
+              <!-- Start time -->
+              <div class="flex items-center gap-2 text-lg text-gray-600">
+                <svg
+                  class="w-6 h-6 text-[#8A40F5]"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="2"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  aria-hidden="true"
+                >
+                  <circle cx="12" cy="12" r="10"></circle>
+                  <polyline points="12 6 12 12 16 14"></polyline>
+                </svg>
+                {workshop.time}
+              </div>
+
+              <!-- Register CTA -->
+              <a
+                id="enroll"
+                href="#enroll-form"
+                class="block w-full text-center bg-[#8A40F5] hover:bg-[#7434D8] text-white font-semibold px-8 py-4 rounded-lg transition-colors duration-200 text-base mt-6"
+              >
+                Reserve Free Spot
+              </a>
+
+              <p class="text-center text-xs text-gray-500 mt-2">
+                Includes live Q&amp;A access and workshop recording.
+              </p>
+            </div>
+          </div>
+        </aside>
+      </div>
+    </section>
+
+    <!-- ── WORKSHOP OVERVIEW ─────────────────────────────────────────── -->
+    <section class="bg-[#F5F2EB] mt-16 py-16 md:py-20">
+      <div class="max-w-7xl mx-auto px-6 md:px-12 lg:px-16 xl:px-24 max-w-3xl">
+        <p
+          class="text-xs font-semibold text-[#8A40F5] uppercase tracking-widest mb-3"
+        >
+          Why This Workshop Exists
+        </p>
+        <h2
+          class="text-2xl md:text-3xl font-extrabold text-[#1A0533] leading-tight mb-6"
+        >
+          Closing the gap between basic prompts and real software.
+        </h2>
+        <div class="space-y-4 text-gray-700 leading-relaxed text-lg">
+          <p>
+            I studied Computer Science for four years. I learned the frameworks,
+            the algorithms, and the theory. But like thousands of graduates
+            across Africa, school never really pushed me to build real products.
+            When I started building on my own after graduation, I realised how
+            wide that gap was. That's why I built UniversityX.
+          </p>
+          <p>
+            Right now, AI is transforming how software gets built. Dropping
+            prompts into a box is fun, but real software requires AI agents that
+            can think through steps, use APIs, remember context, and execute
+            workflows reliably.
+          </p>
+          <p>
+            In this 60-minute practical session, I'll walk you through how
+            Agentic AI works in the real world, so you can stop guessing and
+            start building software that scales.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- ── WHAT WE COVER IN 60 MINUTES ───────────────────────────────── -->
+    <section class="py-16 md:py-20">
+      <div class="max-w-7xl mx-auto px-6 md:px-12 lg:px-16 xl:px-24">
+        <p
+          class="text-xs font-semibold text-[#8A40F5] uppercase tracking-widest mb-3 text-center"
+        >
+          Session Agenda
+        </p>
+        <h2
+          class="text-2xl md:text-3xl font-extrabold text-[#1A0533] text-center mb-12"
+        >
+          What We Cover in 60 Minutes
+        </h2>
+
+        <div class="grid grid-cols-1 md:grid-cols-4 gap-6">
+          {
+            [
+              {
+                step: "01",
+                title: "Agentic Fundamentals",
+                desc: "How autonomous tool-using agents differ from standard prompt interfaces.",
+              },
+              {
+                step: "02",
+                title: "State & Workflows",
+                desc: "Using state machines like LangGraph for loops, branching, and persistent memory.",
+              },
+              {
+                step: "03",
+                title: "RAG & Knowledge",
+                desc: "Connecting models to custom document repositories with verified citations.",
+              },
+              {
+                step: "04",
+                title: "Production & Evals",
+                desc: "Adding safety guardrails, tracing, and automated evals to ensure reliable system behavior.",
+              },
+            ].map(({ step, title, desc }) => (
+              <div class="bg-[#F5F2EB] rounded-2xl p-6 border border-[#1A0533]/5">
+                <span class="inline-block text-[#8A40F5] text-sm font-extrabold bg-white rounded-full px-3 py-1 mb-4 shadow-sm">
+                  Part {step}
+                </span>
+                <h3 class="text-lg font-bold text-[#1A0533] mb-2">{title}</h3>
+                <p class="text-base text-gray-600 leading-relaxed">{desc}</p>
+              </div>
+            ))
+          }
+        </div>
+      </div>
+    </section>
+
+    <!-- ── BRIDGE TO FULL COURSE (MAIN COURSE HIGHLIGHT) ─────────────── -->
+    <section
+      class="bg-[#1A0533] text-white py-16 md:py-24 relative overflow-hidden"
+    >
+      <div
+        class="max-w-7xl mx-auto px-6 md:px-12 lg:px-16 xl:px-24 relative z-10"
+      >
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+          <div>
+            <span
+              class="inline-block text-[#8A40F5] text-xs font-bold uppercase tracking-widest bg-white/10 rounded-full px-4 py-1.5 mb-5 backdrop-blur-sm"
+            >
+              Full 6-Week Live Sprint
+            </span>
+            <h2 class="text-3xl md:text-4xl font-extrabold leading-tight mb-5">
+              Want to go from intro to shipping real AI applications?
+            </h2>
+            <p class="text-gray-300 text-lg leading-relaxed mb-8">
+              This free 1-hour workshop gives you the big picture mental model.
+              If you want to write real code, build 6 production project repos,
+              master LangGraph and RAG, and get live feedback, check out our
+              flagship 6-week live cohort.
+            </p>
+            <div class="flex flex-wrap gap-4">
+              <a
+                href={workshop.courseUrl}
+                class="inline-flex items-center gap-2 bg-[#8A40F5] hover:bg-[#7434D8] text-white font-semibold px-7 py-4 rounded-xl transition-colors duration-200 text-base"
+              >
+                <span>Explore the 6-Week Cohort</span>
+                <svg
+                  class="w-4 h-4"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="2.5"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                >
+                  <path d="M5 12h14M12 5l7 7-7 7"></path>
+                </svg>
+              </a>
+            </div>
+          </div>
+
+          <div
+            class="bg-white/5 border border-white/10 rounded-2xl p-8 backdrop-blur-sm"
+          >
+            <h3
+              class="text-xl font-bold text-white mb-4 flex items-center gap-2"
+            >
+              <span class="text-[#8A40F5]">⚡</span> What you build in the full sprint:
+            </h3>
+            <ul class="space-y-3 text-gray-300 text-base">
+              <li class="flex items-start gap-3">
+                <span class="text-[#8A40F5] font-bold">01.</span>
+                <span
+                  >API-calling assistant with custom tools and structured
+                  outputs</span
+                >
+              </li>
+              <li class="flex items-start gap-3">
+                <span class="text-[#8A40F5] font-bold">02.</span>
+                <span
+                  >Stateful workflow agent with LangGraph and human approval
+                  steps</span
+                >
+              </li>
+              <li class="flex items-start gap-3">
+                <span class="text-[#8A40F5] font-bold">03.</span>
+                <span
+                  >Document intelligence RAG system with exact section citations</span
+                >
+              </li>
+              <li class="flex items-start gap-3">
+                <span class="text-[#8A40F5] font-bold">04.</span>
+                <span
+                  >Guardrailed production AI system with evaluations and tracing</span
+                >
+              </li>
+              <li class="flex items-start gap-3">
+                <span class="text-[#8A40F5] font-bold">05.</span>
+                <span
+                  >Capstone project: Support Operations Autonomous Agent</span
+                >
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ── WHO THIS IS FOR ───────────────────────────────────────────── -->
+    <section class="py-16 md:py-20">
+      <div class="max-w-7xl mx-auto px-6 md:px-12 lg:px-16 xl:px-24">
+        <p
+          class="text-xs font-semibold text-[#8A40F5] uppercase tracking-widest mb-3 text-center"
+        >
+          Who This Is For
+        </p>
+        <h2
+          class="text-2xl md:text-3xl font-extrabold text-[#1A0533] text-center mb-12"
+        >
+          This Workshop Is For You If...
+        </h2>
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+          {
+            [
+              {
+                num: "01",
+                title: "You are a developer or computer science student",
+                body: "You know programming fundamentals, but want to understand how to build real AI applications instead of just consuming API docs.",
+              },
+              {
+                num: "02",
+                title: "You are a founder building an AI-powered product",
+                body: "You want to understand what AI agents can actually execute so you can make smart architecture and product decisions.",
+              },
+              {
+                num: "03",
+                title: "You are a product manager or tech lead",
+                body: "You lead engineering teams and want to grasp how tool calling, RAG, and stateful agents come together in modern workflows.",
+              },
+            ].map(({ num, title, body }) => (
+              <div class="bg-[#F5F2EB] rounded-2xl p-7">
+                <span class="inline-block text-[#8A40F5] text-base font-bold bg-white rounded-full px-3 py-1 mb-4">
+                  {num}
+                </span>
+                <h3 class="text-lg font-bold text-[#1A0533] mb-2 leading-snug">
+                  {title}
+                </h3>
+                <p class="text-base text-gray-700 leading-relaxed">{body}</p>
+              </div>
+            ))
+          }
+        </div>
+      </div>
+    </section>
+
+    <!-- ── MEET THE INSTRUCTOR ────────────────────────────────────────── -->
+    <section class="bg-[#F5F2EB] py-16 md:py-20">
+      <div class="max-w-7xl mx-auto px-6 md:px-12 lg:px-16 xl:px-24">
+        <p
+          class="text-xs font-semibold text-[#8A40F5] uppercase tracking-widest mb-10"
+        >
+          Meet Your Instructor
+        </p>
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
+          <div>
+            <h2 class="text-2xl md:text-3xl font-extrabold text-[#1A0533] mb-2">
+              {workshop.instructorName}
+            </h2>
+            <p class="font-medium text-[#8A40F5] mb-5">
+              {workshop.instructorRole}
+            </p>
+            <div class="space-y-4 text-gray-700 leading-relaxed text-lg">
+              <p>
+                Damilare Ololade is a software developer, and the cofounder of
+                UniversityX, an AI-powered learning platform that has reached
+                thousands of learners across Africa.
+              </p>
+              <p>
+                His work has earned recognition through the Wema Bank
+                Hackaholics program, NSIA Prize for Innovation, Microsoft for
+                Startups, Google Developer Groups, and TiE Dubai. He has also
+                participated in UN Tourism initiatives and serves as a UNESCO
+                Ambassador.
+              </p>
+              <p>
+                In this workshop, he breaks down Agentic AI from a builder's
+                perspective, how these systems work, what makes them different
+                from traditional AI applications, and how you can start building
+                your own.
+              </p>
+            </div>
+          </div>
+          <div
+            class="order-first md:order-last md:justify-self-end justify-self-center"
+          >
+            <img
+              src={workshop.instructorPhoto}
+              alt={workshop.instructorName}
+              class="w-full max-w-xs mx-auto md:mx-0 rounded-2xl object-cover object-top aspect-[3/4] shadow-md"
+              loading="lazy"
+            />
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ── FAQ ──────────────────────────────────────────────────────── -->
+    <section class="py-16 md:py-20">
+      <div class="max-w-7xl mx-auto px-6 md:px-12 lg:px-16 xl:px-24">
+        <p
+          class="text-xs font-semibold text-[#8A40F5] uppercase tracking-widest mb-3 text-center"
+        >
+          FAQ
+        </p>
+        <h2
+          class="text-2xl md:text-3xl font-extrabold text-[#1A0533] text-center mb-4"
+        >
+          Frequently Asked Questions
+        </h2>
+        <p class="text-center text-gray-500 mb-12 max-w-lg mx-auto">
+          Quick answers before you register.
+        </p>
+
+        <div class="max-w-2xl mx-auto space-y-3" id="faq">
+          {
+            [
+              {
+                q: "Is this workshop really free?",
+                a: "Yes, 100% free. It is a live 1-hour session open to developers, builders, and learners.",
+              },
+              {
+                q: "Will I get access to the recording?",
+                a: "Yes! Everyone who registers will receive a link to the session recording via email after the live event.",
+              },
+              {
+                q: "How is this different from the 6-Week Cohort?",
+                a: "This workshop is a free 1-hour introduction to mental models and concepts. The 6-Week Cohort is an intensive sprint where you build 6 full project repos, get live code reviews, and complete a capstone.",
+              },
+              {
+                q: "Do I need prior experience with AI frameworks?",
+                a: "No prior AI experience is needed. Basic programming or technology familiarity will help you get the most out of the session.",
+              },
+            ].map(({ q, a }) => (
+              <div class="accordion-item border border-gray-200 rounded-2xl overflow-hidden">
+                <button
+                  class="accordion-trigger w-full flex items-center justify-between px-6 py-5 text-left bg-white hover:bg-[#F5F2EB] transition-colors duration-200"
+                  aria-expanded="false"
+                >
+                  <span class="font-semibold text-[#1A0533] pr-4">{q}</span>
+                  <svg
+                    class="accordion-chevron w-5 h-5 text-gray-400 transition-transform duration-300 shrink-0"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-width="2"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    aria-hidden="true"
+                  >
+                    <polyline points="6 9 12 15 18 9" />
+                  </svg>
+                </button>
+                <div class="accordion-body">
+                  <div class="accordion-inner">
+                    <p class="px-6 pb-5 pt-2 text-gray-600 leading-relaxed border-t border-gray-100">
+                      {a}
+                    </p>
+                  </div>
+                </div>
+              </div>
+            ))
+          }
+        </div>
+      </div>
+    </section>
+
+    <!-- ── REGISTER CTA BANNER ───────────────────────────────────────── -->
+    <section id="enroll-form" class="bg-[#1A0533] py-16 md:py-20">
+      <div class="max-w-7xl mx-auto px-6 md:px-12 lg:px-16 xl:px-24">
+        <div class="text-center mb-10 max-w-2xl mx-auto">
+          <h2
+            class="text-2xl md:text-3xl font-extrabold text-white mb-3 leading-tight"
+          >
+            Reserve Your Free Seat
+          </h2>
+          <p class="text-gray-400 max-w-lg mx-auto">
+            Enter your email to get the calendar invite and live session link.
+          </p>
+        </div>
+
+        <!-- Success State -->
+        <div
+          id="register-success"
+          class="hidden max-w-md mx-auto bg-white/10 backdrop-blur-sm rounded-2xl border border-white/10 p-8 text-center"
+        >
+          <div
+            class="w-12 h-12 bg-green-500/20 rounded-full flex items-center justify-center mx-auto mb-4"
+          >
+            <svg
+              class="w-6 h-6 text-green-400"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+            >
+              <path d="M20 6L9 17l-5-5"></path>
+            </svg>
+          </div>
+          <h3 class="text-xl font-bold text-white mb-2">You're registered!</h3>
+          <p class="text-gray-400 text-sm">
+            We've saved your spot for Saturday, August 15th at 6:00 PM WAT.
+            Check your inbox for details.
+          </p>
+        </div>
+
+        <!-- Form -->
+        <form
+          id="register-form"
+          novalidate
+          class="max-w-md mx-auto bg-white/5 backdrop-blur-sm rounded-2xl border border-white/10 p-6 md:p-8"
+        >
+          <div class="mb-4">
+            <label for="register-email" class="sr-only">Email Address</label>
+            <input
+              type="email"
+              id="register-email"
+              name="email"
+              placeholder="Enter your email address"
+              required
+              class="w-full bg-white/10 rounded-xl px-5 py-4 text-white placeholder-gray-400 border border-transparent focus:outline-none focus:ring-2 focus:ring-[#8A40F5] focus:border-[#8A40F5] transition-all duration-200"
+            />
+            <p
+              id="register-email-error"
+              class="text-red-400 text-xs mt-2 hidden text-left"
+            >
+              Please enter a valid email address.
+            </p>
+          </div>
+          <button
+            type="submit"
+            id="register-submit-btn"
+            class="w-full bg-[#8A40F5] hover:bg-[#7434D8] text-white font-bold text-base rounded-xl py-4 transition-colors duration-200 cursor-pointer"
+          >
+            Reserve Free Spot
+          </button>
+          <p class="text-center text-gray-500 text-xs mt-3">
+            No payment required. We respect your privacy.
+          </p>
+        </form>
+      </div>
+    </section>
+  </main>
+
+  <Footer />
+</Layout>
+
+<style>
+  .accordion-body {
+    display: grid;
+    grid-template-rows: 0fr;
+    transition: grid-template-rows 300ms ease;
+  }
+
+  .accordion-body.is-open {
+    grid-template-rows: 1fr;
+  }
+
+  .accordion-inner {
+    overflow: hidden;
+  }
+
+  .accordion-chevron.is-open {
+    transform: rotate(180deg);
+  }
+</style>
+
+<script>
+  function initAccordions() {
+    document.querySelectorAll(".accordion-trigger").forEach((trigger) => {
+      trigger.addEventListener("click", () => {
+        const item = trigger.closest(".accordion-item")!;
+        const body = item.querySelector(".accordion-body")!;
+        const chevron = trigger.querySelector(".accordion-chevron")!;
+        const isOpen = body.classList.contains("is-open");
+
+        body.classList.toggle("is-open", !isOpen);
+        chevron.classList.toggle("is-open", !isOpen);
+        trigger.setAttribute("aria-expanded", String(!isOpen));
+      });
+    });
+  }
+
+  if (document.readyState === "loading") {
+    document.addEventListener("DOMContentLoaded", initAccordions);
+  } else {
+    initAccordions();
+  }
+</script>
+
+<script>
+  import PocketBase from "pocketbase";
+
+  declare global {
+    interface Window {
+      posthog?: any;
+    }
+  }
+
+  function initRegistrationForm() {
+    const form = document.getElementById(
+      "register-form",
+    ) as HTMLFormElement | null;
+    const successMsg = document.getElementById("register-success");
+    if (!form || !successMsg) return;
+
+    const emailInput = form.querySelector(
+      "#register-email",
+    ) as HTMLInputElement;
+    const emailError = document.getElementById("register-email-error")!;
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+
+    function validateEmail(): boolean {
+      const valid = emailRegex.test(emailInput.value.trim());
+      emailError.classList.toggle(
+        "hidden",
+        valid || emailInput.value.trim() === "",
+      );
+      return valid;
+    }
+
+    emailInput.addEventListener("blur", validateEmail);
+
+    const pb = new PocketBase(import.meta.env.PUBLIC_POCKETBASE_URL);
+
+    form.addEventListener("submit", async (e) => {
+      e.preventDefault();
+
+      if (!validateEmail()) {
+        emailInput.focus();
+        return;
+      }
+
+      const submitBtn = document.getElementById(
+        "register-submit-btn",
+      ) as HTMLButtonElement;
+      submitBtn.disabled = true;
+      submitBtn.textContent = "Reserving...";
+
+      try {
+        await pb.collection("Introduction_to_Agentic_AI_Workshop").create({
+          email: emailInput.value.trim(),
+        });
+
+        window.posthog?.capture("workshop_registered", {
+          workshop: "Introduction_to_Agentic_AI_Workshop",
+        });
+
+        form.classList.add("hidden");
+        successMsg.classList.remove("hidden");
+      } catch (err) {
+        console.error("Registration error:", err);
+        submitBtn.disabled = false;
+        submitBtn.textContent = "Reserve Free Spot";
+        emailError.textContent = "Something went wrong. Please try again.";
+        emailError.classList.remove("hidden");
+      }
+    });
+  }
+
+  if (document.readyState === "loading") {
+    document.addEventListener("DOMContentLoaded", () => {
+      initRegistrationForm();
+    });
+  } else {
+    initRegistrationForm();
+  }
+</script>
