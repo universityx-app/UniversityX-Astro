@@ -17,8 +17,8 @@ const messageIcon = 'M21 15a4 4 0 0 1-4 4H8l-5 3V7a4 4 0 0 1 4-4h10a4 4 0 0 1 4 
 
 const heroStats = [
   { icon: calendarIcon, value: '6 weeks', label: 'Live online sprint' },
-  { icon: clockIcon, value: '8-12 hrs', label: 'Focused weekly build time' },
-  { icon: usersIcon, value: '15 max', label: 'Small cohort' },
+  { icon: clockIcon, value: '4 hrs', label: 'Focused weekly build time' },
+  { icon: usersIcon, value: '20 max', label: 'Small cohort' },
 ];
 
 const stack = ['Python', 'LangChain', 'LangGraph', 'RAG', 'Guardrails', 'Evals'];
@@ -149,8 +149,8 @@ const faqs = [
           <div class="mb-8 flex flex-wrap gap-3">
             {[
               { icon: calendarIcon, label: '6-week live cohort' },
-              { icon: clockIcon, label: '8-12 hours/week' },
-              { icon: usersIcon, label: '15 learners max' },
+              { icon: clockIcon, label: '4 hours/week' },
+              { icon: usersIcon, label: '20 learners max' },
             ].map(({ icon, label }) => (
               <span class="inline-flex items-center gap-2 rounded-full bg-[#F5F2EB] px-4 py-2 text-base font-medium text-[#1A0533]">
                 <svg class="h-4.5 w-4.5 text-[#8A40F5]" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
@@ -161,7 +161,7 @@ const faqs = [
             ))}
           </div>
 
-          <div class="border-t border-gray-100 pt-6">
+          <div class="hidden border-t border-gray-100 pt-6">
             <p class="mb-4 text-xs font-semibold uppercase tracking-widest text-gray-400">Instructor</p>
             <div class="flex items-center gap-4">
               <div class="flex h-18 w-18 shrink-0 items-center justify-center rounded-full bg-[#8A40F5]/10 text-[#8A40F5]">
