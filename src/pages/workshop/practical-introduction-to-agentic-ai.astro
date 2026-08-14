@@ -21,7 +21,7 @@ const workshop = {
 
 <Layout
   title="A Practical Introduction to Agentic AI - UniversityX Workshop"
-  description="A free 1-hour live workshop with Damilare Ololade introducing tool-using AI agents, stateful workflows, RAG, and production habits."
+  description="Join our free 60-minute live virtual workshop to learn how Agentic AI works, its core components, and how to automate systems to boost productivity."
   image={workshop.thumbnail}
 >
   <Navbar />
@@ -77,7 +77,7 @@ const workshop = {
           <span
             class="inline-block text-[#8A40F5] text-sm font-bold bg-[#8A40F5]/10 rounded-full px-4 py-1.5 mb-5"
           >
-            Free 1-Hour Live Workshop
+            Free Workshop
           </span>
 
           <!-- Title -->
@@ -92,22 +92,21 @@ const workshop = {
 
           <!-- Description -->
           <p class="text-lg text-gray-700 leading-relaxed mb-6">
-            Most developers start out with basic ChatGPT or Claude prompts. It
-            feels magical at first, but when you try building real-world
-            software, single prompts hit a wall fast. That's where Agentic AI
-            comes in. Instead of just generating text, agentic systems can
-            reason through steps, run tools, call APIs, search knowledge bases,
-            and make decisions on their own.
+            AI is transforming everyday work. To stay competitive, professionals
+            need to learn how to automate workflows. Agentic AI systems can
+            reason through tasks, use tools, and make decisions on their own.
+            Join us for a practical, 60-minute session on how AI agents work and
+            how to leverage them.
           </p>
 
           <!-- What you'll learn -->
           <ul class="space-y-2.5 mb-8 text-lg">
             {
               [
-                "The fundamental difference between basic prompt wrappers and real tool-using AI agents",
-                "How state machines and routing give agents memory and decision-making superpowers",
-                "How RAG retrieval connects AI models to private documents with exact citations",
-                "A clear preview of our full 6-Week Live Engineering Sprint for developers who want to go deeper",
+                "What Agentic AI is and why it matters for modern professionals",
+                "How agents work step-by-step and what they execute in real business workflows",
+                "Key differences between AI agents, assistants, bots, and basic automation",
+                "How safety guardrails keep agents secure, reliable, and validated",
               ].map((item) => (
                 <li class="flex items-start gap-3 text-gray-700">
                   <svg
@@ -135,7 +134,7 @@ const workshop = {
                 { label: `🗓️ ${workshop.startDate}` },
                 { label: `⏰ ${workshop.time}` },
                 { label: "🌱 Beginner to Intermediate" },
-                { label: "🎁 Free Live Event" },
+                { label: "🎁 Free" },
               ].map(({ label }) => (
                 <span class="inline-flex items-center gap-2 bg-[#F5F2EB] text-[#1A0533] text-base font-medium px-4 py-2 rounded-full">
                   {label}
@@ -264,49 +263,9 @@ const workshop = {
               >
                 Reserve Free Spot
               </a>
-
-              <p class="text-center text-xs text-gray-500 mt-2">
-                Includes live Q&amp;A access and workshop recording.
-              </p>
             </div>
           </div>
         </aside>
-      </div>
-    </section>
-
-    <!-- ── WORKSHOP OVERVIEW ─────────────────────────────────────────── -->
-    <section class="bg-[#F5F2EB] mt-16 py-16 md:py-20">
-      <div class="max-w-7xl mx-auto px-6 md:px-12 lg:px-16 xl:px-24 max-w-3xl">
-        <p
-          class="text-xs font-semibold text-[#8A40F5] uppercase tracking-widest mb-3"
-        >
-          Why This Workshop Exists
-        </p>
-        <h2
-          class="text-2xl md:text-3xl font-extrabold text-[#1A0533] leading-tight mb-6"
-        >
-          Closing the gap between basic prompts and real software.
-        </h2>
-        <div class="space-y-4 text-gray-700 leading-relaxed text-lg">
-          <p>
-            I studied Computer Science for four years. I learned the frameworks,
-            the algorithms, and the theory. But like thousands of graduates
-            across Africa, school never really pushed me to build real products.
-            When I started building on my own after graduation, I realised how
-            wide that gap was. That's why I built UniversityX.
-          </p>
-          <p>
-            Right now, AI is transforming how software gets built. Dropping
-            prompts into a box is fun, but real software requires AI agents that
-            can think through steps, use APIs, remember context, and execute
-            workflows reliably.
-          </p>
-          <p>
-            In this 60-minute practical session, I'll walk you through how
-            Agentic AI works in the real world, so you can stop guessing and
-            start building software that scales.
-          </p>
-        </div>
       </div>
     </section>
 
@@ -321,7 +280,7 @@ const workshop = {
         <h2
           class="text-2xl md:text-3xl font-extrabold text-[#1A0533] text-center mb-12"
         >
-          What We Cover in 60 Minutes
+          Structured 60-Minute Schedule
         </h2>
 
         <div class="grid grid-cols-1 md:grid-cols-4 gap-6">
@@ -330,22 +289,22 @@ const workshop = {
               {
                 step: "01",
                 title: "Agentic Fundamentals",
-                desc: "How autonomous tool-using agents differ from standard prompt interfaces.",
+                desc: "Overview of Agentic AI, its growing importance, and the core components of an AI agent.",
               },
               {
                 step: "02",
-                title: "State & Workflows",
-                desc: "Using state machines like LangGraph for loops, branching, and persistent memory.",
+                title: "How Agents Work",
+                desc: "Step-by-step breakdown of how agents run and what they execute in real business workflows.",
               },
               {
                 step: "03",
-                title: "RAG & Knowledge",
-                desc: "Connecting models to custom document repositories with verified citations.",
+                title: "Agents vs. Assistants",
+                desc: "Key differences in purpose, capability, and interaction between agents, bots, and automation.",
               },
               {
                 step: "04",
-                title: "Production & Evals",
-                desc: "Adding safety guardrails, tracing, and automated evals to ensure reliable system behavior.",
+                title: "Autonomy & Safety",
+                desc: "What gives AI systems agency, plus essential guardrails for safety and validated outputs.",
               },
             ].map(({ step, title, desc }) => (
               <div class="bg-[#F5F2EB] rounded-2xl p-6 border border-[#1A0533]/5">
@@ -470,18 +429,18 @@ const workshop = {
             [
               {
                 num: "01",
-                title: "You are a developer or computer science student",
-                body: "You know programming fundamentals, but want to understand how to build real AI applications instead of just consuming API docs.",
+                title: "Professionals & Innovators",
+                body: "You want to automate repetitive workflows and boost daily productivity with modern AI tools.",
               },
               {
                 num: "02",
-                title: "You are a founder building an AI-powered product",
-                body: "You want to understand what AI agents can actually execute so you can make smart architecture and product decisions.",
+                title: "Aspiring Builders & Students",
+                body: "You want a clear, practical mental model of how AI agents are structured and run step-by-step.",
               },
               {
                 num: "03",
-                title: "You are a product manager or tech lead",
-                body: "You lead engineering teams and want to grasp how tool calling, RAG, and stateful agents come together in modern workflows.",
+                title: "Founders & Product Leads",
+                body: "You need to understand the real capabilities and differences between agents, assistants, and bots.",
               },
             ].map(({ num, title, body }) => (
               <div class="bg-[#F5F2EB] rounded-2xl p-7">
@@ -517,22 +476,19 @@ const workshop = {
             </p>
             <div class="space-y-4 text-gray-700 leading-relaxed text-lg">
               <p>
-                Damilare Ololade is a software developer, and the cofounder of
-                UniversityX, an AI-powered learning platform that has reached
-                thousands of learners across Africa.
+                Damilare Ololade is a software developer and the cofounder of
+                UniversityX, an AI-powered learning platform reaching thousands
+                of learners across Africa.
               </p>
               <p>
-                His work has earned recognition through the Wema Bank
-                Hackaholics program, NSIA Prize for Innovation, Microsoft for
-                Startups, Google Developer Groups, and TiE Dubai. He has also
-                participated in UN Tourism initiatives and serves as a UNESCO
-                Ambassador.
+                His work is recognized by Wema Bank Hackaholics, NSIA Prize for
+                Innovation, Microsoft for Startups, Google Developer Groups, TiE
+                Dubai, and UN Tourism initiatives.
               </p>
               <p>
-                In this workshop, he breaks down Agentic AI from a builder's
-                perspective, how these systems work, what makes them different
-                from traditional AI applications, and how you can start building
-                your own.
+                In this session, he breaks down Agentic AI from a practical
+                builder's perspective, showing how to leverage agents to
+                automate real-world workflows.
               </p>
             </div>
           </div>
