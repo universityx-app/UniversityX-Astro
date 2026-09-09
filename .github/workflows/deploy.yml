@@ -46,6 +46,8 @@ jobs:
           tags: ${{ steps.meta.outputs.tags }}
           labels: ${{ steps.meta.outputs.labels }}
           build-args: |
+            SITE_URL=https://universityx.app
+            PUBLIC_SITE_URL=https://universityx.app
             PUBLIC_POCKETBASE_URL=${{ secrets.PUBLIC_POCKETBASE_URL }}
             PUBLIC_POSTHOG_HOST=${{ secrets.PUBLIC_POSTHOG_HOST }}
             PUBLIC_POSTHOG_KEY=${{ secrets.PUBLIC_POSTHOG_KEY }}
