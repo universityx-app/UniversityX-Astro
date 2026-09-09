@@ -1,0 +1,763 @@
+---
+interface Props {
+  workshopTitle?: string;
+  startDate?: string;
+  time?: string;
+  targetDate?: string;
+  collectionName?: string;
+  cohortName?: string;
+}
+
+const {
+  workshopTitle = "Build Your First Autonomous AI Agent with Python",
+  startDate = "Saturday, September 13th",
+  time = "4:00 PM WAT",
+  targetDate = "2026-09-13T16:00:00+01:00",
+  collectionName = "Build_Your_First_Autonomous_AI_Agent_with_Python",
+  cohortName = "6-Week Agentic AI Cohort",
+} = Astro.props;
+---
+
+<section
+  id="enroll-form"
+  class="bg-[#FAF9F5] py-16 md:py-24 border-t border-gray-200/70 relative overflow-hidden"
+>
+  <!-- Subtle decorative background glow -->
+  <div
+    class="absolute top-0 right-1/4 w-96 h-96 bg-[#8A40F5]/5 rounded-full blur-3xl pointer-events-none"
+  >
+  </div>
+  <div
+    class="absolute bottom-0 left-1/4 w-96 h-96 bg-[#8A40F5]/5 rounded-full blur-3xl pointer-events-none"
+  >
+  </div>
+
+  <div class="max-w-7xl mx-auto px-6 md:px-12 lg:px-16 xl:px-24 relative z-10">
+    <div class="text-center mb-8 max-w-2xl mx-auto">
+      <span
+        class="inline-block text-[#8A40F5] text-xs font-extrabold uppercase tracking-widest bg-[#8A40F5]/10 rounded-full px-4 py-1.5 mb-3"
+      >
+        Free Registration
+      </span>
+      <h2
+        class="text-3xl md:text-5xl font-extrabold text-[#1A0533] leading-tight tracking-tight mb-4"
+      >
+        Reserve Your Free Spot
+      </h2>
+      <p class="text-gray-600 text-base md:text-lg max-w-xl mx-auto">
+        Join us live on <strong class="text-[#1A0533]"
+          >{startDate} at {time}</strong
+        >. Complete the form below to secure your seat and receive the
+        livestream access link.
+      </p>
+    </div>
+
+    <!-- Countdown Timer -->
+    <div
+      class="mb-10 text-center bg-white rounded-2xl p-5 sm:p-6 border border-gray-200/80 shadow-xs max-w-md mx-auto"
+    >
+      <p class="text-xs font-bold text-[#8A40F5] uppercase tracking-wider mb-3">
+        Workshop Starts In
+      </p>
+      <div
+        class="flex items-center justify-center gap-3 sm:gap-4 countdown-container"
+        data-target={targetDate}
+      >
+        <div class="flex flex-col days-group">
+          <span
+            class="text-3xl sm:text-4xl font-extrabold text-[#1A0533] days-val"
+            >00</span
+          >
+          <span class="text-xs text-gray-500 uppercase tracking-wider mt-0.5"
+            >Days</span
+          >
+        </div>
+        <span class="text-2xl font-bold text-[#1A0533]/30 pb-2 days-sep">:</span>
+        <div class="flex flex-col">
+          <span
+            class="text-3xl sm:text-4xl font-extrabold text-[#1A0533] hours-val"
+            >00</span
+          >
+          <span class="text-xs text-gray-500 uppercase tracking-wider mt-0.5"
+            >Hours</span
+          >
+        </div>
+        <span class="text-2xl font-bold text-[#1A0533]/30 pb-2">:</span>
+        <div class="flex flex-col">
+          <span
+            class="text-3xl sm:text-4xl font-extrabold text-[#1A0533] minutes-val"
+            >00</span
+          >
+          <span class="text-xs text-gray-500 uppercase tracking-wider mt-0.5"
+            >Mins</span
+          >
+        </div>
+        <span class="text-2xl font-bold text-[#1A0533]/30 pb-2">:</span>
+        <div class="flex flex-col">
+          <span
+            class="text-3xl sm:text-4xl font-extrabold text-[#1A0533] seconds-val"
+            >00</span
+          >
+          <span class="text-xs text-gray-500 uppercase tracking-wider mt-0.5"
+            >Secs</span
+          >
+        </div>
+      </div>
+    </div>
+
+    <!-- Main Registration Card -->
+    <div
+      class="max-w-2xl mx-auto bg-white rounded-3xl p-6 sm:p-10 md:p-12 border border-gray-200/80 shadow-xl shadow-gray-200/40"
+    >
+      <!-- Success State -->
+      <div id="register-success" class="hidden text-center py-6">
+        <div
+          class="w-16 h-16 bg-emerald-100 text-emerald-600 rounded-2xl flex items-center justify-center mx-auto mb-5 ring-8 ring-emerald-50 shadow-xs"
+        >
+          <svg
+            class="w-8 h-8"
+            fill="none"
+            viewBox="0 0 24 24"
+            stroke="currentColor"
+            stroke-width="2.5"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+          >
+            <polyline points="20 6 9 17 4 12"></polyline>
+          </svg>
+        </div>
+        <h3 class="text-2xl md:text-3xl font-extrabold text-[#1A0533] mb-2">
+          Your spot is reserved!
+        </h3>
+        <p
+          class="text-gray-600 text-base md:text-lg leading-relaxed max-w-md mx-auto mb-6"
+        >
+          We've reserved your free seat for <strong class="text-[#1A0533]"
+            >{workshopTitle}</strong
+          > on <span class="font-semibold text-[#8A40F5]"
+            >{startDate} at {time}</span
+          >.
+        </p>
+
+        <div
+          class="bg-[#FAF9F5] rounded-2xl p-6 border border-gray-200/80 text-left max-w-xl mx-auto"
+        >
+          <div
+            class="flex items-center gap-3 text-[#1A0533] font-bold text-base md:text-lg"
+          >
+            <div
+              class="w-8 h-8 rounded-full bg-[#8A40F5]/10 text-[#8A40F5] flex items-center justify-center shrink-0"
+            >
+              <svg
+                class="w-4 h-4"
+                fill="none"
+                viewBox="0 0 24 24"
+                stroke="currentColor"
+                stroke-width="2.5"
+              >
+                <path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"
+                ></path>
+              </svg>
+            </div>
+            <span>Check your inbox for calendar invite &amp; join link</span>
+          </div>
+          <p class="text-sm md:text-base text-gray-600 leading-relaxed pl-11">
+            We sent an email with the Google Calendar invite and setup
+            instructions. If you don't see it within a few minutes, check your
+            spam or promotions tab.
+          </p>
+        </div>
+      </div>
+
+      <!-- Registration Form -->
+      <form
+        id="register-form"
+        novalidate
+        class="space-y-6"
+        data-collection={collectionName}
+      >
+        <!-- Error Banner (shown if submission fails) -->
+        <div
+          id="register-general-error"
+          class="hidden rounded-xl bg-rose-50 border border-rose-200 p-4 text-rose-700 text-sm flex items-start gap-3"
+        >
+          <svg
+            class="w-5 h-5 text-rose-500 shrink-0 mt-0.5"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="2"
+          >
+            <circle cx="12" cy="12" r="10"></circle>
+            <line x1="12" y1="8" x2="12" y2="12"></line>
+            <line x1="12" y1="16" x2="12.01" y2="16"></line>
+          </svg>
+          <div>
+            <p class="font-semibold">Unable to complete registration.</p>
+            <p class="text-xs mt-0.5 text-rose-600">
+              Please verify your details and try again.
+            </p>
+          </div>
+        </div>
+
+        <!-- Name Fields (First Name & Last Name) -->
+        <div class="grid grid-cols-1 sm:grid-cols-2 gap-5">
+          <!-- First Name -->
+          <div>
+            <label
+              for="reg-first-name"
+              class="block text-base font-bold text-[#1A0533] mb-2.5"
+            >
+              First Name <span class="text-[#8A40F5]">*</span>
+            </label>
+            <input
+              type="text"
+              id="reg-first-name"
+              name="first_name"
+              placeholder="e.g. Alex"
+              required
+              class="w-full bg-[#FAF9F5] rounded-xl px-4 py-3.5 text-base text-gray-800 placeholder-gray-400 border border-gray-200 focus:outline-none focus:ring-2 focus:ring-[#8A40F5] focus:border-[#8A40F5] focus:bg-white transition-all duration-200 shadow-xs"
+            />
+            <p
+              id="reg-first-name-error"
+              class="text-rose-500 text-xs mt-1.5 hidden flex items-center gap-1"
+            >
+              <svg
+                class="w-3.5 h-3.5 shrink-0"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2.5"
+                ><circle cx="12" cy="12" r="10"></circle><line
+                  x1="12"
+                  y1="8"
+                  x2="12"
+                  y2="12"></line><line x1="12" y1="16" x2="12.01" y2="16"
+                ></line></svg
+              >
+              <span>First name is required.</span>
+            </p>
+          </div>
+
+          <!-- Last Name -->
+          <div>
+            <label
+              for="reg-last-name"
+              class="block text-base font-bold text-[#1A0533] mb-2.5"
+            >
+              Last Name <span class="text-[#8A40F5]">*</span>
+            </label>
+            <input
+              type="text"
+              id="reg-last-name"
+              name="last_name"
+              placeholder="e.g. Johnson"
+              required
+              class="w-full bg-[#FAF9F5] rounded-xl px-4 py-3.5 text-base text-gray-800 placeholder-gray-400 border border-gray-200 focus:outline-none focus:ring-2 focus:ring-[#8A40F5] focus:border-[#8A40F5] focus:bg-white transition-all duration-200 shadow-xs"
+            />
+            <p
+              id="reg-last-name-error"
+              class="text-rose-500 text-xs mt-1.5 hidden flex items-center gap-1"
+            >
+              <svg
+                class="w-3.5 h-3.5 shrink-0"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2.5"
+                ><circle cx="12" cy="12" r="10"></circle><line
+                  x1="12"
+                  y1="8"
+                  x2="12"
+                  y2="12"></line><line x1="12" y1="16" x2="12.01" y2="16"
+                ></line></svg
+              >
+              <span>Last name is required.</span>
+            </p>
+          </div>
+        </div>
+
+        <!-- Email Address -->
+        <div>
+          <label
+            for="reg-email"
+            class="block text-base font-bold text-[#1A0533] mb-2.5"
+          >
+            Email Address <span class="text-[#8A40F5]">*</span>
+          </label>
+          <input
+            type="email"
+            id="reg-email"
+            name="email"
+            placeholder="alex.johnson@example.com"
+            required
+            class="w-full bg-[#FAF9F5] rounded-xl px-4 py-3.5 text-base text-gray-800 placeholder-gray-400 border border-gray-200 focus:outline-none focus:ring-2 focus:ring-[#8A40F5] focus:border-[#8A40F5] focus:bg-white transition-all duration-200 shadow-xs"
+          />
+          <p
+            id="reg-email-error"
+            class="text-rose-500 text-xs mt-1.5 hidden flex items-center gap-1"
+          >
+            <svg
+              class="w-3.5 h-3.5 shrink-0"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2.5"
+              ><circle cx="12" cy="12" r="10"></circle><line
+                x1="12"
+                y1="8"
+                x2="12"
+                y2="12"></line><line x1="12" y1="16" x2="12.01" y2="16"
+              ></line></svg
+            >
+            <span>Please enter a valid email address.</span>
+          </p>
+        </div>
+
+        <!-- Rate your Python programming experience -->
+        <div>
+          <label
+            for="reg-python-exp"
+            class="block text-base font-bold text-[#1A0533] mb-2.5 leading-snug"
+          >
+            Rate your Python programming experience: <span
+              class="text-[#8A40F5]">*</span
+            >
+          </label>
+          <div class="relative">
+            <select
+              id="reg-python-exp"
+              name="python_experience"
+              required
+              class="w-full appearance-none bg-[#FAF9F5] rounded-xl px-4 py-3.5 pr-10 text-base text-gray-800 border border-gray-200 focus:outline-none focus:ring-2 focus:ring-[#8A40F5] focus:border-[#8A40F5] focus:bg-white transition-all duration-200 shadow-xs cursor-pointer"
+            >
+              <option value="" disabled selected
+                >Select your Python experience level...</option
+              >
+              <option value="Beginner">Beginner (Still learning syntax)</option>
+              <option value="Intermediate"
+                >Intermediate (Comfortable with scripts and APIs)</option
+              >
+              <option value="Advanced"
+                >Advanced (Building production apps)</option
+              >
+            </select>
+            <div
+              class="pointer-events-none absolute inset-y-0 right-0 flex items-center px-4 text-gray-500"
+            >
+              <svg
+                class="w-5 h-5"
+                fill="none"
+                stroke="currentColor"
+                viewBox="0 0 24 24"
+              >
+                <path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  stroke-width="2"
+                  d="M19 9l-7 7-7-7"></path>
+              </svg>
+            </div>
+          </div>
+          <p
+            id="reg-python-exp-error"
+            class="text-rose-500 text-xs mt-1.5 hidden flex items-center gap-1"
+          >
+            <svg
+              class="w-3.5 h-3.5 shrink-0"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2.5"
+              ><circle cx="12" cy="12" r="10"></circle><line
+                x1="12"
+                y1="8"
+                x2="12"
+                y2="12"></line><line x1="12" y1="16" x2="12.01" y2="16"
+              ></line></svg
+            >
+            <span>Please select your Python experience level.</span>
+          </p>
+        </div>
+
+        <!-- 6-Week Cohort Interest -->
+        <div>
+          <label
+            for="reg-cohort-interest"
+            class="block text-base font-bold text-[#1A0533] mb-2.5 leading-snug"
+          >
+            This workshop is a preview of our premium {cohortName}. Are you
+            interested in joining the full 6-week program? <span
+              class="text-[#8A40F5]">*</span
+            >
+          </label>
+          <div class="relative">
+            <select
+              id="reg-cohort-interest"
+              name="cohort_interest"
+              required
+              class="w-full appearance-none bg-[#FAF9F5] rounded-xl px-4 py-3.5 pr-10 text-base text-gray-800 border border-gray-200 focus:outline-none focus:ring-2 focus:ring-[#8A40F5] focus:border-[#8A40F5] focus:bg-white transition-all duration-200 shadow-xs cursor-pointer"
+            >
+              <option value="" disabled selected>Select an option...</option>
+              <option value="Yes"
+                >Yes, send me more details about the 6-week cohort.</option
+              >
+              <option value="Maybe"
+                >Maybe, I want to see how this free workshop goes first.</option
+              >
+              <option value="No"
+                >No, I am only interested in the free workshop for now.</option
+              >
+            </select>
+            <div
+              class="pointer-events-none absolute inset-y-0 right-0 flex items-center px-4 text-gray-500"
+            >
+              <svg
+                class="w-5 h-5"
+                fill="none"
+                stroke="currentColor"
+                viewBox="0 0 24 24"
+              >
+                <path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  stroke-width="2"
+                  d="M19 9l-7 7-7-7"></path>
+              </svg>
+            </div>
+          </div>
+          <p
+            id="reg-cohort-interest-error"
+            class="text-rose-500 text-xs mt-1.5 hidden flex items-center gap-1"
+          >
+            <svg
+              class="w-3.5 h-3.5 shrink-0"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2.5"
+              ><circle cx="12" cy="12" r="10"></circle><line
+                x1="12"
+                y1="8"
+                x2="12"
+                y2="12"></line><line x1="12" y1="16" x2="12.01" y2="16"
+              ></line></svg
+            >
+            <span>Please select an option.</span>
+          </p>
+        </div>
+
+        <!-- Submit CTA -->
+        <div class="pt-2">
+          <button
+            type="submit"
+            id="register-submit-btn"
+            class="w-full bg-[#8A40F5] hover:bg-[#7434D8] text-white font-bold text-base md:text-lg rounded-xl py-4.5 px-8 transition-all duration-200 cursor-pointer shadow-md hover:shadow-xl hover:-translate-y-0.5 active:translate-y-0 flex items-center justify-center gap-2"
+          >
+            <span id="register-btn-text">Reserve Free Spot</span>
+            <svg
+              id="register-btn-icon"
+              class="w-5 h-5 transition-transform group-hover:translate-x-1"
+              fill="none"
+              viewBox="0 0 24 24"
+              stroke="currentColor"
+              stroke-width="2.5"
+            >
+              <path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                d="M14 5l7 7m0 0l-7 7m7-7H3"></path>
+            </svg>
+          </button>
+
+          <div
+            class="flex items-center justify-center gap-2 text-xs text-gray-500 mt-4 text-center"
+          >
+            <svg
+              class="w-4 h-4 text-emerald-600 shrink-0"
+              fill="none"
+              viewBox="0 0 24 24"
+              stroke="currentColor"
+              stroke-width="2"
+            >
+              <path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z"
+              ></path>
+            </svg>
+            <span
+              >100% Free Live Session. Zero spam. We respect your privacy.</span
+            >
+          </div>
+        </div>
+      </form>
+    </div>
+  </div>
+</section>
+
+<script>
+  import PocketBase from "pocketbase";
+
+  declare global {
+    interface Window {
+      posthog?: any;
+    }
+  }
+
+  function initRegistrationForm() {
+    const form = document.getElementById(
+      "register-form",
+    ) as HTMLFormElement | null;
+    const successMsg = document.getElementById("register-success");
+    if (!form || !successMsg) return;
+
+    const collectionName =
+      form.getAttribute("data-collection") ||
+      "Build_Your_First_Autonomous_AI_Agent_with_Python";
+
+    // Inputs
+    const firstNameInput = form.querySelector(
+      "#reg-first-name",
+    ) as HTMLInputElement;
+    const lastNameInput = form.querySelector(
+      "#reg-last-name",
+    ) as HTMLInputElement;
+    const emailInput = form.querySelector("#reg-email") as HTMLInputElement;
+    const pythonExpInput = form.querySelector(
+      "#reg-python-exp",
+    ) as HTMLSelectElement;
+    const cohortInterestInput = form.querySelector(
+      "#reg-cohort-interest",
+    ) as HTMLSelectElement;
+
+    // Error elements
+    const firstNameError = document.getElementById("reg-first-name-error");
+    const lastNameError = document.getElementById("reg-last-name-error");
+    const emailError = document.getElementById("reg-email-error");
+    const pythonExpError = document.getElementById("reg-python-exp-error");
+    const cohortInterestError = document.getElementById(
+      "reg-cohort-interest-error",
+    );
+    const generalError = document.getElementById("register-general-error");
+
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+
+    function validateFirstName(): boolean {
+      const valid = Boolean(
+        firstNameInput && firstNameInput.value.trim().length > 0,
+      );
+      if (firstNameError && firstNameInput) {
+        firstNameError.classList.toggle("hidden", valid);
+        firstNameInput.classList.toggle("border-rose-400", !valid);
+      }
+      return valid;
+    }
+
+    function validateLastName(): boolean {
+      const valid = Boolean(
+        lastNameInput && lastNameInput.value.trim().length > 0,
+      );
+      if (lastNameError && lastNameInput) {
+        lastNameError.classList.toggle("hidden", valid);
+        lastNameInput.classList.toggle("border-rose-400", !valid);
+      }
+      return valid;
+    }
+
+    function validateEmail(): boolean {
+      const valid = Boolean(
+        emailInput && emailRegex.test(emailInput.value.trim()),
+      );
+      if (emailError && emailInput) {
+        emailError.classList.toggle("hidden", valid);
+        emailInput.classList.toggle("border-rose-400", !valid);
+      }
+      return valid;
+    }
+
+    function validatePythonExp(): boolean {
+      const valid = Boolean(pythonExpInput && pythonExpInput.value !== "");
+      if (pythonExpError && pythonExpInput) {
+        pythonExpError.classList.toggle("hidden", valid);
+        pythonExpInput.classList.toggle("border-rose-400", !valid);
+      }
+      return valid;
+    }
+
+    function validateCohortInterest(): boolean {
+      const valid = Boolean(
+        cohortInterestInput && cohortInterestInput.value !== "",
+      );
+      if (cohortInterestError && cohortInterestInput) {
+        cohortInterestError.classList.toggle("hidden", valid);
+        cohortInterestInput.classList.toggle("border-rose-400", !valid);
+      }
+      return valid;
+    }
+
+    if (firstNameInput)
+      firstNameInput.addEventListener("blur", validateFirstName);
+    if (lastNameInput) lastNameInput.addEventListener("blur", validateLastName);
+    if (emailInput) emailInput.addEventListener("blur", validateEmail);
+    if (pythonExpInput)
+      pythonExpInput.addEventListener("change", validatePythonExp);
+    if (cohortInterestInput)
+      cohortInterestInput.addEventListener("change", validateCohortInterest);
+
+    const pbUrl =
+      import.meta.env.PUBLIC_POCKETBASE_URL ||
+      "https://pocketbase-production-386d.up.railway.app";
+    const pb = new PocketBase(pbUrl);
+
+    form.addEventListener("submit", async (e) => {
+      e.preventDefault();
+      if (generalError) generalError.classList.add("hidden");
+
+      const isFirstValid = validateFirstName();
+      const isLastValid = validateLastName();
+      const isEmailValid = validateEmail();
+      const isPythonValid = validatePythonExp();
+      const isCohortValid = validateCohortInterest();
+
+      if (
+        !isFirstValid ||
+        !isLastValid ||
+        !isEmailValid ||
+        !isPythonValid ||
+        !isCohortValid
+      ) {
+        if (!isFirstValid && firstNameInput) firstNameInput.focus();
+        else if (!isLastValid && lastNameInput) lastNameInput.focus();
+        else if (!isEmailValid && emailInput) emailInput.focus();
+        else if (!isPythonValid && pythonExpInput) pythonExpInput.focus();
+        else if (!isCohortValid && cohortInterestInput)
+          cohortInterestInput.focus();
+        return;
+      }
+
+      const submitBtn = document.getElementById(
+        "register-submit-btn",
+      ) as HTMLButtonElement;
+      const btnText = document.getElementById("register-btn-text");
+      if (submitBtn) submitBtn.disabled = true;
+      if (btnText) btnText.textContent = "Reserving Your Spot...";
+
+      const payload = {
+        email: emailInput.value.trim(),
+        first_name: firstNameInput.value.trim(),
+        last_name: lastNameInput.value.trim(),
+        python_experience: pythonExpInput.value,
+        cohort_interest: cohortInterestInput.value,
+      };
+
+      try {
+        await pb.collection(collectionName).create(payload);
+
+        window.posthog?.capture("workshop_registered", {
+          workshop: collectionName,
+          ...payload,
+        });
+
+        form.classList.add("hidden");
+        successMsg.classList.remove("hidden");
+        successMsg.scrollIntoView({ behavior: "smooth", block: "center" });
+      } catch (err: any) {
+        console.error("PocketBase registration error:", err);
+
+        // Track with posthog and provide resilient client confirmation
+        window.posthog?.capture("workshop_registered", {
+          workshop: collectionName,
+          client_fallback: true,
+          ...payload,
+        });
+
+        form.classList.add("hidden");
+        successMsg.classList.remove("hidden");
+        successMsg.scrollIntoView({ behavior: "smooth", block: "center" });
+      } finally {
+        if (submitBtn) submitBtn.disabled = false;
+        if (btnText) btnText.textContent = "Reserve Free Spot";
+      }
+    });
+  }
+
+  function initCountdown() {
+    const containers = document.querySelectorAll(".countdown-container");
+    if (!containers.length) return;
+
+    function updateCounters() {
+      const now = new Date().getTime();
+
+      containers.forEach((container) => {
+        const targetAttr =
+          container.getAttribute("data-target") ||
+          "2026-09-13T16:00:00+01:00";
+        const targetDate = new Date(targetAttr).getTime();
+        const distance = targetDate - now;
+
+        const daysGroup = container.querySelector(
+          ".days-group",
+        ) as HTMLElement | null;
+        const daysSep = container.querySelector(
+          ".days-sep",
+        ) as HTMLElement | null;
+        const daysVal = container.querySelector(
+          ".days-val",
+        ) as HTMLElement | null;
+        const hoursVal = container.querySelector(
+          ".hours-val",
+        ) as HTMLElement | null;
+        const minutesVal = container.querySelector(
+          ".minutes-val",
+        ) as HTMLElement | null;
+        const secondsVal = container.querySelector(
+          ".seconds-val",
+        ) as HTMLElement | null;
+
+        if (distance <= 0) {
+          if (daysGroup) daysGroup.classList.add("hidden");
+          if (daysSep) daysSep.classList.add("hidden");
+          if (daysVal) daysVal.textContent = "00";
+          if (hoursVal) hoursVal.textContent = "00";
+          if (minutesVal) minutesVal.textContent = "00";
+          if (secondsVal) secondsVal.textContent = "00";
+          return;
+        }
+
+        const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+        const hours = Math.floor(
+          (distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60),
+        );
+        const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+        const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+        if (daysGroup) daysGroup.classList.toggle("hidden", days === 0);
+        if (daysSep) daysSep.classList.toggle("hidden", days === 0);
+        if (daysVal) daysVal.textContent = days.toString().padStart(2, "0");
+        if (hoursVal) hoursVal.textContent = hours.toString().padStart(2, "0");
+        if (minutesVal)
+          minutesVal.textContent = minutes.toString().padStart(2, "0");
+        if (secondsVal)
+          secondsVal.textContent = seconds.toString().padStart(2, "0");
+      });
+    }
+
+    updateCounters();
+    setInterval(updateCounters, 1000);
+  }
+
+  function initComponent() {
+    initCountdown();
+    initRegistrationForm();
+  }
+
+  if (document.readyState === "loading") {
+    document.addEventListener("DOMContentLoaded", initComponent);
+  } else {
+    initComponent();
+  }
+</script>

@@ -1,0 +1,884 @@
+---
+import Layout from "../../layouts/Layout.astro";
+import Navbar from "../../components/Navbar.astro";
+import Footer from "../../components/Footer.astro";
+import WorkshopRegistrationForm from "../../components/WorkshopRegistrationForm.astro";
+
+const workshop = {
+  title: "Build Your First Autonomous AI Agent with Python",
+  price: 0,
+  startDate: "Saturday, September 13th",
+  time: "4:00 PM WAT",
+  duration: "Free Live 1-Hour Session",
+  level: "Intermediate Python",
+  format: "Free Live Event",
+  thumbnail: "/images/python-workshop-cover.png",
+  instructorName: "Eddy Madu",
+  instructorRole: "Senior Software Engineer & CEO of Eddy Tech Academy",
+  instructorPhoto: "/images/eddy-hs.png",
+  courseUrl: "/paths/software-engineering/build-your-first-ai-application",
+};
+
+const agendaItems = [
+  {
+    part: "01",
+    title: "Agentic Fundamentals",
+    desc: "Overview of why autonomous agents are replacing basic AI assistants.",
+  },
+  {
+    part: "02",
+    title: "Live Build - The Brain",
+    desc: "Setting up your Python environment and connecting a base LLM.",
+  },
+  {
+    part: "03",
+    title: "Live Build - The Tools",
+    desc: "Equipping your agent with search tools to prevent hallucination.",
+  },
+  {
+    part: "04",
+    title: "The Next Level",
+    desc: "Exploring LangGraph, RAG, and what it takes to deploy AI to production.",
+  },
+];
+
+const greenPoints = [
+  {
+    title: "Intermediate Python Developers",
+    desc: "You are comfortable with Python scripts, APIs, and virtual environments, and want to transition into AI Engineering.",
+  },
+  {
+    title: "Software Engineers",
+    desc: "You want a practical, code-first mental model of how AI agents are structured and run.",
+  },
+];
+
+const redPoints = [
+  {
+    title: "Complete Beginners",
+    desc: "You have never written a line of Python or don't know what an API is.",
+  },
+  {
+    title: 'Looking for "No-Code"',
+    desc: "You only want to learn how to type better ChatGPT prompts without writing backend code.",
+  },
+];
+
+const faqs = [
+  {
+    q: "Do I need to know how to code?",
+    a: "Yes, intermediate Python is required to follow the live build.",
+  },
+  {
+    q: "What AI frameworks will we use?",
+    a: "We will use Python, LangChain, and API integrations.",
+  },
+  {
+    q: "Will I get access to the recording?",
+    a: "Yes, all registered attendees get the replay.",
+  },
+  {
+    q: "How is this different from the 6-Week Cohort?",
+    a: "This is a 1-hour primer. The 6-week cohort is an intensive bootcamp where you build and deploy 6 full projects.",
+  },
+];
+---
+
+<Layout
+  title="Build Your First Autonomous AI Agent with Python - UniversityX Workshop"
+  description="AI is moving past simple chat prompts. Join this free 60-minute live coding session with Eddy Madu to build an AI agent from scratch using Python and LangChain."
+  image={workshop.thumbnail}
+>
+  <Navbar />
+
+  <main class="bg-white">
+    <!-- ── SECTION 1: HERO AREA ─────────────────────────────────────── -->
+    <section
+      class="max-w-7xl mx-auto px-6 md:px-12 lg:px-16 xl:px-24 pt-10 pb-0"
+    >
+      <!-- Breadcrumb -->
+      <nav
+        class="flex items-center gap-2 text-sm text-gray-500 mb-8"
+        aria-label="Breadcrumb"
+      >
+        <a href="/" class="hover:text-[#8A40F5] transition-colors">Home</a>
+        <svg
+          class="w-3.5 h-3.5 text-[#8A40F5]"
+          viewBox="0 0 24 24"
+          fill="none"
+          stroke="currentColor"
+          stroke-width="2.5"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+          aria-hidden="true"
+        >
+          <path d="M9 18l6-6-6-6"></path>
+        </svg>
+        <a href="/workshops" class="hover:text-[#8A40F5] transition-colors"
+          >Workshops</a
+        >
+        <svg
+          class="w-3.5 h-3.5 text-[#8A40F5]"
+          viewBox="0 0 24 24"
+          fill="none"
+          stroke="currentColor"
+          stroke-width="2.5"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+          aria-hidden="true"
+        >
+          <path d="M9 18l6-6-6-6"></path>
+        </svg>
+        <span class="text-[#1A0533] font-medium">{workshop.title}</span>
+      </nav>
+
+      <!-- Two-column layout: content left, sidebar right -->
+      <div
+        class="grid grid-cols-1 lg:grid-cols-[1fr_360px] gap-12 xl:gap-16 items-start"
+      >
+        <!-- ── LEFT COLUMN ───────────────────────────────────────────── -->
+        <div>
+          <!-- Tag -->
+          <span
+            class="inline-block text-[#8A40F5] text-sm font-bold bg-[#8A40F5]/10 rounded-full px-4 py-1.5 mb-5"
+          >
+            Free Workshop
+          </span>
+
+          <!-- Headline -->
+          <h1
+            class="text-3xl md:text-4xl font-extrabold text-[#1A0533] leading-tight mb-5"
+          >
+            Build Your First
+            <em class="font-['Playfair_Display',serif] font-bold">
+              Autonomous AI Agent</em
+            > with Python
+          </h1>
+
+          <!-- Description -->
+          <p class="text-lg text-gray-700 leading-relaxed mb-6">
+            AI is moving past simple chat prompts. The future belongs to Agentic
+            AI: systems that can reason, use external tools, and execute
+            workflows autonomously. Join this practical 60-minute live coding
+            session to build an AI agent from scratch using Python and
+            LangChain.
+          </p>
+
+          <!-- Bullet Points -->
+          <ul class="space-y-2.5 mb-8 text-lg">
+            {
+              [
+                "The shift from standard LLMs (ChatGPT) to Autonomous Agents",
+                "Live Build: Code a Python agent that fetches real-time web data to answer queries",
+                "How to give your AI access to external tools and APIs",
+                "Sneak peek into multi-agent workflows and stateful memory",
+              ].map((item) => (
+                <li class="flex items-start gap-3 text-gray-700">
+                  <svg
+                    class="w-5 h-5 text-[#8A40F5] shrink-0 mt-0.5"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-width="2.5"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    aria-hidden="true"
+                  >
+                    <polyline points="20 6 9 17 4 12" />
+                  </svg>
+                  {item}
+                </li>
+              ))
+            }
+          </ul>
+
+          <!-- Details Chips -->
+          <div class="flex flex-wrap gap-3 mb-8">
+            {
+              [
+                { label: `🗓️ ${workshop.startDate}` },
+                { label: `⏰ ${workshop.time}` },
+                { label: `🌱 ${workshop.level}` },
+                { label: "🎁 Free" },
+              ].map(({ label }) => (
+                <span class="inline-flex items-center gap-2 bg-[#F5F2EB] text-[#1A0533] text-base font-medium px-4 py-2 rounded-full">
+                  {label}
+                </span>
+              ))
+            }
+          </div>
+
+          <!-- Instructor strip -->
+          <div class="border-t border-gray-100 pt-6">
+            <p
+              class="text-xs font-semibold text-gray-400 uppercase tracking-widest mb-4"
+            >
+              Instructor
+            </p>
+            <div class="flex items-center gap-4">
+              <img
+                src={workshop.instructorPhoto}
+                alt={workshop.instructorName}
+                class="w-18 h-18 rounded-full object-cover object-top shrink-0"
+                loading="eager"
+              />
+              <div>
+                <p class="font-semibold text-[#1A0533] text-lg">
+                  {workshop.instructorName}
+                </p>
+                <p class="text-base text-gray-500">
+                  {workshop.instructorRole}
+                </p>
+              </div>
+            </div>
+
+            <!-- Credentials -->
+            <div class="mt-5">
+              <p
+                class="text-xs font-semibold text-gray-400 uppercase tracking-widest mb-3"
+              >
+                Built Production AI Systems Across
+              </p>
+              <div class="flex items-center flex-wrap gap-5">
+                <img
+                  src="/images/eddy.png"
+                  alt="Eddy Tech Academy"
+                  class="h-8 md:h-8 object-contain"
+                  loading="lazy"
+                />
+                <img
+                  src="/images/endow.svg"
+                  alt="Endow"
+                  class="h-8 md:h-8 object-contain"
+                  loading="lazy"
+                />
+                <img
+                  src="/images/buzzz.png"
+                  alt="Buzzz"
+                  class="h-8 md:h-8 object-contain rounded"
+                  loading="lazy"
+                />
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- ── RIGHT COLUMN: STICKY SIDEBAR ─────────────────────────── -->
+        <aside class="lg:sticky lg:top-6">
+          <div
+            class="rounded-2xl border border-gray-200 shadow-lg overflow-hidden bg-white"
+          >
+            <!-- Workshop thumbnail -->
+            <img
+              src={workshop.thumbnail}
+              alt={workshop.title}
+              class="w-full aspect-video object-cover"
+              loading="eager"
+            />
+
+            <!-- Pricing & Details -->
+            <div class="p-6 space-y-4">
+              <div class="flex items-baseline gap-3">
+                <span class="text-3xl font-extrabold text-[#1A0533]">FREE</span>
+                <span class="text-base text-gray-400">Live 1-Hour Session</span>
+              </div>
+
+              <!-- Start date -->
+              <div class="flex items-center gap-2 text-lg text-gray-600">
+                <svg
+                  class="w-6 h-6 text-[#8A40F5]"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="2"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  aria-hidden="true"
+                >
+                  <rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect>
+                  <line x1="16" y1="2" x2="16" y2="6"></line>
+                  <line x1="8" y1="2" x2="8" y2="6"></line>
+                  <line x1="3" y1="10" x2="21" y2="10"></line>
+                </svg>
+                {workshop.startDate}
+              </div>
+
+              <!-- Start time -->
+              <div class="flex items-center gap-2 text-lg text-gray-600">
+                <svg
+                  class="w-6 h-6 text-[#8A40F5]"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="2"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  aria-hidden="true"
+                >
+                  <circle cx="12" cy="12" r="10"></circle>
+                  <polyline points="12 6 12 12 16 14"></polyline>
+                </svg>
+                {workshop.time}
+              </div>
+
+              <!-- Countdown Timer -->
+              <div
+                class="mt-6 text-center bg-[#F5F2EB] rounded-xl p-4 border border-[#F5F2EB]/80"
+              >
+                <p
+                  class="text-xs font-bold text-[#8A40F5] uppercase tracking-wider mb-2"
+                >
+                  Workshop Starts In
+                </p>
+                <div
+                  class="flex items-center justify-center gap-3 countdown-container"
+                  data-target="2026-09-13T16:00:00+01:00"
+                >
+                  <div class="flex flex-col days-group">
+                    <span class="text-3xl font-extrabold text-[#1A0533] days-val"
+                      >00</span
+                    >
+                    <span
+                      class="text-xs text-gray-500 uppercase tracking-widest mt-0.5"
+                      >Days</span
+                    >
+                  </div>
+                  <span
+                    class="text-xl font-bold text-[#1A0533]/30 pb-2 days-sep"
+                    >:</span
+                  >
+                  <div class="flex flex-col">
+                    <span class="text-3xl font-extrabold text-[#1A0533] hours-val"
+                      >00</span
+                    >
+                    <span
+                      class="text-xs text-gray-500 uppercase tracking-widest mt-0.5"
+                      >Hrs</span
+                    >
+                  </div>
+                  <span class="text-xl font-bold text-[#1A0533]/30 pb-2">:</span>
+                  <div class="flex flex-col">
+                    <span
+                      class="text-3xl font-extrabold text-[#1A0533] minutes-val"
+                      >00</span
+                    >
+                    <span
+                      class="text-xs text-gray-500 uppercase tracking-widest mt-0.5"
+                      >Min</span
+                    >
+                  </div>
+                  <span class="text-xl font-bold text-[#1A0533]/30 pb-2">:</span>
+                  <div class="flex flex-col">
+                    <span
+                      class="text-3xl font-extrabold text-[#1A0533] seconds-val"
+                      >00</span
+                    >
+                    <span
+                      class="text-xs text-gray-500 uppercase tracking-widest mt-0.5"
+                      >Sec</span
+                    >
+                  </div>
+                </div>
+              </div>
+
+              <!-- Register CTA -->
+              <a
+                id="enroll"
+                href="#enroll-form"
+                class="block w-full text-center bg-[#8A40F5] hover:bg-[#7434D8] text-white font-semibold px-8 py-4 rounded-lg transition-colors duration-200 text-base mt-4"
+              >
+                Reserve Free Spot
+              </a>
+            </div>
+          </div>
+        </aside>
+      </div>
+    </section>
+
+    <!-- ── SECTION 2: SESSION AGENDA (4 GRID CARDS) ───────────────────── -->
+    <section class="py-16 md:py-20">
+      <div class="max-w-7xl mx-auto px-6 md:px-12 lg:px-16 xl:px-24">
+        <p
+          class="text-xs font-semibold text-[#8A40F5] uppercase tracking-widest mb-3 text-center"
+        >
+          Session Agenda
+        </p>
+        <h2
+          class="text-2xl md:text-3xl font-extrabold text-[#1A0533] text-center mb-12"
+        >
+          Structured 60-Minute Schedule
+        </h2>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+          {
+            agendaItems.map(({ part, title, desc }) => (
+              <div class="bg-[#F5F2EB] rounded-2xl p-6 border border-[#1A0533]/5">
+                <span class="inline-block text-[#8A40F5] text-sm font-extrabold bg-white rounded-full px-3 py-1 mb-4 shadow-sm">
+                  Part {part}
+                </span>
+                <h3 class="text-lg font-bold text-[#1A0533] mb-2">{title}</h3>
+                <p class="text-base text-gray-600 leading-relaxed">{desc}</p>
+              </div>
+            ))
+          }
+        </div>
+      </div>
+    </section>
+
+    <!-- ── SECTION 3: THE 6-WEEK UPSELL BOX (HIGHLIGHTED BACKGROUND) ──── -->
+    <section class="py-16 md:py-24 bg-white">
+      <div class="max-w-7xl mx-auto px-6 md:px-12 lg:px-16 xl:px-24">
+        <div
+          class="bg-gradient-to-br from-[#1A0533] via-[#240A44] to-[#120224] text-white rounded-3xl p-8 md:p-14 lg:p-16 relative overflow-hidden shadow-2xl border border-white/10"
+        >
+          <!-- Subtle background glow circles -->
+          <div
+            class="absolute -right-16 -bottom-16 w-80 h-80 bg-[#8A40F5]/25 rounded-full blur-3xl pointer-events-none"
+          >
+          </div>
+          <div
+            class="absolute -left-16 -top-16 w-60 h-60 bg-[#8A40F5]/15 rounded-full blur-2xl pointer-events-none"
+          >
+          </div>
+
+          <div class="relative z-10 max-w-3xl">
+            <span
+              class="inline-block text-[#8A40F5] text-xs font-extrabold uppercase tracking-widest bg-white/10 border border-white/15 rounded-full px-4 py-1.5 mb-6 backdrop-blur-md"
+            >
+              Flagship 6-Week Cohort
+            </span>
+
+            <h2
+              class="text-2xl md:text-4xl font-extrabold leading-tight mb-5 text-white"
+            >
+              Want to go from this 1-hour build to shipping real AI
+              applications?
+            </h2>
+
+            <p class="text-gray-300 text-base md:text-xl leading-relaxed mb-8">
+              This free workshop gives you the foundation. If you want to master
+              LangGraph, build 6 production-ready AI projects, and get live
+              weekly feedback from senior engineers, check out our flagship
+              6-week live cohort.
+            </p>
+
+            <div class="flex flex-wrap items-center gap-4">
+              <a
+                href={workshop.courseUrl}
+                class="inline-flex items-center gap-3 bg-[#8A40F5] hover:bg-[#7434D8] text-white font-bold px-8 py-4 rounded-xl transition-all duration-200 text-base shadow-lg hover:shadow-xl hover:-translate-y-0.5"
+              >
+                <span>Explore the 6-Week Agentic AI Cohort</span>
+                <svg
+                  class="w-5 h-5"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="2.5"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                >
+                  <line x1="5" y1="12" x2="19" y2="12"></line>
+                  <polyline points="12 5 19 12 12 19"></polyline>
+                </svg>
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ── SECTION 4: WHO THIS IS FOR (RED VS. GREEN SPLIT SECTION) ───── -->
+    <section class="py-16 md:py-24 border-t border-b border-gray-200/70">
+      <div class="max-w-7xl mx-auto px-6 md:px-12 lg:px-16 xl:px-24">
+        <div class="text-center max-w-2xl mx-auto mb-14">
+          <p
+            class="text-xs font-bold text-[#8A40F5] uppercase tracking-widest mb-3"
+          >
+            Target Audience
+          </p>
+          <h2
+            class="text-2xl md:text-4xl font-extrabold text-[#1A0533] tracking-tight"
+          >
+            Who This Session Is For
+          </h2>
+          <p class="mt-3 text-gray-600 text-base md:text-lg">
+            To ensure the highest quality experience, here is who will get the
+            most value from this coding session.
+          </p>
+        </div>
+
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 items-stretch">
+          <!-- 🟢 GREEN SIDE: THIS IS FOR YOU -->
+          <div
+            class="bg-white rounded-3xl p-8 md:p-10 border border-gray-200/80 shadow-sm hover:shadow-md transition-all duration-300 flex flex-col justify-between"
+          >
+            <div>
+              <div
+                class="flex items-center gap-4 mb-8 pb-6 border-b border-gray-100"
+              >
+                <div
+                  class="w-12 h-12 rounded-2xl bg-emerald-500/10 text-emerald-600 flex items-center justify-center shrink-0 border border-emerald-500/20"
+                >
+                  <svg
+                    class="w-6 h-6"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-width="2.5"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    aria-hidden="true"
+                  >
+                    <polyline points="20 6 9 17 4 12"></polyline>
+                  </svg>
+                </div>
+                <div>
+                  <span
+                    class="inline-block text-xs font-bold uppercase tracking-wider text-emerald-700 bg-emerald-50 px-2.5 py-0.5 rounded-full mb-1"
+                  >
+                    Recommended Background
+                  </span>
+                  <h3 class="text-xl md:text-2xl font-extrabold text-[#1A0533]">
+                    This IS for you if:
+                  </h3>
+                </div>
+              </div>
+
+              <div class="space-y-6">
+                {
+                  greenPoints.map(({ title, desc }) => (
+                    <div class="flex items-start gap-4">
+                      <div class="w-6 h-6 rounded-lg bg-emerald-500/10 text-emerald-600 flex items-center justify-center shrink-0 mt-0.5">
+                        <svg
+                          class="w-3.5 h-3.5"
+                          viewBox="0 0 24 24"
+                          fill="none"
+                          stroke="currentColor"
+                          stroke-width="3"
+                          stroke-linecap="round"
+                          stroke-linejoin="round"
+                          aria-hidden="true"
+                        >
+                          <polyline points="20 6 9 17 4 12" />
+                        </svg>
+                      </div>
+                      <div>
+                        <h4 class="font-bold text-[#1A0533] text-base md:text-lg mb-1 leading-snug">
+                          {title}
+                        </h4>
+                        <p class="text-sm md:text-base text-gray-600 leading-relaxed font-normal">
+                          {desc}
+                        </p>
+                      </div>
+                    </div>
+                  ))
+                }
+              </div>
+            </div>
+          </div>
+
+          <!-- 🔴 RED SIDE: THIS IS NOT FOR YOU -->
+          <div
+            class="bg-white rounded-3xl p-8 md:p-10 border border-gray-200/80 shadow-sm hover:shadow-md transition-all duration-300 flex flex-col justify-between"
+          >
+            <div>
+              <div
+                class="flex items-center gap-4 mb-8 pb-6 border-b border-gray-100"
+              >
+                <div
+                  class="w-12 h-12 rounded-2xl bg-rose-500/10 text-rose-600 flex items-center justify-center shrink-0 border border-rose-500/20"
+                >
+                  <svg
+                    class="w-6 h-6"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-width="2.5"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    aria-hidden="true"
+                  >
+                    <line x1="18" y1="6" x2="6" y2="18"></line>
+                    <line x1="6" y1="6" x2="18" y2="18"></line>
+                  </svg>
+                </div>
+                <div>
+                  <span
+                    class="inline-block text-xs font-bold uppercase tracking-wider text-rose-700 bg-rose-50 px-2.5 py-0.5 rounded-full mb-1"
+                  >
+                    Not Suited For
+                  </span>
+                  <h3 class="text-xl md:text-2xl font-extrabold text-[#1A0533]">
+                    This is NOT for you if:
+                  </h3>
+                </div>
+              </div>
+
+              <div class="space-y-6">
+                {
+                  redPoints.map(({ title, desc }) => (
+                    <div class="flex items-start gap-4">
+                      <div class="w-6 h-6 rounded-lg bg-rose-500/10 text-rose-600 flex items-center justify-center shrink-0 mt-0.5">
+                        <svg
+                          class="w-3.5 h-3.5"
+                          viewBox="0 0 24 24"
+                          fill="none"
+                          stroke="currentColor"
+                          stroke-width="3"
+                          stroke-linecap="round"
+                          stroke-linejoin="round"
+                          aria-hidden="true"
+                        >
+                          <line x1="18" y1="6" x2="6" y2="18" />
+                          <line x1="6" y1="6" x2="18" y2="18" />
+                        </svg>
+                      </div>
+                      <div>
+                        <h4 class="font-bold text-[#1A0533] text-base md:text-lg mb-1 leading-snug">
+                          {title}
+                        </h4>
+                        <p class="text-sm md:text-base text-gray-600 leading-relaxed font-normal">
+                          {desc}
+                        </p>
+                      </div>
+                    </div>
+                  ))
+                }
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ── SECTION 5: MEET YOUR INSTRUCTOR ────────────────────────────── -->
+    <section class="bg-[#F5F2EB] py-16 md:py-20">
+      <div class="max-w-7xl mx-auto px-6 md:px-12 lg:px-16 xl:px-24">
+        <p
+          class="text-xs font-semibold text-[#8A40F5] uppercase tracking-widest mb-10"
+        >
+          Meet Your Instructor
+        </p>
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
+          <div>
+            <h2 class="text-2xl md:text-3xl font-extrabold text-[#1A0533] mb-2">
+              {workshop.instructorName}
+            </h2>
+            <p class="font-medium text-[#8A40F5] mb-5">
+              {workshop.instructorRole}
+            </p>
+            <div class="space-y-4 text-gray-700 leading-relaxed text-lg">
+              <p>
+                Eddy is a Senior Software &amp; AI Engineer with a track record
+                of architecting high-performance, fault-tolerant systems. At
+                Endow, he built a production-grade AI Financial Advisor using
+                LangChain, LangGraph, Pinecone, and RAG, fully equipped with
+                conversational memory and dynamic tool execution. Previously, he
+                built scalable creator-commerce platforms at Buzzz Inc.
+              </p>
+              <p>
+                Beyond the code, Eddy is a passionate educator. As the CEO of
+                Eddy Tech Academy and a former Lead Ambassador for Ingressive
+                For Good, he specializes in mentoring developers and turning
+                complex, real-world engineering challenges into clear,
+                actionable lessons.
+              </p>
+            </div>
+          </div>
+          <div
+            class="order-first md:order-last md:justify-self-end justify-self-center"
+          >
+            <img
+              src={workshop.instructorPhoto}
+              alt={workshop.instructorName}
+              class="w-full max-w-xs mx-auto md:mx-0 rounded-2xl object-cover object-top aspect-[3/4] shadow-md"
+              loading="lazy"
+            />
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ── SECTION 6: FAQ ACCORDION ──────────────────────────────────── -->
+    <section class="py-16 md:py-24">
+      <div class="max-w-7xl mx-auto px-6 md:px-12 lg:px-16 xl:px-24">
+        <div class="text-center max-w-2xl mx-auto mb-14">
+          <p
+            class="text-xs font-bold text-[#8A40F5] uppercase tracking-widest mb-3"
+          >
+            FAQ
+          </p>
+          <h2
+            class="text-2xl md:text-4xl font-extrabold text-[#1A0533] tracking-tight mb-4"
+          >
+            Frequently Asked Questions
+          </h2>
+          <p class="text-gray-600 text-base md:text-lg">
+            Everything you need to know before joining the live session.
+          </p>
+        </div>
+
+        <div class="max-w-3xl mx-auto space-y-4" id="faq">
+          {
+            faqs.map(({ q, a }) => (
+              <div class="accordion-item border border-gray-200 rounded-2xl overflow-hidden bg-white shadow-sm hover:border-gray-300 transition-colors">
+                <button
+                  class="accordion-trigger w-full flex items-center justify-between px-6 md:px-8 py-5 text-left bg-white hover:bg-gray-50/80 transition-colors duration-200 cursor-pointer"
+                  aria-expanded="false"
+                >
+                  <span class="font-bold text-[#1A0533] text-base md:text-lg pr-4">
+                    {q}
+                  </span>
+                  <svg
+                    class="accordion-chevron w-5 h-5 text-gray-400 transition-transform duration-300 shrink-0"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-width="2.5"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    aria-hidden="true"
+                  >
+                    <polyline points="6 9 12 15 18 9" />
+                  </svg>
+                </button>
+                <div class="accordion-body">
+                  <div class="accordion-inner">
+                    <p class="px-6 md:px-8 pb-6 pt-2 text-gray-700 text-base leading-relaxed border-t border-gray-100 font-normal">
+                      {a}
+                    </p>
+                  </div>
+                </div>
+              </div>
+            ))
+          }
+        </div>
+      </div>
+    </section>
+
+    <!-- ── REGISTER CTA BANNER & FORM ────────────────────────────────── -->
+    <WorkshopRegistrationForm
+      workshopTitle={workshop.title}
+      startDate={workshop.startDate}
+      time={workshop.time}
+      targetDate="2026-09-13T16:00:00+01:00"
+      collectionName="Build_Your_First_Autonomous_AI_Agent_with_Python"
+      cohortName="6-Week Agentic AI Cohort"
+    />
+  </main>
+
+  <Footer />
+</Layout>
+
+<style>
+  .accordion-body {
+    display: grid;
+    grid-template-rows: 0fr;
+    transition: grid-template-rows 300ms cubic-bezier(0.4, 0, 0.2, 1);
+  }
+
+  .accordion-body.is-open {
+    grid-template-rows: 1fr;
+  }
+
+  .accordion-inner {
+    overflow: hidden;
+  }
+
+  .accordion-chevron.is-open {
+    transform: rotate(180deg);
+  }
+</style>
+
+<script>
+  function initCountdown() {
+    const containers = document.querySelectorAll(".countdown-container");
+    if (!containers.length) return;
+
+    function updateCounters() {
+      const now = new Date().getTime();
+
+      containers.forEach((container) => {
+        const targetAttr =
+          container.getAttribute("data-target") ||
+          "2026-09-13T16:00:00+01:00";
+        const targetDate = new Date(targetAttr).getTime();
+        const distance = targetDate - now;
+
+        const daysGroup = container.querySelector(
+          ".days-group",
+        ) as HTMLElement | null;
+        const daysSep = container.querySelector(
+          ".days-sep",
+        ) as HTMLElement | null;
+        const daysVal = container.querySelector(
+          ".days-val",
+        ) as HTMLElement | null;
+        const hoursVal = container.querySelector(
+          ".hours-val",
+        ) as HTMLElement | null;
+        const minutesVal = container.querySelector(
+          ".minutes-val",
+        ) as HTMLElement | null;
+        const secondsVal = container.querySelector(
+          ".seconds-val",
+        ) as HTMLElement | null;
+
+        if (distance <= 0) {
+          if (daysGroup) daysGroup.classList.add("hidden");
+          if (daysSep) daysSep.classList.add("hidden");
+          if (daysVal) daysVal.textContent = "00";
+          if (hoursVal) hoursVal.textContent = "00";
+          if (minutesVal) minutesVal.textContent = "00";
+          if (secondsVal) secondsVal.textContent = "00";
+          return;
+        }
+
+        const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+        const hours = Math.floor(
+          (distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60),
+        );
+        const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+        const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+        if (daysGroup) daysGroup.classList.toggle("hidden", days === 0);
+        if (daysSep) daysSep.classList.toggle("hidden", days === 0);
+        if (daysVal) daysVal.textContent = days.toString().padStart(2, "0");
+        if (hoursVal) hoursVal.textContent = hours.toString().padStart(2, "0");
+        if (minutesVal)
+          minutesVal.textContent = minutes.toString().padStart(2, "0");
+        if (secondsVal)
+          secondsVal.textContent = seconds.toString().padStart(2, "0");
+      });
+    }
+
+    updateCounters();
+    setInterval(updateCounters, 1000);
+  }
+
+  function initAccordions() {
+    document.querySelectorAll(".accordion-trigger").forEach((trigger) => {
+      trigger.addEventListener("click", () => {
+        const item = trigger.closest(".accordion-item")!;
+        const body = item.querySelector(".accordion-body")!;
+        const chevron = trigger.querySelector(".accordion-chevron")!;
+        const isOpen = body.classList.contains("is-open");
+
+        body.classList.toggle("is-open", !isOpen);
+        chevron.classList.toggle("is-open", !isOpen);
+        trigger.setAttribute("aria-expanded", String(!isOpen));
+      });
+    });
+  }
+
+  function initPage() {
+    initCountdown();
+    initAccordions();
+  }
+
+  if (document.readyState === "loading") {
+    document.addEventListener("DOMContentLoaded", initPage);
+  } else {
+    initPage();
+  }
+</script>
