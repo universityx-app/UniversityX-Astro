@@ -6,6 +6,21 @@ import { Image } from 'astro:assets';
 
 const workshops = [
   {
+    title: 'Build Your First Autonomous AI Agent with Python',
+    thumbnail: '/images/agentic-ai-workshop-cover.png',
+    rating: 5.0,
+    startDate: 'Sept 13',
+    duration: '1-Hour Live',
+    level: 'Intermediate Python',
+    url: '/workshop/build-your-first-autonomous-ai-agent-with-python',
+    instructors: [
+      {
+        name: 'Eddy Madu',
+        bio: 'Senior Software Engineer & CEO of Eddy Tech Academy. Built production-grade AI systems at Endow and Buzzz Inc.',
+      },
+    ],
+  },
+  {
     title: 'A Practical Introduction to Agentic AI',
     thumbnail: '/images/agentic-ai-workshop-cover.png',
     rating: 5.0,
@@ -54,7 +69,7 @@ const workshops = [
 ---
 
 <Layout
-  title="Workshops — UniversityX"
+  title="Workshops - UniversityX"
   description="Join live, focused workshops on AI, product, design and more. Learn from practitioners in a single day."
   image="/images/social-card.png"
   url="https://universityx.app/workshops"
