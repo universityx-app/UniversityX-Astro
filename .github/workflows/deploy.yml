@@ -54,9 +54,6 @@ jobs:
           cache-from: type=gha
           cache-to: type=gha,mode=max
 
-      - name: Trigger Coolify Deployment Webhook
-        if: env.COOLIFY_WEBHOOK != ''
-        env:
-          COOLIFY_WEBHOOK: ${{ secrets.COOLIFY_DEPLOY_WEBHOOK }}
+      - name: Trigger Coolify Deployment
         run: |
-          curl -X POST "$COOLIFY_WEBHOOK"
+          curl -X GET "${{ secrets.COOLIFY_WEBHOOK }}"
