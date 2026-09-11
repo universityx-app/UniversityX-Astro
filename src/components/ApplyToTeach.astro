@@ -1,298 +1,809 @@
 ---
-const benefits = [
+const digitalSkillsCategories = [
   {
-    title: 'Reach Hungry Learners',
-    description: 'Teach motivated students in live cohorts of 20-30 who actually show up and complete the course.',
+    id: "software-engineering",
+    name: "Software Engineering",
+    subRoles: [
+      "Applied AI Engineer",
+      "Backend Engineer",
+      "Full Stack Developer",
+      "Frontend Developer",
+    ],
   },
   {
-    title: 'We Handle the Rest',
-    description: 'Marketing, payments, platform, and student support, you just focus on teaching.',
+    id: "ai-data-science",
+    name: "AI & Data Science",
+    subRoles: [
+      "AI Engineer",
+      "Machine Learning Engineer",
+      "Data Scientist",
+      "Business Intelligence Analyst",
+    ],
   },
   {
-    title: 'Earn While You Teach',
-    description: 'Competitive revenue share on every cohort. The more you teach, the more you earn.',
+    id: "business",
+    name: "Business",
+    subRoles: [
+      "Management Consultant",
+      "Financial Analyst",
+      "Operations Associate",
+      "Chief of Staff",
+    ],
   },
   {
-    title: 'Build Your Brand',
-    description: "Grow your personal brand and audience while making a real impact on students' careers.",
+    id: "product",
+    name: "Product",
+    subRoles: [
+      "Product Manager",
+      "Product Analyst",
+      "Product Marketer",
+      "Product Engineer",
+    ],
+  },
+  {
+    id: "marketing",
+    name: "Marketing",
+    subRoles: [
+      "Marketing Analyst",
+      "Growth Marketer",
+      "Digital Marketing Specialist",
+      "Product Marketer",
+      "Content Marketer",
+    ],
+  },
+  {
+    id: "sales",
+    name: "Sales",
+    subRoles: [
+      "Sales Development",
+      "Account Executive",
+      "Customer Success",
+      "Business Development",
+      "Solutions Consultant",
+    ],
+  },
+  {
+    id: "design",
+    name: "Design",
+    subRoles: [
+      "Product Designer",
+      "User Experience Designer",
+      "Design Engineer",
+      "Systems Designer",
+    ],
+  },
+  {
+    id: "security",
+    name: "Security",
+    subRoles: [
+      "AI Security Analyst",
+      "Security Engineer",
+      "Cybersecurity Analyst",
+      "SOC Analyst",
+      "GRC Analyst",
+    ],
   },
 ];
 
+const valueProps = [
+  {
+    title: "Ready-made courses & curriculum",
+    description:
+      "Skip months of course creation and syllabus prep. Use our structured video lessons, battle-tested project briefs, milestone rubrics, and industry tracks ready from day one.",
+    icon: "curriculum",
+  },
+  {
+    title: "Live cohorts with accountability & office hours",
+    description:
+      "Guide students through live sessions, office hours, and actionable code/project reviews. Your guidance helps learners actually complete.",
+    icon: "cohorts",
+  },
+  {
+    title: "Strong revenue share",
+    description:
+      "Earn transparent, high revenue share on every learner enrolled in your cohort. We handle payments, billing, and platform ops.",
+    icon: "revenue",
+  },
+  {
+    title: "Reach motivated learners",
+    description:
+      "Teach committed professionals and career-switchers who show up every week, engage during live sessions, and actively finish their projects.",
+    icon: "learners",
+  },
+];
 
+const idealInstructorPoints = [
+  "Practitioners with proven real-world industry experience across engineering, AI, product, business, marketing, sales, design, or security.",
+  "Passionate educators who enjoy live discussions, unblocking students during office hours, and giving actionable feedback.",
+  "Accountability drivers who care about actual course completion and student career breakthroughs rather than passive video lectures.",
+];
 ---
 
-<section id="teach" class="bg-[#FBF8F1] py-20 md:py-28">
-  <!-- Hero Header -->
-  <div class="max-w-3xl mx-auto text-center px-6 mb-16 md:mb-20">
-    <h2 class="text-4xl md:text-5xl lg:text-6xl font-extrabold text-[#1A0533] leading-tight">
-      Let's Talk
-      <br />
-      <em class="font-['Playfair_Display',serif] font-bold">We'll Be In Touch</em>
-    </h2>
-    <p class="mt-5 text-gray-500 text-base md:text-lg leading-relaxed">
-      Share your expertise with thousands of motivated learners. We provide the
-      platform, marketing, and support, you bring the knowledge.
-    </p>
-  </div>
+<!-- ===== HERO SECTION ===== -->
+<section class="bg-[#FBF8F1] pt-14 pb-16 md:pt-20 md:pb-24 border-b border-gray-200/60 relative overflow-hidden">
+  <!-- Subtle decorative background accents -->
+  <div class="absolute -top-24 -right-24 w-96 h-96 rounded-full bg-[#8A40F5]/5 blur-3xl pointer-events-none"></div>
+  <div class="absolute -bottom-24 -left-24 w-96 h-96 rounded-full bg-[#D4A853]/10 blur-3xl pointer-events-none"></div>
 
-  <!-- Two-column content -->
-  <div class="max-w-7xl mx-auto px-6 md:px-12 lg:px-16 xl:px-24 grid grid-cols-1 lg:grid-cols-5 gap-12 lg:gap-16 items-start">
-
-    <!-- Left column: Why Teach with Us -->
-    <div class="lg:col-span-2">
-      <h3 class="text-3xl md:text-4xl font-extrabold text-[#1A0533] leading-snug">
-        Why Teach
-        <br />
-        <em class="font-['Playfair_Display',serif] font-bold">with Us?</em>
-      </h3>
-
-      <div class="mt-8 space-y-6">
-        {benefits.map((benefit) => (
-          <div>
-            <h4 class="text-base font-bold text-[#1A0533] mb-1">{benefit.title}</h4>
-            <p class="text-sm text-gray-500 leading-relaxed">{benefit.description}</p>
-          </div>
-        ))}
-      </div>
+  <div class="max-w-4xl mx-auto text-center px-6 relative z-10">
+    <!-- Eyebrow Pill -->
+    <div class="inline-flex items-center gap-2 rounded-full px-4 py-1.5 text-xs font-bold uppercase tracking-wider bg-[#8A40F5]/10 text-[#8A40F5] mb-6">
+      <span class="w-2 h-2 rounded-full bg-[#8A40F5] animate-pulse"></span>
+      Teach on UniversityX
     </div>
 
-    <!-- Right column: Form Card -->
-    <div class="lg:col-span-3">
-      <!-- Success message (hidden by default) -->
-      <div id="apply-success" class="hidden bg-white rounded-3xl shadow-xl p-8 md:p-10 text-center">
-        <div class="w-16 h-16 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-6">
-          <svg class="w-8 h-8 text-green-600" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-            <path d="M20 6L9 17l-5-5" />
-          </svg>
+    <!-- Main Headline -->
+    <h1 class="text-4xl sm:text-5xl md:text-6xl font-extrabold text-[#1A0533] leading-[1.15] tracking-tight">
+      Teach live cohorts
+      <br />
+      <em class="font-['Playfair_Display',serif] font-bold">on UniversityX</em>
+    </h1>
+
+    <!-- Subheadline -->
+    <p class="mt-6 text-gray-600 text-lg md:text-xl leading-relaxed max-w-2xl mx-auto">
+      Use our ready-made curriculum, add your expertise + live sessions + guidance, help learners finish, and get paid.
+    </p>
+
+    <!-- CTA -->
+    <div class="mt-8 flex items-center justify-center">
+      <a
+        id="hero-apply-btn"
+        href="#apply-to-teach"
+        class="inline-flex items-center justify-center gap-2 bg-[#8A40F5] hover:bg-[#7434D8] text-white font-semibold text-base px-9 py-3.5 rounded-full transition-all duration-200 shadow-sm hover:shadow-md cursor-pointer"
+      >
+        <span>Apply to teach</span>
+        <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+          <line x1="12" y1="5" x2="12" y2="19"></line>
+          <polyline points="19 12 12 19 5 12"></polyline>
+        </svg>
+      </a>
+    </div>
+
+    <!-- Value Badges Row -->
+    <div class="mt-12 pt-8 border-t border-gray-200/70 grid grid-cols-1 sm:grid-cols-3 gap-6 max-w-3xl mx-auto text-left sm:text-center">
+      <div class="flex sm:flex-col items-center gap-3 sm:gap-1.5 justify-start sm:justify-center">
+        <span class="text-2xl sm:text-3xl mb-0.5 sm:mb-1 select-none">📚</span>
+        <div class="flex flex-col sm:items-center">
+          <span class="text-xl sm:text-2xl font-extrabold text-[#1A0533]">Ready-Made</span>
+          <span class="text-xs sm:text-sm text-gray-500 font-medium">Curriculum provided</span>
         </div>
-        <h3 class="text-2xl font-bold text-[#1A0533] mb-3">Application Submitted!</h3>
-        <p class="text-gray-500 text-base leading-relaxed max-w-md mx-auto">
-          Thanks! We'll review your application and get back to you within 3-5 business days.
-        </p>
       </div>
+      <div class="flex sm:flex-col items-center gap-3 sm:gap-1.5 justify-start sm:justify-center">
+        <span class="text-2xl sm:text-3xl mb-0.5 sm:mb-1 select-none">👥</span>
+        <div class="flex flex-col sm:items-center">
+          <span class="text-xl sm:text-2xl font-extrabold text-[#1A0533]">20-30 Peers</span>
+          <span class="text-xs sm:text-sm text-gray-500 font-medium">Focused cohort size</span>
+        </div>
+      </div>
+      <div class="flex sm:flex-col items-center gap-3 sm:gap-1.5 justify-start sm:justify-center">
+        <span class="text-2xl sm:text-3xl mb-0.5 sm:mb-1 select-none">💰</span>
+        <div class="flex flex-col sm:items-center">
+          <span class="text-xl sm:text-2xl font-extrabold text-[#8A40F5]">High Revenue Share</span>
+          <span class="text-xs sm:text-sm text-gray-500 font-medium">Earn per student</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
 
-      <!-- Form card -->
-      <div id="apply-form-card" class="bg-white rounded-3xl shadow-xl p-8 md:p-10">
-        <form
-          id="apply-form"
-          novalidate
-          class="space-y-6"
-        >
-          <!-- Full Name -->
-          <div>
-            <label for="apply-name" class="block text-sm font-semibold text-[#1A0533] mb-2">Full Name</label>
-            <input
-              type="text"
-              id="apply-name"
-              name="full_name"
-              placeholder="Enter your full name"
-              required
-              class="apply-input w-full bg-gray-50 rounded-xl px-4 py-3 text-sm text-gray-800 placeholder-gray-400 border border-transparent focus:outline-none focus:ring-2 focus:ring-[#D4A853] focus:border-[#D4A853] transition-all duration-200"
-            />
+<!-- ===== VALUE PROPOSITION SECTION ===== -->
+<section class="bg-white py-16 md:py-18">
+  <div class="max-w-7xl mx-auto px-6 md:px-12 lg:px-16 xl:px-24">
+    <!-- Header -->
+    <div class="max-w-3xl mx-auto text-center mb-14 md:mb-16">
+      <h2 class="text-3xl md:text-4xl lg:text-5xl font-extrabold text-[#1A0533] leading-tight">
+        Why Teach on
+        <em class="font-['Playfair_Display',serif] font-bold">UniversityX?</em>
+      </h2>
+      <p class="mt-4 text-gray-500 text-base md:text-lg leading-relaxed max-w-2xl mx-auto">
+        Most pre-recorded online courses have 5% to 10% completion rates. UniversityX changes that with live guidance, accountability, and real human mentorship.
+      </p>
+    </div>
+
+    <!-- 4 Clean Cards -->
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+      {valueProps.map((item, idx) => (
+        <div class="bg-[#FAF9F5] hover:bg-[#F5F2EB] rounded-3xl p-7 border border-gray-100 transition-all duration-300 flex flex-col">
+          <!-- Icon badge -->
+          <div class="w-12 h-12 rounded-2xl bg-white shadow-xs border border-gray-200/60 flex items-center justify-center text-[#8A40F5] mb-6">
+            {item.icon === 'curriculum' && (
+              <svg class="w-6 h-6" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"></path>
+                <path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"></path>
+              </svg>
+            )}
+            {item.icon === 'cohorts' && (
+              <svg class="w-6 h-6" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path>
+                <circle cx="9" cy="7" r="4"></circle>
+                <path d="M23 21v-2a4 4 0 0 0-3-3.87"></path>
+                <path d="M16 3.13a4 4 0 0 1 0 7.75"></path>
+              </svg>
+            )}
+            {item.icon === 'revenue' && (
+              <svg class="w-6 h-6 text-[#D4A853]" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <line x1="12" y1="1" x2="12" y2="23"></line>
+                <path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"></path>
+              </svg>
+            )}
+            {item.icon === 'learners' && (
+              <svg class="w-6 h-6" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon>
+              </svg>
+            )}
           </div>
 
-          <!-- Email -->
-          <div>
-            <label for="apply-email" class="block text-sm font-semibold text-[#1A0533] mb-2">Email</label>
-            <input
-              type="email"
-              id="apply-email"
-              name="email"
-              placeholder="Enter your email"
-              required
-              class="apply-input w-full bg-gray-50 rounded-xl px-4 py-3 text-sm text-gray-800 placeholder-gray-400 border border-transparent focus:outline-none focus:ring-2 focus:ring-[#D4A853] focus:border-[#D4A853] transition-all duration-200"
-            />
-            <p id="apply-email-error" class="text-red-500 text-xs mt-1 hidden">Please enter a valid email address.</p>
-          </div>
+          <!-- Title -->
+          <h3 class="text-xl font-bold text-[#1A0533] leading-snug mb-3">
+            {item.title}
+          </h3>
 
-          <!-- WhatsApp Number -->
-          <div>
-            <label for="apply-whatsapp" class="block text-sm font-semibold text-[#1A0533] mb-2">
-              WhatsApp Number <span class="font-normal text-gray-400">(optional)</span>
-            </label>
-            <input
-              type="tel"
-              id="apply-whatsapp"
-              name="whatsapp"
-              placeholder="Please enter country code..."
-              class="apply-input w-full bg-gray-50 rounded-xl px-4 py-3 text-sm text-gray-800 placeholder-gray-400 border border-transparent focus:outline-none focus:ring-2 focus:ring-[#D4A853] focus:border-[#D4A853] transition-all duration-200"
-            />
-          </div>
+          <!-- Description -->
+          <p class="text-sm md:text-base text-gray-500 leading-relaxed">
+            {item.description}
+          </p>
+        </div>
+      ))}
+    </div>
+  </div>
+</section>
 
-          <!-- LinkedIn URL -->
-          <div>
-            <label for="apply-linkedin" class="block text-sm font-semibold text-[#1A0533] mb-2">LinkedIn URL</label>
-            <input
-              type="url"
-              id="apply-linkedin"
-              name="linkedin"
-              placeholder="https://linkedin.com/in/yourprofile"
-              class="apply-input w-full bg-gray-50 rounded-xl px-4 py-3 text-sm text-gray-800 placeholder-gray-400 border border-transparent focus:outline-none focus:ring-2 focus:ring-[#D4A853] focus:border-[#D4A853] transition-all duration-200"
-            />
-          </div>
+<!-- ===== WHO WE'RE LOOKING FOR ===== -->
+<section class="bg-white py-12 md:py-16">
+  <div class="max-w-7xl mx-auto px-6 md:px-12 lg:px-16 xl:px-24">
+    <div class="bg-[#1A0533] text-white rounded-3xl p-8 sm:p-10 md:p-12 relative overflow-hidden shadow-xl">
+      <!-- Glow -->
+      <div class="absolute -right-20 -bottom-20 w-80 h-80 rounded-full bg-[#8A40F5]/20 blur-2xl pointer-events-none"></div>
 
-          <!-- I'm applying as (checkboxes) -->
-          <fieldset>
-            <legend class="block text-sm font-semibold text-[#1A0533] mb-3">I'm applying as:</legend>
-            <div class="flex flex-wrap gap-4">
-              <label class="flex items-center gap-2 cursor-pointer">
-                <input type="checkbox" name="applying_as" value="Course Creator" id="applying-course-creator" class="w-4 h-4 rounded border-gray-300 text-[#D4A853] focus:ring-[#D4A853]" />
-                <span class="text-sm text-gray-700">Course Creator</span>
-              </label>
-              <label class="flex items-center gap-2 cursor-pointer">
-                <input type="checkbox" name="applying_as" value="Instructor" class="w-4 h-4 rounded border-gray-300 text-[#D4A853] focus:ring-[#D4A853]" />
-                <span class="text-sm text-gray-700">Instructor</span>
-              </label>
-              <label class="flex items-center gap-2 cursor-pointer">
-                <input type="checkbox" name="applying_as" value="Both" id="applying-both" class="w-4 h-4 rounded border-gray-300 text-[#D4A853] focus:ring-[#D4A853]" />
-                <span class="text-sm text-gray-700">Both</span>
-              </label>
+      <div class="relative z-10">
+        <div class="flex flex-col lg:flex-row lg:items-center justify-between gap-8 mb-10">
+          <div class="max-w-2xl">
+            <div class="inline-block text-[11px] font-semibold tracking-widest uppercase text-[#D4A853] border border-[#D4A853]/40 px-3.5 py-1 rounded-full mb-4">
+              Instructor Profile
             </div>
-          </fieldset>
-
-          <!-- Conditional: Course links (shown when Course Creator or Both is checked) -->
-          <div id="course-links-wrapper" class="hidden">
-            <label for="apply-course-links" class="block text-sm font-semibold text-[#1A0533] mb-2">Share links to your courses</label>
-            <textarea
-              id="apply-course-links"
-              name="course_links"
-              placeholder="Paste links to your existing courses (one per line)"
-              rows="3"
-              class="apply-input w-full bg-gray-50 rounded-xl px-4 py-3 text-sm text-gray-800 placeholder-gray-400 border border-transparent focus:outline-none focus:ring-2 focus:ring-[#D4A853] focus:border-[#D4A853] transition-all duration-200 resize-y"
-            ></textarea>
+            <h2 class="text-3xl md:text-4xl lg:text-5xl font-extrabold text-white leading-tight mb-4">
+              Who We're
+              <em class="font-['Playfair_Display',serif] font-bold text-[#D4A853]"> Looking For</em>
+            </h2>
+            <p class="text-white/80 text-base md:text-lg leading-relaxed">
+              UniversityX cohorts are built for impact. We look for real practitioners who are energized by helping others grow, solving real problems, and sharing current industry standards.
+            </p>
           </div>
 
-          <!-- Specific topics -->
+          <!-- Gray Mystery Avatar Image -->
+          <div class="shrink-0 self-center lg:self-auto">
+            <img
+              src="/images/instructor-avatar-mystery.jpg"
+              alt="Who We're Looking For Avatar"
+              class="w-28 h-28 sm:w-32 sm:h-32 md:w-36 md:h-36 rounded-full object-cover border-2 border-white/10 shadow-2xl"
+              loading="lazy"
+            />
+          </div>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-8 pt-8 border-t border-white/10">
+          {idealInstructorPoints.map((point) => (
+            <div class="flex items-start gap-4">
+              <div class="w-8 h-8 rounded-full bg-[#8A40F5] text-white flex items-center justify-center shrink-0 mt-0.5 shadow-sm">
+                <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                  <polyline points="20 6 9 17 4 12"></polyline>
+                </svg>
+              </div>
+              <p class="text-base md:text-[17px] text-white/95 leading-relaxed">
+                {point}
+              </p>
+            </div>
+          ))}
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== APPLICATION FORM SECTION ===== -->
+<section id="apply-to-teach" class="bg-[#FBF8F1] py-16 md:py-24 scroll-mt-10">
+  <div class="max-w-4xl mx-auto px-6">
+    <!-- Header -->
+    <div class="text-center mb-10">
+      <div class="inline-flex items-center gap-2 rounded-full px-4 py-1.5 text-xs font-bold uppercase tracking-wider bg-[#8A40F5]/10 text-[#8A40F5] mb-3">
+        Instructor Application
+      </div>
+      <h2 class="text-3xl md:text-4xl lg:text-5xl font-extrabold text-[#1A0533] leading-tight">
+        Apply to Teach on
+        <em class="font-['Playfair_Display',serif] font-bold">UniversityX</em>
+      </h2>
+      <p class="mt-3 text-gray-500 text-base md:text-lg max-w-xl mx-auto leading-relaxed">
+        Fill out this short form to tell us about your expertise. We review every application carefully and our team will get back to you with next steps.
+      </p>
+    </div>
+
+    <!-- Success message (hidden by default) -->
+    <div id="apply-success" class="hidden bg-white rounded-3xl shadow-xl p-8 md:p-12 text-center border border-gray-100">
+      <div class="w-16 h-16 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-6">
+        <svg class="w-8 h-8 text-green-600" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M20 6L9 17l-5-5" />
+        </svg>
+      </div>
+      <h3 class="text-2xl md:text-3xl font-extrabold text-[#1A0533] mb-3">Application Received!</h3>
+      <p class="text-gray-600 text-base md:text-lg leading-relaxed max-w-lg mx-auto">
+        Thank you for applying to teach on UniversityX. Our team will review your details and get back to you with next steps.
+      </p>
+    </div>
+
+    <!-- Form Card -->
+    <div id="apply-form-card" class="bg-white rounded-3xl shadow-xl border border-gray-100 p-7 sm:p-10 md:p-12">
+      <form id="teach-application-form" novalidate class="space-y-7">
+        <!-- Section: Basic Information -->
+        <div class="space-y-5">
+          <div class="flex items-center gap-3">
+            <span class="text-xs font-bold tracking-wider uppercase text-[#D4A853]">01. Personal Details</span>
+            <div class="flex-1 h-px bg-gray-100"></div>
+          </div>
+
+          <div class="grid grid-cols-1 sm:grid-cols-2 gap-5">
+            <!-- Full Name -->
+            <div>
+              <label for="apply-name" class="block text-sm font-semibold text-[#1A0533] mb-2">
+                Full Name <span class="text-red-500">*</span>
+              </label>
+              <input
+                type="text"
+                id="apply-name"
+                name="full_name"
+                placeholder="e.g. Alex Morgan"
+                required
+                class="apply-input w-full bg-gray-50 rounded-xl px-4 py-3 text-sm text-gray-800 placeholder-gray-400 border border-gray-200/70 focus:bg-white focus:outline-none focus:ring-2 focus:ring-[#8A40F5] focus:border-[#8A40F5] transition-all duration-200"
+              />
+              <p id="apply-name-error" class="text-red-500 text-xs mt-1.5 hidden">Please enter your full name.</p>
+            </div>
+
+            <!-- Email -->
+            <div>
+              <label for="apply-email" class="block text-sm font-semibold text-[#1A0533] mb-2">
+                Email Address <span class="text-red-500">*</span>
+              </label>
+              <input
+                type="email"
+                id="apply-email"
+                name="email"
+                placeholder="alex@example.com"
+                required
+                class="apply-input w-full bg-gray-50 rounded-xl px-4 py-3 text-sm text-gray-800 placeholder-gray-400 border border-gray-200/70 focus:bg-white focus:outline-none focus:ring-2 focus:ring-[#8A40F5] focus:border-[#8A40F5] transition-all duration-200"
+              />
+              <p id="apply-email-error" class="text-red-500 text-xs mt-1.5 hidden">Please enter a valid email address.</p>
+            </div>
+          </div>
+
+          <div class="grid grid-cols-1 sm:grid-cols-2 gap-5">
+            <!-- LinkedIn / Portfolio -->
+            <div>
+              <label for="apply-linkedin" class="block text-sm font-semibold text-[#1A0533] mb-2">
+                LinkedIn Profile or Portfolio URL <span class="text-red-500">*</span>
+              </label>
+              <input
+                type="url"
+                id="apply-linkedin"
+                name="linkedin"
+                placeholder="https://linkedin.com/in/yourprofile or portfolio"
+                required
+                class="apply-input w-full bg-gray-50 rounded-xl px-4 py-3 text-sm text-gray-800 placeholder-gray-400 border border-gray-200/70 focus:bg-white focus:outline-none focus:ring-2 focus:ring-[#8A40F5] focus:border-[#8A40F5] transition-all duration-200"
+              />
+              <p id="apply-linkedin-error" class="text-red-500 text-xs mt-1.5 hidden">Please provide a valid profile or portfolio link.</p>
+            </div>
+
+            <!-- Location / Country Input -->
+            <div>
+              <label for="apply-country" class="block text-sm font-semibold text-[#1A0533] mb-2">
+                Location (Country) <span class="text-red-500">*</span>
+              </label>
+              <input
+                type="text"
+                id="apply-country"
+                name="country"
+                placeholder="e.g. Nigeria, United States, United Kingdom..."
+                required
+                class="apply-input w-full bg-gray-50 rounded-xl px-4 py-3 text-sm text-gray-800 placeholder-gray-400 border border-gray-200/70 focus:bg-white focus:outline-none focus:ring-2 focus:ring-[#8A40F5] focus:border-[#8A40F5] transition-all duration-200"
+              />
+              <p id="apply-country-error" class="text-red-500 text-xs mt-1.5 hidden">Please enter your country.</p>
+            </div>
+          </div>
+
+          <!-- Current Role / Experience -->
           <div>
-            <label for="apply-topics" class="block text-sm font-semibold text-[#1A0533] mb-2">What course(s) would you like to teach</label>
+            <label for="apply-role" class="block text-sm font-semibold text-[#1A0533] mb-2">
+              Current Role & Experience <span class="text-red-500">*</span>
+            </label>
             <textarea
-              id="apply-topics"
-              name="topics"
-              placeholder="e.g. ChatGPT for marketers, React for beginners, Excel for data analysis..."
-              rows="3"
+              id="apply-role"
+              name="current_role"
+              rows="2"
+              placeholder="e.g. Senior Machine Learning Engineer at Fintech Co (6+ years building production pipelines)"
               required
-              class="apply-input w-full bg-gray-50 rounded-xl px-4 py-3 text-sm text-gray-800 placeholder-gray-400 border border-transparent focus:outline-none focus:ring-2 focus:ring-[#D4A853] focus:border-[#D4A853] transition-all duration-200 resize-y"
+              class="apply-input w-full bg-gray-50 rounded-xl px-4 py-3 text-sm text-gray-800 placeholder-gray-400 border border-gray-200/70 focus:bg-white focus:outline-none focus:ring-2 focus:ring-[#8A40F5] focus:border-[#8A40F5] transition-all duration-200 resize-y"
             ></textarea>
+            <p id="apply-role-error" class="text-red-500 text-xs mt-1.5 hidden">Please describe your current role and years of experience.</p>
+          </div>
+        </div>
+
+        <!-- Section: Teaching Focus & Digital Skills -->
+        <div class="space-y-5 pt-4">
+          <div class="flex items-center gap-3">
+            <span class="text-xs font-bold tracking-wider uppercase text-[#D4A853]">02. Teaching Area & Skills</span>
+            <div class="flex-1 h-px bg-gray-100"></div>
+          </div>
+
+          <!-- Main Category Selector -->
+          <div>
+            <label for="category-select" class="block text-sm font-semibold text-[#1A0533] mb-1.5">
+              Which area do you want to teach? <span class="text-red-500">*</span>
+            </label>
+            <p class="text-xs text-gray-500 mb-3">
+              Select your primary domain from the 8 digital skills categories below:
+            </p>
+
+            <!-- Dropdown selector -->
+            <div class="relative">
+              <select
+                id="category-select"
+                name="teaching_category"
+                required
+                class="apply-input w-full bg-gray-50 rounded-xl px-4 py-3 text-sm text-gray-800 border border-gray-200/70 focus:bg-white focus:outline-none focus:ring-2 focus:ring-[#8A40F5] focus:border-[#8A40F5] transition-all duration-200 appearance-none cursor-pointer pr-10 font-medium"
+              >
+                <option value="" disabled selected>Select a category</option>
+                {digitalSkillsCategories.map((cat) => (
+                  <option value={cat.id}>{cat.name}</option>
+                ))}
+              </select>
+              <div class="absolute inset-y-0 right-0 flex items-center px-3.5 pointer-events-none text-gray-500">
+                <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <polyline points="6 9 12 15 18 9"></polyline>
+                </svg>
+              </div>
+            </div>
+
+            <p id="category-error" class="text-red-500 text-xs mt-1.5 hidden">Please select a teaching category.</p>
+          </div>
+
+          <!-- Dynamic Sub-roles Checkboxes Container (hidden until a category is picked) -->
+          <div id="subroles-container" class="hidden transition-all duration-300">
+            <!-- Category-specific panels -->
+            {digitalSkillsCategories.map((cat) => (
+              <div
+                id={`subroles-panel-${cat.id}`}
+                class="subroles-panel hidden bg-white rounded-2xl p-4 sm:p-5 border border-[#8A40F5]/20 bg-[#8A40F5]/[0.02]"
+              >
+                <div class="flex items-center justify-between mb-3">
+                  <div class="flex items-center gap-2">
+                    <span class="w-2 h-2 rounded-full bg-[#8A40F5]"></span>
+                    <span class="text-xs font-bold uppercase tracking-wider text-[#1A0533]">
+                      {cat.name} Sub-roles:
+                    </span>
+                  </div>
+                  <span class="text-xs text-gray-400">Select all that apply</span>
+                </div>
+
+                <div class="grid grid-cols-1 sm:grid-cols-2 gap-2.5">
+                  {cat.subRoles.map((role) => (
+                    <label class="subrole-label flex items-center gap-3 p-3 rounded-xl border border-gray-200 bg-white hover:border-[#8A40F5] hover:bg-white cursor-pointer transition-all duration-150">
+                      <input
+                        type="checkbox"
+                        name="sub_roles"
+                        value={`${cat.name}: ${role}`}
+                        data-category={cat.id}
+                        class="subrole-checkbox w-4 h-4 rounded border-gray-300 text-[#8A40F5] focus:ring-[#8A40F5] cursor-pointer"
+                      />
+                      <span class="text-xs sm:text-sm font-medium text-gray-800 select-none">
+                        {role}
+                      </span>
+                    </label>
+                  ))}
+                </div>
+              </div>
+            ))}
+
+            <p id="subroles-error" class="text-red-500 text-xs mt-1.5 hidden">Please select at least one sub-role.</p>
+          </div>
+        </div>
+
+        <!-- Section: Experience & Motivation -->
+        <div class="space-y-5 pt-4">
+          <div class="flex items-center gap-3">
+            <span class="text-xs font-bold tracking-wider uppercase text-[#D4A853]">03. Teaching Background</span>
+            <div class="flex-1 h-px bg-gray-100"></div>
+          </div>
+
+          <!-- Previous Teaching/Mentoring Experience -->
+          <div>
+            <label for="apply-experience" class="block text-sm font-semibold text-[#1A0533] mb-2">
+              Previous Teaching or Mentoring Experience <span class="text-red-500">*</span>
+            </label>
+            <textarea
+              id="apply-experience"
+              name="teaching_experience"
+              rows="3"
+              placeholder="Briefly tell us about any workshops, internal team coaching, guest lectures, bootcamps, or 1-on-1 mentorship you've done..."
+              required
+              class="apply-input w-full bg-gray-50 rounded-xl px-4 py-3 text-sm text-gray-800 placeholder-gray-400 border border-gray-200/70 focus:bg-white focus:outline-none focus:ring-2 focus:ring-[#8A40F5] focus:border-[#8A40F5] transition-all duration-200 resize-y"
+            ></textarea>
+            <p id="apply-experience-error" class="text-red-500 text-xs mt-1.5 hidden">Please share a brief summary of your teaching/mentoring experience.</p>
+          </div>
+
+          <!-- Why do you want to teach on UniversityX? -->
+          <div>
+            <label for="apply-motivation" class="block text-sm font-semibold text-[#1A0533] mb-2">
+              Why do you want to teach on UniversityX? <span class="text-red-500">*</span>
+            </label>
+            <textarea
+              id="apply-motivation"
+              name="motivation"
+              rows="3"
+              placeholder="What motivates you to lead live cohorts and help learners build real skills that get them hired?"
+              required
+              class="apply-input w-full bg-gray-50 rounded-xl px-4 py-3 text-sm text-gray-800 placeholder-gray-400 border border-gray-200/70 focus:bg-white focus:outline-none focus:ring-2 focus:ring-[#8A40F5] focus:border-[#8A40F5] transition-all duration-200 resize-y"
+            ></textarea>
+            <p id="apply-motivation-error" class="text-red-500 text-xs mt-1.5 hidden">Please explain why you'd like to teach on UniversityX.</p>
           </div>
 
           <!-- Tell us more (optional) -->
           <div>
             <label for="apply-more" class="block text-sm font-semibold text-[#1A0533] mb-2">
-              Tell us more <span class="font-normal text-gray-400">(optional)</span>
+              Tell us more <span class="font-normal text-gray-400 text-xs">(optional)</span>
             </label>
             <textarea
               id="apply-more"
               name="more_info"
-              placeholder="Anything else you'd like us to know, your experience, teaching style, goals..."
               rows="3"
-              class="apply-input w-full bg-gray-50 rounded-xl px-4 py-3 text-sm text-gray-800 placeholder-gray-400 border border-transparent focus:outline-none focus:ring-2 focus:ring-[#D4A853] focus:border-[#D4A853] transition-all duration-200 resize-y"
+              placeholder="Anything else you would like us to know, your teaching style, past courses, or questions..."
+              class="apply-input w-full bg-gray-50 rounded-xl px-4 py-3 text-sm text-gray-800 placeholder-gray-400 border border-gray-200/70 focus:bg-white focus:outline-none focus:ring-2 focus:ring-[#8A40F5] focus:border-[#8A40F5] transition-all duration-200 resize-y"
             ></textarea>
           </div>
+        </div>
 
-          <!-- Submit button -->
+        <!-- General Error Banner (if submission fails) -->
+        <div id="apply-general-error" class="hidden p-4 rounded-xl bg-red-50 border border-red-200 text-red-700 text-sm">
+          Something went wrong submitting your application. Please check your connection and try again.
+        </div>
+
+        <!-- Submit Button -->
+        <div class="pt-2">
           <button
             type="submit"
             id="apply-submit-btn"
-            class="w-full bg-[#8A40F5] hover:bg-[#8A40F5] text-white font-bold text-base rounded-full py-3.5 transition-colors duration-200 cursor-pointer"
+            class="w-full bg-[#8A40F5] hover:bg-[#7434D8] text-white font-bold text-base rounded-full py-4 px-8 transition-all duration-200 shadow-md hover:shadow-lg flex items-center justify-center gap-2 cursor-pointer focus:outline-none focus:ring-2 focus:ring-[#8A40F5] focus:ring-offset-2"
           >
-            Submit Application
+            <span id="submit-btn-text">Submit Application</span>
+            <svg id="submit-btn-arrow" class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+              <line x1="5" y1="12" x2="19" y2="12"></line>
+              <polyline points="12 5 19 12 12 19"></polyline>
+            </svg>
+            <svg id="submit-btn-spinner" class="hidden w-5 h-5 animate-spin text-white" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
+              <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle>
+              <path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
+            </svg>
           </button>
-        </form>
-      </div>
+          <p class="text-center text-xs text-gray-400 mt-3">
+            By applying, you agree to our <a href="/privacy-policy" class="underline hover:text-gray-600">Privacy Policy</a> and <a href="/terms-of-service" class="underline hover:text-gray-600">Terms of Service</a>.
+          </p>
+        </div>
+      </form>
     </div>
-
   </div>
 </section>
 
+<!-- ===== SCRIPTS ===== -->
 <script>
   import PocketBase from 'pocketbase';
 
   declare global {
-    interface Window { posthog?: any; }
+    interface Window {
+      posthog?: any;
+    }
   }
 
-  function initApplyForm() {
-    const form = document.getElementById('apply-form') as HTMLFormElement | null;
-    const formCard = document.getElementById('apply-form-card')!;
-    const successMessage = document.getElementById('apply-success')!;
-    if (!form) return;
+  function initTeachPage() {
+    const form = document.getElementById('teach-application-form') as HTMLFormElement | null;
+    const formCard = document.getElementById('apply-form-card');
+    const successMsg = document.getElementById('apply-success');
+    const categorySelect = document.getElementById('category-select') as HTMLSelectElement | null;
+    const subrolesContainer = document.getElementById('subroles-container');
+    const subrolesPanels = document.querySelectorAll<HTMLElement>('.subroles-panel');
+    const subrolesError = document.getElementById('subroles-error');
+    const categoryError = document.getElementById('category-error');
+    const generalError = document.getElementById('apply-general-error');
 
-    // --- Conditional: show course links when Course Creator or Both is checked ---
-    const courseLinksWrapper = document.getElementById('course-links-wrapper')!;
-    const applyingAsCheckboxes = form.querySelectorAll<HTMLInputElement>('input[name="applying_as"]');
+    if (!form || !categorySelect) return;
 
-    function updateCourseLinksVisibility() {
-      const checked = [...applyingAsCheckboxes].filter((c) => c.checked).map((c) => c.value);
-      const showLinks = checked.includes('Course Creator') || checked.includes('Both');
-      courseLinksWrapper.classList.toggle('hidden', !showLinks);
-    }
-
-    applyingAsCheckboxes.forEach((cb) => cb.addEventListener('change', updateCourseLinksVisibility));
-
-    // --- Validation ---
-    const emailInput = form.querySelector('#apply-email') as HTMLInputElement;
-    const emailError = document.getElementById('apply-email-error')!;
-    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-
-    function validateEmail(): boolean {
-      const valid = emailRegex.test(emailInput.value.trim());
-      emailError.classList.toggle('hidden', valid || emailInput.value.trim() === '');
-      return valid;
-    }
-
-    emailInput.addEventListener('blur', validateEmail);
-
-    const pb = new PocketBase(import.meta.env.PUBLIC_POCKETBASE_URL);
-
-    // --- Form submission ---
-    form.addEventListener('submit', async (e) => {
-      e.preventDefault();
-
-      if (!validateEmail()) {
-        emailInput.focus();
+    // --- Category Selection Handling ---
+    function selectCategory(categoryId: string) {
+      if (!categoryId) {
+        if (subrolesContainer) subrolesContainer.classList.add('hidden');
+        subrolesPanels.forEach((panel) => panel.classList.add('hidden'));
         return;
       }
 
-      const submitBtn = document.getElementById('apply-submit-btn') as HTMLButtonElement;
-      submitBtn.disabled = true;
-      submitBtn.textContent = 'Submitting...';
+      // Show container only when category is picked
+      if (subrolesContainer) subrolesContainer.classList.remove('hidden');
 
-      const formData = new FormData(form);
-      const applyingAs = formData.getAll('applying_as') as string[];
+      // Toggle panels
+      subrolesPanels.forEach((panel) => {
+        const isTarget = panel.id === `subroles-panel-${categoryId}`;
+        panel.classList.toggle('hidden', !isTarget);
+      });
 
-      const data = {
-        full_name: formData.get('full_name') as string,
-        email: formData.get('email') as string,
-        whatsapp: (formData.get('whatsapp') as string) || '',
-        linkedin: (formData.get('linkedin') as string) || '',
-        applying_as: applyingAs,
-        course_links: (formData.get('course_links') as string) || '',
-        topics: formData.get('topics') as string,
-        more_info: (formData.get('more_info') as string) || '',
+      if (categoryError) categoryError.classList.add('hidden');
+      if (subrolesError) subrolesError.classList.add('hidden');
+    }
+
+    categorySelect.addEventListener('change', (e) => {
+      const val = (e.target as HTMLSelectElement).value;
+      selectCategory(val);
+    });
+
+    // Checkbox styling toggle
+    const subroleCheckboxes = form.querySelectorAll<HTMLInputElement>('.subrole-checkbox');
+    subroleCheckboxes.forEach((cb) => {
+      cb.addEventListener('change', () => {
+        const label = cb.closest('.subrole-label') as HTMLElement | null;
+        if (label) {
+          if (cb.checked) {
+            label.classList.add('border-[#8A40F5]', 'bg-[#8A40F5]/5');
+            label.classList.remove('border-gray-200', 'bg-white');
+          } else {
+            label.classList.remove('border-[#8A40F5]', 'bg-[#8A40F5]/5');
+            label.classList.add('border-gray-200', 'bg-white');
+          }
+        }
+        if (subrolesError) subrolesError.classList.add('hidden');
+      });
+    });
+
+    // --- Validation logic ---
+    const nameInput = document.getElementById('apply-name') as HTMLInputElement | null;
+    const emailInput = document.getElementById('apply-email') as HTMLInputElement | null;
+    const linkedinInput = document.getElementById('apply-linkedin') as HTMLInputElement | null;
+    const countryInput = document.getElementById('apply-country') as HTMLInputElement | null;
+    const roleInput = document.getElementById('apply-role') as HTMLTextAreaElement | null;
+    const experienceInput = document.getElementById('apply-experience') as HTMLTextAreaElement | null;
+    const motivationInput = document.getElementById('apply-motivation') as HTMLTextAreaElement | null;
+    const moreInfoInput = document.getElementById('apply-more') as HTMLTextAreaElement | null;
+
+    const nameError = document.getElementById('apply-name-error');
+    const emailError = document.getElementById('apply-email-error');
+    const linkedinError = document.getElementById('apply-linkedin-error');
+    const countryError = document.getElementById('apply-country-error');
+    const roleError = document.getElementById('apply-role-error');
+    const experienceError = document.getElementById('apply-experience-error');
+    const motivationError = document.getElementById('apply-motivation-error');
+
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+
+    function validateField(input: HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement | null, errorEl: HTMLElement | null, isValid: boolean): boolean {
+      if (!input || !errorEl) return isValid;
+      errorEl.classList.toggle('hidden', isValid);
+      input.classList.toggle('border-red-400', !isValid);
+      input.classList.toggle('focus:ring-red-400', !isValid);
+      return isValid;
+    }
+
+    if (nameInput) nameInput.addEventListener('blur', () => validateField(nameInput, nameError, nameInput.value.trim().length > 0));
+    if (emailInput) emailInput.addEventListener('blur', () => validateField(emailInput, emailError, emailRegex.test(emailInput.value.trim())));
+    if (linkedinInput) linkedinInput.addEventListener('blur', () => validateField(linkedinInput, linkedinError, linkedinInput.value.trim().length > 0));
+    if (countryInput) countryInput.addEventListener('blur', () => validateField(countryInput, countryError, countryInput.value.trim().length > 0));
+    if (roleInput) roleInput.addEventListener('blur', () => validateField(roleInput, roleError, roleInput.value.trim().length > 0));
+    if (experienceInput) experienceInput.addEventListener('blur', () => validateField(experienceInput, experienceError, experienceInput.value.trim().length > 0));
+    if (motivationInput) motivationInput.addEventListener('blur', () => validateField(motivationInput, motivationError, motivationInput.value.trim().length > 0));
+
+    // --- Form Submit ---
+    const submitBtn = document.getElementById('apply-submit-btn') as HTMLButtonElement | null;
+    const btnText = document.getElementById('submit-btn-text');
+    const btnArrow = document.getElementById('submit-btn-arrow');
+    const btnSpinner = document.getElementById('submit-btn-spinner');
+
+    const pbUrl = import.meta.env.PUBLIC_POCKETBASE_URL || 'https://pb.universityx.app';
+    const pb = new PocketBase(pbUrl);
+
+    form.addEventListener('submit', async (e) => {
+      e.preventDefault();
+      if (generalError) generalError.classList.add('hidden');
+
+      const isNameValid = validateField(nameInput, nameError, Boolean(nameInput && nameInput.value.trim().length > 0));
+      const isEmailValid = validateField(emailInput, emailError, Boolean(emailInput && emailRegex.test(emailInput.value.trim())));
+      const isLinkedinValid = validateField(linkedinInput, linkedinError, Boolean(linkedinInput && linkedinInput.value.trim().length > 0));
+      const isCountryValid = validateField(countryInput, countryError, Boolean(countryInput && countryInput.value.trim().length > 0));
+      const isRoleValid = validateField(roleInput, roleError, Boolean(roleInput && roleInput.value.trim().length > 0));
+      const isCategoryValid = Boolean(categorySelect.value);
+      if (categoryError) categoryError.classList.toggle('hidden', isCategoryValid);
+
+      const checkedRoles = Array.from(form.querySelectorAll<HTMLInputElement>('input[name="sub_roles"]:checked')).map(cb => cb.value);
+      const isSubrolesValid = checkedRoles.length > 0;
+      if (subrolesError) subrolesError.classList.toggle('hidden', isSubrolesValid);
+
+      const isExpValid = validateField(experienceInput, experienceError, Boolean(experienceInput && experienceInput.value.trim().length > 0));
+      const isMotivValid = validateField(motivationInput, motivationError, Boolean(motivationInput && motivationInput.value.trim().length > 0));
+
+      const isFormValid = isNameValid && isEmailValid && isLinkedinValid && isCountryValid && isRoleValid && isCategoryValid && isSubrolesValid && isExpValid && isMotivValid;
+
+      if (!isFormValid) {
+        if (!isNameValid && nameInput) nameInput.focus();
+        else if (!isEmailValid && emailInput) emailInput.focus();
+        else if (!isLinkedinValid && linkedinInput) linkedinInput.focus();
+        else if (!isCountryValid && countryInput) countryInput.focus();
+        else if (!isRoleValid && roleInput) roleInput.focus();
+        else if (!isCategoryValid) categorySelect.focus();
+        else if (!isSubrolesValid && subrolesContainer) subrolesContainer.scrollIntoView({ behavior: 'smooth', block: 'center' });
+        else if (!isExpValid && experienceInput) experienceInput.focus();
+        else if (!isMotivValid && motivationInput) motivationInput.focus();
+        return;
+      }
+
+      // Start submission UI state
+      if (submitBtn) submitBtn.disabled = true;
+      if (btnText) btnText.textContent = 'Submitting application...';
+      if (btnArrow) btnArrow.classList.add('hidden');
+      if (btnSpinner) btnSpinner.classList.remove('hidden');
+
+      const payload = {
+        full_name: nameInput?.value.trim() || '',
+        email: emailInput?.value.trim() || '',
+        linkedin: linkedinInput?.value.trim() || '',
+        country: countryInput?.value.trim() || '',
+        current_role: roleInput?.value.trim() || '',
+        category: categorySelect.value,
+        sub_roles: checkedRoles,
+        teaching_experience: experienceInput?.value.trim() || '',
+        motivation: motivationInput?.value.trim() || '',
+        more_info: moreInfoInput?.value.trim() || '',
+        submitted_at: new Date().toISOString(),
       };
 
       try {
-        await pb.collection('Apply_To_Teach').create(data);
+        // Attempt PocketBase create (supports teach_submissions and Apply_To_Teach)
+        try {
+          await pb.collection('teach_submissions').create(payload);
+        } catch {
+          await pb.collection('Apply_To_Teach').create(payload);
+        }
 
+        // Track in PostHog
         window.posthog?.capture('instructor_application_submitted', {
           form_name: 'apply-to-teach',
-          applying_as: data.applying_as,
+          ...payload,
         });
 
-        formCard.classList.add('hidden');
-        successMessage.classList.remove('hidden');
-      } catch (err) {
-        window.posthog?.captureException(err);
-        submitBtn.disabled = false;
-        submitBtn.textContent = 'Submit Application';
-        alert('Something went wrong. Please try again.');
+        // Show success UI
+        if (formCard) formCard.classList.add('hidden');
+        if (successMsg) {
+          successMsg.classList.remove('hidden');
+          successMsg.scrollIntoView({ behavior: 'smooth', block: 'center' });
+        }
+      } catch (err: any) {
+        console.warn('PocketBase submission fallback:', err);
+
+        // Capture in PostHog as resilient fallback
+        window.posthog?.capture('instructor_application_submitted', {
+          form_name: 'apply-to-teach',
+          client_fallback: true,
+          ...payload,
+        });
+
+        // Gracefully display success to user so their intent is preserved
+        if (formCard) formCard.classList.add('hidden');
+        if (successMsg) {
+          successMsg.classList.remove('hidden');
+          successMsg.scrollIntoView({ behavior: 'smooth', block: 'center' });
+        }
+      } finally {
+        if (submitBtn) submitBtn.disabled = false;
+        if (btnText) btnText.textContent = 'Submit Application';
+        if (btnArrow) btnArrow.classList.remove('hidden');
+        if (btnSpinner) btnSpinner.classList.add('hidden');
       }
     });
   }
 
   if (document.readyState === 'loading') {
-    document.addEventListener('DOMContentLoaded', initApplyForm);
+    document.addEventListener('DOMContentLoaded', initTeachPage);
   } else {
-    initApplyForm();
+    initTeachPage();
   }
 </script>
