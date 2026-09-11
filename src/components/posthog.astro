@@ -7,7 +7,9 @@ const apiHost = import.meta.env.PUBLIC_POSTHOG_HOST;
   posthog.init(apiKey || '', {
     api_host: apiHost || 'https://us.i.posthog.com',
     person_profiles: 'identified_only',
+    disable_session_recording: false,
     session_recording: {
+      recordCanvas: true,
       recordCrossOriginIframes: true,
       maskAllInputs: false,
       maskInputOptions: {
