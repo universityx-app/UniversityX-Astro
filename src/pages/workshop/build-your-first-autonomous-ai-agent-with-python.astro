@@ -7,7 +7,7 @@ import WorkshopRegistrationForm from "../../components/WorkshopRegistrationForm.
 const workshop = {
   title: "Build Your First Autonomous AI Agent with Python",
   price: 0,
-  startDate: "Saturday, September 12th",
+  startDate: "Saturday, September 19th",
   time: "4:00 PM WAT",
   duration: "Free Live 1-Hour Session",
   level: "Intermediate Python",
@@ -333,7 +333,7 @@ const faqs = [
                 </p>
                 <div
                   class="flex items-center justify-center gap-3 countdown-container"
-                  data-target="2026-09-12T16:00:00+01:00"
+                  data-target="2026-09-19T16:00:00+01:00"
                 >
                   <div class="flex flex-col days-group">
                     <span
@@ -767,7 +767,7 @@ const faqs = [
       workshopTitle={workshop.title}
       startDate={workshop.startDate}
       time={workshop.time}
-      targetDate="2026-09-12T16:00:00+01:00"
+      targetDate="2026-09-19T16:00:00+01:00"
       collectionName="Build_Your_First_Autonomous_AI_Agent_with_Python"
       cohortName="6-Week Agentic AI Cohort"
     />
@@ -806,7 +806,7 @@ const faqs = [
 
       containers.forEach((container) => {
         const targetAttr =
-          container.getAttribute("data-target") || "2026-09-12T16:00:00+01:00";
+          container.getAttribute("data-target") || "2026-09-19T16:00:00+01:00";
         const targetDate = new Date(targetAttr).getTime();
         const distance = targetDate - now;
 
