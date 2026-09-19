@@ -5,15 +5,17 @@ interface Props {
   time?: string;
   targetDate?: string;
   collectionName?: string;
+  workshopSlug?: string;
   cohortName?: string;
 }
 
 const {
-  workshopTitle = "Build Your First Autonomous AI Agent with Python",
+  workshopTitle = "Build Your First AI Agent with Python",
   startDate = "Saturday, September 19th",
   time = "4:00 PM WAT",
   targetDate = "2026-09-19T16:00:00+01:00",
   collectionName = "Build_Your_First_Autonomous_AI_Agent_with_Python",
+  workshopSlug = "build-your-first-autonomous-ai-agent-with-python",
   cohortName = "6-Week Agentic AI Cohort",
 } = Astro.props;
 ---
@@ -178,6 +180,7 @@ const {
         novalidate
         class="space-y-6"
         data-collection={collectionName}
+        data-workshop-slug={workshopSlug}
       >
         <!-- Error Banner (shown if submission fails) -->
         <div
@@ -518,6 +521,33 @@ const {
     const collectionName =
       form.getAttribute("data-collection") ||
       "Build_Your_First_Autonomous_AI_Agent_with_Python";
+    const workshopSlug =
+      form.getAttribute("data-workshop-slug") ||
+      "build-your-first-autonomous-ai-agent-with-python";
+    const queryParams = new URLSearchParams(window.location.search);
+    const rawReferralCode = queryParams.get("ref")?.trim();
+    const referralCode = rawReferralCode || null;
+
+    function getTrafficSource(): string {
+      const utmSource = queryParams.get("utm_source")?.trim();
+      if (utmSource) return utmSource;
+
+      if (document.referrer) {
+        try {
+          return new URL(document.referrer).hostname || "direct";
+        } catch {
+          return "direct";
+        }
+      }
+
+      return "direct";
+    }
+
+    const analyticsContext = {
+      workshop_slug: workshopSlug,
+      referral_code: referralCode,
+      traffic_source: getTrafficSource(),
+    };
 
     // Inputs
     const firstNameInput = form.querySelector(
@@ -608,6 +638,25 @@ const {
     if (cohortInterestInput)
       cohortInterestInput.addEventListener("change", validateCohortInterest);
 
+    let registrationStarted = false;
+    const captureRegistrationStarted = () => {
+      if (registrationStarted) return;
+      registrationStarted = true;
+      window.posthog?.capture(
+        "workshop_registration_started",
+        analyticsContext,
+      );
+    };
+
+    form.querySelectorAll("input, select").forEach((field) => {
+      field.addEventListener("focus", captureRegistrationStarted, {
+        once: true,
+      });
+      field.addEventListener("change", captureRegistrationStarted, {
+        once: true,
+      });
+    });
+
     const pbUrl =
       import.meta.env.PUBLIC_POCKETBASE_URL ||
       "https://pocketbase-production-386d.up.railway.app";
@@ -646,7 +695,7 @@ const {
       if (submitBtn) submitBtn.disabled = true;
       if (btnText) btnText.textContent = "Reserving Your Spot...";
 
-      const payload = {
+      const payload: Record<string, string> = {
         email: emailInput.value.trim(),
         first_name: firstNameInput.value.trim(),
         last_name: lastNameInput.value.trim(),
@@ -654,12 +703,15 @@ const {
         cohort_interest: cohortInterestInput.value,
       };
 
+      if (referralCode) payload.referral_code = referralCode;
+
       try {
         await pb.collection(collectionName).create(payload);
 
         window.posthog?.capture("workshop_registered", {
           workshop: collectionName,
           ...payload,
+          ...analyticsContext,
         });
 
         form.classList.add("hidden");
@@ -673,6 +725,7 @@ const {
           workshop: collectionName,
           client_fallback: true,
           ...payload,
+          ...analyticsContext,
         });
 
         form.classList.add("hidden");
