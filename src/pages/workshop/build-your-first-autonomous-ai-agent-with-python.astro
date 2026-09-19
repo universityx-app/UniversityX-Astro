@@ -5,12 +5,12 @@ import Footer from "../../components/Footer.astro";
 import WorkshopRegistrationForm from "../../components/WorkshopRegistrationForm.astro";
 
 const workshop = {
-  title: "Build Your First Autonomous AI Agent with Python",
+  title: "Build Your First AI Agent with Python",
   price: 0,
   startDate: "Saturday, September 19th",
   time: "4:00 PM WAT",
   duration: "Free Live 1-Hour Session",
-  level: "Intermediate Python",
+  level: "Basic Python required",
   format: "Free Live Event",
   thumbnail: "/images/python-workshop-cover.png",
   instructorName: "Abasiodiong Udofia",
@@ -23,52 +23,37 @@ const workshop = {
 const agendaItems = [
   {
     part: "01",
-    title: "Agentic Fundamentals",
-    desc: "Overview of why autonomous agents are replacing basic AI assistants.",
+    title: "How AI Agents Work",
+    desc: "Understand how agents use models, tools, and multi-step workflows to go beyond basic AI assistants.",
   },
   {
     part: "02",
-    title: "Live Build - The Brain",
-    desc: "Setting up your Python environment and connecting a base LLM.",
+    title: "Build the Agent",
+    desc: "Set up your Python environment and build a working agent with LangChain.",
   },
   {
     part: "03",
-    title: "Live Build - The Tools",
-    desc: "Equipping your agent with search tools to prevent hallucination.",
+    title: "Give It Tools",
+    desc: "Connect the agent to external search tools and real-time information through APIs.",
   },
   {
     part: "04",
-    title: "The Next Level",
-    desc: "Exploring LangGraph, RAG, and what it takes to deploy AI to production.",
+    title: "Where AI Engineering Goes Next",
+    desc: "See how LangGraph, RAG, memory, and production deployment fit into modern AI Engineering.",
   },
 ];
 
-const greenPoints = [
-  {
-    title: "Intermediate Python Developers",
-    desc: "You are comfortable with Python scripts, APIs, and virtual environments, and want to transition into AI Engineering.",
-  },
-  {
-    title: "Software Engineers",
-    desc: "You want a practical, code-first mental model of how AI agents are structured and run.",
-  },
-];
-
-const redPoints = [
-  {
-    title: "Complete Beginners",
-    desc: "You have never written a line of Python or don't know what an API is.",
-  },
-  {
-    title: 'Looking for "No-Code"',
-    desc: "You only want to learn how to type better ChatGPT prompts without writing backend code.",
-  },
+const audiencePoints = [
+  "Software developers curious about AI Engineering",
+  "Python developers who want to start building AI applications",
+  "Computer Science students with some programming experience",
+  "Frontend or backend developers exploring how AI systems are built",
 ];
 
 const faqs = [
   {
     q: "Do I need to know how to code?",
-    a: "Yes, intermediate Python is required to follow the live build.",
+    a: "You do not need previous AI experience. Some familiarity with Python will help you follow the coding portion of the session.",
   },
   {
     q: "What AI frameworks will we use?",
@@ -86,13 +71,16 @@ const faqs = [
 ---
 
 <Layout
-  title="Build Your First Autonomous AI Agent with Python - UniversityX Workshop"
-  description="AI is moving past simple chat prompts. Join this free 60-minute live coding session with Abasiodiong Udofia to build an AI agent from scratch using Python and LangChain."
+  title="Build Your First AI Agent with Python - UniversityX Workshop"
+  description="A free 60-minute workshop for developers who want to understand how modern AI applications use tools, real-time information, and multi-step workflows. Build a working AI agent with Python and see how these ideas connect to AI Engineering."
   image={workshop.thumbnail}
 >
   <Navbar />
 
-  <main class="bg-white">
+  <main
+    class="bg-white"
+    data-workshop-slug="build-your-first-autonomous-ai-agent-with-python"
+  >
     <!-- ── SECTION 1: HERO AREA ─────────────────────────────────────── -->
     <section
       class="max-w-7xl mx-auto px-6 md:px-12 lg:px-16 xl:px-24 pt-10 pb-0"
@@ -152,27 +140,26 @@ const faqs = [
           >
             Build Your First
             <em class="font-['Playfair_Display',serif] font-bold">
-              Autonomous AI Agent</em
+              AI Agent</em
             > with Python
           </h1>
 
           <!-- Description -->
           <p class="text-lg text-gray-700 leading-relaxed mb-6">
-            AI is moving past simple chat prompts. The future belongs to Agentic
-            AI: systems that can reason, use external tools, and execute
-            workflows autonomously. Join this practical 60-minute live coding
-            session to build an AI agent from scratch using Python and
-            LangChain.
+            A free 60-minute workshop for developers who want to understand how
+            modern AI applications use tools, real-time information, and
+            multi-step workflows. You’ll build a working AI agent with Python
+            and see how these ideas connect to AI Engineering.
           </p>
 
           <!-- Bullet Points -->
           <ul class="space-y-2.5 mb-8 text-lg">
             {
               [
-                "The shift from standard LLMs (ChatGPT) to Autonomous Agents",
-                "Live Build: Code a Python agent that fetches real-time web data to answer queries",
-                "How to give your AI access to external tools and APIs",
-                "Sneak peek into multi-agent workflows and stateful memory",
+                "Understand how AI agents differ from basic ChatGPT-style applications",
+                "Build a working AI agent with Python and LangChain",
+                "Give your agent access to external tools and real-time information",
+                "See how concepts like LangGraph, RAG, memory, and multi-step workflows fit into AI Engineering",
               ].map((item) => (
                 <li class="flex items-start gap-3 text-gray-700">
                   <svg
@@ -456,20 +443,21 @@ const faqs = [
             <h2
               class="text-2xl md:text-4xl font-extrabold leading-tight mb-5 text-white"
             >
-              Want to go from this 1-hour build to shipping real AI
-              applications?
+              Want to Go Deeper Into AI Engineering?
             </h2>
 
             <p class="text-gray-300 text-base md:text-xl leading-relaxed mb-8">
-              This free workshop gives you the foundation. If you want to master
-              LangGraph, build 6 production-ready AI projects, and get live
-              weekly feedback from senior engineers, check out our flagship
-              6-week live cohort.
+              Our 6-week live cohort is designed for software developers who
+              already know basic Python and want to learn how to build, ship,
+              and explain real AI applications using retrieval, tools, agents,
+              and multi-step workflows. You’ll build portfolio-ready systems
+              and get live feedback from experienced engineers.
             </p>
 
             <div class="flex flex-wrap items-center gap-4">
               <a
                 href={workshop.courseUrl}
+                data-cohort-cta
                 class="inline-flex items-center gap-3 bg-[#8A40F5] hover:bg-[#7434D8] text-white font-bold px-8 py-4 rounded-xl transition-all duration-200 text-base shadow-lg hover:shadow-xl hover:-translate-y-0.5"
               >
                 <span>Explore the 6-Week Agentic AI Cohort</span>
@@ -504,154 +492,44 @@ const faqs = [
           <h2
             class="text-2xl md:text-4xl font-extrabold text-[#1A0533] tracking-tight"
           >
-            Who This Session Is For
+            Who This Workshop Is For
           </h2>
           <p class="mt-3 text-gray-600 text-base md:text-lg">
-            To ensure the highest quality experience, here is who will get the
-            most value from this coding session.
+            This session is best suited for:
           </p>
         </div>
 
-        <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 items-stretch">
-          <!-- 🟢 GREEN SIDE: THIS IS FOR YOU -->
-          <div
-            class="bg-white rounded-3xl p-8 md:p-10 border border-gray-200/80 shadow-sm hover:shadow-md transition-all duration-300 flex flex-col justify-between"
-          >
-            <div>
-              <div
-                class="flex items-center gap-4 mb-8 pb-6 border-b border-gray-100"
-              >
-                <div
-                  class="w-12 h-12 rounded-2xl bg-emerald-500/10 text-emerald-600 flex items-center justify-center shrink-0 border border-emerald-500/20"
-                >
-                  <svg
-                    class="w-6 h-6"
-                    viewBox="0 0 24 24"
-                    fill="none"
-                    stroke="currentColor"
-                    stroke-width="2.5"
-                    stroke-linecap="round"
-                    stroke-linejoin="round"
-                    aria-hidden="true"
-                  >
-                    <polyline points="20 6 9 17 4 12"></polyline>
-                  </svg>
+        <div class="max-w-3xl mx-auto bg-white rounded-3xl p-8 md:p-10 border border-gray-200/80 shadow-sm">
+          <div class="space-y-6">
+            {
+              audiencePoints.map((item) => (
+                <div class="flex items-start gap-4">
+                  <div class="w-6 h-6 rounded-lg bg-emerald-500/10 text-emerald-600 flex items-center justify-center shrink-0 mt-0.5">
+                    <svg
+                      class="w-3.5 h-3.5"
+                      viewBox="0 0 24 24"
+                      fill="none"
+                      stroke="currentColor"
+                      stroke-width="3"
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                      aria-hidden="true"
+                    >
+                      <polyline points="20 6 9 17 4 12" />
+                    </svg>
+                  </div>
+                  <p class="font-semibold text-[#1A0533] text-base md:text-lg leading-snug">
+                    {item}
+                  </p>
                 </div>
-                <div>
-                  <span
-                    class="inline-block text-xs font-bold uppercase tracking-wider text-emerald-700 bg-emerald-50 px-2.5 py-0.5 rounded-full mb-1"
-                  >
-                    Recommended Background
-                  </span>
-                  <h3 class="text-xl md:text-2xl font-extrabold text-[#1A0533]">
-                    This IS for you if:
-                  </h3>
-                </div>
-              </div>
-
-              <div class="space-y-6">
-                {
-                  greenPoints.map(({ title, desc }) => (
-                    <div class="flex items-start gap-4">
-                      <div class="w-6 h-6 rounded-lg bg-emerald-500/10 text-emerald-600 flex items-center justify-center shrink-0 mt-0.5">
-                        <svg
-                          class="w-3.5 h-3.5"
-                          viewBox="0 0 24 24"
-                          fill="none"
-                          stroke="currentColor"
-                          stroke-width="3"
-                          stroke-linecap="round"
-                          stroke-linejoin="round"
-                          aria-hidden="true"
-                        >
-                          <polyline points="20 6 9 17 4 12" />
-                        </svg>
-                      </div>
-                      <div>
-                        <h4 class="font-bold text-[#1A0533] text-base md:text-lg mb-1 leading-snug">
-                          {title}
-                        </h4>
-                        <p class="text-sm md:text-base text-gray-600 leading-relaxed font-normal">
-                          {desc}
-                        </p>
-                      </div>
-                    </div>
-                  ))
-                }
-              </div>
-            </div>
+              ))
+            }
           </div>
 
-          <!-- 🔴 RED SIDE: THIS IS NOT FOR YOU -->
-          <div
-            class="bg-white rounded-3xl p-8 md:p-10 border border-gray-200/80 shadow-sm hover:shadow-md transition-all duration-300 flex flex-col justify-between"
-          >
-            <div>
-              <div
-                class="flex items-center gap-4 mb-8 pb-6 border-b border-gray-100"
-              >
-                <div
-                  class="w-12 h-12 rounded-2xl bg-rose-500/10 text-rose-600 flex items-center justify-center shrink-0 border border-rose-500/20"
-                >
-                  <svg
-                    class="w-6 h-6"
-                    viewBox="0 0 24 24"
-                    fill="none"
-                    stroke="currentColor"
-                    stroke-width="2.5"
-                    stroke-linecap="round"
-                    stroke-linejoin="round"
-                    aria-hidden="true"
-                  >
-                    <line x1="18" y1="6" x2="6" y2="18"></line>
-                    <line x1="6" y1="6" x2="18" y2="18"></line>
-                  </svg>
-                </div>
-                <div>
-                  <span
-                    class="inline-block text-xs font-bold uppercase tracking-wider text-rose-700 bg-rose-50 px-2.5 py-0.5 rounded-full mb-1"
-                  >
-                    Not Suited For
-                  </span>
-                  <h3 class="text-xl md:text-2xl font-extrabold text-[#1A0533]">
-                    This is NOT for you if:
-                  </h3>
-                </div>
-              </div>
-
-              <div class="space-y-6">
-                {
-                  redPoints.map(({ title, desc }) => (
-                    <div class="flex items-start gap-4">
-                      <div class="w-6 h-6 rounded-lg bg-rose-500/10 text-rose-600 flex items-center justify-center shrink-0 mt-0.5">
-                        <svg
-                          class="w-3.5 h-3.5"
-                          viewBox="0 0 24 24"
-                          fill="none"
-                          stroke="currentColor"
-                          stroke-width="3"
-                          stroke-linecap="round"
-                          stroke-linejoin="round"
-                          aria-hidden="true"
-                        >
-                          <line x1="18" y1="6" x2="6" y2="18" />
-                          <line x1="6" y1="6" x2="18" y2="18" />
-                        </svg>
-                      </div>
-                      <div>
-                        <h4 class="font-bold text-[#1A0533] text-base md:text-lg mb-1 leading-snug">
-                          {title}
-                        </h4>
-                        <p class="text-sm md:text-base text-gray-600 leading-relaxed font-normal">
-                          {desc}
-                        </p>
-                      </div>
-                    </div>
-                  ))
-                }
-              </div>
-            </div>
-          </div>
+          <p class="mt-8 pt-6 border-t border-gray-100 text-gray-600 text-base md:text-lg leading-relaxed">
+            You do not need previous AI experience. Some familiarity with
+            Python will help you follow the coding portion of the session.
+          </p>
         </div>
       </div>
     </section>
@@ -705,7 +583,18 @@ const faqs = [
       </div>
     </section>
 
-    <!-- ── SECTION 6: FAQ ACCORDION ──────────────────────────────────── -->
+    <!-- ── REGISTER CTA BANNER & FORM ────────────────────────────────── -->
+    <WorkshopRegistrationForm
+      workshopTitle={workshop.title}
+      startDate={workshop.startDate}
+      time={workshop.time}
+      targetDate="2026-09-19T16:00:00+01:00"
+      collectionName="Build_Your_First_Autonomous_AI_Agent_with_Python"
+      workshopSlug="build-your-first-autonomous-ai-agent-with-python"
+      cohortName="6-Week Agentic AI Cohort"
+    />
+
+    <!-- ── SECTION 7: FAQ ACCORDION ──────────────────────────────────── -->
     <section class="py-16 md:py-24">
       <div class="max-w-7xl mx-auto px-6 md:px-12 lg:px-16 xl:px-24">
         <div class="text-center max-w-2xl mx-auto mb-14">
@@ -762,15 +651,6 @@ const faqs = [
       </div>
     </section>
 
-    <!-- ── REGISTER CTA BANNER & FORM ────────────────────────────────── -->
-    <WorkshopRegistrationForm
-      workshopTitle={workshop.title}
-      startDate={workshop.startDate}
-      time={workshop.time}
-      targetDate="2026-09-19T16:00:00+01:00"
-      collectionName="Build_Your_First_Autonomous_AI_Agent_with_Python"
-      cohortName="6-Week Agentic AI Cohort"
-    />
   </main>
 
   <Footer />
@@ -876,9 +756,50 @@ const faqs = [
     });
   }
 
+  function getWorkshopAnalyticsContext() {
+    const main = document.querySelector("main[data-workshop-slug]");
+    const workshopSlug =
+      main?.getAttribute("data-workshop-slug") ||
+      "build-your-first-autonomous-ai-agent-with-python";
+    const queryParams = new URLSearchParams(window.location.search);
+    const referralCode = queryParams.get("ref")?.trim() || null;
+    const utmSource = queryParams.get("utm_source")?.trim();
+    let trafficSource = utmSource || "direct";
+
+    if (!utmSource && document.referrer) {
+      try {
+        trafficSource = new URL(document.referrer).hostname || "direct";
+      } catch {
+        trafficSource = "direct";
+      }
+    }
+
+    return {
+      workshop_slug: workshopSlug,
+      referral_code: referralCode,
+      traffic_source: trafficSource,
+    };
+  }
+
+  function initWorkshopAnalytics() {
+    const analyticsContext = getWorkshopAnalyticsContext();
+
+    window.posthog?.capture("workshop_page_viewed", analyticsContext);
+
+    document.querySelectorAll("[data-cohort-cta]").forEach((cta) => {
+      cta.addEventListener("click", () => {
+        window.posthog?.capture("cohort_cta_clicked", {
+          ...analyticsContext,
+          destination: cta.getAttribute("href"),
+        });
+      });
+    });
+  }
+
   function initPage() {
     initCountdown();
     initAccordions();
+    initWorkshopAnalytics();
   }
 
   if (document.readyState === "loading") {
