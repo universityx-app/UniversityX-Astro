@@ -1,14 +1,16 @@
 ---
-const courseHref = '/paths/software-engineering/build-your-first-ai-application';
+import { AI_COHORT_PATH, aiCohort, formatNaira } from '../data/aiCohort';
+
+const courseHref = AI_COHORT_PATH;
 
 const courses = [
   {
     number: '01',
-    title: 'Build and Ship Agentic AI Applications in 6 Weeks',
+    title: aiCohort.shortTitle,
     status: 'Registration Open',
-    meta: '6 weeks · Starts 17 August 2026',
-    originalPrice: '₦30,000',
-    price: '₦25,000',
+    meta: `${aiCohort.durationWeeks} weeks · Starts ${aiCohort.startDateLabel}`,
+    originalPrice: formatNaira(aiCohort.originalPrice),
+    price: formatNaira(aiCohort.fullPaymentPrice),
     href: courseHref,
   },
   {
@@ -39,13 +41,13 @@ const courses = [
   <div class="max-w-6xl mx-auto">
     <div class="max-w-3xl mb-12">
       <p class="inline-flex items-center gap-2 rounded-full border border-[#1A0533]/10 bg-[#F5F2EB] px-4 py-2 text-xs font-semibold text-[#1A0533]/50 tracking-widest uppercase mb-6">
-        Software Engineering
+        AI &amp; Data
       </p>
       <h2 class="text-3xl md:text-5xl font-extrabold text-[#1A0533] leading-tight mb-4">
-        The AI-Native Software Engineering Path
+        Start building in the AI Engineering track
       </h2>
       <p class="text-gray-600 text-lg md:text-xl leading-relaxed">
-        A stackable learning path for developers who want to build real software with AI while developing the technical depth to understand, evaluate and improve what AI produces.
+        A practical starting point for developers who want to build useful AI applications, understand how the pieces work, and finish with evidence they can show.
       </p>
     </div>
 
@@ -91,7 +93,7 @@ const courses = [
 
     <div class="mt-8 flex flex-wrap gap-4">
       <a href={courseHref} class="inline-flex items-center justify-center rounded-full bg-[#8A40F5] text-white font-semibold px-7 py-3.5 hover:bg-[#7434D8] transition-colors focus:outline-none focus:ring-2 focus:ring-[#8A40F5] focus:ring-offset-2">
-        Join the 17 August Cohort
+        Join the October Cohort
       </a>
       <a href="#programme-waitlist" class="inline-flex items-center justify-center rounded-full border border-[#1A0533]/20 text-[#1A0533] font-semibold px-7 py-3.5 hover:border-[#8A40F5] hover:text-[#8A40F5] transition-colors focus:outline-none focus:ring-2 focus:ring-[#8A40F5]">
         Explore other programs

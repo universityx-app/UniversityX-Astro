@@ -1,0 +1,133 @@
+[
+  {
+    "id": "cohortpayreg001",
+    "name": "Cohort_Payment_Registrations",
+    "type": "base",
+    "system": false,
+    "fields": [
+      {
+        "id": "cohortslug00001",
+        "name": "cohort_slug",
+        "type": "text",
+        "system": false,
+        "hidden": false,
+        "required": true,
+        "presentable": false,
+        "primaryKey": false,
+        "min": 1,
+        "max": 180,
+        "pattern": "",
+        "autogeneratePattern": ""
+      },
+      {
+        "id": "fullname0000001",
+        "name": "full_name",
+        "type": "text",
+        "system": false,
+        "hidden": false,
+        "required": true,
+        "presentable": true,
+        "primaryKey": false,
+        "min": 2,
+        "max": 120,
+        "pattern": "",
+        "autogeneratePattern": ""
+      },
+      {
+        "id": "paymentemail001",
+        "name": "email",
+        "type": "email",
+        "system": false,
+        "hidden": false,
+        "required": true,
+        "presentable": true,
+        "exceptDomains": null,
+        "onlyDomains": null
+      },
+      {
+        "id": "whatsapp0000001",
+        "name": "whatsapp_number",
+        "type": "text",
+        "system": false,
+        "hidden": false,
+        "required": true,
+        "presentable": false,
+        "primaryKey": false,
+        "min": 7,
+        "max": 40,
+        "pattern": "",
+        "autogeneratePattern": ""
+      },
+      {
+        "id": "paymentoption01",
+        "name": "payment_option",
+        "type": "select",
+        "system": false,
+        "hidden": false,
+        "required": true,
+        "presentable": false,
+        "maxSelect": 1,
+        "values": ["full", "installment"]
+      },
+      {
+        "id": "currentrole0001",
+        "name": "current_role",
+        "type": "text",
+        "system": false,
+        "hidden": false,
+        "required": false,
+        "presentable": false,
+        "primaryKey": false,
+        "min": 0,
+        "max": 160,
+        "pattern": "",
+        "autogeneratePattern": ""
+      },
+      {
+        "id": "pythonexp000000",
+        "name": "python_experience",
+        "type": "text",
+        "system": false,
+        "hidden": false,
+        "required": false,
+        "presentable": false,
+        "primaryKey": false,
+        "min": 0,
+        "max": 160,
+        "pattern": "",
+        "autogeneratePattern": ""
+      },
+      {
+        "id": "learninggoal001",
+        "name": "learning_goal",
+        "type": "text",
+        "system": false,
+        "hidden": false,
+        "required": false,
+        "presentable": false,
+        "primaryKey": false,
+        "min": 0,
+        "max": 600,
+        "pattern": "",
+        "autogeneratePattern": ""
+      },
+      {
+        "id": "verifystatus001",
+        "name": "payment_verification_status",
+        "type": "select",
+        "system": false,
+        "hidden": false,
+        "required": true,
+        "presentable": false,
+        "maxSelect": 1,
+        "values": ["unverified", "verified", "mismatch"]
+      }
+    ],
+    "indexes": [],
+    "listRule": null,
+    "viewRule": null,
+    "createRule": "@request.body.payment_verification_status:isset = false",
+    "updateRule": null,
+    "deleteRule": null
+  }
+]

@@ -1,0 +1,529 @@
+---
+import Layout from "../../layouts/Layout.astro";
+import Navbar from "../../components/Navbar.astro";
+import Footer from "../../components/Footer.astro";
+import WorkshopRegistrationForm from "../../components/WorkshopRegistrationForm.astro";
+import WorkshopBreadcrumb from "../../components/WorkshopBreadcrumb.astro";
+
+const workshop = {
+  title: "Build an AI Customer Support Agent for Real Businesses",
+  startDate: "Saturday, September 26",
+  time: "4:00 PM WAT",
+  targetDate: "2026-09-26T16:00:00+01:00",
+  duration: "60-minute live workshop",
+  level: "Basic Python required",
+  thumbnail: "/images/ai-customer-support-workshop-cover.png",
+  instructorName: "Abasiodiong Udofia",
+  instructorRole:
+    "CTO at ChatJourno · 3MTT Mentor · Ex-Senior Backend Engineer at Paydue",
+  instructorPhoto: "/images/abasiodiong-hs.png",
+  courseUrl: "/cohort/build-and-ship-ai-applications-with-python/",
+  slug: "build-an-ai-customer-support-agent-for-real-businesses",
+};
+
+const whatsappGroupUrl =
+  "https://chat.whatsapp.com/LE59wydgTceDCsm8r81gXU";
+
+const agendaItems = [
+  {
+    part: "01",
+    title: "See the finished agent",
+    description:
+      "Start with the working support flow so you understand what every piece is building toward.",
+  },
+  {
+    part: "02",
+    title: "Give it company knowledge",
+    description:
+      "Help the agent answer from a business's real FAQs, policies, and support information.",
+  },
+  {
+    part: "03",
+    title: "Connect a useful tool",
+    description:
+      "Let the agent look up information it cannot know from a prompt, such as an order status.",
+  },
+  {
+    part: "04",
+    title: "Add human handoff",
+    description:
+      "Set a clear boundary for when the AI should answer and when a support person should step in.",
+  },
+];
+
+const faqs = [
+  {
+    question: "Is this workshop free?",
+    answer:
+      "Yes. It is a free, live online workshop on Saturday, September 26, 2026 at 4:00 PM WAT.",
+  },
+  {
+    question: "Do I need to know Python?",
+    answer:
+      "You should know basic Python and be comfortable following Python code. You do not need previous AI or machine-learning experience.",
+  },
+  {
+    question: "Is this another chatbot tutorial?",
+    answer:
+      "No. We are building a support flow that uses company information, calls a useful tool, and hands difficult cases to a human.",
+  },
+  {
+    question: "What should I bring?",
+    answer:
+      "Bring a laptop, a reliable internet connection, and your curiosity. Registered learners should join the WhatsApp group for setup notes and reminders.",
+  },
+  {
+    question: "What happens after I register?",
+    answer:
+      "You will see a confirmation immediately and a link to join the workshop WhatsApp group, where reminders and access details will be shared.",
+  },
+];
+---
+
+<Layout
+  title={`${workshop.title} | UniversityX`}
+  description="Build a useful AI support agent that answers from company knowledge, checks customer information with tools, and knows when to hand a case to a human. Free live workshop for developers with basic Python."
+  image={workshop.thumbnail}
+  url={`https://universityx.app/workshop/${workshop.slug}/`}
+>
+  <div class="min-h-screen bg-white text-[#1A0533]">
+    <Navbar />
+
+    <main data-workshop-slug={workshop.slug}>
+      <!-- Standard UniversityX workshop hero -->
+      <section class="mx-auto max-w-7xl px-6 pb-12 pt-10 md:px-12 md:pb-16 lg:px-16 xl:px-24">
+        <WorkshopBreadcrumb title={workshop.title} />
+
+        <div class="grid grid-cols-1 items-start gap-12 lg:grid-cols-[1fr_360px] xl:gap-16">
+          <div>
+            <span class="mb-5 inline-block rounded-full bg-[#8A40F5]/10 px-4 py-1.5 text-sm font-bold text-[#8A40F5]">Free Workshop</span>
+
+            <h1 class="mb-5 text-3xl font-extrabold leading-tight text-[#1A0533] md:text-4xl">
+              Build an AI Customer Support Agent for
+              <em class="font-['Playfair_Display',serif] font-bold">Real Businesses</em>
+            </h1>
+
+            <p class="mb-6 text-lg leading-relaxed text-gray-700">
+              A free 60-minute workshop for developers who know basic Python and want to build something useful with AI. You will create a support agent that answers from a company's own information, checks customer details, and knows when a human should step in.
+            </p>
+
+            <ul class="mb-8 space-y-2.5 text-lg">
+              {[
+                "Build a working customer-support agent around a real business problem",
+                "Make the agent answer from company FAQs, policies, and support information",
+                "Connect a tool that can check useful customer details such as order status",
+                "Add a clear human handoff for cases the AI should not handle alone",
+              ].map((item) => (
+                <li class="flex items-start gap-3 text-gray-700">
+                  <svg class="mt-0.5 h-5 w-5 shrink-0 text-[#8A40F5]" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m20 6-11 11-5-5" /></svg>
+                  {item}
+                </li>
+              ))}
+            </ul>
+
+            <div class="mb-8 flex flex-wrap gap-3" aria-label="Workshop details">
+              <span class="workshop-chip"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="5" width="18" height="16" rx="2" /><path d="M16 3v4M8 3v4M3 10h18" /></svg>{workshop.startDate}</span>
+              <span class="workshop-chip"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="9" /><path d="M12 7v5l3 2" /></svg>{workshop.time}</span>
+              <span class="workshop-chip"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20 12v8H4v-8M2 7h20v5H2zM12 7v13M12 7H7.5A2.5 2.5 0 1 1 10 4.5L12 7Zm0 0h4.5A2.5 2.5 0 1 0 14 4.5L12 7Z" /></svg>Free</span>
+              <span class="workshop-chip"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 3h12l-2 6 3 3H5l3-3-2-6Z" /><path d="M12 12v9" /></svg>{workshop.level}</span>
+            </div>
+
+            <div class="border-t border-gray-100 pt-6">
+              <p class="mb-4 text-xs font-semibold uppercase tracking-widest text-gray-400">Instructor</p>
+              <div class="flex items-center gap-4">
+                <img src={workshop.instructorPhoto} alt={workshop.instructorName} class="h-18 w-18 shrink-0 rounded-full object-cover object-top" loading="eager" />
+                <div>
+                  <p class="text-lg font-semibold text-[#1A0533]">{workshop.instructorName}</p>
+                  <p class="text-base text-gray-500">{workshop.instructorRole}</p>
+                </div>
+              </div>
+
+              <div class="mt-5">
+                <p class="mb-3 text-xs font-semibold uppercase tracking-widest text-gray-400">Experience &amp; Integrations Across</p>
+                <div class="flex flex-wrap items-center gap-6">
+                  <img src="/images/chatjourno-logo.svg" alt="ChatJourno" class="h-4 object-contain md:h-5" loading="lazy" />
+                  <img src="/images/3mtt-logo.svg" alt="3MTT Nigeria" class="h-6 object-contain md:h-7" loading="lazy" />
+                  <img src="/images/paydue-logo.svg" alt="Paydue Technologies" class="h-6 object-contain md:h-7" loading="lazy" />
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <aside class="lg:sticky lg:top-6">
+            <div class="overflow-hidden rounded-2xl border border-gray-200 bg-white shadow-lg">
+              <img src={workshop.thumbnail} alt="Customer support request moving through business knowledge and into human support" class="aspect-video w-full object-cover" loading="eager" />
+
+              <div class="space-y-4 p-6">
+                <div class="flex items-baseline gap-3">
+                  <span class="text-3xl font-extrabold text-[#1A0533]">FREE</span>
+                  <span class="text-base text-gray-400">Live 1-Hour Session</span>
+                </div>
+
+                <div class="flex items-center gap-2 text-lg text-gray-600">
+                  <svg class="h-6 w-6 text-[#8A40F5]" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="4" width="18" height="18" rx="2" /><path d="M16 2v4M8 2v4M3 10h18" /></svg>
+                  {workshop.startDate}
+                </div>
+                <div class="flex items-center gap-2 text-lg text-gray-600">
+                  <svg class="h-6 w-6 text-[#8A40F5]" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10" /><path d="M12 6v6l4 2" /></svg>
+                  {workshop.time}
+                </div>
+
+                <div class="mt-6 rounded-xl border border-[#F5F2EB]/80 bg-[#F5F2EB] p-4 text-center">
+                  <p class="mb-2 text-xs font-bold uppercase tracking-wider text-[#8A40F5]">Workshop Starts In</p>
+                  <div class="countdown-container flex items-center justify-center gap-3" data-target={workshop.targetDate}>
+                    <div class="days-group flex flex-col"><span class="days-val text-3xl font-extrabold text-[#1A0533]">00</span><span class="mt-0.5 text-xs uppercase tracking-widest text-gray-500">Days</span></div>
+                    <span class="days-sep pb-2 text-xl font-bold text-[#1A0533]/30">:</span>
+                    <div class="flex flex-col"><span class="hours-val text-3xl font-extrabold text-[#1A0533]">00</span><span class="mt-0.5 text-xs uppercase tracking-widest text-gray-500">Hrs</span></div>
+                    <span class="pb-2 text-xl font-bold text-[#1A0533]/30">:</span>
+                    <div class="flex flex-col"><span class="minutes-val text-3xl font-extrabold text-[#1A0533]">00</span><span class="mt-0.5 text-xs uppercase tracking-widest text-gray-500">Min</span></div>
+                    <span class="pb-2 text-xl font-bold text-[#1A0533]/30">:</span>
+                    <div class="flex flex-col"><span class="seconds-val text-3xl font-extrabold text-[#1A0533]">00</span><span class="mt-0.5 text-xs uppercase tracking-widest text-gray-500">Sec</span></div>
+                  </div>
+                </div>
+
+                <a id="enroll" href="#enroll-form" data-registration-cta="hero" class="mt-4 block w-full rounded-lg bg-[#8A40F5] px-8 py-4 text-center text-base font-semibold text-white transition-colors duration-200 hover:bg-[#7434D8] focus:outline-none focus:ring-2 focus:ring-[#8A40F5] focus:ring-offset-2">Reserve Free Spot</a>
+              </div>
+            </div>
+          </aside>
+        </div>
+      </section>
+
+      <!-- Human story -->
+      <section class="border-y border-[#1A0533]/5 bg-[#F5F1E9] py-16 md:py-24">
+        <div class="mx-auto grid max-w-7xl gap-6 px-6 md:px-12 lg:grid-cols-[.9fr_1.1fr] lg:px-16 xl:px-24">
+          <blockquote class="rounded-3xl bg-[#1A0533] p-7 text-white shadow-xl md:p-10">
+            <svg class="mb-8 h-9 w-9 text-[#B887FF]" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M7.17 6A5.17 5.17 0 0 0 2 11.17V18h7v-7H5.1a2.07 2.07 0 0 1 2.07-2.07V6Zm10 0A5.17 5.17 0 0 0 12 11.17V18h7v-7h-3.9a2.07 2.07 0 0 1 2.07-2.07V6Z" /></svg>
+            <p class="font-['Playfair_Display',serif] text-2xl font-bold italic leading-snug md:text-3xl">
+              “I understand the tutorials when I watch them. But when it is time to build something myself, I do not know where to start.”
+            </p>
+            <footer class="mt-6 text-sm font-semibold text-[#D9C8EC]">If that sounds familiar, this workshop is for you.</footer>
+          </blockquote>
+
+          <div class="grid gap-4">
+            <div class="human-card"><span>01</span><div><h2>You do not need another AI overview.</h2><p>You need to see how the pieces come together around one clear, useful problem.</p></div></div>
+            <div class="human-card"><span>02</span><div><h2>You do not need every framework first.</h2><p>You need a working example and someone to explain why each part is there.</p></div></div>
+            <div class="human-card"><span>03</span><div><h2>Saturday is about building.</h2><p>We will begin with a real customer question and build the support flow step by step.</p></div></div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Outcomes -->
+      <section id="what-youll-build" class="scroll-mt-8 bg-white py-16 md:py-24">
+        <div class="mx-auto max-w-7xl px-6 md:px-12 lg:px-16 xl:px-24">
+          <div class="mb-12 max-w-3xl">
+            <p class="section-kicker">What you will build</p>
+            <h2 class="section-title">A support agent that can do more than sound helpful.</h2>
+            <p class="section-copy">By the end of the session, you will understand how an AI application can use business information and tools to take the right next step.</p>
+          </div>
+
+          <div class="grid gap-5 md:grid-cols-3">
+            <article class="outcome-card">
+              <div class="icon-tile"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 5.5A2.5 2.5 0 0 1 6.5 3H20v16H6.5A2.5 2.5 0 0 0 4 21.5v-16Z" /><path d="M4 18.5A2.5 2.5 0 0 1 6.5 16H20M8 7h7M8 11h5" /></svg></div>
+              <p class="card-number">01</p><h3>Answer from company information</h3><p>Give the agent FAQs and policies so its answers reflect what the business actually says.</p>
+            </article>
+            <article class="outcome-card">
+              <div class="icon-tile"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="11" cy="11" r="6" /><path d="m20 20-4.5-4.5M8.5 11h5M11 8.5v5" /></svg></div>
+              <p class="card-number">02</p><h3>Check customer details</h3><p>Connect a simple tool so the agent can look up useful information such as an order status.</p>
+            </article>
+            <article class="outcome-card">
+              <div class="icon-tile"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20 7h-9M14 17H5M17 4l3 3-3 3M8 14l-3 3 3 3" /></svg></div>
+              <p class="card-number">03</p><h3>Hand off when needed</h3><p>Set sensible boundaries so complex or sensitive problems reach a real support person.</p>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <!-- Real example -->
+      <section class="bg-white pb-16 md:pb-24">
+        <div class="mx-auto max-w-7xl px-6 md:px-12 lg:px-16 xl:px-24">
+          <div class="grid gap-10 overflow-hidden rounded-[2rem] bg-[#21162C] p-7 text-white shadow-xl md:p-12 lg:grid-cols-2 lg:items-center lg:p-14">
+            <div>
+              <p class="section-kicker text-[#CFAEFF]!">A real support problem</p>
+              <h2 class="text-3xl font-extrabold leading-tight tracking-tight md:text-5xl">A customer asks, “Where is my order?”</h2>
+              <p class="mt-5 text-lg leading-8 text-[#D5C9DC]">A normal chatbot can give a polite answer. A useful support agent checks what is actually happening before it responds.</p>
+            </div>
+            <ol class="grid gap-3">
+              <li class="scenario-step"><span>1</span><div><strong>Understand the question</strong><p>The customer needs an order update.</p></div></li>
+              <li class="scenario-step"><span>2</span><div><strong>Check business information</strong><p>What does the delivery policy promise?</p></div></li>
+              <li class="scenario-step"><span>3</span><div><strong>Look up the order</strong><p>What is the real status of order #1042?</p></div></li>
+              <li class="scenario-step"><span>4</span><div><strong>Choose the right next step</strong><p>Answer clearly or hand the case to a person.</p></div></li>
+            </ol>
+          </div>
+        </div>
+      </section>
+
+      <!-- Agenda -->
+      <section class="border-y border-[#1A0533]/5 bg-[#F8F5EF] py-16 md:py-24">
+        <div class="mx-auto max-w-7xl px-6 md:px-12 lg:px-16 xl:px-24">
+          <div class="mb-12 max-w-3xl">
+            <p class="section-kicker">How the workshop works</p>
+            <h2 class="section-title">We will build it together.</h2>
+            <p class="section-copy">No long theory session before we begin. You will see the finished idea, then understand and build each useful part.</p>
+          </div>
+          <div class="grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
+            {agendaItems.map((item) => (
+              <article class="rounded-2xl border border-[#E5DDE8] bg-white p-6 shadow-sm">
+                <div class="mb-7 flex items-center justify-between">
+                  <span class="grid h-11 w-11 place-items-center rounded-xl bg-[#F0E8FC] text-[#8A40F5]">
+                    <svg class="h-5 w-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6" /></svg>
+                  </span>
+                  <span class="text-xs font-extrabold tracking-[.18em] text-[#8A40F5]">PART {item.part}</span>
+                </div>
+                <h3 class="text-lg font-extrabold text-[#1A0533]">{item.title}</h3>
+                <p class="mt-3 text-sm leading-6 text-gray-600">{item.description}</p>
+              </article>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      <!-- Cohort bridge -->
+      <section class="bg-white py-16 md:py-24">
+        <div class="mx-auto max-w-7xl px-6 md:px-12 lg:px-16 xl:px-24">
+          <div class="relative grid overflow-hidden rounded-[2rem] bg-gradient-to-br from-[#8A40F5] to-[#4D2385] p-8 text-white shadow-xl md:p-12 lg:grid-cols-[1.1fr_.9fr] lg:items-center lg:gap-12 lg:p-14">
+            <div class="pointer-events-none absolute -right-24 -top-24 h-80 w-80 rounded-full border-[60px] border-white/5"></div>
+            <div class="relative">
+              <p class="mb-3 text-xs font-extrabold uppercase tracking-[.18em] text-[#E2D2FA]">And after Saturday?</p>
+              <h2 class="text-3xl font-extrabold leading-tight tracking-tight md:text-5xl">One workshop gives you a start. Six weeks helps you ship.</h2>
+              <p class="mt-5 max-w-2xl text-lg leading-8 text-[#F0E8FA]">In the full UniversityX cohort, you will work with your own data, APIs, multi-step workflows, reliability, deployment, and a final project you can confidently demo.</p>
+              <a href={workshop.courseUrl} data-cohort-cta class="mt-7 inline-flex items-center gap-2 rounded-full bg-white px-6 py-3.5 font-bold text-[#5E279D] transition hover:-translate-y-0.5 hover:shadow-xl focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-[#6F32BE]">
+                Explore the 6-week cohort
+                <svg class="h-5 w-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6" /></svg>
+              </a>
+            </div>
+            <div class="relative mt-8 rounded-2xl border border-white/15 bg-white/10 p-6 backdrop-blur lg:mt-0">
+              <p class="text-sm font-bold text-[#E2D2FA]">BUILD AND SHIP AI APPLICATIONS WITH PYTHON</p>
+              <ul class="mt-5 space-y-4">
+                {[
+                  "Build a working project every week",
+                  "Get live feedback and practical support",
+                  "Finish with a project you can demo and explain",
+                ].map((item) => (
+                  <li class="flex gap-3 text-[#F7F2FC]"><span class="grid h-6 w-6 shrink-0 place-items-center rounded-full bg-white/15"><svg class="h-3.5 w-3.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.8" aria-hidden="true"><path d="m20 6-11 11-5-5" /></svg></span>{item}</li>
+                ))}
+              </ul>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Audience -->
+      <section class="bg-[#F8F5EF] py-16 md:py-24">
+        <div class="mx-auto max-w-7xl px-6 md:px-12 lg:px-16 xl:px-24">
+          <div class="mb-12 max-w-3xl">
+            <p class="section-kicker">Who should join</p>
+            <h2 class="section-title">You do not need to be an AI expert.</h2>
+            <p class="section-copy">This is a practical coding session for people ready to move from watching to building.</p>
+          </div>
+          <div class="grid gap-5 md:grid-cols-2">
+            <div class="rounded-3xl border border-emerald-200 bg-white p-7 md:p-9">
+              <h3 class="text-xl font-extrabold">This is for you if:</h3>
+              <ul class="mt-6 space-y-4">
+                {[
+                  "You know basic Python.",
+                  "You are curious about building useful AI applications.",
+                  "You want to move beyond passively watching tutorials.",
+                  "You want to see how AI uses real information and tools.",
+                ].map((item) => (
+                  <li class="fit-row">
+                    <span class="fit-icon yes" aria-hidden="true">
+                      <svg viewBox="0 0 24 24"><path d="m6.5 12.5 3.5 3.5 7.5-8" /></svg>
+                    </span>
+                    <span>{item}</span>
+                  </li>
+                ))}
+              </ul>
+            </div>
+            <div class="rounded-3xl border border-rose-200 bg-white p-7 md:p-9">
+              <h3 class="text-xl font-extrabold">This may not be for you if:</h3>
+              <ul class="mt-6 space-y-4">
+                {[
+                  "You have never written Python before.",
+                  "You are only looking for prompt-writing or a no-code session.",
+                  "You want a passive lecture instead of a practical build.",
+                ].map((item) => (
+                  <li class="fit-row">
+                    <span class="fit-icon no" aria-hidden="true">
+                      <svg viewBox="0 0 24 24"><path d="m8 8 8 8M16 8l-8 8" /></svg>
+                    </span>
+                    <span>{item}</span>
+                  </li>
+                ))}
+              </ul>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Meet your instructor -->
+      <section class="bg-[#F5F2EB] py-16 md:py-20">
+        <div class="mx-auto max-w-7xl px-6 md:px-12 lg:px-16 xl:px-24">
+          <p class="mb-10 text-xs font-semibold uppercase tracking-widest text-[#8A40F5]">Meet Your Instructor</p>
+          <div class="grid grid-cols-1 items-center gap-8 md:grid-cols-2">
+            <div>
+              <h2 class="mb-2 text-2xl font-extrabold text-[#1A0533] md:text-3xl">{workshop.instructorName}</h2>
+              <p class="mb-5 font-medium text-[#8A40F5]">{workshop.instructorRole}</p>
+              <div class="space-y-4 text-lg leading-relaxed text-gray-700">
+                <p>
+                  Abasiodiong Udofia is the Co-Founder &amp; CTO of <strong>ChatJourno</strong>, an AI platform powered by Python, vector search, and production RAG workflows. With deep experience across high-growth fintech platforms, he has architected resilient systems processing $10M+ with zero payment failures, specialized in idempotent webhooks and automated reconciliation.
+                </p>
+                <p>
+                  As a software development mentor at <strong>3MTT Nigeria</strong>, Abasiodiong has guided hundreds of engineers in full-stack engineering, secure APIs, and production readiness. In this live workshop, he will walk you step-by-step through building an AI customer support agent that uses company knowledge, tools, and human handoff.
+                </p>
+              </div>
+            </div>
+            <div class="order-first justify-self-center md:order-last md:justify-self-end">
+              <img src={workshop.instructorPhoto} alt={workshop.instructorName} class="mx-auto aspect-[3/4] w-full max-w-xs rounded-2xl object-cover object-top shadow-md md:mx-0" loading="lazy" />
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <WorkshopRegistrationForm
+        workshopTitle={workshop.title}
+        startDate={workshop.startDate}
+        time={workshop.time}
+        targetDate={workshop.targetDate}
+        collectionName="AI_Customer_Support_Agent_Workshop"
+        workshopSlug={workshop.slug}
+        cohortName="Build and Ship AI Applications with Python cohort"
+        collectWhatsApp={true}
+        whatsappGroupUrl={whatsappGroupUrl}
+        successMessage="Your free seat is reserved. Join the WhatsApp group below so you receive the workshop link and a reminder before we go live."
+      />
+
+      <!-- FAQ -->
+      <section class="bg-white py-16 md:py-24">
+        <div class="mx-auto max-w-4xl px-6 md:px-12">
+          <div class="mb-12 text-center">
+            <p class="section-kicker">Before you register</p>
+            <h2 class="section-title">Frequently asked questions</h2>
+          </div>
+          <div class="space-y-3" id="faq">
+            {faqs.map(({ question, answer }, index) => (
+              <div class="faq-item overflow-hidden rounded-2xl border border-[#E8E0EB] bg-white">
+                <button type="button" class="faq-trigger flex w-full cursor-pointer items-center justify-between gap-5 px-5 py-5 text-left transition hover:bg-[#FAF8FC] md:px-7" aria-expanded="false" aria-controls={`faq-panel-${index}`}>
+                  <span class="font-bold text-[#1A0533] md:text-lg">{question}</span>
+                  <svg class="faq-chevron h-5 w-5 shrink-0 text-[#8A40F5] transition-transform" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><path d="m6 9 6 6 6-6" /></svg>
+                </button>
+                <div id={`faq-panel-${index}`} class="faq-panel" role="region">
+                  <div class="overflow-hidden"><p class="border-t border-[#EEE8F0] px-5 pb-6 pt-4 leading-7 text-gray-600 md:px-7">{answer}</p></div>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+    </main>
+
+    <Footer />
+  </div>
+</Layout>
+
+<style>
+  :global(html) { scroll-behavior: smooth; }
+  .workshop-chip { display: inline-flex; align-items: center; gap: .65rem; border-radius: 999px; background: #F5F2EB; padding: .65rem 1.05rem; color: #1A0533; font-size: 1rem; font-weight: 500; line-height: 1.5; }
+  .workshop-chip svg { width: 1.25rem; height: 1.25rem; flex: 0 0 auto; fill: none; stroke: #8A40F5; stroke-width: 2.15; stroke-linecap: round; stroke-linejoin: round; }
+  .human-card { display: grid; grid-template-columns: auto 1fr; gap: 1rem; border: 1px solid #E4DCE7; border-radius: 1.25rem; background: white; padding: 1.3rem; }
+  .human-card > span { display: grid; width: 2.5rem; height: 2.5rem; place-items: center; border-radius: .8rem; background: #F0E8FC; color: #7A35D0; font-size: .75rem; font-weight: 900; }
+  .human-card h2 { font-size: 1.03rem; font-weight: 800; }
+  .human-card p { margin-top: .3rem; color: #6B6270; line-height: 1.6; }
+  .section-kicker { margin-bottom: .75rem; color: #8A40F5; font-size: .75rem; font-weight: 900; letter-spacing: .16em; text-transform: uppercase; }
+  .section-title { font-size: clamp(2rem, 4vw, 3.5rem); font-weight: 800; line-height: 1.08; letter-spacing: -.035em; color: #1A0533; }
+  .section-copy { margin-top: 1rem; max-width: 46rem; color: #655B69; font-size: 1.08rem; line-height: 1.75; }
+  .outcome-card { position: relative; overflow: hidden; border: 1px solid #E5DDE8; border-radius: 1.5rem; background: #FCFBF8; padding: 1.6rem; transition: transform .2s ease, box-shadow .2s ease; }
+  .outcome-card:hover { transform: translateY(-3px); box-shadow: 0 18px 40px rgb(26 5 51 / .08); }
+  .icon-tile { display: grid; width: 3.1rem; height: 3.1rem; place-items: center; border-radius: 1rem; background: #EDE2FA; color: #7130C6; }
+  .icon-tile svg { width: 1.45rem; height: 1.45rem; fill: none; stroke: currentColor; stroke-width: 1.9; stroke-linecap: round; stroke-linejoin: round; }
+  .card-number { position: absolute; right: 1.4rem; top: 1.5rem; color: #C9B1E5; font-size: .76rem; font-weight: 900; letter-spacing: .14em; }
+  .outcome-card h3 { margin-top: 1.5rem; font-size: 1.15rem; font-weight: 800; color: #1A0533; }
+  .outcome-card > p:last-child { margin-top: .7rem; color: #6B6270; line-height: 1.65; }
+  .scenario-step { display: grid; grid-template-columns: auto 1fr; gap: .85rem; border: 1px solid rgb(255 255 255 / .1); border-radius: 1rem; background: rgb(255 255 255 / .06); padding: .9rem 1rem; }
+  .scenario-step > span { display: grid; width: 1.9rem; height: 1.9rem; place-items: center; border-radius: .65rem; background: rgb(207 174 255 / .16); color: #D9BDFF; font-size: .75rem; font-weight: 900; }
+  .scenario-step strong { font-size: .95rem; }
+  .scenario-step p { margin-top: .15rem; color: #CBBFD3; font-size: .82rem; }
+  .fit-row { display: flex; align-items: flex-start; gap: .75rem; color: #5E5462; line-height: 1.6; }
+  .fit-icon { display: grid; width: 2rem; height: 2rem; flex: 0 0 auto; place-items: center; border-radius: 999px; box-shadow: inset 0 0 0 1px currentColor; }
+  .fit-icon svg { width: 1.1rem; height: 1.1rem; fill: none; stroke: currentColor; stroke-width: 2.8; stroke-linecap: round; stroke-linejoin: round; }
+  .fit-icon.yes { background: #E7F7EE; color: #178454; }
+  .fit-icon.no { background: #FCEBED; color: #BF4553; }
+  .faq-panel { display: grid; grid-template-rows: 0fr; transition: grid-template-rows .3s ease; }
+  .faq-panel.is-open { grid-template-rows: 1fr; }
+  .faq-chevron.is-open { transform: rotate(180deg); }
+  @media (prefers-reduced-motion: reduce) {
+    :global(html) { scroll-behavior: auto; }
+    *, *::before, *::after { scroll-behavior: auto !important; transition-duration: .01ms !important; animation-duration: .01ms !important; }
+  }
+</style>
+
+<script>
+  declare global {
+    interface Window {
+      posthog?: any;
+    }
+  }
+
+  function getAnalyticsContext() {
+    const main = document.querySelector("main[data-workshop-slug]");
+    const params = new URLSearchParams(window.location.search);
+    const utmSource = params.get("utm_source")?.trim();
+    let trafficSource = utmSource || "direct";
+
+    if (!utmSource && document.referrer) {
+      try {
+        trafficSource = new URL(document.referrer).hostname || "direct";
+      } catch {
+        trafficSource = "direct";
+      }
+    }
+
+    return {
+      workshop_slug:
+        main?.getAttribute("data-workshop-slug") ||
+        "build-an-ai-customer-support-agent-for-real-businesses",
+      referral_code: params.get("ref")?.trim() || null,
+      traffic_source: trafficSource,
+    };
+  }
+
+  function initWorkshopPage() {
+    const analyticsContext = getAnalyticsContext();
+    window.posthog?.capture("workshop_page_viewed", analyticsContext);
+
+    document.querySelectorAll(".faq-trigger").forEach((trigger) => {
+      trigger.addEventListener("click", () => {
+        const panel = trigger.nextElementSibling;
+        const chevron = trigger.querySelector(".faq-chevron");
+        const isOpen = trigger.getAttribute("aria-expanded") === "true";
+        trigger.setAttribute("aria-expanded", String(!isOpen));
+        panel?.classList.toggle("is-open", !isOpen);
+        chevron?.classList.toggle("is-open", !isOpen);
+      });
+    });
+
+    document.querySelectorAll("[data-registration-cta]").forEach((cta) => {
+      cta.addEventListener("click", () => {
+        window.posthog?.capture("workshop_registration_cta_clicked", {
+          ...analyticsContext,
+          placement: cta.getAttribute("data-registration-cta"),
+        });
+      });
+    });
+
+    document.querySelectorAll("[data-cohort-cta]").forEach((cta) => {
+      cta.addEventListener("click", () => {
+        window.posthog?.capture("cohort_cta_clicked", {
+          ...analyticsContext,
+          destination: cta.getAttribute("href"),
+        });
+      });
+    });
+  }
+
+  if (document.readyState === "loading") {
+    document.addEventListener("DOMContentLoaded", initWorkshopPage);
+  } else {
+    initWorkshopPage();
+  }
+</script>

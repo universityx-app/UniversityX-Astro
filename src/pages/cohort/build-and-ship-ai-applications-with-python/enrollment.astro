@@ -1,0 +1,279 @@
+---
+import Layout from '../../../layouts/Layout.astro';
+import Navbar from '../../../components/Navbar.astro';
+import Footer from '../../../components/Footer.astro';
+import { AI_COHORT_PATH, aiCohort, formatNaira } from '../../../data/aiCohort';
+---
+
+<Layout
+  title="Complete Your Cohort Registration | UniversityX"
+  description="Share the details UniversityX needs to match your Paystack payment and prepare your cohort access."
+  robots="noindex, nofollow"
+>
+  <Navbar />
+
+  <main class="min-h-[75vh] bg-[#F5F2EB] py-12 text-[#1A0533] md:py-20">
+    <div class="mx-auto max-w-6xl px-6 md:px-12">
+      <nav class="mb-8 flex items-center gap-2 text-sm text-gray-500" aria-label="Breadcrumb">
+        <a href={AI_COHORT_PATH} class="transition-colors hover:text-[#8A40F5]">AI cohort</a>
+        <span class="text-[#8A40F5]" aria-hidden="true">→</span>
+        <span class="font-semibold text-[#1A0533]">Complete registration</span>
+      </nav>
+
+      <div class="grid gap-10 lg:grid-cols-[0.72fr_1.28fr] lg:items-start">
+        <section>
+          <span class="inline-flex items-center gap-2 rounded-full border border-[#8A40F5]/20 bg-white px-4 py-2 text-xs font-extrabold uppercase tracking-widest text-[#8A40F5]">
+            After Paystack
+          </span>
+          <h1 class="mt-6 text-4xl font-extrabold leading-tight tracking-tight md:text-5xl">Complete your cohort registration</h1>
+          <p class="mt-5 text-xl leading-8 text-gray-700">We’ll use these details to match your Paystack payment and prepare your UniversityX access.</p>
+
+          <div class="mt-8 rounded-2xl border border-[#8A40F5]/15 bg-white p-5">
+            <div class="flex gap-4">
+              <span class="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl bg-[#8A40F5]/10 text-[#8A40F5]">
+                <svg class="h-5 w-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M12 9v4m0 4h.01M10.3 3.7 2.2 18a2 2 0 0 0 1.74 3h16.12a2 2 0 0 0 1.74-3L13.7 3.7a2 2 0 0 0-3.4 0Z" /></svg>
+              </span>
+              <div>
+                <h2 class="font-extrabold">Payment is verified separately</h2>
+                <p class="mt-1 text-sm leading-6 text-gray-600">Submitting this form does not verify payment. Our team will match the email and payment option below against the Paystack dashboard before granting access.</p>
+              </div>
+            </div>
+          </div>
+
+          <dl class="mt-8 space-y-4 text-sm">
+            <div class="flex items-center justify-between gap-4 border-b border-[#1A0533]/10 pb-4"><dt class="text-gray-500">Programme</dt><dd class="text-right font-bold">{aiCohort.shortTitle}</dd></div>
+            <div class="flex items-center justify-between gap-4 border-b border-[#1A0533]/10 pb-4"><dt class="text-gray-500">Starts</dt><dd class="font-bold">{aiCohort.startDateLabel}</dd></div>
+            <div class="flex items-center justify-between gap-4"><dt class="text-gray-500">Support</dt><dd class="font-bold">Email + WhatsApp</dd></div>
+          </dl>
+        </section>
+
+        <section class="rounded-3xl border border-[#1A0533]/10 bg-white p-6 shadow-xl shadow-[#1A0533]/5 md:p-9" aria-labelledby="registration-form-heading">
+          <div id="registration-success" class="hidden" role="status" aria-live="polite" tabindex="-1">
+            <span class="flex h-14 w-14 items-center justify-center rounded-2xl bg-[#45D694]/15 text-[#16885A]">
+              <svg class="h-7 w-7" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" aria-hidden="true"><path d="M20 6 9 17l-5-5" /></svg>
+            </span>
+            <h2 class="mt-6 text-3xl font-extrabold">You’re registered.</h2>
+            <p class="mt-4 text-lg leading-8 text-gray-700">We’ll verify your payment and send your UniversityX access and cohort information to your email/WhatsApp.</p>
+            <p id="installment-confirmation" class="mt-4 hidden rounded-xl bg-[#F5F2EB] p-4 font-semibold leading-7 text-gray-700">We’ll contact you about the remaining installment before the payment deadline.</p>
+            <a href={AI_COHORT_PATH} class="mt-7 inline-flex font-bold text-[#8A40F5] hover:text-[#7434D8]">Return to the cohort page →</a>
+          </div>
+
+          <form id="payment-registration-form" class="space-y-5" novalidate>
+            <div>
+              <p class="text-xs font-extrabold uppercase tracking-widest text-[#8A40F5]">One last step</p>
+              <h2 id="registration-form-heading" class="mt-2 text-2xl font-extrabold">Tell us who made the payment</h2>
+              <p class="mt-2 text-sm leading-6 text-gray-500">Use the same email address you entered on Paystack.</p>
+            </div>
+
+            <div>
+              <label for="registration-name" class="mb-2 block font-bold">Full name</label>
+              <input id="registration-name" name="full_name" type="text" required autocomplete="name" maxlength="120" class="form-control" />
+            </div>
+
+            <div class="grid gap-5 sm:grid-cols-2">
+              <div>
+                <label for="registration-email" class="mb-2 block font-bold">Paystack payment email</label>
+                <input id="registration-email" name="email" type="email" required autocomplete="email" maxlength="180" class="form-control" />
+              </div>
+              <div>
+                <label for="registration-whatsapp" class="mb-2 block font-bold">WhatsApp number</label>
+                <input id="registration-whatsapp" name="whatsapp_number" type="tel" required autocomplete="tel" inputmode="tel" maxlength="40" placeholder="Include country code" class="form-control" />
+              </div>
+            </div>
+
+            <input id="registration-payment-option" name="payment_option" type="hidden" value="" />
+
+            <div id="locked-payment-option" class="hidden rounded-2xl border border-[#8A40F5]/20 bg-[#F8F4FF] p-4">
+              <p class="text-xs font-extrabold uppercase tracking-widest text-[#8A40F5]">Payment option from Paystack return</p>
+              <div class="mt-2 flex items-center justify-between gap-4">
+                <p id="locked-payment-label" class="font-extrabold"></p>
+                <span class="rounded-full bg-white px-3 py-1 text-xs font-bold text-gray-500">Locked</span>
+              </div>
+              <p class="mt-2 text-sm leading-6 text-gray-500">This helps us reconcile your registration. It is not proof that payment was successful.</p>
+            </div>
+
+            <fieldset id="payment-option-choice" class="hidden rounded-2xl border border-gray-200 p-4">
+              <legend class="px-1 font-bold">Which payment option did you use?</legend>
+              <p class="mt-1 text-sm text-gray-500">Paystack did not return a valid option, so please choose the one you paid for.</p>
+              <div class="mt-4 grid gap-3 sm:grid-cols-2">
+                <label class="flex cursor-pointer gap-3 rounded-xl bg-[#F5F2EB] p-4">
+                  <input type="radio" name="payment_option_choice" value="full" class="mt-1 accent-[#8A40F5]" />
+                  <span><strong class="block">Paid in full</strong><span class="mt-1 block text-sm text-gray-500">{formatNaira(aiCohort.fullPaymentPrice)}</span></span>
+                </label>
+                <label class="flex cursor-pointer gap-3 rounded-xl bg-[#F5F2EB] p-4">
+                  <input type="radio" name="payment_option_choice" value="installment" class="mt-1 accent-[#8A40F5]" />
+                  <span><strong class="block">First installment</strong><span class="mt-1 block text-sm text-gray-500">{formatNaira(aiCohort.installmentAmount)}</span></span>
+                </label>
+              </div>
+            </fieldset>
+
+            <details class="rounded-2xl border border-gray-200 p-4">
+              <summary class="cursor-pointer font-bold text-[#8A40F5]">Add a little more context <span class="font-normal text-gray-400">(optional)</span></summary>
+              <div class="mt-5 space-y-5">
+                <div>
+                  <label for="registration-role" class="mb-2 block font-bold">Current role or experience</label>
+                  <input id="registration-role" name="current_role" type="text" maxlength="160" autocomplete="organization-title" class="form-control" />
+                </div>
+                <div>
+                  <label for="registration-python" class="mb-2 block font-bold">Python experience</label>
+                  <select id="registration-python" name="python_experience" class="form-control bg-white">
+                    <option value="">Select an option</option>
+                    <option value="Basic Python">I understand basic Python</option>
+                    <option value="Software developer">I’m a software developer who uses Python</option>
+                    <option value="Data or ML practitioner">I’m a data or ML practitioner</option>
+                    <option value="Other">Something else</option>
+                  </select>
+                </div>
+                <div>
+                  <label for="registration-goal" class="mb-2 block font-bold">What do you hope to learn or build?</label>
+                  <textarea id="registration-goal" name="learning_goal" rows="3" maxlength="600" class="form-control" placeholder="A short sentence is enough."></textarea>
+                </div>
+              </div>
+            </details>
+
+            <div class="absolute -left-[10000px] top-auto h-px w-px overflow-hidden" aria-hidden="true">
+              <label for="registration-company">Company website</label>
+              <input id="registration-company" name="company_website" type="text" tabindex="-1" autocomplete="off" />
+            </div>
+
+            <label class="flex cursor-pointer items-start gap-3 rounded-xl bg-[#F5F2EB] p-4 text-sm leading-6 text-gray-600">
+              <input name="reconciliation_acknowledgement" type="checkbox" required class="mt-1 h-4 w-4 shrink-0 accent-[#8A40F5]" />
+              <span>I understand UniversityX will verify these details against Paystack before granting cohort access.</span>
+            </label>
+
+            <button id="registration-submit" type="submit" class="w-full rounded-xl bg-[#8A40F5] px-6 py-4 font-extrabold text-white transition hover:bg-[#7434D8] disabled:cursor-not-allowed disabled:opacity-55 focus:outline-none focus:ring-2 focus:ring-[#8A40F5] focus:ring-offset-2">Complete registration</button>
+            <p id="registration-error" class="hidden rounded-xl bg-red-50 p-4 text-center text-sm font-semibold text-red-700" role="alert">We couldn’t save your registration. Please check your details and try again.</p>
+          </form>
+        </section>
+      </div>
+    </div>
+  </main>
+
+  <Footer />
+</Layout>
+
+<style>
+  .form-control {
+    width: 100%;
+    border: 1px solid #d1d5db;
+    border-radius: .75rem;
+    padding: .875rem 1rem;
+    color: #1A0533;
+    outline: none;
+  }
+  .form-control:focus { border-color: #8A40F5; box-shadow: 0 0 0 3px rgba(138,64,245,.16); }
+</style>
+
+<script>
+  import PocketBase from 'pocketbase';
+
+  declare global {
+    interface Window {
+      posthog?: {
+        capture: (event: string, properties?: Record<string, unknown>) => void;
+        captureException?: (error: unknown) => void;
+      };
+    }
+  }
+
+  function initPaymentRegistration() {
+    const form = document.getElementById('payment-registration-form') as HTMLFormElement | null;
+    const submit = document.getElementById('registration-submit') as HTMLButtonElement | null;
+    const error = document.getElementById('registration-error');
+    const success = document.getElementById('registration-success');
+    const optionInput = document.getElementById('registration-payment-option') as HTMLInputElement | null;
+    const lockedPanel = document.getElementById('locked-payment-option');
+    const lockedLabel = document.getElementById('locked-payment-label');
+    const choicePanel = document.getElementById('payment-option-choice') as HTMLFieldSetElement | null;
+    const installmentConfirmation = document.getElementById('installment-confirmation');
+    if (!form || !submit || !error || !success || !optionInput || !lockedPanel || !lockedLabel || !choicePanel) return;
+
+    const analyticsContext = { cohort_slug: 'build-and-ship-ai-applications-with-python' };
+    window.posthog?.capture('cohort_post_payment_page_viewed', analyticsContext);
+
+    const params = new URLSearchParams(window.location.search);
+    const returnedOption = params.get('payment_option');
+    const isValidReturnedOption = returnedOption === 'full' || returnedOption === 'installment';
+
+    if (isValidReturnedOption) {
+      optionInput.value = returnedOption;
+      lockedLabel.textContent = returnedOption === 'full' ? 'Paid in full' : 'First installment';
+      lockedPanel.classList.remove('hidden');
+      choicePanel.classList.add('hidden');
+      choicePanel.querySelectorAll<HTMLInputElement>('input[type="radio"]').forEach((radio) => { radio.required = false; });
+    } else {
+      choicePanel.classList.remove('hidden');
+      choicePanel.querySelectorAll<HTMLInputElement>('input[type="radio"]').forEach((radio) => {
+        radio.required = true;
+        radio.addEventListener('change', () => { if (radio.checked) optionInput.value = radio.value; });
+      });
+    }
+
+    let started = false;
+    form.querySelectorAll('input, select, textarea').forEach((field) => {
+      field.addEventListener('focus', () => {
+        if (started) return;
+        started = true;
+        window.posthog?.capture('cohort_post_payment_registration_started', analyticsContext);
+      }, { once: true });
+    });
+
+    let submitting = false;
+    form.addEventListener('submit', async (event) => {
+      event.preventDefault();
+      if (submitting) return;
+      error.classList.add('hidden');
+
+      const honeypot = form.elements.namedItem('company_website') as HTMLInputElement | null;
+      if (honeypot?.value) return;
+      if (!form.checkValidity()) { form.reportValidity(); return; }
+
+      const paymentOption = optionInput.value;
+      if (paymentOption !== 'full' && paymentOption !== 'installment') {
+        error.textContent = 'Please select the payment option you used.';
+        error.classList.remove('hidden');
+        return;
+      }
+
+      const formData = new FormData(form);
+      submitting = true;
+      submit.disabled = true;
+      submit.textContent = 'Saving your registration…';
+
+      try {
+        const pocketBaseUrl = import.meta.env.PUBLIC_POCKETBASE_URL;
+        if (!pocketBaseUrl) throw new Error('PocketBase URL is not configured');
+        const pb = new PocketBase(pocketBaseUrl);
+
+        await pb.collection('Cohort_Payment_Registrations').create({
+          cohort_slug: 'build-and-ship-ai-applications-with-python',
+          full_name: String(formData.get('full_name') || '').trim(),
+          email: String(formData.get('email') || '').trim().toLowerCase(),
+          whatsapp_number: String(formData.get('whatsapp_number') || '').trim(),
+          payment_option: paymentOption,
+          current_role: String(formData.get('current_role') || '').trim(),
+          python_experience: String(formData.get('python_experience') || ''),
+          learning_goal: String(formData.get('learning_goal') || '').trim(),
+        });
+
+        window.posthog?.capture('cohort_post_payment_registration_submitted', { ...analyticsContext, payment_option: paymentOption });
+        form.classList.add('hidden');
+        success.classList.remove('hidden');
+        if (paymentOption === 'installment') installmentConfirmation?.classList.remove('hidden');
+        success.focus();
+        success.scrollIntoView({ behavior: 'smooth', block: 'center' });
+      } catch (err) {
+        window.posthog?.capture('cohort_post_payment_registration_failed', { ...analyticsContext, payment_option: paymentOption });
+        window.posthog?.captureException?.(err);
+        error.textContent = 'We couldn’t save your registration. Please check your connection and try again.';
+        error.classList.remove('hidden');
+        submitting = false;
+        submit.disabled = false;
+        submit.textContent = 'Complete registration';
+      }
+    });
+  }
+
+  if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', initPaymentRegistration, { once: true });
+  else initPaymentRegistration();
+</script>

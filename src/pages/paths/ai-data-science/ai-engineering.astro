@@ -1,0 +1,33 @@
+---
+import Layout from '../../../layouts/Layout.astro';
+import Navbar from '../../../components/Navbar.astro';
+import Footer from '../../../components/Footer.astro';
+import { AI_COHORT_PATH, aiCohort, formatNaira } from '../../../data/aiCohort';
+---
+
+<Layout title="AI Engineering Track | UniversityX" description="Learn to build useful AI applications with Python, private data, tools, workflows, evaluation, and deployment.">
+  <Navbar />
+  <main class="bg-white text-[#1A0533]">
+    <section class="bg-[#1A0533] py-16 text-white md:py-24">
+      <div class="mx-auto max-w-7xl px-6 md:px-12 lg:px-16 xl:px-24">
+        <nav class="mb-8 flex items-center gap-2 text-sm text-white/50"><a href="/paths/ai-data-science/" class="hover:text-white">AI &amp; Data Science</a><span>→</span><span class="text-white">AI Engineering</span></nav>
+        <p class="text-xs font-extrabold uppercase tracking-widest text-[#B98BFF]">UniversityX track</p>
+        <h1 class="mt-5 max-w-4xl text-5xl font-extrabold leading-tight tracking-tight md:text-6xl">AI Engineering</h1>
+        <p class="mt-6 max-w-3xl text-xl leading-8 text-white/65">Go beyond model demos. Build AI-powered software that works with knowledge, tools, workflows, and real users.</p>
+      </div>
+    </section>
+
+    <section class="py-16 md:py-24">
+      <div class="mx-auto max-w-7xl px-6 md:px-12 lg:px-16 xl:px-24">
+        <div class="flex flex-col gap-5 md:flex-row md:items-end md:justify-between"><div class="max-w-3xl"><p class="text-xs font-extrabold uppercase tracking-widest text-[#8A40F5]">Current cohort</p><h2 class="mt-3 text-3xl font-extrabold md:text-4xl">Start with a six-week practical build sprint.</h2></div><a href="/paths/ai-data-science/ai-engineering/cohorts/" class="font-bold text-[#8A40F5]">View cohorts →</a></div>
+        <a href={AI_COHORT_PATH} class="mt-10 block rounded-3xl border border-[#1A0533]/10 bg-[#F5F2EB] p-7 transition hover:-translate-y-0.5 hover:border-[#8A40F5] md:p-10">
+          <div class="flex flex-wrap items-center gap-3"><span class="rounded-full bg-[#8A40F5] px-3 py-1 text-xs font-bold text-white">Now enrolling</span><span class="text-sm font-semibold text-gray-500">{aiCohort.capacity} seats maximum</span></div>
+          <h3 class="mt-5 text-3xl font-extrabold">{aiCohort.title}</h3>
+          <p class="mt-4 max-w-3xl text-lg leading-8 text-gray-600">Build every week and finish with a deployed capstone that uses your own data, tools, multi-step workflows, and evaluation.</p>
+          <p class="mt-6 font-bold">Starts {aiCohort.startDateLabel} · {formatNaira(aiCohort.fullPaymentPrice)} in full</p>
+        </a>
+      </div>
+    </section>
+  </main>
+  <Footer />
+</Layout>

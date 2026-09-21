@@ -7,6 +7,10 @@ interface Props {
   collectionName?: string;
   workshopSlug?: string;
   cohortName?: string;
+  collectWhatsApp?: boolean;
+  whatsappRequired?: boolean;
+  whatsappGroupUrl?: string;
+  successMessage?: string;
 }
 
 const {
@@ -17,6 +21,10 @@ const {
   collectionName = "Build_Your_First_Autonomous_AI_Agent_with_Python",
   workshopSlug = "build-your-first-autonomous-ai-agent-with-python",
   cohortName = "6-Week Agentic AI Cohort",
+  collectWhatsApp = false,
+  whatsappRequired = false,
+  whatsappGroupUrl,
+  successMessage,
 } = Astro.props;
 ---
 
@@ -112,7 +120,7 @@ const {
       class="max-w-2xl mx-auto bg-white rounded-3xl p-6 sm:p-10 md:p-12 border border-gray-200/80 shadow-xl shadow-gray-200/40"
     >
       <!-- Success State -->
-      <div id="register-success" class="hidden text-center py-6">
+      <div id="register-success" class="hidden text-center py-6" aria-live="polite">
         <div
           class="w-16 h-16 bg-emerald-100 text-emerald-600 rounded-2xl flex items-center justify-center mx-auto mb-5 ring-8 ring-emerald-50 shadow-xs"
         >
@@ -134,44 +142,56 @@ const {
         <p
           class="text-gray-600 text-base md:text-lg leading-relaxed max-w-md mx-auto mb-6"
         >
-          We've reserved your free seat for <strong class="text-[#1A0533]"
-            >{workshopTitle}</strong
-          > on <span class="font-semibold text-[#8A40F5]"
-            >{startDate} at {time}</span
-          >.
+          {
+            successMessage || (
+              <>
+                We've reserved your free seat for <strong class="text-[#1A0533]">
+                  {workshopTitle}
+                </strong>{" "}
+                on <span class="font-semibold text-[#8A40F5]">{startDate} at {time}</span>.
+              </>
+            )
+          }
         </p>
 
-        <div
-          class="bg-[#FAF9F5] rounded-2xl p-6 border border-gray-200/80 text-left max-w-xl mx-auto"
-        >
-          <div
-            class="flex items-center gap-3 text-[#1A0533] font-bold text-base md:text-lg"
-          >
-            <div
-              class="w-8 h-8 rounded-full bg-[#8A40F5]/10 text-[#8A40F5] flex items-center justify-center shrink-0"
-            >
-              <svg
-                class="w-4 h-4"
-                fill="none"
-                viewBox="0 0 24 24"
-                stroke="currentColor"
-                stroke-width="2.5"
+        {
+          whatsappGroupUrl ? (
+            <div class="bg-[#F1F8F4] rounded-2xl p-6 border border-emerald-200 text-center max-w-xl mx-auto">
+              <p class="font-bold text-[#1A0533] text-lg mb-2">
+                One last step: join the reminder group
+              </p>
+              <p class="text-sm md:text-base text-gray-600 leading-relaxed mb-5">
+                Join the WhatsApp group so you do not miss the workshop link or the reminder before we go live.
+              </p>
+              <a
+                id="whatsapp-group-cta"
+                href={whatsappGroupUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+                class="inline-flex w-full sm:w-auto items-center justify-center gap-2 rounded-xl bg-[#1F9D62] px-6 py-3.5 font-bold text-white transition-colors hover:bg-[#188451] focus:outline-none focus:ring-2 focus:ring-[#1F9D62] focus:ring-offset-2"
               >
-                <path
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
-                  d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"
-                ></path>
-              </svg>
+                Join the WhatsApp group for reminders
+                <svg class="h-5 w-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                  <path d="M5 12h14M13 6l6 6-6 6" />
+                </svg>
+              </a>
             </div>
-            <span>Check your inbox for calendar invite &amp; join link</span>
-          </div>
-          <p class="text-sm md:text-base text-gray-600 leading-relaxed pl-11">
-            We sent an email with the Google Calendar invite and setup
-            instructions. If you don't see it within a few minutes, check your
-            spam or promotions tab.
-          </p>
-        </div>
+          ) : (
+            <div class="bg-[#FAF9F5] rounded-2xl p-6 border border-gray-200/80 text-left max-w-xl mx-auto">
+              <div class="flex items-center gap-3 text-[#1A0533] font-bold text-base md:text-lg">
+                <div class="w-8 h-8 rounded-full bg-[#8A40F5]/10 text-[#8A40F5] flex items-center justify-center shrink-0">
+                  <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5" aria-hidden="true">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 002 2z" />
+                  </svg>
+                </div>
+                <span>Check your inbox for calendar invite &amp; join link</span>
+              </div>
+              <p class="text-sm md:text-base text-gray-600 leading-relaxed pl-11">
+                We sent an email with the Google Calendar invite and setup instructions. If you don't see it within a few minutes, check your spam or promotions tab.
+              </p>
+            </div>
+          )
+        }
       </div>
 
       <!-- Registration Form -->
@@ -181,10 +201,13 @@ const {
         class="space-y-6"
         data-collection={collectionName}
         data-workshop-slug={workshopSlug}
+        data-collect-whatsapp={String(collectWhatsApp)}
+        data-whatsapp-required={String(whatsappRequired)}
       >
         <!-- Error Banner (shown if submission fails) -->
         <div
           id="register-general-error"
+          role="alert"
           class="hidden rounded-xl bg-rose-50 border border-rose-200 p-4 text-rose-700 text-sm flex items-start gap-3"
         >
           <svg
@@ -319,6 +342,35 @@ const {
             <span>Please enter a valid email address.</span>
           </p>
         </div>
+
+        {
+          collectWhatsApp && (
+            <div>
+              <label for="reg-whatsapp" class="block text-base font-bold text-[#1A0533] mb-2.5">
+                WhatsApp Number <span class="font-normal text-gray-400">(optional, this is just for reminders)</span>
+              </label>
+              <input
+                type="tel"
+                id="reg-whatsapp"
+                name="whatsapp_number"
+                autocomplete="tel"
+                inputmode="tel"
+                maxlength="40"
+                placeholder="e.g. +234 800 000 0000"
+                required={whatsappRequired}
+                class="w-full bg-[#FAF9F5] rounded-xl px-4 py-3.5 text-base text-gray-800 placeholder-gray-400 border border-gray-200 focus:outline-none focus:ring-2 focus:ring-[#8A40F5] focus:border-[#8A40F5] focus:bg-white transition-all duration-200 shadow-xs"
+              />
+              <p id="reg-whatsapp-error" class="text-rose-500 text-xs mt-1.5 hidden flex items-center gap-1">
+                <svg class="w-3.5 h-3.5 shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true">
+                  <circle cx="12" cy="12" r="10" />
+                  <line x1="12" y1="8" x2="12" y2="12" />
+                  <line x1="12" y1="16" x2="12.01" y2="16" />
+                </svg>
+                <span>Please enter a valid WhatsApp number.</span>
+              </p>
+            </div>
+          )
+        }
 
         <!-- Rate your Python programming experience -->
         <div>
@@ -524,6 +576,10 @@ const {
     const workshopSlug =
       form.getAttribute("data-workshop-slug") ||
       "build-your-first-autonomous-ai-agent-with-python";
+    const collectWhatsApp =
+      form.getAttribute("data-collect-whatsapp") === "true";
+    const whatsappRequired =
+      form.getAttribute("data-whatsapp-required") === "true";
     const queryParams = new URLSearchParams(window.location.search);
     const rawReferralCode = queryParams.get("ref")?.trim();
     const referralCode = rawReferralCode || null;
@@ -557,6 +613,9 @@ const {
       "#reg-last-name",
     ) as HTMLInputElement;
     const emailInput = form.querySelector("#reg-email") as HTMLInputElement;
+    const whatsappInput = form.querySelector(
+      "#reg-whatsapp",
+    ) as HTMLInputElement | null;
     const pythonExpInput = form.querySelector(
       "#reg-python-exp",
     ) as HTMLSelectElement;
@@ -568,6 +627,7 @@ const {
     const firstNameError = document.getElementById("reg-first-name-error");
     const lastNameError = document.getElementById("reg-last-name-error");
     const emailError = document.getElementById("reg-email-error");
+    const whatsappError = document.getElementById("reg-whatsapp-error");
     const pythonExpError = document.getElementById("reg-python-exp-error");
     const cohortInterestError = document.getElementById(
       "reg-cohort-interest-error",
@@ -609,6 +669,25 @@ const {
       return valid;
     }
 
+    function validateWhatsApp(): boolean {
+      if (!collectWhatsApp) return true;
+      const rawValue = whatsappInput?.value.trim() || "";
+      if (!whatsappRequired && rawValue === "") {
+        if (whatsappError && whatsappInput) {
+          whatsappError.classList.add("hidden");
+          whatsappInput.classList.remove("border-rose-400");
+        }
+        return true;
+      }
+      const normalized = rawValue.replace(/[^\d+]/g, "");
+      const valid = normalized.replace(/\D/g, "").length >= 7;
+      if (whatsappError && whatsappInput) {
+        whatsappError.classList.toggle("hidden", valid);
+        whatsappInput.classList.toggle("border-rose-400", !valid);
+      }
+      return valid;
+    }
+
     function validatePythonExp(): boolean {
       const valid = Boolean(pythonExpInput && pythonExpInput.value !== "");
       if (pythonExpError && pythonExpInput) {
@@ -633,6 +712,8 @@ const {
       firstNameInput.addEventListener("blur", validateFirstName);
     if (lastNameInput) lastNameInput.addEventListener("blur", validateLastName);
     if (emailInput) emailInput.addEventListener("blur", validateEmail);
+    if (whatsappInput)
+      whatsappInput.addEventListener("blur", validateWhatsApp);
     if (pythonExpInput)
       pythonExpInput.addEventListener("change", validatePythonExp);
     if (cohortInterestInput)
@@ -669,6 +750,7 @@ const {
       const isFirstValid = validateFirstName();
       const isLastValid = validateLastName();
       const isEmailValid = validateEmail();
+      const isWhatsAppValid = validateWhatsApp();
       const isPythonValid = validatePythonExp();
       const isCohortValid = validateCohortInterest();
 
@@ -676,12 +758,14 @@ const {
         !isFirstValid ||
         !isLastValid ||
         !isEmailValid ||
+        !isWhatsAppValid ||
         !isPythonValid ||
         !isCohortValid
       ) {
         if (!isFirstValid && firstNameInput) firstNameInput.focus();
         else if (!isLastValid && lastNameInput) lastNameInput.focus();
         else if (!isEmailValid && emailInput) emailInput.focus();
+        else if (!isWhatsAppValid && whatsappInput) whatsappInput.focus();
         else if (!isPythonValid && pythonExpInput) pythonExpInput.focus();
         else if (!isCohortValid && cohortInterestInput)
           cohortInterestInput.focus();
@@ -703,6 +787,10 @@ const {
         cohort_interest: cohortInterestInput.value,
       };
 
+      if (collectWhatsApp && whatsappInput?.value.trim()) {
+        payload.whatsapp_number = whatsappInput.value.trim();
+      }
+
       if (referralCode) payload.referral_code = referralCode;
 
       try {
@@ -710,7 +798,6 @@ const {
 
         window.posthog?.capture("workshop_registered", {
           workshop: collectionName,
-          ...payload,
           ...analyticsContext,
         });
 
@@ -720,22 +807,28 @@ const {
       } catch (err: any) {
         console.error("PocketBase registration error:", err);
 
-        // Track with posthog and provide resilient client confirmation
-        window.posthog?.capture("workshop_registered", {
+        window.posthog?.capture("workshop_registration_failed", {
           workshop: collectionName,
-          client_fallback: true,
-          ...payload,
           ...analyticsContext,
         });
-
-        form.classList.add("hidden");
-        successMsg.classList.remove("hidden");
-        successMsg.scrollIntoView({ behavior: "smooth", block: "center" });
+        if (generalError) {
+          generalError.classList.remove("hidden");
+          generalError.scrollIntoView({ behavior: "smooth", block: "center" });
+        }
       } finally {
         if (submitBtn) submitBtn.disabled = false;
         if (btnText) btnText.textContent = "Reserve Free Spot";
       }
     });
+
+    document
+      .getElementById("whatsapp-group-cta")
+      ?.addEventListener("click", () => {
+        window.posthog?.capture("workshop_whatsapp_group_clicked", {
+          ...analyticsContext,
+          destination: "whatsapp_group",
+        });
+      });
   }
 
   function initCountdown() {

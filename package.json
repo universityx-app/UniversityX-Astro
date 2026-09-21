@@ -6,7 +6,8 @@
     "dev": "node scripts/astro.mjs dev",
     "build": "node scripts/astro.mjs build",
     "preview": "node scripts/astro.mjs preview",
-    "astro": "node scripts/astro.mjs"
+    "astro": "node scripts/astro.mjs",
+    "test:cohort-access": "node scripts/verify-cohort-payment-access.mjs"
   },
   "dependencies": {
     "@astrojs/sitemap": "^3.7.2",

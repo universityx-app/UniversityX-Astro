@@ -1,4 +1,6 @@
 ---
+import { AI_COHORT_PATH, aiCohort, formatNaira } from '../data/aiCohort';
+
 const comingSoonCourses = [
   { title: "System Design for Working Developers", desc: "Learn to design systems that scale — and explain every decision." },
   { title: "Frontend Architecture (Beyond the Tutorial)", desc: "Stop writing code that works. Start writing code that lasts." },
@@ -29,25 +31,25 @@ const comingSoonCourses = [
         <div class="flex flex-wrap items-start justify-between gap-4 mb-5">
           <span class="bg-[#8A40F5] text-white rounded-full px-3 py-1 text-xs font-semibold tracking-wide uppercase">Live now</span>
           <div class="flex items-center gap-4 text-sm text-gray-400">
-            <span>6 weeks</span>
+            <span>{aiCohort.durationWeeks} weeks</span>
             <span class="w-1 h-1 rounded-full bg-gray-300"></span>
-            <span>Starting July 7</span>
+            <span>Starts {aiCohort.startDateLabel}</span>
             <span class="w-1 h-1 rounded-full bg-gray-300"></span>
-            <span class="text-[#1A0533] font-semibold">₦25,000</span>
+            <span class="text-[#1A0533] font-semibold">{formatNaira(aiCohort.fullPaymentPrice)}</span>
           </div>
         </div>
-        <h3 class="text-xl md:text-2xl font-bold text-[#1A0533] mb-3">Build and Ship Agentic AI Applications in 6 Weeks</h3>
+        <h3 class="text-xl md:text-2xl font-bold text-[#1A0533] mb-3">Build and Ship AI Applications with Python</h3>
         <p class="text-gray-500 text-base leading-relaxed mb-6">
           Ship a real AI-powered product from scratch. Understand every layer — from prompting to backend to deployment. Cohort-based, live sessions, PrepCoach-guided.
         </p>
         <div class="flex flex-wrap items-center gap-4">
-          <a href="/courses/build-your-first-ai-application" class="inline-flex items-center gap-2 bg-[#8A40F5] text-white font-semibold px-7 py-3.5 rounded-full text-base transition-colors hover:bg-[#7434D8]">
-            Join Cohort 1
+          <a href={AI_COHORT_PATH} class="inline-flex items-center gap-2 bg-[#8A40F5] text-white font-semibold px-7 py-3.5 rounded-full text-base transition-colors hover:bg-[#7434D8]">
+            Join the October Cohort
             <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
               <path d="M5 12h14M12 5l7 7-7 7"/>
             </svg>
           </a>
-          <span class="text-gray-400 text-sm">20 spots · Cohort 1</span>
+          <span class="text-gray-400 text-sm">{aiCohort.capacity} seats · October cohort</span>
         </div>
       </div>
 
