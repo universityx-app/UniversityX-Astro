@@ -7,6 +7,7 @@ const {
   description = "Stop buying courses you never finish. Join live 4-6 week cohorts with expert instructors and 20-30 motivated peers. Build job-ready skills in AI, web dev, design & more.",
   image = "/images/social-card.png",
   url = Astro.url,
+  robots,
 } = Astro.props;
 
 const siteUrl = "https://universityX.app";
@@ -40,6 +41,7 @@ const canonicalURL = new URL(Astro.url.pathname, Astro.site);
 		<title>{title}</title>
 		<!-- Social Cards -->
 		<meta name="description" content={description} />
+		{robots && <meta name="robots" content={robots} />}
 		<!-- Open Graph (WhatsApp, LinkedIn, Facebook) -->
 		<meta property="og:type" content="website" />
 		<meta property="og:url" content={url} />

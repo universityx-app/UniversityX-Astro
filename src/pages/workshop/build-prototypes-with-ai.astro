@@ -2,6 +2,7 @@
 import Layout from '../../layouts/Layout.astro';
 import Navbar from '../../components/Navbar.astro';
 import Footer from '../../components/Footer.astro';
+import WorkshopBreadcrumb from '../../components/WorkshopBreadcrumb.astro';
 
 const workshop = {
   title: 'How to Build Prototypes with AI',
@@ -28,14 +29,7 @@ const workshop = {
     <!-- ── HERO SECTION ─────────────────────────────────────────────── -->
     <section class="max-w-7xl mx-auto px-6 md:px-12 lg:px-16 xl:px-24 pt-10 pb-0">
 
-      <!-- Breadcrumb -->
-      <nav class="flex items-center gap-2 text-sm text-gray-500 mb-8" aria-label="Breadcrumb">
-        <a href="/" class="hover:text-[#8A40F5] transition-colors">Home</a>
-        <svg class="w-3.5 h-3.5 text-[#8A40F5]" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-          <path d="M9 18l6-6-6-6" />
-        </svg>
-        <span class="text-[#1A0533] font-medium">How to Build Prototypes with AI</span>
-      </nav>
+      <WorkshopBreadcrumb title={workshop.title} />
 
       <!-- Two-column layout: content left, sidebar right -->
       <div class="grid grid-cols-1 lg:grid-cols-[1fr_360px] gap-12 xl:gap-16 items-start">

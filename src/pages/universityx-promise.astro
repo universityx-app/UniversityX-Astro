@@ -1,0 +1,88 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Navbar from '../components/Navbar.astro';
+import Footer from '../components/Footer.astro';
+
+const sections = [
+  {
+    number: '01',
+    title: 'What is the UniversityX Promise?',
+    body: 'It is our commitment to give eligible learners enough time to experience the programme, start doing the work, and decide whether the learning experience is right for them.',
+  },
+  {
+    number: '02',
+    title: 'Which learning products are eligible?',
+    body: 'A course, cohort, or programme is covered only when its sales page displays the UniversityX Promise. Products that do not display the Promise are governed by the refund terms shown for that specific product.',
+  },
+  {
+    number: '03',
+    title: 'How long do I have to decide?',
+    body: 'For an eligible cohort lasting four weeks or longer, you may request a refund through the end of Week 2. The exact date and time for your cohort will be shown on its sales page or enrollment information.',
+  },
+  {
+    number: '04',
+    title: 'What if I paid in installments?',
+    body: 'For an eligible installment enrollment, UniversityX refunds the eligible tuition amount already paid. Once the refund is approved, you are no longer responsible for future unpaid installments.',
+  },
+  {
+    number: '05',
+    title: 'What happens to included AI credits?',
+    body: 'Where a programme includes AI credits, they may be released in weekly allocations. Future allocations stop when an enrollment is refunded. AI credits purchased separately from tuition are non-refundable.',
+  },
+  {
+    number: '06',
+    title: 'How do I request a refund?',
+    body: 'Email hello@universityx.app from the email used for enrollment. Include the programme name and a short note requesting a refund. Approved refunds are returned to the original payment method.',
+  },
+];
+---
+
+<Layout title="UniversityX Promise | Refund Protection" description="Understand how the UniversityX Promise protects eligible learning-product enrollments, including refund windows, installments, and AI credits.">
+  <Navbar />
+  <main class="bg-white text-[#1A0533]">
+    <header class="relative overflow-hidden bg-[#1A0533] py-20 text-white md:py-28">
+      <div class="absolute -right-20 -top-20 h-72 w-72 rounded-full bg-[#8A40F5]/30 blur-3xl" aria-hidden="true"></div>
+      <div class="relative mx-auto max-w-5xl px-6 md:px-12">
+        <span class="flex h-14 w-14 items-center justify-center rounded-2xl bg-[#8A40F5]">
+          <svg class="h-7 w-7" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10Zm-3-10 2 2 4-4" /></svg>
+        </span>
+        <p class="mt-7 text-xs font-extrabold uppercase tracking-widest text-[#B98BFF]">Clear protection for eligible learning products</p>
+        <h1 class="mt-4 text-5xl font-extrabold leading-tight tracking-tight md:text-6xl">The UniversityX Promise</h1>
+        <p class="mt-6 max-w-3xl text-xl leading-8 text-white/65">Start learning with confidence. Eligible UniversityX programmes give you a clear period to experience the programme and request a refund if it is not right for you.</p>
+      </div>
+    </header>
+
+    <section class="py-16 md:py-24">
+      <div class="mx-auto max-w-5xl px-6 md:px-12">
+        <div class="grid gap-5 md:grid-cols-2">
+          {sections.map((section) => (
+            <article class="rounded-3xl border border-[#1A0533]/8 bg-[#F5F2EB] p-6 md:p-7">
+              <span class="text-sm font-extrabold text-[#8A40F5]">{section.number}</span>
+              <h2 class="mt-5 text-2xl font-extrabold">{section.title}</h2>
+              <p class="mt-3 leading-7 text-gray-600">{section.body}</p>
+              {section.number === '06' && <a href="mailto:hello@universityx.app" class="mt-5 inline-flex font-bold text-[#8A40F5] hover:text-[#7434D8]">Email UniversityX →</a>}
+            </article>
+          ))}
+        </div>
+
+        <section class="mt-12 rounded-3xl border border-[#8A40F5]/20 bg-[#F8F4FF] p-7 md:p-9">
+          <p class="text-xs font-extrabold uppercase tracking-widest text-[#8A40F5]">Detailed terms and exceptions</p>
+          <h2 class="mt-4 text-3xl font-extrabold">Fair protection, with safeguards against misuse.</h2>
+          <div class="mt-6 space-y-4 leading-7 text-gray-700">
+            <p>After the stated refund deadline, refunds are not guaranteed. UniversityX may still consider exceptional circumstances individually.</p>
+            <p>If UniversityX cancels an eligible programme or materially fails to deliver it as promised, cancellation or refund cases may be handled outside the normal window.</p>
+            <p>UniversityX may deny requests involving fraud, abuse, repeated refund behaviour, misrepresentation, chargeback misuse, or other attempts to exploit the Promise.</p>
+            <p>Separate purchases—including additional AI credits—remain non-refundable unless the applicable purchase terms explicitly state otherwise.</p>
+          </div>
+        </section>
+
+        <div class="mt-10 flex flex-col gap-4 rounded-2xl bg-[#1A0533] p-6 text-white sm:flex-row sm:items-center sm:justify-between">
+          <div><p class="font-extrabold">Need help understanding your eligibility?</p><p class="mt-1 text-sm text-white/55">Contact us before the deadline shown for your programme.</p></div>
+          <a href="mailto:hello@universityx.app" class="shrink-0 rounded-full bg-[#8A40F5] px-6 py-3 font-bold hover:bg-[#7434D8]">hello@universityx.app</a>
+        </div>
+      </div>
+    </section>
+  </main>
+  <Footer />
+</Layout>
+
