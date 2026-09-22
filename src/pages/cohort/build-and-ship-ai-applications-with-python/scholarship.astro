@@ -67,8 +67,8 @@ import { AI_COHORT_PATH, aiCohort } from '../../../data/aiCohort';
             </div>
             <div>
               <label for="scholarship-motivation" class="mb-2 block font-bold">Why will this programme help you now?</label>
-              <textarea id="scholarship-motivation" name="motivation" required minlength="50" rows="5" placeholder="Tell us what you want to build and why structured support matters to you." class="w-full rounded-lg border border-gray-300 px-4 py-3.5 focus:border-[#8A40F5] focus:outline-none focus:ring-2 focus:ring-[#8A40F5]/30"></textarea>
-              <p class="mt-1 text-sm text-gray-500">Minimum 50 characters.</p>
+              <textarea id="scholarship-motivation" name="motivation" required rows="5" aria-describedby="scholarship-motivation-error" placeholder="Tell us what you want to build and why structured support matters to you." class="w-full rounded-lg border border-gray-300 px-4 py-3.5 focus:border-[#8A40F5] focus:outline-none focus:ring-2 focus:ring-[#8A40F5]/30"></textarea>
+              <p id="scholarship-motivation-error" class="mt-2 hidden text-sm font-medium text-red-700">Please tell us a little more. Your answer should be at least 50 characters.</p>
             </div>
             <div>
               <label for="scholarship-contribution" class="mb-2 block font-bold">How much can you contribute? (₦)</label>
@@ -102,7 +102,9 @@ import { AI_COHORT_PATH, aiCohort } from '../../../data/aiCohort';
     const success = document.getElementById('scholarship-success');
     const error = document.getElementById('scholarship-error');
     const submit = document.getElementById('scholarship-submit') as HTMLButtonElement | null;
-    if (!form || !success || !error || !submit) return;
+    const motivation = document.getElementById('scholarship-motivation') as HTMLTextAreaElement | null;
+    const motivationError = document.getElementById('scholarship-motivation-error');
+    if (!form || !success || !error || !submit || !motivation || !motivationError) return;
 
     const params = new URLSearchParams(window.location.search);
     let trafficSource = params.get('utm_source');
@@ -118,10 +120,22 @@ import { AI_COHORT_PATH, aiCohort } from '../../../data/aiCohort';
     };
     const pb = new PocketBase(import.meta.env.PUBLIC_POCKETBASE_URL);
 
+    motivation.addEventListener('input', () => {
+      motivationError.classList.add('hidden');
+      motivation.removeAttribute('aria-invalid');
+    });
+
     form.addEventListener('submit', async (event) => {
       event.preventDefault();
       error.classList.add('hidden');
       if (!form.checkValidity()) { form.reportValidity(); return; }
+
+      if (motivation.value.trim().length < 50) {
+        motivationError.classList.remove('hidden');
+        motivation.setAttribute('aria-invalid', 'true');
+        motivation.focus();
+        return;
+      }
 
       const formData = new FormData(form);
       const pythonBackground = String(formData.get('pythonExperience') || '');
