@@ -56,7 +56,10 @@ export function validPaystackPaymentPage(value: string | undefined): string {
   try {
     const url = new URL(value);
     const hostname = url.hostname.toLowerCase();
-    const isPaystackHost = hostname === 'paystack.com' || hostname.endsWith('.paystack.com');
+    const paystackDomains = ['paystack.com', 'paystack.shop'];
+    const isPaystackHost = paystackDomains.some(
+      (domain) => hostname === domain || hostname.endsWith(`.${domain}`),
+    );
     return url.protocol === 'https:' && isPaystackHost ? url.toString() : '';
   } catch {
     return '';
@@ -64,6 +67,10 @@ export function validPaystackPaymentPage(value: string | undefined): string {
 }
 
 export const paystackPaymentPages: Record<PaymentOption, string> = {
-  full: validPaystackPaymentPage(import.meta.env.PUBLIC_PAYSTACK_FULL_PAYMENT_URL),
-  installment: validPaystackPaymentPage(import.meta.env.PUBLIC_PAYSTACK_INSTALLMENT_PAYMENT_URL),
+  full: validPaystackPaymentPage(
+    import.meta.env.PUBLIC_PAYSTACK_FULL_PAYMENT_URL || 'https://paystack.shop/pay/ai-cohort-full',
+  ),
+  installment: validPaystackPaymentPage(
+    import.meta.env.PUBLIC_PAYSTACK_INSTALLMENT_PAYMENT_URL || 'https://paystack.shop/pay/ai-cohort-part',
+  ),
 };

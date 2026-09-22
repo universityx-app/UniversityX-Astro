@@ -3,35 +3,32 @@ import Layout from '../../layouts/Layout.astro';
 import Navbar from '../../components/Navbar.astro';
 import Footer from '../../components/Footer.astro';
 import {
-  AI_COHORT_PATH,
   aiCohort,
   formatNaira,
   paystackPaymentPages,
 } from '../../data/aiCohort';
 
-const painPoints = [
+const outcomes = [
   {
-    title: '“I can call an AI API, but I don’t know what to build next.”',
-    body: 'Move from a model response to a useful application with data, logic, tools, and a workflow someone can actually use.',
-    icon: 'M12 2v4m0 12v4M4.93 4.93l2.83 2.83m8.48 8.48 2.83 2.83M2 12h4m12 0h4M4.93 19.07l2.83-2.83m8.48-8.48 2.83-2.83',
+    title: 'Ground AI in real knowledge',
+    body: 'You will build apps that answer from PDFs, policies, reports, and private knowledge, with sources people can check.',
+    icon: 'M4 5.5A2.5 2.5 0 0 1 6.5 3H20v16H6.5A2.5 2.5 0 0 0 4 21.5v-16ZM4 18.5A2.5 2.5 0 0 1 6.5 16H20M8 7h7M8 11h5',
   },
   {
-    title: '“RAG and agents still feel abstract.”',
-    body: 'Make the ideas concrete by building AI that answers from documents, uses APIs, searches for information, and completes tasks step by step.',
-    icon: 'M4 19.5A2.5 2.5 0 0 1 6.5 17H20M4 4.5A2.5 2.5 0 0 1 6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15Z',
+    title: 'Connect models to useful tools',
+    body: 'You will connect APIs, search, databases, and other services so your app can find information and take action.',
+    icon: 'M8 12h8M12 8v8M5 5l2.5 2.5M19 5l-2.5 2.5M5 19l2.5-2.5M19 19l-2.5-2.5',
   },
   {
-    title: '“I want proof that I can actually do this.”',
-    body: 'Build weekly projects and finish with a deployed capstone you can show at work, in interviews, or when speaking with a client.',
-    icon: 'M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8ZM14 2v6h6M9 15l2 2 4-4',
+    title: 'Design multi-step workflows',
+    body: 'You will route tasks, keep useful context, add human approval, and help your app choose what to do next.',
+    icon: 'M4 6h6v6h4v6h6M7 3 4 6l3 3m10 6 3 3-3 3',
   },
-];
-
-const capabilities = [
-  { label: 'Your data', detail: 'PDFs, policies, reports, private knowledge', icon: 'M4 4h16v16H4zM8 8h8M8 12h8M8 16h5' },
-  { label: 'Useful actions', detail: 'APIs, search, databases, external services', icon: 'M12 2v6m0 8v6M4.93 4.93l4.24 4.24m5.66 5.66 4.24 4.24M2 12h6m8 0h6M4.93 19.07l4.24-4.24m5.66-5.66 4.24-4.24' },
-  { label: 'Multi-step work', detail: 'Routing, memory, decisions, human approval', icon: 'M4 6h6v6h4v6h6M7 3 4 6l3 3m10 6 3 3-3 3' },
-  { label: 'Reliable output', detail: 'Evaluation, guardrails, tracing, recovery', icon: 'M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10Zm-3-10 2 2 4-4' },
+  {
+    title: 'Ship something people can trust',
+    body: 'You will test how your app behaves, handle failures, put it online, and finish with a capstone you can confidently show.',
+    icon: 'M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10Zm-3-10 2 2 4-4',
+  },
 ];
 
 const weeks = [
@@ -84,68 +81,42 @@ const projects = [
     title: 'AI Research Assistant',
     tag: 'Own data + citations',
     description: 'Upload reports or internal documents and build an assistant that answers questions and points back to the source.',
-    accent: 'purple',
   },
   {
     title: 'Customer Support Assistant',
     tag: 'Knowledge + tools',
     description: 'Answer from company knowledge, check customer information, and hand difficult cases to a human.',
-    accent: 'green',
   },
   {
     title: 'Recruitment Assistant',
     tag: 'Workflow + evaluation',
     description: 'Read CVs or job descriptions, retrieve relevant details, and help a recruiter organise a review workflow.',
-    accent: 'orange',
   },
 ];
 
-const realWorldUses = [
-  { title: 'At work', body: 'Build internal tools, document assistants, support workflows, and AI-powered features your team can use.', icon: 'M3 21h18M6 21V7l6-4 6 4v14M9 10h.01M15 10h.01M9 14h.01M15 14h.01' },
-  { title: 'As a freelancer', body: 'Offer assistants, knowledge systems, workflow automation, and custom AI features to clients.', icon: 'M9 6V4h6v2m5 4H4a2 2 0 0 0-2 2v6h20v-6a2 2 0 0 0-2-2Zm-8 4 9 4 9-4' },
-  { title: 'For your product', body: 'Add AI to an existing product or use these skills to prototype and launch a new one.', icon: 'M12 2c3 2 5 5 5 9l3 3-4 1-1 4-3-3-3 3-1-4-4-1 3-3c0-4 2-7 5-9Z' },
-  { title: 'For your career', body: 'Build stronger portfolio proof and speak confidently about AI application development in interviews.', icon: 'M20 7h-4V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v2H4a2 2 0 0 0-2 2v10h20V9a2 2 0 0 0-2-2ZM10 7V5h4v2' },
-];
-
-const included = [
-  ['Live classes', 'Learn with the instructor and ask questions in context.'],
+const cohortFeatures = [
+  ['Live classes', 'Build with your instructor and ask questions as they come up.'],
   ['Weekly builds', 'Turn every new capability into working code.'],
-  ['Project feedback', 'Get practical reviews and corrections on your work.'],
-  ['AI learning support', 'Use guided assistance while you build and get unstuck.'],
-  ['Session recordings', 'Revisit classes and catch up when necessary.'],
-  ['Cohort community', 'Share progress and build alongside other developers.'],
-  ['Demo Day', 'Present your capstone and explain your technical choices.'],
-  ['Certificate', 'Earn recognition after meeting the completion requirements.'],
+  ['Project feedback', 'Get clear, practical feedback on the work you submit.'],
+  ['Session recordings', 'Rewatch a class or catch up when you miss one.'],
+  ['Cohort community', 'Share your progress and build alongside other developers.'],
+  ['Demo Day and certificate', 'Show what you built and earn recognition for completing the work.'],
 ];
 
-const forYou = [
-  'You already understand basic Python.',
-  'You want to build with documents, tools, and AI agents.',
-  'You learn best by making projects, not only watching videos.',
-  'You want deadlines, feedback, and a clear path to follow.',
-  'You want a project you can confidently show after six weeks.',
-];
-
-const notForYou = [
-  'You have never written Python before.',
-  'You want a no-code or prompt-only programme.',
-  'You want to train machine-learning models from scratch.',
-  'You cannot make time for the weekly builds.',
+const suitability = [
+  'You understand basic Python and can write small scripts.',
+  'You want to build with documents, APIs, and AI agents.',
+  'You learn best by building and getting practical feedback.',
+  'You can make time for the live sessions and weekly projects.',
 ];
 
 const faqs = [
-  ['Is this for complete beginners?', 'Not quite. You should already know basic Python. You do not need previous AI or machine-learning experience.'],
-  ['Will I build real projects?', 'Yes. You will build throughout the cohort and finish with a deployed capstone that combines the core skills covered in the six weeks.'],
-  ['Do I need machine-learning knowledge?', 'No. This cohort is about building applications with existing AI models, not training models from scratch.'],
-  ['Can I pay in installments?', `Yes. Pay ${formatNaira(aiCohort.installmentAmount)} now and ${formatNaira(aiCohort.installmentAmount)} later. The installment total is ${formatNaira(aiCohort.installmentTotal)}.`],
-  ['Why is paying in full cheaper?', `Paying ${formatNaira(aiCohort.fullPaymentPrice)} in full saves ${formatNaira(aiCohort.fullPaymentSaving)} compared with the installment total.`],
-  ['What if I miss a live class?', 'Classes are recorded so you can catch up, but you will still be expected to complete that week’s practical build.'],
-  ['What will I have at the end?', 'Multiple practical builds, a deployed capstone, a documented repository, feedback, and stronger proof that you can build AI applications.'],
+  ['What experience do I need?', 'You should be comfortable with basic Python and able to write small scripts. You do not need any previous AI or machine-learning experience. We will focus on building applications with existing models.'],
+  ['What will I build and leave with?', 'You will build practical projects throughout the cohort and finish with a deployed capstone, a documented repository, feedback on your work, and something real you can show.'],
+  ['What if I miss a live class?', 'You can catch up with the recording. You will still need to complete that week’s practical build so you are ready for the next class.'],
+  ['Can I pay in installments?', `Yes. You can pay ${formatNaira(aiCohort.installmentAmount)} now and the same amount later, for a total of ${formatNaira(aiCohort.installmentTotal)}. If you pay ${formatNaira(aiCohort.fullPaymentPrice)} in full, you save ${formatNaira(aiCohort.fullPaymentSaving)}.`],
 ];
 
-const fullPaymentAvailable = Boolean(paystackPaymentPages.full);
-const installmentAvailable = Boolean(paystackPaymentPages.installment);
-const anyPaymentAvailable = fullPaymentAvailable || installmentAvailable;
 ---
 
 <Layout
@@ -155,173 +126,93 @@ const anyPaymentAvailable = fullPaymentAvailable || installmentAvailable;
   <Navbar />
 
   <main class="overflow-x-hidden bg-white text-[#1A0533]">
-    <header class="relative overflow-hidden pb-20 pt-10 md:pb-28">
-      <div class="hero-grid-pattern absolute inset-0 opacity-60" aria-hidden="true"></div>
-      <div class="absolute -left-32 top-24 h-80 w-80 rounded-full bg-[#8A40F5]/12 blur-3xl" aria-hidden="true"></div>
-      <div class="absolute -right-24 top-0 h-72 w-72 rounded-full bg-[#B98BFF]/20 blur-3xl" aria-hidden="true"></div>
-
-      <div class="relative mx-auto max-w-7xl px-6 md:px-12 lg:px-16 xl:px-24">
-        <nav class="mb-10 flex items-center gap-2 overflow-x-auto whitespace-nowrap text-sm text-gray-500" aria-label="Breadcrumb">
-          <a href="/" class="transition-colors hover:text-[#8A40F5]">Home</a>
-          <span class="text-[#8A40F5]" aria-hidden="true">→</span>
-          <a href="/cohorts/" class="transition-colors hover:text-[#8A40F5]">Cohorts</a>
-          <span class="text-[#8A40F5]" aria-hidden="true">→</span>
-          <span class="font-semibold text-[#1A0533]">Build and Ship AI Applications with Python</span>
-        </nav>
-
-        <div class="grid items-start gap-12 lg:grid-cols-[1fr_390px] xl:gap-16">
-          <div class="max-w-4xl">
-            <div class="inline-flex items-center gap-2 rounded-full border border-[#8A40F5]/20 bg-[#F8F4FF] px-4 py-2 text-sm font-bold text-[#8A40F5]">
-              <span class="h-2 w-2 rounded-full bg-[#8A40F5]"></span>
-              {aiCohort.durationWeeks}-week live cohort · {aiCohort.capacity} builders maximum
-            </div>
-
-            <h1 class="mt-7 text-[2.65rem] font-extrabold leading-[0.98] tracking-[-0.045em] md:text-7xl">
-              Go from <span class="mt-2 block font-['Playfair_Display',serif] italic text-[#8A40F5] xl:mt-0 xl:inline">“I’ve watched the tutorials”</span>
-              <span class="mt-3 block text-2xl font-bold tracking-[-0.02em] text-gray-400 md:text-3xl">to</span>
-              <span class="mt-2 block">“I can build real AI applications.”</span>
-            </h1>
-
-            <p class="mt-7 max-w-3xl text-lg leading-8 text-gray-600 md:text-xl">
-              In six weeks, learn to build AI applications that answer from your own files, connect to real tools and APIs, complete multi-step tasks, and behave reliably enough to share with other people.
-            </p>
-
-            <div class="mt-9 flex flex-wrap gap-3">
-              <a href="#pricing" data-enroll-cta class="inline-flex items-center gap-2 rounded-full bg-[#8A40F5] px-7 py-4 font-bold text-white shadow-lg shadow-[#8A40F5]/20 transition hover:-translate-y-0.5 hover:bg-[#7434D8] focus:outline-none focus:ring-2 focus:ring-[#8A40F5] focus:ring-offset-2">
-                Join the cohort
-                <svg class="h-5 w-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6" /></svg>
-              </a>
-              <a href="#curriculum" class="inline-flex items-center rounded-full border border-[#1A0533]/15 bg-white px-7 py-4 font-bold transition hover:border-[#8A40F5] hover:text-[#8A40F5] focus:outline-none focus:ring-2 focus:ring-[#8A40F5]">See the six-week journey</a>
-            </div>
-
-            <div class="mt-10 grid gap-3 sm:grid-cols-3">
-              {[
-                ['Build every week', 'Turn concepts into working applications.'],
-                ['Get real feedback', 'Learn with instructor and cohort support.'],
-                ['Finish with proof', 'Deploy a capstone you can demonstrate.'],
-              ].map(([title, body], index) => (
-                <div class="rounded-2xl border border-[#1A0533]/8 bg-white/80 p-4 shadow-sm backdrop-blur">
-                  <span class="text-xs font-extrabold text-[#8A40F5]">0{index + 1}</span>
-                  <p class="mt-3 font-extrabold">{title}</p>
-                  <p class="mt-1 text-sm leading-6 text-gray-500">{body}</p>
-                </div>
-              ))}
-            </div>
+    <header class="border-b border-[#1A0533]/8 py-16 md:py-24">
+      <div class="section-shell grid items-center gap-12 lg:grid-cols-[minmax(0,1fr)_380px] lg:gap-16">
+        <div class="max-w-3xl">
+          <p class="inline-flex items-center gap-2 text-sm font-bold text-[#8A40F5]">
+            <span class="h-2 w-2 rounded-full bg-[#8A40F5]" aria-hidden="true"></span>
+            Live online cohort · {aiCohort.capacity} seats
+          </p>
+          <h1 class="mt-6 text-[2.75rem] font-extrabold leading-[1.02] tracking-[-0.045em] md:text-6xl lg:text-[4.25rem]">
+            Build and ship AI applications with Python <span class="font-['Playfair_Display',serif] italic text-[#8A40F5]">in 6 weeks.</span>
+          </h1>
+          <p class="mt-6 max-w-2xl text-lg leading-8 text-gray-600 md:text-xl">Move beyond tutorials. Build AI applications that work with your data, use real tools, handle multi-step tasks, and are ready to deploy and demonstrate.</p>
+          <div class="mt-8 flex flex-col gap-4 sm:flex-row sm:items-center">
+            <a href="#pricing" data-enroll-cta class="primary-button">
+              Join the cohort
+              <svg class="h-5 w-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6" /></svg>
+            </a>
+            <a href="#curriculum" class="text-link">View the six-week curriculum <span aria-hidden="true">↓</span></a>
           </div>
-
-          <aside class="relative lg:sticky lg:top-6" aria-label="Cohort summary">
-            <div class="overflow-hidden rounded-3xl border border-[#1A0533]/10 bg-white shadow-2xl shadow-[#1A0533]/10">
-              <div class="bg-[#1A0533] p-6 text-white">
-                <div class="flex items-center justify-between gap-4">
-                  <span class="rounded-full bg-white/10 px-3 py-1 text-xs font-bold uppercase tracking-widest text-[#D8BDFF]">October cohort</span>
-                  <span class="text-sm text-white/55">{aiCohort.capacity} seats</span>
-                </div>
-                <div class="mt-7 flex items-end gap-3">
-                  <strong class="text-4xl font-extrabold">{formatNaira(aiCohort.fullPaymentPrice)}</strong>
-                  <span class="pb-1 text-lg text-white/35 line-through">{formatNaira(aiCohort.originalPrice)}</span>
-                </div>
-                <p class="mt-2 text-sm font-semibold text-[#D8BDFF]">Pay in full and save {formatNaira(aiCohort.fullPaymentSaving)}</p>
-              </div>
-
-              <dl class="grid grid-cols-2 gap-px bg-[#1A0533]/8">
-                {[
-                  ['Duration', `${aiCohort.durationWeeks} weeks`],
-                  ['Starts', aiCohort.startDateLabel],
-                  ['Format', 'Online + live classes'],
-                  ['Prerequisite', aiCohort.prerequisite],
-                ].map(([term, value]) => (
-                  <div class="bg-white p-5">
-                    <dt class="text-xs font-bold uppercase tracking-widest text-gray-400">{term}</dt>
-                    <dd class="mt-2 font-extrabold leading-6">{value}</dd>
-                  </div>
-                ))}
-              </dl>
-
-              <div class="p-6">
-                <p class="text-sm font-bold text-[#8A40F5]">Installment option</p>
-                <p class="mt-1 text-lg font-extrabold">{formatNaira(aiCohort.installmentAmount)} × {aiCohort.installmentCount}</p>
-                <p class="mt-1 text-sm text-gray-500">{formatNaira(aiCohort.installmentTotal)} total. We’ll follow up about payment two.</p>
-                <a href="#pricing" data-enroll-cta class="mt-5 flex w-full items-center justify-center rounded-xl bg-[#8A40F5] px-6 py-3.5 font-bold text-white transition hover:bg-[#7434D8] focus:outline-none focus:ring-2 focus:ring-[#8A40F5] focus:ring-offset-2">Choose how to pay</a>
-              </div>
-            </div>
-          </aside>
         </div>
+
+        <aside class="rounded-2xl border border-[#1A0533]/10 bg-[#F8F5EF] p-6 md:p-8" aria-label="Cohort summary">
+          <p class="text-xs font-extrabold uppercase tracking-[0.16em] text-[#8A40F5]">October cohort</p>
+          <div class="mt-5 flex flex-wrap items-baseline gap-x-3 gap-y-1">
+            <strong class="text-4xl font-extrabold tracking-tight">{formatNaira(aiCohort.fullPaymentPrice)}</strong>
+            <span class="text-base text-gray-400 line-through">{formatNaira(aiCohort.originalPrice)}</span>
+          </div>
+          <p class="mt-2 text-sm font-semibold text-gray-600">or {formatNaira(aiCohort.installmentAmount)} × {aiCohort.installmentCount}</p>
+          <dl class="mt-7 divide-y divide-[#1A0533]/10 border-y border-[#1A0533]/10">
+            {[
+              ['Starts', aiCohort.startDateLabel],
+              ['Duration', `${aiCohort.durationWeeks} weeks`],
+              ['Format', 'Online · Live classes'],
+              ['Prerequisite', aiCohort.prerequisite],
+            ].map(([term, value]) => (
+              <div class="flex items-center justify-between gap-5 py-3.5">
+                <dt class="text-sm text-gray-500">{term}</dt>
+                <dd class="text-right text-sm font-bold">{value}</dd>
+              </div>
+            ))}
+          </dl>
+          <a href="#pricing" data-enroll-cta class="mt-7 flex w-full items-center justify-center rounded-xl bg-[#1A0533] px-6 py-3.5 font-bold text-white transition-colors hover:bg-[#341153] focus:outline-none focus:ring-2 focus:ring-[#8A40F5] focus:ring-offset-2">Choose a payment option</a>
+        </aside>
       </div>
     </header>
 
-    <section class="bg-[#F5F2EB] py-20 md:py-28">
-      <div class="mx-auto max-w-7xl px-6 md:px-12 lg:px-16 xl:px-24">
+    <section class="bg-[#F8F5EF] py-16 md:py-24">
+      <div class="section-shell">
         <div class="max-w-3xl">
-          <p class="section-kicker">From watching to building</p>
-          <h2 class="section-heading">You’ve watched the tutorials. But can you build without one?</h2>
-          <p class="section-lead">If basic Python makes sense but building a useful AI product from scratch still feels unclear, this cohort gives you the path, projects, feedback, and deadlines to move forward.</p>
+          <p class="section-kicker">What you will learn</p>
+          <h2 class="section-heading">Here is what you will be able to build.</h2>
+          <p class="section-lead">You will not stop at sending a prompt and printing the response. You will learn how to turn an AI model into an app that solves a real problem.</p>
         </div>
-        <div class="mt-12 grid gap-5 lg:grid-cols-3">
-          {painPoints.map((point) => (
-            <article class="rounded-3xl border border-[#1A0533]/8 bg-white p-7 shadow-sm">
-              <span class="flex h-12 w-12 items-center justify-center rounded-2xl bg-[#8A40F5]/10 text-[#8A40F5]">
-                <svg class="h-6 w-6" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d={point.icon} /></svg>
+        <div class="mt-10 grid gap-px overflow-hidden rounded-2xl border border-[#1A0533]/10 bg-[#1A0533]/10 md:grid-cols-2">
+          {outcomes.map((outcome) => (
+            <article class="bg-white p-6 md:p-8">
+              <span class="icon-tile">
+                <svg class="h-5 w-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d={outcome.icon} /></svg>
               </span>
-              <h3 class="mt-7 text-xl font-extrabold leading-7">{point.title}</h3>
-              <p class="mt-3 leading-7 text-gray-600">{point.body}</p>
+              <h3 class="mt-5 text-xl font-extrabold">{outcome.title}</h3>
+              <p class="mt-3 leading-7 text-gray-600">{outcome.body}</p>
             </article>
           ))}
         </div>
       </div>
     </section>
 
-    <section class="py-20 md:py-28">
-      <div class="mx-auto max-w-7xl px-6 md:px-12 lg:px-16 xl:px-24">
-        <div class="grid gap-12 lg:grid-cols-[0.8fr_1.2fr] lg:items-center">
-          <div>
-            <p class="section-kicker">What changes</p>
-            <h2 class="section-heading">Build AI that does more than return a chat response.</h2>
-            <p class="section-lead">Learn the pieces that turn an AI model into an application: trusted knowledge, useful actions, clear workflows, and evidence that the result works.</p>
-          </div>
-          <div class="capability-map rounded-3xl bg-[#1A0533] p-5 text-white shadow-2xl md:p-8">
-            <div class="mb-6 flex items-center gap-2 text-xs font-bold uppercase tracking-widest text-white/45"><span class="h-2 w-2 rounded-full bg-[#B98BFF]"></span> Your AI application</div>
-            <div class="grid gap-3 sm:grid-cols-2">
-              {capabilities.map((item, index) => (
-                <article class="rounded-2xl border border-white/10 bg-white/[0.06] p-5">
-                  <div class="flex items-start gap-4">
-                    <span class="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl bg-[#8A40F5] text-white">
-                      <svg class="h-5 w-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d={item.icon} /></svg>
-                    </span>
-                    <div><p class="font-extrabold">{item.label}</p><p class="mt-1 text-sm leading-6 text-white/55">{item.detail}</p></div>
-                  </div>
-                  <div class="mt-5 h-1.5 overflow-hidden rounded-full bg-white/8"><div class="h-full rounded-full bg-[#B98BFF]" style={`width:${55 + index * 12}%`}></div></div>
-                </article>
-              ))}
-            </div>
-            <div class="mt-4 flex items-center justify-between rounded-2xl border border-[#B98BFF]/20 bg-[#8A40F5]/15 p-4 text-sm">
-              <span class="font-bold text-[#D8BDFF]">Input → retrieve → decide → act → evaluate</span>
-              <span class="rounded-full bg-[#45D694]/15 px-3 py-1 font-bold text-[#76E5B3]">Working build</span>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <section id="curriculum" class="scroll-mt-24 bg-[#F5F2EB] py-20 md:py-28">
-      <div class="mx-auto max-w-6xl px-6 md:px-12 lg:px-16">
+    <section id="curriculum" class="scroll-mt-20 py-16 md:py-24">
+      <div class="section-shell">
         <div class="max-w-3xl">
-          <p class="section-kicker">Your six-week build journey</p>
-          <h2 class="section-heading">One new capability. One useful build. Every week.</h2>
-          <p class="section-lead">The skills build on each other until you can combine knowledge, tools, workflows, reliability, and deployment in one final application.</p>
+          <p class="section-kicker">The curriculum</p>
+          <h2 class="section-heading">Build something useful every week.</h2>
+          <p class="section-lead">We start with a simple model call, then add your own data, tools, workflows, testing, and deployment one week at a time.</p>
         </div>
-
-        <div class="relative mt-14 space-y-5 before:absolute before:bottom-10 before:left-7 before:top-10 before:w-px before:bg-[#8A40F5]/20 md:before:left-10">
+        <div class="mt-12 divide-y divide-[#1A0533]/10 border-y border-[#1A0533]/10">
           {weeks.map((week) => (
-            <article class="relative grid gap-5 rounded-3xl border border-[#1A0533]/8 bg-white p-5 shadow-sm md:grid-cols-[80px_1fr_auto] md:items-center md:p-7">
-              <span class="relative z-10 flex h-14 w-14 items-center justify-center rounded-2xl bg-[#1A0533] text-sm font-extrabold text-white md:h-20 md:w-20 md:text-base">{week.number}</span>
+            <article class="grid gap-5 py-7 md:grid-cols-[72px_minmax(0,1fr)_220px] md:items-start md:gap-7 md:py-9">
               <div>
-                <p class="text-xs font-bold uppercase tracking-widest text-[#8A40F5]">Week {Number(week.number)}</p>
-                <h3 class="mt-2 text-xl font-extrabold md:text-2xl">{week.title}</h3>
+                <span class="text-xs font-extrabold uppercase tracking-[0.16em] text-[#8A40F5]">Week</span>
+                <p class="mt-1 text-3xl font-extrabold text-[#1A0533]/25">{week.number}</p>
+              </div>
+              <div>
+                <h3 class="text-xl font-extrabold md:text-2xl">{week.title}</h3>
                 <p class="mt-2 max-w-2xl leading-7 text-gray-600">{week.description}</p>
                 <div class="mt-4 flex flex-wrap gap-2">{week.tags.map((tag) => <span class="rounded-full bg-[#F5F2EB] px-3 py-1 text-xs font-bold text-[#1A0533]/65">{tag}</span>)}</div>
               </div>
-              <div class="rounded-2xl border border-[#8A40F5]/15 bg-[#F8F4FF] p-4 md:max-w-52">
-                <p class="text-xs font-extrabold uppercase tracking-widest text-[#8A40F5]">You ship</p>
+              <div class="border-l-2 border-[#8A40F5] pl-4">
+                <p class="text-xs font-extrabold uppercase tracking-[0.14em] text-[#8A40F5]">You ship</p>
                 <p class="mt-2 font-bold leading-6">{week.ship}</p>
               </div>
             </article>
@@ -330,219 +221,167 @@ const anyPaymentAvailable = fullPaymentAvailable || installmentAvailable;
       </div>
     </section>
 
-    <section id="projects" class="scroll-mt-24 py-20 md:py-28">
-      <div class="mx-auto max-w-7xl px-6 md:px-12 lg:px-16 xl:px-24">
-        <div class="max-w-3xl">
-          <p class="section-kicker">Project possibilities</p>
-          <h2 class="section-heading">What could you actually build with these skills?</h2>
-          <p class="section-lead">Think beyond another chatbot. Build useful applications for a company, a client, or a product of your own.</p>
+    <section id="projects" class="scroll-mt-20 bg-[#1A0533] py-16 text-white md:py-24">
+      <div class="section-shell">
+        <div class="grid gap-10 lg:grid-cols-[0.8fr_1.2fr] lg:items-end">
+          <div>
+            <p class="section-kicker section-kicker--dark">What you will leave with</p>
+            <h2 class="section-heading">A project you will be proud to show.</h2>
+          </div>
+          <p class="max-w-2xl text-lg leading-8 text-white/65">You will build, deploy, and present an app you understand. You will be able to explain the problem it solves, how it works, and why you built it that way.</p>
         </div>
-        <div class="mt-12 grid gap-6 lg:grid-cols-3">
-          {projects.map((project) => (
-            <article class={`project-card project-card--${project.accent} overflow-hidden rounded-3xl border border-[#1A0533]/8 bg-white p-6`}>
-              <span class="inline-flex rounded-full bg-[#F5F2EB] px-3 py-1 text-xs font-bold text-[#8A40F5]">{project.tag}</span>
-              <h3 class="mt-5 text-2xl font-extrabold">{project.title}</h3>
-              <p class="mt-3 leading-7 text-gray-600">{project.description}</p>
-              <div class="project-window mt-8 rounded-2xl border border-[#1A0533]/10 bg-[#FBFAF7] p-3 shadow-inner" aria-hidden="true">
-                <div class="flex gap-1.5"><span></span><span></span><span></span></div>
-                <div class="mt-4 grid grid-cols-[0.35fr_1fr] gap-3">
-                  <div class="space-y-2"><i></i><i></i><i></i><i></i></div>
-                  <div class="space-y-3"><b></b><em></em><em></em><div class="flex gap-2"><strong></strong><strong></strong></div></div>
-                </div>
+        <div class="mt-12 grid gap-4 lg:grid-cols-3">
+          {projects.map((project, index) => (
+            <article class="rounded-2xl border border-white/12 bg-white/[0.06] p-6 md:p-7">
+              <div class="flex items-center justify-between gap-4">
+                <span class="rounded-full bg-[#8A40F5]/25 px-3 py-1 text-xs font-bold text-[#DEC9FF]">{project.tag}</span>
+                <span class="text-sm font-extrabold text-white/25">0{index + 1}</span>
               </div>
+              <h3 class="mt-8 text-xl font-extrabold">{project.title}</h3>
+              <p class="mt-3 leading-7 text-white/60">{project.description}</p>
             </article>
           ))}
+        </div>
+        <div class="mt-6 flex flex-col gap-4 rounded-2xl border border-[#B98BFF]/25 bg-[#8A40F5]/15 p-6 md:flex-row md:items-center md:justify-between">
+          <p class="max-w-3xl font-semibold leading-7 text-[#E9DCFA]">Your capstone will use real knowledge, connect to useful tools, handle multiple steps, and be online for someone else to try.</p>
+          <span class="shrink-0 text-sm font-extrabold uppercase tracking-[0.14em] text-[#CFAEFF]">Demo ready</span>
         </div>
       </div>
     </section>
 
-    <section class="bg-[#1A0533] py-20 text-white md:py-28">
-      <div class="mx-auto max-w-7xl px-6 md:px-12 lg:px-16 xl:px-24">
-        <div class="grid gap-12 lg:grid-cols-[0.9fr_1.1fr] lg:items-center">
-          <div>
-            <p class="text-xs font-extrabold uppercase tracking-widest text-[#B98BFF]">Your final proof of work</p>
-            <h2 class="mt-4 text-4xl font-extrabold leading-tight tracking-tight md:text-5xl">Leave with proof, not just notes.</h2>
-            <p class="mt-6 text-lg leading-8 text-white/65">Build, deploy, and present an AI application you can explain. Show the problem it solves, how it works, and the decisions you made while building it.</p>
-            <p class="mt-6 rounded-2xl border border-[#B98BFF]/20 bg-[#8A40F5]/15 p-5 font-semibold leading-7 text-[#E7D8FF]">Use your capstone when applying for jobs, pitching freelance work, proposing an AI idea at work, or testing your own product.</p>
-          </div>
-          <div class="grid gap-3 sm:grid-cols-2">
-            {[
-              ['Works with your data', 'Answer from private or domain-specific knowledge.'],
-              ['Connects to real tools', 'Use APIs, search, databases, or external services.'],
-              ['Handles multiple steps', 'Route tasks and decide what should happen next.'],
-              ['Deployed and demo-ready', 'Let another person use, test, and understand it.'],
-            ].map(([title, body]) => (
-              <article class="rounded-2xl border border-white/10 bg-white/[0.06] p-5">
-                <svg class="h-6 w-6 text-[#B98BFF]" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" aria-hidden="true"><path d="M20 6 9 17l-5-5" /></svg>
-                <h3 class="mt-5 font-extrabold">{title}</h3>
-                <p class="mt-2 text-sm leading-6 text-white/55">{body}</p>
+    <section class="bg-[#F8F5EF] py-16 md:py-24">
+      <div class="section-shell grid gap-12 lg:grid-cols-[1.1fr_0.9fr] lg:gap-16">
+        <div>
+          <p class="section-kicker">Inside the cohort</p>
+          <h2 class="section-heading">You will not have to figure it out alone.</h2>
+          <div class="mt-9 grid gap-px overflow-hidden rounded-2xl border border-[#1A0533]/10 bg-[#1A0533]/10 sm:grid-cols-2">
+            {cohortFeatures.map(([title, body]) => (
+              <article class="bg-white p-5 md:p-6">
+                <svg class="h-5 w-5 text-[#8A40F5]" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5" /></svg>
+                <h3 class="mt-4 font-extrabold">{title}</h3>
+                <p class="mt-2 text-sm leading-6 text-gray-600">{body}</p>
               </article>
             ))}
           </div>
         </div>
+        <aside class="self-start rounded-2xl border border-[#1A0533]/10 bg-white p-7 md:p-8">
+          <p class="section-kicker">Is this for you?</p>
+          <h2 class="mt-3 text-2xl font-extrabold tracking-tight md:text-3xl">You will get the most from this cohort if...</h2>
+          <ul class="mt-7 space-y-4">
+            {suitability.map((item) => (
+              <li class="flex gap-3 leading-7 text-gray-700">
+                <span class="mt-1 flex h-5 w-5 shrink-0 items-center justify-center rounded-full bg-[#8A40F5] text-[0.65rem] font-bold text-white" aria-hidden="true">✓</span>
+                <span>{item}</span>
+              </li>
+            ))}
+          </ul>
+          <p class="mt-7 border-t border-[#1A0533]/10 pt-6 text-sm leading-6 text-gray-500">This is not a no-code or prompt-only programme, and it does not teach Python from the beginning.</p>
+        </aside>
       </div>
     </section>
 
-    <section class="py-20 md:py-28">
-      <div class="mx-auto max-w-7xl px-6 md:px-12 lg:px-16 xl:px-24">
-        <div class="max-w-3xl">
-          <p class="section-kicker">Put the skill to work</p>
-          <h2 class="section-heading">Where could this skill take you?</h2>
-        </div>
-        <div class="mt-10 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
-          {realWorldUses.map((item) => (
-            <article class="rounded-3xl bg-[#F5F2EB] p-6">
-              <span class="flex h-11 w-11 items-center justify-center rounded-2xl bg-white text-[#8A40F5] shadow-sm"><svg class="h-5 w-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d={item.icon} /></svg></span>
-              <h3 class="mt-6 text-xl font-extrabold">{item.title}</h3>
-              <p class="mt-3 leading-7 text-gray-600">{item.body}</p>
-            </article>
-          ))}
-        </div>
-
-        <div class="mt-24 max-w-3xl">
-          <p class="section-kicker">Inside the cohort</p>
-          <h2 class="section-heading">Structure, support, and a reason to keep moving.</h2>
-        </div>
-        <div class="mt-10 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
-          {included.map(([title, body], index) => (
-            <article class="rounded-2xl border border-[#1A0533]/8 bg-white p-5 shadow-sm">
-              <span class="text-sm font-extrabold text-[#8A40F5]">0{index + 1}</span>
-              <h3 class="mt-5 font-extrabold">{title}</h3>
-              <p class="mt-2 text-sm leading-6 text-gray-500">{body}</p>
-            </article>
-          ))}
-          <a href="/universityx-promise/" class="group rounded-2xl border border-[#8A40F5]/25 bg-[#F8F4FF] p-5 transition hover:-translate-y-0.5 hover:border-[#8A40F5] focus:outline-none focus:ring-2 focus:ring-[#8A40F5]">
-            <span class="flex h-10 w-10 items-center justify-center rounded-xl bg-[#8A40F5] text-white"><svg class="h-5 w-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10Zm-3-10 2 2 4-4" /></svg></span>
-            <h3 class="mt-5 font-extrabold">UniversityX Promise</h3>
-            <p class="mt-2 text-sm leading-6 text-gray-600">Your enrollment is protected. Request a refund through {aiCohort.promiseDeadlineLabel}.</p>
-            <span class="mt-4 inline-flex font-bold text-[#8A40F5]">Learn more <span class="ml-1 transition group-hover:translate-x-1">→</span></span>
-          </a>
-        </div>
-      </div>
-    </section>
-
-    <section class="bg-[#F5F2EB] py-20 md:py-28">
-      <div class="mx-auto max-w-7xl px-6 md:px-12 lg:px-16 xl:px-24">
-        <div class="grid gap-5 lg:grid-cols-2">
-          <article class="rounded-3xl border border-[#8A40F5]/20 bg-white p-7 md:p-9">
-            <span class="inline-flex rounded-full bg-[#8A40F5]/10 px-3 py-1 text-xs font-bold uppercase tracking-widest text-[#8A40F5]">A good fit</span>
-            <h2 class="mt-5 text-3xl font-extrabold">This is for you if…</h2>
-            <ul class="mt-7 space-y-4">{forYou.map((item) => <li class="flex gap-3 text-gray-700"><span class="flex h-6 w-6 shrink-0 items-center justify-center rounded-full bg-[#8A40F5] text-xs font-bold text-white">✓</span><span>{item}</span></li>)}</ul>
-          </article>
-          <article class="rounded-3xl border border-[#1A0533]/8 bg-white p-7 md:p-9">
-            <span class="inline-flex rounded-full bg-[#1A0533]/7 px-3 py-1 text-xs font-bold uppercase tracking-widest text-[#1A0533]/55">Probably not yet</span>
-            <h2 class="mt-5 text-3xl font-extrabold">This is not for you if…</h2>
-            <ul class="mt-7 space-y-4">{notForYou.map((item) => <li class="flex gap-3 text-gray-700"><span class="flex h-6 w-6 shrink-0 items-center justify-center rounded-full bg-[#1A0533]/10 text-xs font-bold">×</span><span>{item}</span></li>)}</ul>
-          </article>
-        </div>
-      </div>
-    </section>
-
-    <section class="py-20 md:py-28">
-      <div class="mx-auto max-w-5xl px-6 md:px-12">
-        <div class="grid gap-8 rounded-3xl border border-[#1A0533]/8 bg-white p-7 shadow-xl shadow-[#1A0533]/5 md:grid-cols-[220px_1fr] md:items-center md:p-10">
-          <img src="/images/abasiodiong-hs.png" alt="Abasiodiong Udofia, instructor" class="aspect-square w-full rounded-3xl object-cover object-top" loading="lazy" />
+    <section class="py-16 md:py-24">
+      <div class="section-shell">
+        <p class="section-kicker mb-10">Meet your instructor</p>
+        <div class="grid items-center gap-10 md:grid-cols-[minmax(0,1fr)_320px] md:gap-14 lg:grid-cols-[minmax(0,1fr)_360px]">
           <div>
-            <p class="section-kicker">Meet your instructor</p>
-            <h2 class="mt-3 text-3xl font-extrabold md:text-4xl">Abasiodiong Udofia</h2>
-            <p class="mt-2 font-bold text-gray-700">CTO at ChatJourno · 3MTT Mentor · Ex-Senior Backend Engineer at Paydue</p>
-            <p class="mt-5 text-lg leading-8 text-gray-600">Odiong will lead the live sessions, walk through practical implementations, review projects, answer questions, and help you make confident engineering decisions as your applications become more capable.</p>
+            <h2 class="text-3xl font-extrabold tracking-tight md:text-4xl">Abasiodiong Udofia</h2>
+            <p class="mt-2 font-semibold text-[#8A40F5]">Co-Founder &amp; CTO at ChatJourno · 3MTT Mentor</p>
+            <div class="mt-6 space-y-4 text-lg leading-8 text-gray-700">
+              <p>Abasiodiong builds production AI and backend systems. As Co-Founder and CTO of <strong>ChatJourno</strong>, he works with Python, vector search, and retrieval-augmented generation to turn complex information into useful products.</p>
+              <p>He has mentored hundreds of engineers through <strong>3MTT Nigeria</strong>. He will teach the live sessions, review your projects, answer your questions, and help you make better decisions as you build.</p>
+            </div>
+          </div>
+          <div class="order-first justify-self-center md:order-last md:justify-self-end">
+            <img src="/images/abasiodiong-hs.png" alt="Abasiodiong Udofia, cohort instructor" class="aspect-[3/4] w-full max-w-xs rounded-2xl object-cover object-top md:max-w-none" loading="lazy" />
           </div>
         </div>
       </div>
     </section>
 
-    <section id="pricing" class="scroll-mt-20 bg-[#1A0533] py-20 text-white md:py-28">
-      <div class="mx-auto max-w-6xl px-6 md:px-12 lg:px-16">
+    <section id="pricing" class="scroll-mt-20 bg-[#1A0533] py-16 text-white md:py-24">
+      <div class="section-shell">
         <div class="mx-auto max-w-3xl text-center">
-          <p class="text-xs font-extrabold uppercase tracking-widest text-[#B98BFF]">Choose how you want to pay</p>
-          <h2 class="mt-4 text-4xl font-extrabold leading-tight tracking-tight md:text-5xl">Ready to stop watching and start building?</h2>
-          <p class="mt-5 text-lg leading-8 text-white/60">Join a focused group of {aiCohort.capacity} developers and spend the next six weeks turning what you know into working AI applications.</p>
+          <p class="section-kicker section-kicker--dark">Enrollment</p>
+          <h2 class="section-heading">Pick the payment option that works for you.</h2>
+          <p class="mt-5 text-lg leading-8 text-white/60">There are {aiCohort.capacity} seats. Choose your payment option below when you are ready to join us.</p>
         </div>
 
-        <fieldset class="mx-auto mt-12 max-w-4xl">
+        <fieldset class="mx-auto mt-10 max-w-4xl">
           <legend class="sr-only">Choose a payment option</legend>
-          <div class="grid gap-5 md:grid-cols-2">
-            <label class={`payment-card relative cursor-pointer rounded-3xl border p-6 transition md:p-8 ${fullPaymentAvailable ? '' : 'is-disabled'}`} data-payment-card="full">
-              <input type="radio" name="cohort-payment-plan" value="full" class="sr-only" checked={fullPaymentAvailable} disabled={!fullPaymentAvailable} />
+          <div class="grid gap-4 md:grid-cols-2">
+            <label class="payment-card relative cursor-pointer rounded-2xl border p-6 transition md:p-7" data-payment-card="full">
+              <input type="radio" name="cohort-payment-plan" value="full" class="sr-only" checked />
               <div class="flex items-start justify-between gap-4">
                 <div><p class="text-sm font-bold text-[#D8BDFF]">Pay in full</p><p class="mt-3 text-4xl font-extrabold">{formatNaira(aiCohort.fullPaymentPrice)}</p></div>
                 <span class="rounded-full bg-[#45D694]/15 px-3 py-1 text-xs font-extrabold text-[#76E5B3]">Save {formatNaira(aiCohort.fullPaymentSaving)}</span>
               </div>
-              <p class="mt-5 text-sm leading-6 text-white/55">One payment. Your lowest total price.</p>
-              {!fullPaymentAvailable && <p class="mt-4 text-sm font-semibold text-amber-300">Full-payment checkout is being configured.</p>}
+              <p class="mt-5 text-sm leading-6 text-white/55">Pay once and get the lowest total price.</p>
               <span class="payment-radio mt-7 flex h-6 w-6 items-center justify-center rounded-full border border-white/30"><i class="h-3 w-3 rounded-full bg-[#B98BFF]"></i></span>
             </label>
 
-            <label class={`payment-card relative cursor-pointer rounded-3xl border p-6 transition md:p-8 ${installmentAvailable ? '' : 'is-disabled'}`} data-payment-card="installment">
-              <input type="radio" name="cohort-payment-plan" value="installment" class="sr-only" checked={!fullPaymentAvailable && installmentAvailable} disabled={!installmentAvailable} />
+            <label class="payment-card relative cursor-pointer rounded-2xl border p-6 transition md:p-7" data-payment-card="installment">
+              <input type="radio" name="cohort-payment-plan" value="installment" class="sr-only" />
               <div class="flex items-start justify-between gap-4">
                 <div><p class="text-sm font-bold text-[#D8BDFF]">Pay in installments</p><p class="mt-3 text-4xl font-extrabold">{formatNaira(aiCohort.installmentAmount)} <span class="text-base text-white/45">now</span></p></div>
                 <span class="rounded-full bg-white/8 px-3 py-1 text-xs font-bold text-white/60">2 payments</span>
               </div>
-              <p class="mt-5 text-sm leading-6 text-white/55">{formatNaira(aiCohort.installmentAmount)} now and later. {formatNaira(aiCohort.installmentTotal)} total.</p>
-              {!installmentAvailable && <p class="mt-4 text-sm font-semibold text-amber-300">Installment checkout is being configured.</p>}
+              <p class="mt-5 text-sm leading-6 text-white/55">Pay {formatNaira(aiCohort.installmentAmount)} today and the same amount later. {formatNaira(aiCohort.installmentTotal)} total.</p>
               <span class="payment-radio mt-7 flex h-6 w-6 items-center justify-center rounded-full border border-white/30"><i class="h-3 w-3 rounded-full bg-[#B98BFF]"></i></span>
             </label>
           </div>
         </fieldset>
 
-        <div class="mx-auto mt-6 max-w-4xl rounded-2xl border border-white/10 bg-white/[0.05] p-5">
+        <div class="mx-auto mt-4 max-w-4xl rounded-2xl border border-white/12 bg-white/[0.05] p-5">
           <div class="flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
             <div>
               <p class="font-bold">Secure checkout powered by Paystack</p>
-              <p class="mt-1 text-sm text-white/50">After payment, complete a short registration so we can match your payment and prepare your access.</p>
+              <p class="mt-1 text-sm leading-6 text-white/50">After you pay, you will fill out a short form so we can confirm your place and prepare your access.</p>
             </div>
             <button
               id="paystack-continue"
               type="button"
               data-full-url={paystackPaymentPages.full}
               data-installment-url={paystackPaymentPages.installment}
-              disabled={!anyPaymentAvailable}
-              class="shrink-0 rounded-xl bg-[#8A40F5] px-7 py-4 font-extrabold text-white transition hover:bg-[#7434D8] disabled:cursor-not-allowed disabled:opacity-45 focus:outline-none focus:ring-2 focus:ring-[#B98BFF]"
+              class="shrink-0 rounded-xl bg-[#8A40F5] px-7 py-4 font-extrabold text-white transition-colors hover:bg-[#7434D8] disabled:cursor-not-allowed disabled:opacity-45 focus:outline-none focus:ring-2 focus:ring-[#B98BFF]"
             >Continue to secure payment →</button>
           </div>
-          <p id="checkout-message" class={`mt-4 text-sm ${anyPaymentAvailable ? 'hidden' : 'text-amber-300'}`} aria-live="polite">
+          <p id="checkout-message" class="mt-4 hidden text-sm text-amber-300" aria-live="polite">
             Online checkout is being configured. Please check back shortly.
           </p>
         </div>
 
-        <div class="mx-auto mt-8 flex max-w-4xl flex-col gap-4 rounded-2xl border border-[#B98BFF]/20 bg-[#8A40F5]/12 p-5 sm:flex-row sm:items-center">
-          <span class="flex h-11 w-11 shrink-0 items-center justify-center rounded-xl bg-[#8A40F5] text-white"><svg class="h-5 w-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10Zm-3-10 2 2 4-4" /></svg></span>
-          <div class="flex-1"><p class="font-extrabold">UniversityX Promise</p><p class="mt-1 text-sm leading-6 text-white/60">Your enrollment is protected. Request an eligible refund through {aiCohort.promiseDeadlineLabel}.</p></div>
-          <a href="/universityx-promise/" class="shrink-0 font-bold text-[#D8BDFF] hover:text-white">Read the Promise →</a>
+        <div class="mx-auto mt-8 grid max-w-4xl gap-px overflow-hidden rounded-2xl border border-white/12 bg-white/12 md:grid-cols-2">
+          <div class="bg-[#21103A] p-6">
+            <p class="font-extrabold">UniversityX Promise</p>
+            <p class="mt-2 text-sm leading-6 text-white/55">If the cohort is not right for you, you can request an eligible refund through {aiCohort.promiseDeadlineLabel}.</p>
+            <a href="/universityx-promise/" class="mt-4 inline-flex font-bold text-[#D8BDFF] hover:text-white focus:outline-none focus:ring-2 focus:ring-[#B98BFF]">Read the Promise →</a>
+          </div>
+          <div class="bg-[#21103A] p-6">
+            <p class="font-extrabold">Access scholarships</p>
+            <p class="mt-2 text-sm leading-6 text-white/55">Need help with tuition? You can apply for one of the limited partial scholarships. Applying does not guarantee support.</p>
+            <a href="/scholarship/" id="scholarship-cta" class="mt-4 inline-flex font-bold text-[#D8BDFF] hover:text-white focus:outline-none focus:ring-2 focus:ring-[#B98BFF]">Request scholarship support →</a>
+          </div>
         </div>
       </div>
     </section>
 
-    <section class="bg-[#F5F2EB] py-12">
-      <div class="mx-auto flex max-w-5xl flex-col gap-6 px-6 md:flex-row md:items-center md:justify-between md:px-12">
-        <div><p class="section-kicker">UniversityX Access Scholarships</p><h2 class="mt-2 text-2xl font-extrabold">Need help with tuition?</h2><p class="mt-2 max-w-2xl leading-7 text-gray-600">A limited number of partial scholarships are available. Applying does not guarantee support.</p></div>
-        <a href="/scholarship/" id="scholarship-cta" class="shrink-0 rounded-full border border-[#8A40F5] px-6 py-3 font-bold text-[#8A40F5] transition hover:bg-white focus:outline-none focus:ring-2 focus:ring-[#8A40F5]">Request scholarship support</a>
-      </div>
-    </section>
-
-    <section id="faq" class="scroll-mt-24 py-20 md:py-28">
-      <div class="mx-auto grid max-w-7xl gap-12 px-6 md:px-12 lg:grid-cols-[0.65fr_1.35fr] lg:px-16 xl:px-24">
-        <div><p class="section-kicker">Frequently asked</p><h2 class="section-heading">Questions before you join.</h2><p class="section-lead">The quick version, without the course-catalogue language.</p></div>
-        <div class="space-y-3">
+    <section id="faq" class="scroll-mt-20 py-16 md:py-24">
+      <div class="section-shell grid gap-10 lg:grid-cols-[0.7fr_1.3fr] lg:gap-16">
+        <div>
+          <p class="section-kicker">Frequently asked</p>
+          <h2 class="section-heading">Questions before you join.</h2>
+          <p class="section-lead">Here are straight answers about the experience you need, what you will build, attendance, and payment.</p>
+        </div>
+        <div class="divide-y divide-[#1A0533]/10 border-y border-[#1A0533]/10">
           {faqs.map(([question, answer], index) => (
-            <details class="group rounded-2xl border border-[#1A0533]/8 bg-[#F5F2EB] p-5" open={index === 0}>
-              <summary class="flex cursor-pointer list-none items-center justify-between gap-5 font-extrabold focus:outline-none focus-visible:ring-2 focus-visible:ring-[#8A40F5]">
-                <span>{question}</span><span class="flex h-8 w-8 shrink-0 items-center justify-center rounded-full bg-white text-[#8A40F5] transition group-open:rotate-45">+</span>
+            <details class="group py-1" open={index === 0}>
+              <summary class="flex cursor-pointer list-none items-center justify-between gap-5 rounded-lg px-1 py-5 font-extrabold focus:outline-none focus-visible:ring-2 focus-visible:ring-[#8A40F5]">
+                <span>{question}</span><span class="flex h-8 w-8 shrink-0 items-center justify-center rounded-full bg-[#F5F2EB] text-[#8A40F5] transition-transform group-open:rotate-45" aria-hidden="true">+</span>
               </summary>
-              <p class="mt-4 max-w-3xl leading-7 text-gray-600">{answer}</p>
+              <p class="max-w-3xl px-1 pb-6 leading-7 text-gray-600">{answer}</p>
             </details>
           ))}
-        </div>
-      </div>
-    </section>
-
-    <section class="px-6 pb-20 md:px-12 md:pb-28">
-      <div class="mx-auto max-w-6xl overflow-hidden rounded-[2rem] bg-[#8A40F5] p-8 text-white shadow-2xl shadow-[#8A40F5]/20 md:p-12">
-        <div class="grid gap-8 md:grid-cols-[1fr_auto] md:items-center">
-          <div><p class="text-xs font-extrabold uppercase tracking-widest text-white/55">{aiCohort.capacity} seats · Starts {aiCohort.startDateLabel}</p><h2 class="mt-4 text-4xl font-extrabold leading-tight tracking-tight md:text-5xl">Six weeks from now, have something real to show.</h2><p class="mt-5 max-w-3xl text-lg leading-8 text-white/70">Build useful AI applications with Python and finish with proof you can show to employers, clients, or your own team.</p></div>
-          <a href="#pricing" data-enroll-cta class="inline-flex shrink-0 items-center justify-center rounded-full bg-white px-8 py-4 font-extrabold text-[#1A0533] transition hover:-translate-y-0.5 focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-[#8A40F5]">Choose your payment option</a>
         </div>
       </div>
     </section>
@@ -552,25 +391,18 @@ const anyPaymentAvailable = fullPaymentAvailable || installmentAvailable;
 </Layout>
 
 <style>
-  .hero-grid-pattern {
-    background-image: linear-gradient(rgba(26, 5, 51, 0.035) 1px, transparent 1px), linear-gradient(90deg, rgba(26, 5, 51, 0.035) 1px, transparent 1px);
-    background-size: 48px 48px;
-    mask-image: linear-gradient(to bottom, black, transparent 90%);
-  }
-
+  :global(html) { scroll-behavior: smooth; }
+  .section-shell { width: min(100% - 3rem, 72rem); margin-inline: auto; }
   .section-kicker { font-size: .75rem; font-weight: 800; letter-spacing: .14em; text-transform: uppercase; color: #8A40F5; }
   .section-heading { margin-top: .75rem; font-size: clamp(2rem, 4vw, 3rem); font-weight: 800; letter-spacing: -.035em; line-height: 1.1; }
   .section-lead { margin-top: 1rem; font-size: 1.125rem; line-height: 1.75; color: #5f6368; }
-
-  .project-window > div:first-child span { display: block; width: .5rem; height: .5rem; border-radius: 999px; background: #d5d0c8; }
-  .project-window i, .project-window b, .project-window em, .project-window strong { display: block; border-radius: .4rem; background: #e8e4dc; }
-  .project-window i { height: 1.3rem; }
-  .project-window b { height: 2rem; width: 75%; }
-  .project-window em { height: .6rem; }
-  .project-window strong { height: 1.75rem; width: 4.5rem; }
-  .project-card--purple .project-window b, .project-card--purple .project-window strong { background: rgba(138, 64, 245, .22); }
-  .project-card--green .project-window b, .project-card--green .project-window strong { background: rgba(28, 160, 108, .2); }
-  .project-card--orange .project-window b, .project-card--orange .project-window strong { background: rgba(232, 137, 52, .2); }
+  .section-kicker--dark { color: #CFAEFF; }
+  .primary-button { display: inline-flex; align-items: center; justify-content: center; gap: .5rem; align-self: flex-start; border-radius: 999px; background: #8A40F5; padding: .9rem 1.6rem; color: white; font-weight: 700; transition: background-color .2s ease; }
+  .primary-button:hover { background: #7434D8; }
+  .primary-button:focus-visible, .text-link:focus-visible { outline: 2px solid #8A40F5; outline-offset: 4px; }
+  .text-link { display: inline-flex; align-items: center; gap: .45rem; align-self: flex-start; border-radius: .25rem; color: #1A0533; font-weight: 700; }
+  .text-link:hover { color: #8A40F5; }
+  .icon-tile { display: grid; width: 2.75rem; height: 2.75rem; place-items: center; border-radius: .75rem; background: #F0E8FC; color: #7632CE; }
 
   .payment-card { border-color: rgba(255,255,255,.12); background: rgba(255,255,255,.05); }
   .payment-card:hover { border-color: rgba(185,139,255,.5); background: rgba(255,255,255,.075); }
@@ -579,11 +411,14 @@ const anyPaymentAvailable = fullPaymentAvailable || installmentAvailable;
   .payment-card .payment-radio i { opacity: 0; }
   .payment-card:has(input:checked) .payment-radio { border-color: #B98BFF; }
   .payment-card:has(input:checked) .payment-radio i { opacity: 1; }
-  .payment-card.is-disabled { cursor: not-allowed; opacity: .5; }
-
   details summary::-webkit-details-marker { display: none; }
 
+  @media (min-width: 768px) {
+    .section-shell { width: min(100% - 6rem, 72rem); }
+  }
+
   @media (prefers-reduced-motion: reduce) {
+    :global(html) { scroll-behavior: auto; }
     *, *::before, *::after { scroll-behavior: auto !important; transition: none !important; }
   }
 </style>
@@ -624,6 +459,7 @@ const anyPaymentAvailable = fullPaymentAvailable || installmentAvailable;
     const selectedPlan = () => radios.find((radio) => radio.checked && !radio.disabled)?.value as 'full' | 'installment' | undefined;
     radios.forEach((radio) => {
       radio.addEventListener('change', () => {
+        message?.classList.add('hidden');
         if (radio.checked) window.posthog?.capture('cohort_payment_option_selected', { ...cohort, payment_option: radio.value });
       });
     });
