@@ -1,0 +1,105 @@
+[
+  {
+    "id": "aicustsupport01",
+    "name": "AI_Customer_Support_Agent_Workshop",
+    "type": "base",
+    "system": false,
+    "fields": [
+      {
+        "id": "firstname000001",
+        "name": "first_name",
+        "type": "text",
+        "system": false,
+        "hidden": false,
+        "required": true,
+        "presentable": true,
+        "primaryKey": false,
+        "min": 1,
+        "max": 80,
+        "pattern": "",
+        "autogeneratePattern": ""
+      },
+      {
+        "id": "lastname0000001",
+        "name": "last_name",
+        "type": "text",
+        "system": false,
+        "hidden": false,
+        "required": true,
+        "presentable": false,
+        "primaryKey": false,
+        "min": 1,
+        "max": 80,
+        "pattern": "",
+        "autogeneratePattern": ""
+      },
+      {
+        "id": "supportemail001",
+        "name": "email",
+        "type": "email",
+        "system": false,
+        "hidden": false,
+        "required": true,
+        "presentable": true,
+        "exceptDomains": null,
+        "onlyDomains": null
+      },
+      {
+        "id": "whatsapp0000001",
+        "name": "whatsapp_number",
+        "type": "text",
+        "system": false,
+        "hidden": false,
+        "required": false,
+        "presentable": false,
+        "primaryKey": false,
+        "min": 7,
+        "max": 40,
+        "pattern": "",
+        "autogeneratePattern": ""
+      },
+      {
+        "id": "pythonexp000000",
+        "name": "python_experience",
+        "type": "select",
+        "system": false,
+        "hidden": false,
+        "required": true,
+        "presentable": false,
+        "maxSelect": 1,
+        "values": ["Beginner", "Intermediate", "Advanced"]
+      },
+      {
+        "id": "cohortintrst001",
+        "name": "cohort_interest",
+        "type": "select",
+        "system": false,
+        "hidden": false,
+        "required": true,
+        "presentable": false,
+        "maxSelect": 1,
+        "values": ["Yes", "Maybe", "No"]
+      },
+      {
+        "id": "referralcode001",
+        "name": "referral_code",
+        "type": "text",
+        "system": false,
+        "hidden": false,
+        "required": false,
+        "presentable": false,
+        "primaryKey": false,
+        "min": 0,
+        "max": 120,
+        "pattern": "",
+        "autogeneratePattern": ""
+      }
+    ],
+    "indexes": [],
+    "listRule": null,
+    "viewRule": null,
+    "createRule": "",
+    "updateRule": null,
+    "deleteRule": null
+  }
+]
