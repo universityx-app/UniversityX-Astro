@@ -1,0 +1,54 @@
+---
+interface Integration {
+  src: string;
+  alt: string;
+  className: string;
+}
+
+interface Props {
+  name: string;
+  role: string;
+  photo: string;
+  className?: string;
+  integrations?: Integration[];
+}
+
+const defaultIntegrations: Integration[] = [
+  { src: '/images/chatjourno-logo.svg', alt: 'ChatJourno', className: 'h-4 md:h-5' },
+  { src: '/images/3mtt-logo.svg', alt: '3MTT Nigeria', className: 'h-6 md:h-7' },
+  { src: '/images/paydue-logo.svg', alt: 'Paydue Technologies', className: 'h-6 md:h-7' },
+];
+
+const {
+  name,
+  role,
+  photo,
+  className = '',
+  integrations = defaultIntegrations,
+} = Astro.props;
+---
+
+<div class:list={['border-t border-gray-100 pt-6', className]}>
+  <p class="mb-4 text-xs font-semibold uppercase tracking-widest text-gray-400">Instructor</p>
+  <div class="flex items-center gap-4">
+    <img src={photo} alt={name} class="h-18 w-18 shrink-0 rounded-full object-cover object-top" loading="eager" />
+    <div class="min-w-0">
+      <p class="text-lg font-semibold text-[#1A0533]">{name}</p>
+      <p class="text-base leading-6 text-gray-500">{role}</p>
+    </div>
+  </div>
+
+  <div class="mt-5">
+    <p class="mb-3 text-xs font-semibold uppercase tracking-widest text-gray-400">Experience &amp; Integrations Across</p>
+    <div class="flex flex-wrap items-center gap-6">
+      {integrations.map((integration) => (
+        <img
+          src={integration.src}
+          alt={integration.alt}
+          class:list={['object-contain', integration.className]}
+          loading="lazy"
+        />
+      ))}
+    </div>
+  </div>
+</div>

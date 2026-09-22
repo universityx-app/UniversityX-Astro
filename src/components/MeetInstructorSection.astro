@@ -1,0 +1,38 @@
+---
+interface Props {
+  name: string;
+  role: string;
+  photo: string;
+  background?: 'warm' | 'white';
+}
+
+const {
+  name,
+  role,
+  photo,
+  background = 'warm',
+} = Astro.props;
+---
+
+<section class:list={['py-16 md:py-20', background === 'white' ? 'bg-white' : 'bg-[#F5F2EB]']}>
+  <div class="mx-auto max-w-7xl px-6 md:px-12 lg:px-16 xl:px-24">
+    <p class="mb-10 text-xs font-semibold uppercase tracking-widest text-[#8A40F5]">Meet Your Instructor</p>
+    <div class="grid grid-cols-1 items-center gap-8 md:grid-cols-2">
+      <div>
+        <h2 class="mb-2 text-2xl font-extrabold text-[#1A0533] md:text-3xl">{name}</h2>
+        <p class="mb-5 font-medium text-[#8A40F5]">{role}</p>
+        <div class="space-y-4 text-lg leading-relaxed text-gray-700">
+          <p>
+            Abasiodiong Udofia is the Co-Founder &amp; CTO of <strong>ChatJourno</strong>, an AI platform powered by Python, vector search, and production RAG workflows. With deep experience across high-growth fintech platforms, he has architected resilient systems processing $10M+ with zero payment failures, specialized in idempotent webhooks and automated reconciliation.
+          </p>
+          <p>
+            As a software development mentor at <strong>3MTT Nigeria</strong>, Abasiodiong has guided hundreds of engineers in full-stack engineering, secure APIs, and production readiness. In this live workshop, he will walk you step-by-step through building an AI customer support agent that uses company knowledge, tools, and human handoff.
+          </p>
+        </div>
+      </div>
+      <div class="order-first justify-self-center md:order-last md:justify-self-end">
+        <img src={photo} alt={name} class="mx-auto aspect-3/4 w-full max-w-xs rounded-2xl object-cover object-top shadow-md md:mx-0" loading="lazy" />
+      </div>
+    </div>
+  </div>
+</section>

@@ -2,6 +2,9 @@
 import Layout from '../../layouts/Layout.astro';
 import Navbar from '../../components/Navbar.astro';
 import Footer from '../../components/Footer.astro';
+import WorkshopFAQ from '../../components/WorkshopFAQ.astro';
+import InstructorStrip from '../../components/InstructorStrip.astro';
+import MeetInstructorSection from '../../components/MeetInstructorSection.astro';
 import {
   AI_COHORT_SCHOLARSHIP_PATH,
   aiCohort,
@@ -112,10 +115,10 @@ const suitability = [
 ];
 
 const faqs = [
-  ['What experience do I need?', 'You should be comfortable with basic Python and able to write small scripts. You do not need any previous AI or machine-learning experience. We will focus on building applications with existing models.'],
-  ['What will I build and leave with?', 'You will build practical projects throughout the cohort and finish with a deployed capstone, a documented repository, feedback on your work, and something real you can show.'],
-  ['What if I miss a live class?', 'You can catch up with the recording. You will still need to complete that week’s practical build so you are ready for the next class.'],
-  ['Can I pay in installments?', `Yes. You can pay ${formatNaira(aiCohort.installmentAmount)} now and the same amount later, for a total of ${formatNaira(aiCohort.installmentTotal)}. If you pay ${formatNaira(aiCohort.fullPaymentPrice)} in full, you save ${formatNaira(aiCohort.fullPaymentSaving)}.`],
+  { question: 'What experience do I need?', answer: 'You should be comfortable with basic Python and able to write small scripts. You do not need any previous AI or machine-learning experience. We will focus on building applications with existing models.' },
+  { question: 'What will I build and leave with?', answer: 'You will build practical projects throughout the cohort and finish with a deployed capstone, a documented repository, feedback on your work, and something real you can show.' },
+  { question: 'What if I miss a live class?', answer: 'You can catch up with the recording. You will still need to complete that week’s practical build so you are ready for the next class.' },
+  { question: 'Can I pay in installments?', answer: `Yes. You can pay ${formatNaira(aiCohort.installmentAmount)} now and the same amount later, for a total of ${formatNaira(aiCohort.installmentTotal)}. If you pay ${formatNaira(aiCohort.fullPaymentPrice)} in full, you save ${formatNaira(aiCohort.fullPaymentSaving)}.` },
 ];
 
 ---
@@ -138,13 +141,19 @@ const faqs = [
             Build and ship AI applications with Python <span class="font-['Playfair_Display',serif] italic text-[#8A40F5]">in 6 weeks.</span>
           </h1>
           <p class="mt-6 max-w-2xl text-lg leading-8 text-gray-600 md:text-xl">Move beyond tutorials. Build AI applications that work with your data, use real tools, handle multi-step tasks, and are ready to deploy and demonstrate.</p>
-          <div class="mt-8 flex flex-col gap-4 sm:flex-row sm:items-center">
+          <div class="hero-actions mt-8 flex flex-col gap-4 sm:flex-row sm:items-center">
             <a href="#pricing" data-enroll-cta class="primary-button">
               Join the cohort
               <svg class="h-5 w-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6" /></svg>
             </a>
             <a href="#curriculum" class="text-link">View the six-week curriculum <span aria-hidden="true">↓</span></a>
           </div>
+          <InstructorStrip
+            name="Abasiodiong Udofia"
+            role="CTO at ChatJourno · 3MTT Mentor · Ex-Senior Backend Engineer at Paydue"
+            photo="/images/abasiodiong-hs.png"
+            className="mt-8"
+          />
         </div>
 
         <aside class="rounded-2xl border border-[#1A0533]/10 bg-[#F8F5EF] p-6 md:p-8" aria-label="Cohort summary">
@@ -281,24 +290,12 @@ const faqs = [
       </div>
     </section>
 
-    <section class="py-16 md:py-24">
-      <div class="section-shell">
-        <p class="section-kicker mb-10">Meet your instructor</p>
-        <div class="grid items-center gap-10 md:grid-cols-[minmax(0,1fr)_320px] md:gap-14 lg:grid-cols-[minmax(0,1fr)_360px]">
-          <div>
-            <h2 class="text-3xl font-extrabold tracking-tight md:text-4xl">Abasiodiong Udofia</h2>
-            <p class="mt-2 font-semibold text-[#8A40F5]">Co-Founder &amp; CTO at ChatJourno · 3MTT Mentor</p>
-            <div class="mt-6 space-y-4 text-lg leading-8 text-gray-700">
-              <p>Abasiodiong builds production AI and backend systems. As Co-Founder and CTO of <strong>ChatJourno</strong>, he works with Python, vector search, and retrieval-augmented generation to turn complex information into useful products.</p>
-              <p>He has mentored hundreds of engineers through <strong>3MTT Nigeria</strong>. He will teach the live sessions, review your projects, answer your questions, and help you make better decisions as you build.</p>
-            </div>
-          </div>
-          <div class="order-first justify-self-center md:order-last md:justify-self-end">
-            <img src="/images/abasiodiong-hs.png" alt="Abasiodiong Udofia, cohort instructor" class="aspect-3/4 w-full max-w-xs rounded-2xl object-cover object-top md:max-w-none" loading="lazy" />
-          </div>
-        </div>
-      </div>
-    </section>
+    <MeetInstructorSection
+      name="Abasiodiong Udofia"
+      role="CTO at ChatJourno · 3MTT Mentor · Ex-Senior Backend Engineer at Paydue"
+      photo="/images/abasiodiong-hs.png"
+      background="white"
+    />
 
     <section id="pricing" class="scroll-mt-20 bg-[#1A0533] py-16 text-white md:py-24">
       <div class="section-shell">
@@ -353,39 +350,42 @@ const faqs = [
         </div>
 
         <div class="mx-auto mt-8 grid max-w-4xl gap-px overflow-hidden rounded-2xl border border-white/12 bg-white/12 md:grid-cols-2">
-          <div class="bg-[#21103A] p-6">
-            <p class="font-extrabold">UniversityX Promise</p>
-            <p class="mt-2 text-sm leading-6 text-white/55">If the cohort is not right for you, you can request an eligible refund through {aiCohort.promiseDeadlineLabel}.</p>
-            <a href="/universityx-promise/" class="mt-4 inline-flex font-bold text-[#D8BDFF] hover:text-white focus:outline-none focus:ring-2 focus:ring-[#B98BFF]">Read the Promise →</a>
+          <div class="flex items-start gap-4 bg-[#21103A] p-6">
+            <span class="grid h-10 w-10 shrink-0 place-items-center rounded-xl border border-white/10 bg-white/6 text-[#D8BDFF]" aria-hidden="true">
+              <svg class="h-5 w-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M12 3 5 6v5c0 4.6 2.8 8.1 7 10 4.2-1.9 7-5.4 7-10V6l-7-3Z" />
+                <path d="m9 12 2 2 4-4" />
+              </svg>
+            </span>
+            <div class="min-w-0">
+              <p class="text-base font-extrabold">UniversityX Promise</p>
+              <p class="mt-2 text-sm leading-6 text-white/55">
+                If the cohort is not right for you, you can request an eligible refund through {aiCohort.promiseDeadlineLabel}. Click here to <a href="/universityx-promise/" class="font-semibold text-white/75 underline decoration-white/30 underline-offset-4 transition-colors hover:text-white hover:decoration-white/70 focus:outline-none focus:ring-2 focus:ring-[#B98BFF]">Read the Promise</a>.
+              </p>
+            </div>
           </div>
-          <div class="bg-[#21103A] p-6">
-            <p class="font-extrabold">Access scholarships</p>
-            <p class="mt-2 text-sm leading-6 text-white/55">Need help with tuition? You can apply for one of the limited partial scholarships. Applying does not guarantee support.</p>
-            <a href={AI_COHORT_SCHOLARSHIP_PATH} id="scholarship-cta" class="mt-4 inline-flex font-bold text-[#D8BDFF] hover:text-white focus:outline-none focus:ring-2 focus:ring-[#B98BFF]">Request scholarship support →</a>
+          <div class="flex items-start gap-4 bg-[#21103A] p-6">
+            <span class="grid h-10 w-10 shrink-0 place-items-center rounded-xl border border-white/10 bg-white/6 text-[#D8BDFF]" aria-hidden="true">
+              <svg class="h-5 w-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                <path d="m3 9 9-5 9 5-9 5-9-5Z" />
+                <path d="M7 11.2V16c2.8 2.2 7.2 2.2 10 0v-4.8M21 9v6" />
+              </svg>
+            </span>
+            <div class="min-w-0">
+              <p class="text-base font-extrabold">Access scholarships</p>
+              <p class="mt-2 text-sm leading-6 text-white/55">
+                Need help with tuition? You can apply for one of the limited partial scholarships. Applying does not guarantee support. Click here to <a href={AI_COHORT_SCHOLARSHIP_PATH} id="scholarship-cta" class="font-semibold text-white/75 underline decoration-white/30 underline-offset-4 transition-colors hover:text-white hover:decoration-white/70 focus:outline-none focus:ring-2 focus:ring-[#B98BFF]">Request scholarship support</a>.
+              </p>
+            </div>
           </div>
         </div>
       </div>
     </section>
 
-    <section id="faq" class="scroll-mt-20 py-16 md:py-24">
-      <div class="section-shell grid gap-10 lg:grid-cols-[0.7fr_1.3fr] lg:gap-16">
-        <div>
-          <p class="section-kicker">Frequently asked</p>
-          <h2 class="section-heading">Questions before you join.</h2>
-          <p class="section-lead">Here are straight answers about the experience you need, what you will build, attendance, and payment.</p>
-        </div>
-        <div class="divide-y divide-[#1A0533]/10 border-y border-[#1A0533]/10">
-          {faqs.map(([question, answer], index) => (
-            <details class="group py-1" open={index === 0}>
-              <summary class="flex cursor-pointer list-none items-center justify-between gap-5 rounded-lg px-1 py-5 font-extrabold focus:outline-none focus-visible:ring-2 focus-visible:ring-[#8A40F5]">
-                <span>{question}</span><span class="flex h-8 w-8 shrink-0 items-center justify-center rounded-full bg-[#F5F2EB] text-[#8A40F5] transition-transform group-open:rotate-45" aria-hidden="true">+</span>
-              </summary>
-              <p class="max-w-3xl px-1 pb-6 leading-7 text-gray-600">{answer}</p>
-            </details>
-          ))}
-        </div>
-      </div>
-    </section>
+    <WorkshopFAQ
+      faqs={faqs}
+      eyebrow="Before you join"
+    />
   </main>
 
   <Footer />
@@ -412,10 +412,12 @@ const faqs = [
   .payment-card .payment-radio i { opacity: 0; }
   .payment-card:has(input:checked) .payment-radio { border-color: #B98BFF; }
   .payment-card:has(input:checked) .payment-radio i { opacity: 1; }
-  details summary::-webkit-details-marker { display: none; }
-
   @media (min-width: 768px) {
     .section-shell { width: min(100% - 6rem, 72rem); }
+  }
+
+  @media (min-width: 640px) {
+    .hero-actions .text-link { align-self: center; }
   }
 
   @media (prefers-reduced-motion: reduce) {

@@ -1,0 +1,100 @@
+---
+interface FaqItem {
+  question: string;
+  answer: string;
+}
+
+interface Props {
+  faqs: FaqItem[];
+  eyebrow?: string;
+  heading?: string;
+}
+
+const {
+  faqs,
+  eyebrow = 'Before you register',
+  heading = 'Frequently asked questions',
+} = Astro.props;
+---
+
+<section id="faq" class="scroll-mt-20 bg-white py-16 md:py-24">
+  <div class="mx-auto max-w-4xl px-6 md:px-12">
+    <div class="mb-12 text-center">
+      <p class="mb-3 text-xs font-black uppercase tracking-[0.16em] text-[#8A40F5]">{eyebrow}</p>
+      <h2 class="text-3xl font-extrabold leading-tight tracking-[-0.035em] text-[#1A0533] md:text-5xl">{heading}</h2>
+    </div>
+
+    <div class="workshop-faq space-y-3">
+      {faqs.map(({ question, answer }, index) => (
+        <div class="workshop-faq-item overflow-hidden rounded-2xl border border-[#E8E0EB] bg-white">
+          <button
+            type="button"
+            class="workshop-faq-trigger flex w-full cursor-pointer items-center justify-between gap-5 px-5 py-5 text-left transition hover:bg-[#FAF8FC] focus:outline-none focus-visible:ring-2 focus-visible:ring-inset focus-visible:ring-[#8A40F5] md:px-7"
+            aria-expanded="false"
+            aria-controls={`workshop-faq-panel-${index}`}
+          >
+            <span class="font-bold text-[#1A0533] md:text-lg">{question}</span>
+            <svg class="workshop-faq-chevron h-5 w-5 shrink-0 text-[#8A40F5] transition-transform" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true">
+              <path d="m6 9 6 6 6-6" />
+            </svg>
+          </button>
+          <div id={`workshop-faq-panel-${index}`} class="workshop-faq-panel" role="region">
+            <div class="overflow-hidden">
+              <p class="border-t border-[#EEE8F0] px-5 pb-6 pt-4 leading-7 text-gray-600 md:px-7">{answer}</p>
+            </div>
+          </div>
+        </div>
+      ))}
+    </div>
+  </div>
+</section>
+
+<style>
+  .workshop-faq-panel {
+    display: grid;
+    grid-template-rows: 0fr;
+    transition: grid-template-rows 0.3s ease;
+  }
+
+  .workshop-faq-panel.is-open {
+    grid-template-rows: 1fr;
+  }
+
+  .workshop-faq-chevron.is-open {
+    transform: rotate(180deg);
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .workshop-faq-panel,
+    .workshop-faq-chevron {
+      transition: none;
+    }
+  }
+</style>
+
+<script>
+  function initWorkshopFaqs() {
+    document.querySelectorAll<HTMLElement>('.workshop-faq').forEach((accordion) => {
+      if (accordion.dataset.initialized === 'true') return;
+      accordion.dataset.initialized = 'true';
+
+      accordion.querySelectorAll<HTMLButtonElement>('.workshop-faq-trigger').forEach((trigger) => {
+        trigger.addEventListener('click', () => {
+          const panel = trigger.nextElementSibling;
+          const chevron = trigger.querySelector('.workshop-faq-chevron');
+          const isOpen = trigger.getAttribute('aria-expanded') === 'true';
+
+          trigger.setAttribute('aria-expanded', String(!isOpen));
+          panel?.classList.toggle('is-open', !isOpen);
+          chevron?.classList.toggle('is-open', !isOpen);
+        });
+      });
+    });
+  }
+
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', initWorkshopFaqs);
+  } else {
+    initWorkshopFaqs();
+  }
+</script>
