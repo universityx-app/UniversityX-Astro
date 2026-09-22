@@ -202,7 +202,7 @@ const {
         <div
           id="register-general-error"
           role="alert"
-          class="hidden rounded-xl bg-rose-50 border border-rose-200 p-4 text-rose-700 text-sm flex items-start gap-3"
+          class="registration-flex-message hidden rounded-xl bg-rose-50 border border-rose-200 p-4 text-rose-700 text-sm items-start gap-3"
         >
           <svg
             class="w-5 h-5 text-rose-500 shrink-0 mt-0.5"
@@ -243,7 +243,7 @@ const {
             />
             <p
               id="reg-first-name-error"
-              class="text-rose-500 text-xs mt-1.5 hidden flex items-center gap-1"
+              class="registration-flex-message text-rose-500 text-xs mt-1.5 hidden items-center gap-1"
             >
               <svg
                 class="w-3.5 h-3.5 shrink-0"
@@ -280,7 +280,7 @@ const {
             />
             <p
               id="reg-last-name-error"
-              class="text-rose-500 text-xs mt-1.5 hidden flex items-center gap-1"
+              class="registration-flex-message text-rose-500 text-xs mt-1.5 hidden items-center gap-1"
             >
               <svg
                 class="w-3.5 h-3.5 shrink-0"
@@ -318,7 +318,7 @@ const {
           />
           <p
             id="reg-email-error"
-            class="text-rose-500 text-xs mt-1.5 hidden flex items-center gap-1"
+            class="registration-flex-message text-rose-500 text-xs mt-1.5 hidden items-center gap-1"
           >
             <svg
               class="w-3.5 h-3.5 shrink-0"
@@ -354,7 +354,7 @@ const {
                 required={whatsappRequired}
                 class="w-full bg-[#FAF9F5] rounded-xl px-4 py-3.5 text-base text-gray-800 placeholder-gray-400 border border-gray-200 focus:outline-none focus:ring-2 focus:ring-[#8A40F5] focus:border-[#8A40F5] focus:bg-white transition-all duration-200 shadow-xs"
               />
-              <p id="reg-whatsapp-error" class="text-rose-500 text-xs mt-1.5 hidden flex items-center gap-1">
+              <p id="reg-whatsapp-error" class="registration-flex-message text-rose-500 text-xs mt-1.5 hidden items-center gap-1">
                 <svg class="w-3.5 h-3.5 shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true">
                   <circle cx="12" cy="12" r="10" />
                   <line x1="12" y1="8" x2="12" y2="12" />
@@ -413,7 +413,7 @@ const {
           </div>
           <p
             id="reg-python-exp-error"
-            class="text-rose-500 text-xs mt-1.5 hidden flex items-center gap-1"
+            class="registration-flex-message text-rose-500 text-xs mt-1.5 hidden items-center gap-1"
           >
             <svg
               class="w-3.5 h-3.5 shrink-0"
@@ -480,7 +480,7 @@ const {
           </div>
           <p
             id="reg-cohort-interest-error"
-            class="text-rose-500 text-xs mt-1.5 hidden flex items-center gap-1"
+            class="registration-flex-message text-rose-500 text-xs mt-1.5 hidden items-center gap-1"
           >
             <svg
               class="w-3.5 h-3.5 shrink-0"
@@ -547,6 +547,12 @@ const {
     </div>
   </div>
 </section>
+
+<style>
+  .registration-flex-message:not(.hidden) {
+    display: flex;
+  }
+</style>
 
 <script>
   import PocketBase from "pocketbase";

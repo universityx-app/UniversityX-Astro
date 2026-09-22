@@ -1,3 +1,4 @@
+// @ts-nocheck
 migrate((app) => {
   const collection = new Collection({
     type: "base",

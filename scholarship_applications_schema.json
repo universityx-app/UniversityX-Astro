@@ -91,7 +91,7 @@
         "hidden": false,
         "required": true,
         "presentable": false,
-        "min": 0,
+        "min": 10000,
         "max": 25000,
         "onlyInt": true
       },
