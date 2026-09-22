@@ -12,7 +12,12 @@ Set these variables for the production Astro build:
 | `PUBLIC_PAYSTACK_INSTALLMENT_PAYMENT_URL` | Paystack Payment Page for the first ₦10,500 installment |
 | `PUBLIC_POCKETBASE_URL` | Existing PocketBase public API origin |
 
-The two payment URLs must use HTTPS and have a `paystack.com` host (including Paystack subdomains). A missing or invalid URL leaves that payment option unavailable instead of exposing a broken checkout.
+The cohort defaults to these Paystack pages when the variables are not set:
+
+- full payment: `https://paystack.shop/pay/ai-cohort-full`
+- installment: `https://paystack.shop/pay/ai-cohort-part`
+
+Any configured payment URL must use HTTPS and have a `paystack.com` or `paystack.shop` host, including their subdomains. An invalid override leaves that checkout unavailable instead of exposing an unsafe link.
 
 Configure each Paystack page to return to the cohort enrollment route:
 
