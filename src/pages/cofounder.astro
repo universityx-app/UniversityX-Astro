@@ -151,16 +151,16 @@ import Footer from '../components/Footer.astro';
 
 <script>
   function initCofounderForm() {
-    const form = document.getElementById('appForm');
+    const form = document.getElementById('appForm') as HTMLFormElement | null;
     const successState = document.getElementById('successState');
     if (!form) return;
 
-    const submitBtn = form.querySelector('button[type="submit"]');
+    const submitBtn = form.querySelector<HTMLButtonElement>('button[type="submit"]');
     const pbUrl = import.meta.env.PUBLIC_POCKETBASE_URL;
     const endpoint = `${pbUrl}/api/collections/Cofounder_Applications/records`;
-    const emailInput = form.querySelector('#email');
-    const linkedInInput = form.querySelector('#linkedin');
-    const requiredTextInputs = form.querySelectorAll('input[required], textarea[required]');
+    const emailInput = form.querySelector<HTMLInputElement>('#email');
+    const linkedInInput = form.querySelector<HTMLInputElement>('#linkedin');
+    const requiredTextInputs = form.querySelectorAll<HTMLInputElement | HTMLTextAreaElement>('input[required], textarea[required]');
 
     function validateForm() {
       let isValid = true;

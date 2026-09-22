@@ -3,6 +3,7 @@ import Layout from '../../layouts/Layout.astro';
 import Navbar from '../../components/Navbar.astro';
 import Footer from '../../components/Footer.astro';
 import {
+  AI_COHORT_SCHOLARSHIP_PATH,
   aiCohort,
   formatNaira,
   paystackPaymentPages,
@@ -232,7 +233,7 @@ const faqs = [
         </div>
         <div class="mt-12 grid gap-4 lg:grid-cols-3">
           {projects.map((project, index) => (
-            <article class="rounded-2xl border border-white/12 bg-white/[0.06] p-6 md:p-7">
+            <article class="rounded-2xl border border-white/12 bg-white/6 p-6 md:p-7">
               <div class="flex items-center justify-between gap-4">
                 <span class="rounded-full bg-[#8A40F5]/25 px-3 py-1 text-xs font-bold text-[#DEC9FF]">{project.tag}</span>
                 <span class="text-sm font-extrabold text-white/25">0{index + 1}</span>
@@ -293,7 +294,7 @@ const faqs = [
             </div>
           </div>
           <div class="order-first justify-self-center md:order-last md:justify-self-end">
-            <img src="/images/abasiodiong-hs.png" alt="Abasiodiong Udofia, cohort instructor" class="aspect-[3/4] w-full max-w-xs rounded-2xl object-cover object-top md:max-w-none" loading="lazy" />
+            <img src="/images/abasiodiong-hs.png" alt="Abasiodiong Udofia, cohort instructor" class="aspect-3/4 w-full max-w-xs rounded-2xl object-cover object-top md:max-w-none" loading="lazy" />
           </div>
         </div>
       </div>
@@ -332,7 +333,7 @@ const faqs = [
           </div>
         </fieldset>
 
-        <div class="mx-auto mt-4 max-w-4xl rounded-2xl border border-white/12 bg-white/[0.05] p-5">
+        <div class="mx-auto mt-4 max-w-4xl rounded-2xl border border-white/12 bg-white/5 p-5">
           <div class="flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
             <div>
               <p class="font-bold">Secure checkout powered by Paystack</p>
@@ -360,7 +361,7 @@ const faqs = [
           <div class="bg-[#21103A] p-6">
             <p class="font-extrabold">Access scholarships</p>
             <p class="mt-2 text-sm leading-6 text-white/55">Need help with tuition? You can apply for one of the limited partial scholarships. Applying does not guarantee support.</p>
-            <a href="/scholarship/" id="scholarship-cta" class="mt-4 inline-flex font-bold text-[#D8BDFF] hover:text-white focus:outline-none focus:ring-2 focus:ring-[#B98BFF]">Request scholarship support →</a>
+            <a href={AI_COHORT_SCHOLARSHIP_PATH} id="scholarship-cta" class="mt-4 inline-flex font-bold text-[#D8BDFF] hover:text-white focus:outline-none focus:ring-2 focus:ring-[#B98BFF]">Request scholarship support →</a>
           </div>
         </div>
       </div>
@@ -426,7 +427,7 @@ const faqs = [
 <script>
   declare global {
     interface Window {
-      posthog?: { capture: (event: string, properties?: Record<string, unknown>) => void };
+      posthog?: any;
     }
   }
 

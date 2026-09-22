@@ -9,6 +9,7 @@ import sitemap from '@astrojs/sitemap';
 export default defineConfig({
   site: process.env.PUBLIC_SITE_URL || process.env.SITE_URL || 'https://universityx.app',
   redirects: {
+    '/scholarship': '/cohort/build-and-ship-ai-applications-with-python/scholarship',
     '/paths/ai-data': '/paths/ai-data-science',
     '/paths/ai-data/ai-engineering': '/paths/ai-data-science/ai-engineering',
     '/paths/ai-data/ai-engineering/cohorts': '/paths/ai-data-science/ai-engineering/cohorts',

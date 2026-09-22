@@ -3,6 +3,8 @@ export const AI_COHORT_PATH =
 
 export const AI_COHORT_ENROLLMENT_PATH = `${AI_COHORT_PATH}enrollment/`;
 
+export const AI_COHORT_SCHOLARSHIP_PATH = `${AI_COHORT_PATH}scholarship/`;
+
 export type PaymentOption = 'full' | 'installment';
 
 export interface CohortOffer {

@@ -7,6 +7,7 @@
     "build": "node scripts/astro.mjs build",
     "preview": "node scripts/astro.mjs preview",
     "astro": "node scripts/astro.mjs",
+    "check": "astro check",
     "test:cohort-access": "node scripts/verify-cohort-payment-access.mjs"
   },
   "dependencies": {
@@ -16,5 +17,8 @@
     "pocketbase": "^0.26.8",
     "posthog-js": "^1.347.1",
     "tailwindcss": "^4.1.18"
+  },
+  "devDependencies": {
+    "@astrojs/check": "^0.9.10"
   }
 }

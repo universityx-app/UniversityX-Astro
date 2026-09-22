@@ -1,12 +1,12 @@
 ---
-import Layout from '../layouts/Layout.astro';
-import Navbar from '../components/Navbar.astro';
-import Footer from '../components/Footer.astro';
-import { AI_COHORT_PATH, aiCohort } from '../data/aiCohort';
+import Layout from '../../../layouts/Layout.astro';
+import Navbar from '../../../components/Navbar.astro';
+import Footer from '../../../components/Footer.astro';
+import { AI_COHORT_PATH, AI_COHORT_SCHOLARSHIP_PATH, aiCohort } from '../../../data/aiCohort';
 ---
 
 <Layout
-  title="UniversityX Access Scholarship | October 2026"
+  title="AI Applications with Python Scholarship | UniversityX"
   description="Request partial tuition support for the October 2026 Build and Ship AI Applications with Python cohort."
 >
   <Navbar />
@@ -15,13 +15,13 @@ import { AI_COHORT_PATH, aiCohort } from '../data/aiCohort';
     <section class="bg-[#F5F2EB] py-14 md:py-20">
       <div class="mx-auto max-w-5xl px-6 md:px-12">
         <nav class="mb-8 flex items-center gap-2 text-sm text-gray-500" aria-label="Breadcrumb">
-          <a href={AI_COHORT_PATH} class="hover:text-[#8A40F5]">Current cohort</a>
+          <a href={AI_COHORT_PATH} class="hover:text-[#8A40F5]">Build and Ship AI Applications with Python</a>
           <span aria-hidden="true" class="text-[#8A40F5]">/</span>
-          <span class="font-medium text-[#1A0533]">Access Scholarship</span>
+          <span class="font-medium text-[#1A0533]">Scholarship</span>
         </nav>
-        <p class="text-xs font-extrabold uppercase tracking-widest text-[#8A40F5]">UniversityX Access Scholarships</p>
-        <h1 class="mt-4 max-w-4xl text-4xl font-extrabold leading-tight md:text-5xl">Request Scholarship Support</h1>
-        <p class="mt-5 max-w-3xl text-xl leading-8 text-gray-700">We don’t want cost to be the only reason a qualified developer cannot participate in Build and Ship AI Applications with Python.</p>
+        <p class="text-xs font-extrabold uppercase tracking-widest text-[#8A40F5]">Cohort scholarship</p>
+        <h1 class="mt-4 max-w-4xl text-4xl font-extrabold leading-tight md:text-5xl">Request scholarship support</h1>
+        <p class="mt-5 max-w-3xl text-xl leading-8 text-gray-700">We do not want cost to be the only reason you cannot join Build and Ship AI Applications with Python.</p>
         <div class="mt-8 rounded-xl border border-[#8A40F5]/20 bg-white p-5 leading-7 text-gray-700">
           A limited number of <strong>partial scholarships</strong> are available for the cohort starting {aiCohort.startDateLabel}. Applying does not guarantee support, and UniversityX may not be able to fund every qualified applicant.
         </div>
@@ -43,10 +43,10 @@ import { AI_COHORT_PATH, aiCohort } from '../data/aiCohort';
         <div class="rounded-2xl border border-gray-200 bg-white p-6 shadow-lg md:p-8">
           <div id="scholarship-success" class="hidden rounded-lg border border-[#8A40F5]/20 bg-[#8A40F5]/10 p-5">
             <h2 class="text-xl font-extrabold">Your request has been received.</h2>
-            <p class="mt-2 leading-7 text-gray-700">We’ll review your application and contact you. Support is partial, limited, and not guaranteed.</p>
+            <p class="mt-2 leading-7 text-gray-700">We will review your application and contact you. Support is partial, limited, and not guaranteed.</p>
           </div>
 
-          <form id="scholarship-form" class="space-y-5" data-cohort-name={aiCohort.shortTitle} data-cohort-start-date={aiCohort.startDate}>
+          <form id="scholarship-form" method="post" action={AI_COHORT_SCHOLARSHIP_PATH} onsubmit="return false" class="space-y-5" data-cohort-name={aiCohort.shortTitle} data-cohort-start-date={aiCohort.startDate}>
             <div>
               <label for="scholarship-name" class="mb-2 block font-bold">Full name</label>
               <input id="scholarship-name" name="name" type="text" required autocomplete="name" class="w-full rounded-lg border border-gray-300 px-4 py-3.5 focus:border-[#8A40F5] focus:outline-none focus:ring-2 focus:ring-[#8A40F5]/30" />
@@ -67,20 +67,19 @@ import { AI_COHORT_PATH, aiCohort } from '../data/aiCohort';
             </div>
             <div>
               <label for="scholarship-motivation" class="mb-2 block font-bold">Why will this programme help you now?</label>
-              <textarea id="scholarship-motivation" name="motivation" required minlength="50" rows="5" placeholder="Tell us what you want to build and why structured support matters to you." class="w-full rounded-lg border border-gray-300 px-4 py-3.5 focus:border-[#8A40F5] focus:outline-none focus:ring-2 focus:ring-[#8A40F5]/30"></textarea>
-              <p class="mt-1 text-sm text-gray-500">Minimum 50 characters.</p>
+              <textarea id="scholarship-motivation" name="motivation" required rows="5" aria-describedby="scholarship-motivation-error" placeholder="Tell us what you want to build and why structured support matters to you." class="w-full rounded-lg border border-gray-300 px-4 py-3.5 focus:border-[#8A40F5] focus:outline-none focus:ring-2 focus:ring-[#8A40F5]/30"></textarea>
+              <p id="scholarship-motivation-error" class="mt-2 hidden text-sm font-medium text-red-700">Please tell us a little more. Your answer should be at least 50 characters.</p>
             </div>
             <div>
               <label for="scholarship-contribution" class="mb-2 block font-bold">How much can you contribute? (₦)</label>
-              <input id="scholarship-contribution" name="contribution" type="number" required min="0" max={aiCohort.originalPrice} step="500" inputmode="numeric" placeholder="For example, 12500" class="w-full rounded-lg border border-gray-300 px-4 py-3.5 focus:border-[#8A40F5] focus:outline-none focus:ring-2 focus:ring-[#8A40F5]/30" />
-              <p class="mt-1 text-sm text-gray-500">An honest amount helps us allocate partial support fairly.</p>
+              <input id="scholarship-contribution" name="contribution" type="number" required min="10000" max={aiCohort.originalPrice} step="1" inputmode="numeric" placeholder="Minimum: 10000" class="w-full rounded-lg border border-gray-300 px-4 py-3.5 focus:border-[#8A40F5] focus:outline-none focus:ring-2 focus:ring-[#8A40F5]/30" />
             </div>
             <label class="flex cursor-pointer items-start gap-3 rounded-lg bg-[#F5F2EB] p-4">
               <input name="weeklyAvailability" type="checkbox" required class="mt-1 h-4 w-4 accent-[#8A40F5]" />
               <span>I can commit about four focused hours each week to live learning and practical builds.</span>
             </label>
-            <button id="scholarship-submit" type="submit" class="w-full rounded-lg bg-[#8A40F5] px-6 py-4 font-extrabold text-white transition-colors hover:bg-[#7434D8] disabled:cursor-not-allowed disabled:opacity-60 focus:outline-none focus:ring-2 focus:ring-[#8A40F5] focus:ring-offset-2">Submit Scholarship Request</button>
-            <p id="scholarship-error" class="hidden text-center text-sm text-red-700">We couldn’t submit your request. Please check your details and try again.</p>
+            <button id="scholarship-submit" type="submit" class="w-full rounded-lg bg-[#8A40F5] px-6 py-4 font-extrabold text-white transition-colors hover:bg-[#7434D8] disabled:cursor-not-allowed disabled:opacity-60 focus:outline-none focus:ring-2 focus:ring-[#8A40F5] focus:ring-offset-2">Submit scholarship request</button>
+            <p id="scholarship-error" class="hidden text-center text-sm text-red-700" role="alert" aria-live="polite" tabindex="-1">We could not submit your request. Please check your details and try again.</p>
           </form>
         </div>
       </div>
@@ -94,7 +93,7 @@ import { AI_COHORT_PATH, aiCohort } from '../data/aiCohort';
   import PocketBase from 'pocketbase';
 
   declare global {
-    interface Window { posthog?: { capture: (event: string, properties?: Record<string, unknown>) => void; captureException?: (error: unknown) => void }; }
+    interface Window { posthog?: any; }
   }
 
   function initScholarshipForm() {
@@ -102,7 +101,10 @@ import { AI_COHORT_PATH, aiCohort } from '../data/aiCohort';
     const success = document.getElementById('scholarship-success');
     const error = document.getElementById('scholarship-error');
     const submit = document.getElementById('scholarship-submit') as HTMLButtonElement | null;
-    if (!form || !success || !error || !submit) return;
+    const motivation = document.getElementById('scholarship-motivation') as HTMLTextAreaElement | null;
+    const motivationError = document.getElementById('scholarship-motivation-error');
+    const contribution = document.getElementById('scholarship-contribution') as HTMLInputElement | null;
+    if (!form || !success || !error || !submit || !motivation || !motivationError || !contribution) return;
 
     const params = new URLSearchParams(window.location.search);
     let trafficSource = params.get('utm_source');
@@ -116,12 +118,40 @@ import { AI_COHORT_PATH, aiCohort } from '../data/aiCohort';
       traffic_source: trafficSource || 'direct',
       referral_code: params.get('referral_code') || params.get('ref') || undefined,
     };
-    const pb = new PocketBase(import.meta.env.PUBLIC_POCKETBASE_URL);
+
+    const submittedFieldNames = ['name', 'email', 'whatsapp', 'pythonExperience', 'motivation', 'contribution', 'weeklyAvailability'];
+    if (submittedFieldNames.some((field) => params.has(field))) {
+      submittedFieldNames.forEach((field) => params.delete(field));
+      const cleanQuery = params.toString();
+      window.history.replaceState({}, '', `${window.location.pathname}${cleanQuery ? `?${cleanQuery}` : ''}${window.location.hash}`);
+    }
+
+    motivation.addEventListener('input', () => {
+      motivationError.classList.add('hidden');
+      motivation.removeAttribute('aria-invalid');
+    });
+
+    contribution.addEventListener('invalid', () => {
+      if (contribution.validity.rangeUnderflow) {
+        contribution.setCustomValidity('The minimum contribution for a scholarship place is ₦10,000.');
+      }
+    });
+
+    contribution.addEventListener('input', () => {
+      contribution.setCustomValidity('');
+    });
 
     form.addEventListener('submit', async (event) => {
       event.preventDefault();
       error.classList.add('hidden');
       if (!form.checkValidity()) { form.reportValidity(); return; }
+
+      if (motivation.value.trim().length < 50) {
+        motivationError.classList.remove('hidden');
+        motivation.setAttribute('aria-invalid', 'true');
+        motivation.focus();
+        return;
+      }
 
       const formData = new FormData(form);
       const pythonBackground = String(formData.get('pythonExperience') || '');
@@ -129,6 +159,9 @@ import { AI_COHORT_PATH, aiCohort } from '../data/aiCohort';
       submit.textContent = 'Submitting...';
 
       try {
+        const pocketBaseUrl = import.meta.env.PUBLIC_POCKETBASE_URL;
+        if (!pocketBaseUrl) throw new Error('PocketBase URL is not configured');
+        const pb = new PocketBase(pocketBaseUrl);
         await pb.collection('UniversityX_Access_Scholarships').create({
           Full_Name: String(formData.get('name') || ''),
           Email: String(formData.get('email') || ''),
@@ -148,9 +181,28 @@ import { AI_COHORT_PATH, aiCohort } from '../data/aiCohort';
         success.classList.remove('hidden');
       } catch (err) {
         window.posthog?.captureException?.(err);
+        const fieldLabels: Record<string, string> = {
+          Full_Name: 'full name',
+          Email: 'email address',
+          WhatsApp_Number: 'WhatsApp number',
+          Python_Background: 'Python background',
+          Motivation: 'reason for applying',
+          Weekly_Availability: 'weekly availability',
+          Amount_Able_To_Contribute: 'contribution amount',
+        };
+        const responseData = (err as {
+          response?: { data?: Record<string, { message?: string }> };
+        })?.response?.data;
+        const firstFieldError = responseData
+          ? Object.entries(responseData).find(([, value]) => value?.message)
+          : undefined;
+        error.textContent = firstFieldError
+          ? `Please check your ${fieldLabels[firstFieldError[0]] || 'details'}. ${firstFieldError[1].message}`
+          : 'We could not submit your request right now. Please try again.';
         error.classList.remove('hidden');
+        error.focus();
         submit.disabled = false;
-        submit.textContent = 'Submit Scholarship Request';
+        submit.textContent = 'Submit scholarship request';
       }
     });
   }

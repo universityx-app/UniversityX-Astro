@@ -1,0 +1,162 @@
+[
+  {
+    "id": "scholarship0001",
+    "name": "UniversityX_Access_Scholarships",
+    "type": "base",
+    "system": false,
+    "fields": [
+      {
+        "id": "schfullnam00001",
+        "name": "Full_Name",
+        "type": "text",
+        "system": false,
+        "hidden": false,
+        "required": true,
+        "presentable": true,
+        "primaryKey": false,
+        "min": 2,
+        "max": 120,
+        "pattern": "",
+        "autogeneratePattern": ""
+      },
+      {
+        "id": "schemail0000001",
+        "name": "Email",
+        "type": "email",
+        "system": false,
+        "hidden": false,
+        "required": true,
+        "presentable": true,
+        "exceptDomains": null,
+        "onlyDomains": null
+      },
+      {
+        "id": "schwhatsap00001",
+        "name": "WhatsApp_Number",
+        "type": "text",
+        "system": false,
+        "hidden": false,
+        "required": true,
+        "presentable": false,
+        "primaryKey": false,
+        "min": 7,
+        "max": 40,
+        "pattern": "",
+        "autogeneratePattern": ""
+      },
+      {
+        "id": "schpython000001",
+        "name": "Python_Background",
+        "type": "select",
+        "system": false,
+        "hidden": false,
+        "required": true,
+        "presentable": false,
+        "maxSelect": 1,
+        "values": [
+          "I understand basic Python",
+          "I am a backend/software developer",
+          "I am a data or ML practitioner",
+          "I am not sure I meet the prerequisite"
+        ]
+      },
+      {
+        "id": "schmotivat00001",
+        "name": "Motivation",
+        "type": "text",
+        "system": false,
+        "hidden": false,
+        "required": true,
+        "presentable": false,
+        "primaryKey": false,
+        "min": 50,
+        "max": 3000,
+        "pattern": "",
+        "autogeneratePattern": ""
+      },
+      {
+        "id": "schweekly000001",
+        "name": "Weekly_Availability",
+        "type": "bool",
+        "system": false,
+        "hidden": false,
+        "required": true,
+        "presentable": false
+      },
+      {
+        "id": "schamount000001",
+        "name": "Amount_Able_To_Contribute",
+        "type": "number",
+        "system": false,
+        "hidden": false,
+        "required": true,
+        "presentable": false,
+        "min": 10000,
+        "max": 25000,
+        "onlyInt": true
+      },
+      {
+        "id": "schcohort000001",
+        "name": "Cohort_Name",
+        "type": "text",
+        "system": false,
+        "hidden": false,
+        "required": true,
+        "presentable": false,
+        "primaryKey": false,
+        "min": 1,
+        "max": 200,
+        "pattern": "",
+        "autogeneratePattern": ""
+      },
+      {
+        "id": "schstartdt00001",
+        "name": "Cohort_Start_Date",
+        "type": "text",
+        "system": false,
+        "hidden": false,
+        "required": true,
+        "presentable": false,
+        "primaryKey": false,
+        "min": 10,
+        "max": 10,
+        "pattern": "^\\d{4}-\\d{2}-\\d{2}$",
+        "autogeneratePattern": ""
+      },
+      {
+        "id": "schtraffic00001",
+        "name": "Traffic_Source",
+        "type": "text",
+        "system": false,
+        "hidden": false,
+        "required": true,
+        "presentable": false,
+        "primaryKey": false,
+        "min": 1,
+        "max": 240,
+        "pattern": "",
+        "autogeneratePattern": ""
+      },
+      {
+        "id": "schreferal00001",
+        "name": "Referral_Code",
+        "type": "text",
+        "system": false,
+        "hidden": false,
+        "required": false,
+        "presentable": false,
+        "primaryKey": false,
+        "min": 0,
+        "max": 120,
+        "pattern": "",
+        "autogeneratePattern": ""
+      }
+    ],
+    "indexes": [],
+    "listRule": null,
+    "viewRule": null,
+    "createRule": "",
+    "updateRule": null,
+    "deleteRule": null
+  }
+]

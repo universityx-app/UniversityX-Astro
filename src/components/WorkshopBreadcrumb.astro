@@ -6,14 +6,14 @@ interface Props {
 const { title } = Astro.props;
 ---
 
-<nav class="mb-8 flex min-w-0 items-start gap-2 text-sm text-gray-500" aria-label="Breadcrumb">
+<nav class="mb-8 flex min-w-0 max-w-full flex-wrap items-center gap-x-2 gap-y-2 text-sm text-gray-500 sm:flex-nowrap sm:items-start" aria-label="Breadcrumb">
   <a href="/" class="shrink-0 transition-colors hover:text-[#8A40F5]">Home</a>
   <svg class="mt-0.5 h-3.5 w-3.5 shrink-0 text-[#8A40F5]" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
     <path d="m9 18 6-6-6-6" />
   </svg>
   <a href="/workshops/" class="shrink-0 transition-colors hover:text-[#8A40F5]">Workshops</a>
-  <svg class="mt-0.5 h-3.5 w-3.5 shrink-0 text-[#8A40F5]" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+  <svg class="mt-0.5 hidden h-3.5 w-3.5 shrink-0 text-[#8A40F5] sm:block" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
     <path d="m9 18 6-6-6-6" />
   </svg>
-  <span class="min-w-0 font-medium leading-5 text-[#1A0533]" aria-current="page">{title}</span>
+  <span class="w-full min-w-0 break-words font-medium leading-5 text-[#1A0533] sm:w-auto sm:flex-1" aria-current="page">{title}</span>
 </nav>
