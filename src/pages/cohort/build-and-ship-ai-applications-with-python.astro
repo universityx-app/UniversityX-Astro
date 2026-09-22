@@ -3,6 +3,7 @@ import Layout from '../../layouts/Layout.astro';
 import Navbar from '../../components/Navbar.astro';
 import Footer from '../../components/Footer.astro';
 import {
+  AI_COHORT_SCHOLARSHIP_PATH,
   aiCohort,
   formatNaira,
   paystackPaymentPages,
@@ -360,7 +361,7 @@ const faqs = [
           <div class="bg-[#21103A] p-6">
             <p class="font-extrabold">Access scholarships</p>
             <p class="mt-2 text-sm leading-6 text-white/55">Need help with tuition? You can apply for one of the limited partial scholarships. Applying does not guarantee support.</p>
-            <a href="/scholarship/" id="scholarship-cta" class="mt-4 inline-flex font-bold text-[#D8BDFF] hover:text-white focus:outline-none focus:ring-2 focus:ring-[#B98BFF]">Request scholarship support →</a>
+            <a href={AI_COHORT_SCHOLARSHIP_PATH} id="scholarship-cta" class="mt-4 inline-flex font-bold text-[#D8BDFF] hover:text-white focus:outline-none focus:ring-2 focus:ring-[#B98BFF]">Request scholarship support →</a>
           </div>
         </div>
       </div>

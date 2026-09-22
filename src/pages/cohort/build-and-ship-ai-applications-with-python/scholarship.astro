@@ -1,12 +1,12 @@
 ---
-import Layout from '../layouts/Layout.astro';
-import Navbar from '../components/Navbar.astro';
-import Footer from '../components/Footer.astro';
-import { AI_COHORT_PATH, aiCohort } from '../data/aiCohort';
+import Layout from '../../../layouts/Layout.astro';
+import Navbar from '../../../components/Navbar.astro';
+import Footer from '../../../components/Footer.astro';
+import { AI_COHORT_PATH, aiCohort } from '../../../data/aiCohort';
 ---
 
 <Layout
-  title="UniversityX Access Scholarship | October 2026"
+  title="AI Applications with Python Scholarship | UniversityX"
   description="Request partial tuition support for the October 2026 Build and Ship AI Applications with Python cohort."
 >
   <Navbar />
@@ -15,13 +15,13 @@ import { AI_COHORT_PATH, aiCohort } from '../data/aiCohort';
     <section class="bg-[#F5F2EB] py-14 md:py-20">
       <div class="mx-auto max-w-5xl px-6 md:px-12">
         <nav class="mb-8 flex items-center gap-2 text-sm text-gray-500" aria-label="Breadcrumb">
-          <a href={AI_COHORT_PATH} class="hover:text-[#8A40F5]">Current cohort</a>
+          <a href={AI_COHORT_PATH} class="hover:text-[#8A40F5]">Build and Ship AI Applications with Python</a>
           <span aria-hidden="true" class="text-[#8A40F5]">/</span>
-          <span class="font-medium text-[#1A0533]">Access Scholarship</span>
+          <span class="font-medium text-[#1A0533]">Scholarship</span>
         </nav>
-        <p class="text-xs font-extrabold uppercase tracking-widest text-[#8A40F5]">UniversityX Access Scholarships</p>
-        <h1 class="mt-4 max-w-4xl text-4xl font-extrabold leading-tight md:text-5xl">Request Scholarship Support</h1>
-        <p class="mt-5 max-w-3xl text-xl leading-8 text-gray-700">We don’t want cost to be the only reason a qualified developer cannot participate in Build and Ship AI Applications with Python.</p>
+        <p class="text-xs font-extrabold uppercase tracking-widest text-[#8A40F5]">Cohort scholarship</p>
+        <h1 class="mt-4 max-w-4xl text-4xl font-extrabold leading-tight md:text-5xl">Request scholarship support</h1>
+        <p class="mt-5 max-w-3xl text-xl leading-8 text-gray-700">We do not want cost to be the only reason you cannot join Build and Ship AI Applications with Python.</p>
         <div class="mt-8 rounded-xl border border-[#8A40F5]/20 bg-white p-5 leading-7 text-gray-700">
           A limited number of <strong>partial scholarships</strong> are available for the cohort starting {aiCohort.startDateLabel}. Applying does not guarantee support, and UniversityX may not be able to fund every qualified applicant.
         </div>
@@ -43,7 +43,7 @@ import { AI_COHORT_PATH, aiCohort } from '../data/aiCohort';
         <div class="rounded-2xl border border-gray-200 bg-white p-6 shadow-lg md:p-8">
           <div id="scholarship-success" class="hidden rounded-lg border border-[#8A40F5]/20 bg-[#8A40F5]/10 p-5">
             <h2 class="text-xl font-extrabold">Your request has been received.</h2>
-            <p class="mt-2 leading-7 text-gray-700">We’ll review your application and contact you. Support is partial, limited, and not guaranteed.</p>
+            <p class="mt-2 leading-7 text-gray-700">We will review your application and contact you. Support is partial, limited, and not guaranteed.</p>
           </div>
 
           <form id="scholarship-form" class="space-y-5" data-cohort-name={aiCohort.shortTitle} data-cohort-start-date={aiCohort.startDate}>
@@ -79,8 +79,8 @@ import { AI_COHORT_PATH, aiCohort } from '../data/aiCohort';
               <input name="weeklyAvailability" type="checkbox" required class="mt-1 h-4 w-4 accent-[#8A40F5]" />
               <span>I can commit about four focused hours each week to live learning and practical builds.</span>
             </label>
-            <button id="scholarship-submit" type="submit" class="w-full rounded-lg bg-[#8A40F5] px-6 py-4 font-extrabold text-white transition-colors hover:bg-[#7434D8] disabled:cursor-not-allowed disabled:opacity-60 focus:outline-none focus:ring-2 focus:ring-[#8A40F5] focus:ring-offset-2">Submit Scholarship Request</button>
-            <p id="scholarship-error" class="hidden text-center text-sm text-red-700">We couldn’t submit your request. Please check your details and try again.</p>
+            <button id="scholarship-submit" type="submit" class="w-full rounded-lg bg-[#8A40F5] px-6 py-4 font-extrabold text-white transition-colors hover:bg-[#7434D8] disabled:cursor-not-allowed disabled:opacity-60 focus:outline-none focus:ring-2 focus:ring-[#8A40F5] focus:ring-offset-2">Submit scholarship request</button>
+            <p id="scholarship-error" class="hidden text-center text-sm text-red-700">We could not submit your request. Please check your details and try again.</p>
           </form>
         </div>
       </div>
@@ -150,7 +150,7 @@ import { AI_COHORT_PATH, aiCohort } from '../data/aiCohort';
         window.posthog?.captureException?.(err);
         error.classList.remove('hidden');
         submit.disabled = false;
-        submit.textContent = 'Submit Scholarship Request';
+        submit.textContent = 'Submit scholarship request';
       }
     });
   }

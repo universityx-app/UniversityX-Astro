@@ -57,4 +57,4 @@ Do not run it against production learner data. Do not commit the superuser token
 
 ## Scholarship
 
-The existing `/scholarship/` form remains separate. It continues to use its current collection and clearly states that support is limited, partial, and not guaranteed.
+The cohort scholarship form lives at `/cohort/build-and-ship-ai-applications-with-python/scholarship/`. The previous `/scholarship/` URL redirects there for backwards compatibility. Import [`scholarship_applications_schema.json`](../scholarship_applications_schema.json) into PocketBase to create the form's write-only public collection.
