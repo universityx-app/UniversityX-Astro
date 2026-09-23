@@ -4,6 +4,9 @@ import Navbar from "../../components/Navbar.astro";
 import Footer from "../../components/Footer.astro";
 import WorkshopRegistrationForm from "../../components/WorkshopRegistrationForm.astro";
 import WorkshopBreadcrumb from "../../components/WorkshopBreadcrumb.astro";
+import WorkshopFAQ from "../../components/WorkshopFAQ.astro";
+import InstructorStrip from "../../components/InstructorStrip.astro";
+import MeetInstructorSection from "../../components/MeetInstructorSection.astro";
 
 const workshop = {
   title: "Build an AI Customer Support Agent for Real Businesses",
@@ -128,25 +131,11 @@ const faqs = [
               <span class="workshop-chip"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 3h12l-2 6 3 3H5l3-3-2-6Z" /><path d="M12 12v9" /></svg>{workshop.level}</span>
             </div>
 
-            <div class="border-t border-gray-100 pt-6">
-              <p class="mb-4 text-xs font-semibold uppercase tracking-widest text-gray-400">Instructor</p>
-              <div class="flex items-center gap-4">
-                <img src={workshop.instructorPhoto} alt={workshop.instructorName} class="h-18 w-18 shrink-0 rounded-full object-cover object-top" loading="eager" />
-                <div>
-                  <p class="text-lg font-semibold text-[#1A0533]">{workshop.instructorName}</p>
-                  <p class="text-base text-gray-500">{workshop.instructorRole}</p>
-                </div>
-              </div>
-
-              <div class="mt-5">
-                <p class="mb-3 text-xs font-semibold uppercase tracking-widest text-gray-400">Experience &amp; Integrations Across</p>
-                <div class="flex flex-wrap items-center gap-6">
-                  <img src="/images/chatjourno-logo.svg" alt="ChatJourno" class="h-4 object-contain md:h-5" loading="lazy" />
-                  <img src="/images/3mtt-logo.svg" alt="3MTT Nigeria" class="h-6 object-contain md:h-7" loading="lazy" />
-                  <img src="/images/paydue-logo.svg" alt="Paydue Technologies" class="h-6 object-contain md:h-7" loading="lazy" />
-                </div>
-              </div>
-            </div>
+            <InstructorStrip
+              name={workshop.instructorName}
+              role={workshop.instructorRole}
+              photo={workshop.instructorPhoto}
+            />
           </div>
 
           <aside class="lg:sticky lg:top-6">
@@ -355,29 +344,12 @@ const faqs = [
         </div>
       </section>
 
-      <!-- Meet your instructor -->
-      <section class="bg-[#F5F2EB] py-16 md:py-20">
-        <div class="mx-auto max-w-7xl px-6 md:px-12 lg:px-16 xl:px-24">
-          <p class="mb-10 text-xs font-semibold uppercase tracking-widest text-[#8A40F5]">Meet Your Instructor</p>
-          <div class="grid grid-cols-1 items-center gap-8 md:grid-cols-2">
-            <div>
-              <h2 class="mb-2 text-2xl font-extrabold text-[#1A0533] md:text-3xl">{workshop.instructorName}</h2>
-              <p class="mb-5 font-medium text-[#8A40F5]">{workshop.instructorRole}</p>
-              <div class="space-y-4 text-lg leading-relaxed text-gray-700">
-                <p>
-                  Abasiodiong Udofia is the Co-Founder &amp; CTO of <strong>ChatJourno</strong>, an AI platform powered by Python, vector search, and production RAG workflows. With deep experience across high-growth fintech platforms, he has architected resilient systems processing $10M+ with zero payment failures, specialized in idempotent webhooks and automated reconciliation.
-                </p>
-                <p>
-                  As a software development mentor at <strong>3MTT Nigeria</strong>, Abasiodiong has guided hundreds of engineers in full-stack engineering, secure APIs, and production readiness. In this live workshop, he will walk you step-by-step through building an AI customer support agent that uses company knowledge, tools, and human handoff.
-                </p>
-              </div>
-            </div>
-            <div class="order-first justify-self-center md:order-last md:justify-self-end">
-              <img src={workshop.instructorPhoto} alt={workshop.instructorName} class="mx-auto aspect-3/4 w-full max-w-xs rounded-2xl object-cover object-top shadow-md md:mx-0" loading="lazy" />
-            </div>
-          </div>
-        </div>
-      </section>
+      <MeetInstructorSection
+        name={workshop.instructorName}
+        role={workshop.instructorRole}
+        photo={workshop.instructorPhoto}
+        background="white"
+      />
 
       <WorkshopRegistrationForm
         workshopTitle={workshop.title}
@@ -392,28 +364,7 @@ const faqs = [
         successMessage="Your free seat is reserved. Join the WhatsApp group below so you receive the workshop link and a reminder before we go live."
       />
 
-      <!-- FAQ -->
-      <section class="bg-white py-16 md:py-24">
-        <div class="mx-auto max-w-4xl px-6 md:px-12">
-          <div class="mb-12 text-center">
-            <p class="section-kicker">Before you register</p>
-            <h2 class="section-title">Frequently asked questions</h2>
-          </div>
-          <div class="space-y-3" id="faq">
-            {faqs.map(({ question, answer }, index) => (
-              <div class="faq-item overflow-hidden rounded-2xl border border-[#E8E0EB] bg-white">
-                <button type="button" class="faq-trigger flex w-full cursor-pointer items-center justify-between gap-5 px-5 py-5 text-left transition hover:bg-[#FAF8FC] md:px-7" aria-expanded="false" aria-controls={`faq-panel-${index}`}>
-                  <span class="font-bold text-[#1A0533] md:text-lg">{question}</span>
-                  <svg class="faq-chevron h-5 w-5 shrink-0 text-[#8A40F5] transition-transform" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><path d="m6 9 6 6 6-6" /></svg>
-                </button>
-                <div id={`faq-panel-${index}`} class="faq-panel" role="region">
-                  <div class="overflow-hidden"><p class="border-t border-[#EEE8F0] px-5 pb-6 pt-4 leading-7 text-gray-600 md:px-7">{answer}</p></div>
-                </div>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
+      <WorkshopFAQ faqs={faqs} />
 
     </main>
 
@@ -448,9 +399,6 @@ const faqs = [
   .fit-icon svg { width: 1.1rem; height: 1.1rem; fill: none; stroke: currentColor; stroke-width: 2.8; stroke-linecap: round; stroke-linejoin: round; }
   .fit-icon.yes { background: #E7F7EE; color: #178454; }
   .fit-icon.no { background: #FCEBED; color: #BF4553; }
-  .faq-panel { display: grid; grid-template-rows: 0fr; transition: grid-template-rows .3s ease; }
-  .faq-panel.is-open { grid-template-rows: 1fr; }
-  .faq-chevron.is-open { transform: rotate(180deg); }
   @media (prefers-reduced-motion: reduce) {
     :global(html) { scroll-behavior: auto; }
     *, *::before, *::after { scroll-behavior: auto !important; transition-duration: .01ms !important; animation-duration: .01ms !important; }
@@ -490,17 +438,6 @@ const faqs = [
   function initWorkshopPage() {
     const analyticsContext = getAnalyticsContext();
     window.posthog?.capture("workshop_page_viewed", analyticsContext);
-
-    document.querySelectorAll(".faq-trigger").forEach((trigger) => {
-      trigger.addEventListener("click", () => {
-        const panel = trigger.nextElementSibling;
-        const chevron = trigger.querySelector(".faq-chevron");
-        const isOpen = trigger.getAttribute("aria-expanded") === "true";
-        trigger.setAttribute("aria-expanded", String(!isOpen));
-        panel?.classList.toggle("is-open", !isOpen);
-        chevron?.classList.toggle("is-open", !isOpen);
-      });
-    });
 
     document.querySelectorAll("[data-registration-cta]").forEach((cta) => {
       cta.addEventListener("click", () => {
