@@ -1,0 +1,26 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Navbar from '../components/Navbar.astro';
+import ProgrammeWaitlistSection from '../components/ProgrammeWaitlistSection.astro';
+import Footer from '../components/Footer.astro';
+---
+
+<Layout
+  title="Join the UniversityX Beta"
+  description="Join the UniversityX beta and help shape practical career paths built around real work, useful projects, and credible proof of skill."
+>
+  <div class="bg-white">
+    <Navbar />
+  </div>
+  <main>
+    <ProgrammeWaitlistSection
+      eyebrow="UniversityX Beta"
+      title="Join the UniversityX beta."
+      description="Be among the first to explore practical career paths, build real projects, and help shape UniversityX before the wider launch. Tell us the programme you are interested in and we’ll contact you when beta access is available."
+      submitLabel="Join Beta"
+      successMessage="You’re on the beta list. We’ll contact you when access is available for your selected programme."
+      source="beta-page"
+    />
+  </main>
+  <Footer />
+</Layout>

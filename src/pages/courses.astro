@@ -1,0 +1,49 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Navbar from '../components/Navbar.astro';
+import Footer from '../components/Footer.astro';
+import { courses, getCoursePath } from '../data/courses';
+---
+
+<Layout title="Practical Courses | UniversityX" description="Explore practical UniversityX courses built around real projects, useful skills, and work you can demonstrate.">
+  <Navbar />
+  <main class="bg-[#F5F2EB] text-[#1A0533]">
+    <header class="mx-auto max-w-7xl px-6 pb-12 pt-16 md:px-12 md:pb-16 md:pt-24 lg:px-24">
+      <p class="inline-flex items-center rounded-full border border-[#1A0533]/10 bg-white px-4 py-2 text-xs font-semibold uppercase tracking-widest text-[#1A0533]/50">Explore courses</p>
+      <div class="mt-5 grid items-end gap-7 lg:grid-cols-[1.25fr_0.75fr] lg:gap-16">
+        <h1 class="max-w-3xl text-4xl font-extrabold leading-tight md:text-6xl">Practical courses built around real skills.</h1>
+        <p class="max-w-xl text-lg leading-relaxed text-gray-600 md:text-xl">Learn by doing, build useful projects, and choose the learning format that fits your goals and schedule.</p>
+      </div>
+    </header>
+
+    <section class="mx-auto max-w-7xl px-6 pb-20 md:px-12 md:pb-28 lg:px-24" aria-labelledby="course-list-heading">
+      <h2 id="course-list-heading" class="sr-only">UniversityX courses</h2>
+      <div class="grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3">
+        {courses.map((course) => {
+          const content = (
+            <>
+              <div class="relative overflow-hidden">
+                <img src={course.thumbnail} alt={course.title} class="aspect-video w-full object-cover" loading="lazy" />
+                {course.status === 'coming-soon' && <span class="absolute left-4 top-4 rounded-full bg-[#1A0533] px-3 py-1.5 text-xs font-bold text-white">Coming soon</span>}
+              </div>
+              <div class="flex flex-1 flex-col bg-white p-5">
+                <h2 class="text-lg font-bold leading-snug text-[#1A0533]">{course.title}</h2>
+                <p class="mt-3 text-base leading-snug text-gray-600">{course.description}</p>
+                <div class="mt-auto flex flex-wrap items-center gap-x-1.5 gap-y-1 pt-6 text-sm font-medium text-gray-400">
+                  <span>{course.path}</span><span class="text-[#1A0533]/20" aria-hidden="true">·</span><span>{course.track}</span><span class="text-[#1A0533]/20" aria-hidden="true">·</span><span>{course.level}</span>
+                </div>
+              </div>
+            </>
+          );
+
+          return course.status === 'available' ? (
+            <a href={getCoursePath(course)} class="course-card flex h-full flex-col overflow-hidden rounded-2xl bg-white shadow-lg transition-shadow duration-300 hover:shadow-xl focus:outline-none focus-visible:ring-2 focus-visible:ring-[#8A40F5] focus-visible:ring-offset-4 focus-visible:ring-offset-[#F5F2EB]">{content}</a>
+          ) : (
+            <article class="course-card flex h-full flex-col overflow-hidden rounded-2xl bg-white shadow-lg" aria-label={`${course.title}, coming soon`}>{content}</article>
+          );
+        })}
+      </div>
+    </section>
+  </main>
+  <Footer />
+</Layout>

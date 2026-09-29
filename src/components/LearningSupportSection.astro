@@ -1,0 +1,259 @@
+---
+const learningOptions = [
+  {
+    number: '01',
+    title: 'At my own pace',
+    copy: 'Start immediately and learn on your schedule with practical courses, curated resources, projects and AI support.',
+    cta: 'Explore Courses',
+    href: '/courses/',
+    icon: 'bolt',
+  },
+  {
+    number: '02',
+    title: 'Join a cohort',
+    copy: 'Learn with an instructor and other committed learners through live sessions, deadlines, feedback and project reviews.',
+    cta: 'See Upcoming Cohorts',
+    href: '/cohorts/',
+    icon: 'cohort',
+    badge: 'Most transformational',
+    highlighted: true,
+  },
+  {
+    number: '03',
+    title: 'Learn 1-on-1',
+    copy: 'Work directly with an instructor for personalised guidance, deeper feedback and support on the skills you want to build.',
+    cta: 'Find an Instructor',
+    href: '/1-1/',
+    icon: 'instructor',
+  },
+];
+---
+
+<section
+  class="bg-white px-6 py-16 md:px-12 md:py-20 lg:px-24"
+  aria-labelledby="learning-support-heading"
+>
+  <div class="mx-auto max-w-7xl">
+    <div class="mx-auto max-w-3xl text-center">
+      <p class="inline-flex items-center rounded-full border border-[#1A0533]/10 bg-[#F5F2EB] px-4 py-2 text-xs font-semibold uppercase tracking-widest text-[#1A0533]/55">
+        One platform, three ways to learn
+      </p>
+      <h2
+        id="learning-support-heading"
+        class="mt-5 text-3xl font-extrabold leading-tight text-[#1A0533] md:text-5xl"
+      >
+        Choose the support you need.
+      </h2>
+      <p class="mx-auto mt-4 max-w-2xl text-lg leading-relaxed text-gray-600 md:text-xl">
+        Learn at your own pace, join a structured programme, or learn one-on-one with an instructor. Choose the format that fits your goals, schedule and the level of support you need.
+      </p>
+    </div>
+
+    <div class="mt-10 grid grid-cols-1 gap-5 md:grid-cols-2 lg:mt-12 lg:grid-cols-3">
+      {learningOptions.map((option) => (
+        <article
+          data-learning-option
+          class:list={[
+            'learning-option relative flex min-h-[320px] cursor-pointer flex-col overflow-hidden rounded-2xl border border-[#DED6CA] bg-[#F5F2EB] p-7 md:p-8',
+            option.highlighted ? 'is-selected' : '',
+          ]}
+        >
+          <div class="relative z-10 flex min-h-8 items-start justify-between gap-5">
+            {option.badge ? (
+              <span class="learning-option-badge rounded-md bg-[#F0E7FF] px-3 py-2 text-[11px] font-bold uppercase tracking-[0.04em] text-[#7C31FF]">
+                {option.badge}
+              </span>
+            ) : (
+              <span aria-hidden="true"></span>
+            )}
+
+            <div class="flex flex-col items-center gap-2" aria-hidden="true">
+              <span class="learning-option-number text-xs font-bold text-[#AEA2C3]">{option.number}</span>
+              <span
+                class="learning-option-indicator flex h-5 w-5 items-center justify-center rounded-full border border-[#A9A0B5]"
+              >
+                <span class="learning-option-dot h-2.5 w-2.5 rounded-full bg-[#7C31FF]"></span>
+              </span>
+            </div>
+          </div>
+
+          <div class="learning-option-icon relative z-10 mt-4 flex h-14 w-14 items-center justify-center rounded-xl bg-[#EEE6FA] text-[#7C31FF]">
+            {option.icon === 'bolt' && (
+              <svg class="h-7 w-7" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                <path d="M13 2 5.5 13h6L11 22l7.5-11h-6L13 2Z" />
+              </svg>
+            )}
+            {option.icon === 'cohort' && (
+              <svg class="h-7 w-7" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                <path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2" />
+                <circle cx="9" cy="7" r="4" />
+                <path d="M22 21v-2a4 4 0 0 0-3-3.87M16 3.13a4 4 0 0 1 0 7.75" />
+              </svg>
+            )}
+            {option.icon === 'instructor' && (
+              <svg class="h-7 w-7" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                <circle cx="9" cy="7" r="4" />
+                <path d="M3 21v-2a5 5 0 0 1 5-5h2a5 5 0 0 1 5 5v2M18 8v6M15 11h6" />
+              </svg>
+            )}
+          </div>
+
+          <h3 class="learning-option-title relative z-10 mt-5 text-xl font-bold text-[#1A0533]">
+            {option.title}
+          </h3>
+          <p class="learning-option-copy relative z-10 mt-3 text-base leading-relaxed text-gray-600 md:text-lg">
+            {option.copy}
+          </p>
+
+          <a
+            href={option.href}
+            class="learning-option-link relative z-10 mt-auto inline-flex w-fit items-center gap-2.5 rounded-lg pt-8 text-base font-bold text-[#7C31FF] transition-colors hover:text-[#6420D4] focus:outline-none focus-visible:ring-2 focus-visible:ring-[#8A40F5] focus-visible:ring-offset-4"
+          >
+            {option.cta}
+            {option.icon === 'bolt' && (
+              <svg class="h-6 w-6 shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                <rect x="3" y="3" width="7" height="7" rx="1.5" />
+                <rect x="14" y="3" width="7" height="7" rx="1.5" />
+                <rect x="3" y="14" width="7" height="7" rx="1.5" />
+                <rect x="14" y="14" width="7" height="7" rx="1.5" />
+              </svg>
+            )}
+            {option.icon === 'cohort' && (
+              <svg class="h-6 w-6 shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                <rect x="3" y="5" width="18" height="16" rx="2" />
+                <path d="M16 3v4M8 3v4M3 10h18M8 14h.01M12 14h.01M16 14h.01M8 18h.01M12 18h.01" />
+              </svg>
+            )}
+            {option.icon === 'instructor' && (
+              <svg class="h-6 w-6 shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                <circle cx="10" cy="8" r="4" />
+                <path d="M3 21v-2a5 5 0 0 1 5-5h4" />
+                <circle cx="17" cy="17" r="3" />
+                <path d="m19.2 19.2 2.3 2.3" />
+              </svg>
+            )}
+          </a>
+        </article>
+      ))}
+    </div>
+  </div>
+</section>
+
+<style>
+  .learning-option {
+    transition:
+      transform 220ms ease,
+      background-color 220ms ease,
+      border-color 220ms ease,
+      box-shadow 220ms ease;
+  }
+
+  .learning-option-title,
+  .learning-option-copy,
+  .learning-option-link,
+  .learning-option-icon,
+  .learning-option-badge,
+  .learning-option-number {
+    transition:
+      color 220ms ease,
+      background-color 220ms ease,
+      border-color 220ms ease;
+  }
+
+  .learning-option-dot {
+    opacity: 0;
+    transform: scale(0.5);
+    transition:
+      opacity 180ms ease,
+      transform 180ms ease;
+  }
+
+  .learning-option.is-selected {
+    border-color: #1a0533;
+    background: #1a0533;
+    box-shadow: 0 22px 50px rgba(26, 5, 51, 0.2);
+  }
+
+  .learning-option.is-selected .learning-option-title {
+    color: #ffffff;
+  }
+
+  .learning-option.is-selected .learning-option-copy {
+    color: rgba(255, 255, 255, 0.72);
+  }
+
+  .learning-option.is-selected .learning-option-link {
+    color: #cdaeff;
+  }
+
+  .learning-option.is-selected .learning-option-link:hover {
+    color: #ffffff;
+  }
+
+  .learning-option.is-selected .learning-option-icon {
+    background: #8a40f5;
+    color: #ffffff;
+  }
+
+  .learning-option.is-selected .learning-option-badge {
+    background: rgba(255, 255, 255, 0.1);
+    color: #decaff;
+  }
+
+  .learning-option.is-selected .learning-option-indicator {
+    border-color: rgba(255, 255, 255, 0.65);
+  }
+
+  .learning-option.is-selected .learning-option-dot {
+    background: #ffffff;
+    opacity: 1;
+    transform: scale(1);
+  }
+
+  .learning-option.is-selected .learning-option-number {
+    color: rgba(255, 255, 255, 0.58);
+  }
+
+  @media (hover: hover) {
+    .learning-option:hover {
+      transform: translateY(-5px);
+      border-color: #a993be;
+      box-shadow: 0 20px 44px rgba(61, 28, 105, 0.13);
+    }
+
+    .learning-option.is-selected:hover {
+      border-color: #8a40f5;
+      box-shadow: 0 24px 54px rgba(26, 5, 51, 0.25);
+    }
+  }
+
+  .learning-option:active {
+    transform: translateY(-1px) scale(0.995);
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .learning-option,
+    .learning-option-dot {
+      transition: none;
+    }
+  }
+</style>
+
+<script>
+  const learningOptions = Array.from(
+    document.querySelectorAll<HTMLElement>('[data-learning-option]'),
+  );
+
+  function selectLearningOption(selectedOption: HTMLElement) {
+    learningOptions.forEach((option) => {
+      option.classList.toggle('is-selected', option === selectedOption);
+    });
+  }
+
+  learningOptions.forEach((option) => {
+    option.addEventListener('click', (event) => {
+      if ((event.target as Element).closest('a')) return;
+      selectLearningOption(option);
+    });
+  });
+</script>

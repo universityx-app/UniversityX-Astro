@@ -1,0 +1,651 @@
+---
+import { Image } from 'astro:assets';
+import campusImage from '../assets/universityx-campus.png';
+
+const campusCards = [
+  {
+    icon: 'work',
+    title: 'Take on real-world work',
+    copy: 'Work on projects, briefs and case studies inspired by the kind of problems people solve on the job.',
+  },
+  {
+    icon: 'scenarios',
+    title: 'Learn through scenarios',
+    copy: 'Step into realistic situations that help you apply what you’ve learned and think through problems in context.',
+  },
+  {
+    icon: 'feedback',
+    title: 'Get feedback on your work',
+    copy: 'See where you’re doing well, what needs improvement and how to make your work stronger through reviews and guidance.',
+  },
+];
+
+const campusExperiences = [
+  {
+    id: 'payments-lab',
+    spaceName: 'Payments Lab',
+    company: 'Paystack',
+    companyLogo: '/images/brand-logos/paystack.png',
+    role: 'Backend Engineer',
+    brief: 'Build a merchant dashboard to track failed payments and resolve disputes faster.',
+    tools: [
+      { name: 'React', logo: '/images/brand-logos/react-js.webp' },
+      { name: 'Node.js', logo: '/images/brand-logos/node-js.jpeg' },
+      { name: 'PostgreSQL', logo: '/images/brand-logos/postgres.png' },
+      { name: 'Postman', logo: '/images/brand-logos/postman.png' },
+    ],
+    hotspot: { x: 24, y: 48 },
+  },
+  {
+    id: 'ai-engineering-studio',
+    spaceName: 'AI Engineering Studio',
+    company: 'OpenAI',
+    companyLogo: '/images/brand-logos/open-ai.webp',
+    role: 'AI Engineer',
+    brief: 'Build an AI support assistant that answers recurring customer questions and escalates complex cases.',
+    tools: [
+      { name: 'Python', logo: '/images/brand-logos/python.png' },
+      { name: 'OpenAI', logo: '/images/brand-logos/open-ai.webp' },
+      { name: 'LangChain', logo: '/images/brand-logos/langchain.jpeg' },
+      { name: 'Supabase', logo: '/images/brand-logos/superbase.png' },
+    ],
+    hotspot: { x: 50, y: 27 },
+  },
+  {
+    id: 'product-strategy-hub',
+    spaceName: 'Product Strategy Hub',
+    company: 'Moniepoint',
+    companyLogo: '/images/brand-logos/moniepoint.jpeg',
+    role: 'Product Analyst',
+    brief: 'Identify why users drop off before completing onboarding and propose a better experience.',
+    tools: [
+      { name: 'Figma', logo: '/images/brand-logos/figma.webp' },
+      { name: 'GA4', logo: '/images/brand-logos/google-analytics.png' },
+      { name: 'Google Sheets', logo: '/images/brand-logos/google-sheets.png' },
+      { name: 'Notion', logo: '/images/brand-logos/notion.webp' },
+    ],
+    hotspot: { x: 78, y: 40 },
+  },
+];
+
+const initialExperience = campusExperiences[0];
+---
+
+<section
+  class="bg-white px-6 py-20 text-[#1A0533] md:px-12 md:py-28 lg:px-24"
+  aria-labelledby="campus-heading"
+>
+  <div class="mx-auto max-w-7xl">
+    <div class="max-w-4xl">
+      <p class="inline-flex items-center rounded-full border border-[#1A0533]/10 bg-[#F5F2EB] px-4 py-2 text-xs font-semibold uppercase tracking-widest text-[#1A0533]/50">
+        The UniversityX Campus
+      </p>
+      <h2 id="campus-heading" class="mt-5 text-3xl font-extrabold leading-tight md:text-5xl">
+        Learn through immersive, real-world experiences.
+      </h2>
+      <p class="mt-5 max-w-3xl text-lg leading-relaxed text-gray-600 md:text-xl">
+        Work on real projects, case studies, scenarios and challenges that reflect how the work happens in the real world. Make learning more engaging, hands-on and practical.
+      </p>
+    </div>
+
+    <figure class="mt-10">
+      <div
+        class="campus-viewer relative h-[560px] touch-none overflow-hidden rounded-3xl border border-[#1A0533]/10 bg-[#F5F2EB] shadow-xl shadow-[#1A0533]/10 focus:outline-none focus-visible:ring-2 focus-visible:ring-[#8A40F5] focus-visible:ring-offset-4 focus-visible:ring-offset-white sm:h-[520px] lg:h-auto lg:aspect-video"
+        data-campus-viewer
+        tabindex="0"
+        aria-label="Interactive view of the UniversityX Campus"
+        aria-describedby="campus-viewer-instructions"
+      >
+        <div class="campus-pan absolute left-1/2 top-1/2" data-campus-pan>
+          <div class="campus-zoom relative h-full w-full" data-campus-zoom-layer>
+            <Image
+              src={campusImage}
+              alt="Aerial view of the UniversityX virtual campus with interconnected learning buildings and courtyards"
+              class="campus-image h-full w-full max-w-none select-none object-cover"
+              data-campus-image
+              draggable={false}
+              loading="lazy"
+              widths={[640, 960, 1280, 1672]}
+              sizes="(max-width: 640px) 100vw, (max-width: 1280px) 90vw, 1280px"
+            />
+
+            <div class="absolute inset-0 z-[2]" aria-label="Campus experience locations">
+              {campusExperiences.map((experience, index) => (
+                <button
+                  type="button"
+                  class="campus-hotspot absolute flex h-10 w-10 -translate-x-1/2 -translate-y-1/2 cursor-pointer items-center justify-center rounded-full focus:outline-none focus-visible:ring-4 focus-visible:ring-white/90"
+                  style={`left: ${experience.hotspot.x}%; top: ${experience.hotspot.y}%;`}
+                  data-campus-hotspot={index}
+                  aria-label={`Show ${experience.spaceName} experience`}
+                  aria-pressed={index === 0 ? 'true' : 'false'}
+                >
+                  <span class="campus-hotspot-ring absolute inset-[9px] rounded-full border-2 border-white bg-white/20 shadow-[0_0_0_5px_rgba(255,255,255,0.15),0_3px_8px_rgba(20,15,30,0.2)] backdrop-blur-sm"></span>
+                  <span class="campus-hotspot-dot relative h-2 w-2 rounded-full bg-white shadow-sm"></span>
+                </button>
+              ))}
+            </div>
+          </div>
+        </div>
+
+        <div class="absolute right-4 top-4 z-20 flex items-center overflow-hidden rounded-full border border-white/15 bg-[#10051F]/88 text-white shadow-xl backdrop-blur-md lg:bottom-5 lg:right-5 lg:top-auto">
+          <button
+            type="button"
+            class="campus-control flex h-11 w-11 cursor-pointer items-center justify-center transition-colors hover:bg-white/10 focus:outline-none focus-visible:bg-white/15 disabled:cursor-not-allowed disabled:opacity-35"
+            data-campus-zoom-out
+            aria-label="Zoom out"
+            disabled
+          >
+            <svg class="h-5 w-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true">
+              <path d="M5 12h14" />
+            </svg>
+          </button>
+
+          <button
+            type="button"
+            class="campus-control min-w-16 cursor-pointer border-x border-white/10 px-3 text-sm font-bold transition-colors hover:bg-white/10 focus:outline-none focus-visible:bg-white/15"
+            data-campus-reset
+            aria-label="Reset campus view"
+          >
+            <span data-campus-zoom-label>100%</span>
+          </button>
+
+          <button
+            type="button"
+            class="campus-control flex h-11 w-11 cursor-pointer items-center justify-center transition-colors hover:bg-white/10 focus:outline-none focus-visible:bg-white/15 disabled:cursor-not-allowed disabled:opacity-35"
+            data-campus-zoom-in
+            aria-label="Zoom in"
+          >
+            <svg class="h-5 w-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true">
+              <path d="M12 5v14M5 12h14" />
+            </svg>
+          </button>
+        </div>
+
+        <article class="campus-brief absolute bottom-3 left-3 right-3 z-10 cursor-default rounded-xl border border-[#1A0533]/10 bg-[#FCFBF8]/97 p-4 text-[#160B2D] shadow-[0_14px_38px_rgba(26,5,51,0.16)] backdrop-blur-md sm:bottom-5 sm:left-5 sm:right-auto sm:w-[min(480px,calc(100%-2.5rem))] sm:p-5">
+          <div class="flex items-center justify-between gap-4">
+            <div class="flex min-w-0 items-center gap-2 text-[11px] font-extrabold uppercase text-[#6F35D4] sm:text-xs">
+              <h3 class="truncate tracking-[0.08em]" data-campus-space>{initialExperience.spaceName}</h3>
+              <span class="h-4 w-px shrink-0 bg-[#1A0533]/14" aria-hidden="true"></span>
+              <span class="shrink-0 tracking-[0.08em] text-[#1A0533]/70" data-campus-count>01 / 03</span>
+            </div>
+
+            <div class="flex shrink-0 items-center gap-2">
+              <button
+                type="button"
+                class="flex h-10 w-10 cursor-pointer items-center justify-center rounded-full border border-[#1A0533]/12 text-[#1A0533] transition-colors hover:bg-[#1A0533]/5 focus:outline-none focus-visible:ring-2 focus-visible:ring-[#8A40F5]"
+                data-campus-previous
+                aria-label="Show previous campus experience"
+              >
+                <svg class="h-4 w-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                  <path d="m15 18-6-6 6-6" />
+                </svg>
+              </button>
+              <button
+                type="button"
+                class="flex h-10 w-10 cursor-pointer items-center justify-center rounded-full border border-[#1A0533]/12 text-[#1A0533] transition-colors hover:bg-[#1A0533]/5 focus:outline-none focus-visible:ring-2 focus-visible:ring-[#8A40F5]"
+                data-campus-next
+                aria-label="Show next campus experience"
+              >
+                <svg class="h-4 w-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                  <path d="m9 18 6-6-6-6" />
+                </svg>
+              </button>
+            </div>
+          </div>
+
+          <div class="mt-3.5 flex flex-wrap gap-2">
+            <span class="inline-flex h-8 items-center gap-1.5 rounded-full border border-[#1A0533]/8 bg-white/85 px-2.5 text-xs font-semibold shadow-sm">
+              <span class="flex h-5 w-5 shrink-0 items-center justify-center overflow-hidden rounded-[4px]" aria-hidden="true">
+                <img class="h-5 w-5 object-contain" src={initialExperience.companyLogo} alt="" data-campus-company-logo />
+              </span>
+              <span data-campus-company>{initialExperience.company}</span>
+            </span>
+            <span class="inline-flex h-8 items-center gap-1.5 rounded-full border border-[#1A0533]/8 bg-white/85 px-2.5 text-xs font-semibold shadow-sm">
+              <svg class="h-3.5 w-3.5 text-[#8A40F5]" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                <rect x="3" y="7" width="18" height="13" rx="2" />
+                <path d="M8 7V5a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2M3 12h18" />
+              </svg>
+              <span data-campus-role>{initialExperience.role}</span>
+            </span>
+          </div>
+
+          <p class="mt-4 text-xl font-bold leading-[1.28] sm:text-[22px]" data-campus-brief>{initialExperience.brief}</p>
+
+          <div class="my-4 h-px bg-[#1A0533]/10" aria-hidden="true"></div>
+
+          <div class="flex flex-wrap gap-2" data-campus-tools>
+            {initialExperience.tools.map((tool) => (
+              <span class="inline-flex h-8 items-center gap-1.5 rounded-full border border-[#1A0533]/8 bg-white/78 px-2.5 text-xs font-semibold text-[#2F2940]">
+                <span class="flex h-5 w-5 shrink-0 items-center justify-center overflow-hidden rounded-[4px]" aria-hidden="true">
+                  <img class="h-4 w-4 object-contain" src={tool.logo} alt="" />
+                </span>
+                {tool.name}
+              </span>
+            ))}
+          </div>
+        </article>
+
+        <script type="application/json" data-campus-experiences set:html={JSON.stringify(campusExperiences)}></script>
+
+        <p id="campus-viewer-instructions" class="sr-only">
+          Select a campus hotspot or use the project arrows to change experiences. Drag to pan the campus. Use the visible zoom controls to zoom or reset the view. Use arrow keys to pan.
+        </p>
+        <p class="sr-only" aria-live="polite" data-campus-zoom-status>Campus zoom is 100 percent.</p>
+        <p class="sr-only" aria-live="polite" data-campus-experience-status></p>
+      </div>
+      <figcaption class="sr-only">Interactive panoramic view of the UniversityX Campus.</figcaption>
+    </figure>
+
+    <div class="mt-6 grid grid-cols-1 gap-4 md:grid-cols-3">
+      {campusCards.map((card) => (
+        <article class="rounded-2xl border border-[#1A0533]/10 bg-[#F5F2EB] p-6 md:p-7">
+          <div class="flex h-12 w-12 items-center justify-center rounded-2xl bg-white text-[#8A40F5] shadow-sm" aria-hidden="true">
+            {card.icon === 'work' && (
+              <svg class="h-6 w-6" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                <rect x="3" y="7" width="18" height="13" rx="2" />
+                <path d="M8 7V5a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2M3 12h18M10 12v2h4v-2" />
+              </svg>
+            )}
+            {card.icon === 'scenarios' && (
+              <svg class="h-6 w-6" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                <circle cx="6" cy="5" r="2" />
+                <circle cx="18" cy="7" r="2" />
+                <circle cx="18" cy="18" r="2" />
+                <path d="M6 7v5a4 4 0 0 0 4 4h6M8 6h4a4 4 0 0 1 4 4v6" />
+              </svg>
+            )}
+            {card.icon === 'feedback' && (
+              <svg class="h-6 w-6" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M21 15a4 4 0 0 1-4 4H8l-5 3V7a4 4 0 0 1 4-4h10a4 4 0 0 1 4 4v8Z" />
+                <path d="m8 11 2.5 2.5L16 8" />
+              </svg>
+            )}
+          </div>
+          <h3 class="mt-5 text-xl font-bold leading-snug text-[#1A0533]">{card.title}</h3>
+          <p class="mt-3 text-base leading-relaxed text-gray-600">{card.copy}</p>
+        </article>
+      ))}
+    </div>
+  </div>
+</section>
+
+<style>
+  .campus-pan,
+  .campus-zoom {
+    transform-origin: center;
+    will-change: transform;
+    transition: transform 520ms cubic-bezier(0.22, 1, 0.36, 1);
+  }
+
+  .campus-pan {
+    cursor: grab;
+  }
+
+  .campus-hotspot-ring,
+  .campus-hotspot-dot {
+    transition: transform 220ms ease, opacity 220ms ease, box-shadow 220ms ease;
+  }
+
+  .campus-hotspot[aria-pressed='false'] .campus-hotspot-ring,
+  .campus-hotspot[aria-pressed='false'] .campus-hotspot-dot {
+    opacity: 0.76;
+  }
+
+  .campus-hotspot[aria-pressed='true'] .campus-hotspot-ring {
+    transform: scale(1.05);
+    box-shadow: 0 0 0 6px rgb(255 255 255 / 21%), 0 4px 11px rgb(20 15 30 / 24%);
+  }
+
+  .campus-hotspot[aria-pressed='true'] .campus-hotspot-dot {
+    transform: scale(1.05);
+  }
+
+  .campus-hotspot[aria-pressed='true']::after {
+    position: absolute;
+    inset: 9px;
+    border: 2px solid rgb(255 255 255 / 95%);
+    border-radius: 9999px;
+    box-shadow: 0 0 0 3px rgb(255 255 255 / 22%), 0 0 12px rgb(255 255 255 / 48%);
+    content: '';
+    animation: campus-hotspot-pulse 2.6s ease-out infinite;
+    pointer-events: none;
+  }
+
+  @keyframes campus-hotspot-pulse {
+    0%,
+    20% {
+      opacity: 0.95;
+      transform: scale(0.88);
+    }
+
+    82%,
+    100% {
+      opacity: 0;
+      transform: scale(2.05);
+    }
+  }
+
+  .campus-viewer.is-interacting .campus-pan {
+    cursor: grabbing;
+  }
+
+  .campus-viewer.is-interacting .campus-pan,
+  .campus-viewer.is-interacting .campus-zoom {
+    transition: none;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .campus-pan,
+    .campus-zoom,
+    .campus-hotspot-ring,
+    .campus-hotspot-dot,
+    .campus-hotspot[aria-pressed='true']::after {
+      animation: none;
+      transition: none;
+    }
+  }
+</style>
+
+<script>
+  type CampusTool = {
+    name: string;
+    logo: string;
+  };
+
+  type CampusExperience = {
+    id: string;
+    spaceName: string;
+    company: string;
+    companyLogo: string;
+    role: string;
+    brief: string;
+    tools: CampusTool[];
+    hotspot: { x: number; y: number };
+  };
+
+  function initCampusViewer() {
+    const viewerElement = document.querySelector<HTMLElement>('[data-campus-viewer]');
+    const panElement = viewerElement?.querySelector<HTMLElement>('[data-campus-pan]');
+    const zoomLayerElement = viewerElement?.querySelector<HTMLElement>('[data-campus-zoom-layer]');
+    const imageElement = viewerElement?.querySelector<HTMLImageElement>('[data-campus-image]');
+    const zoomOutElement = viewerElement?.querySelector<HTMLButtonElement>('[data-campus-zoom-out]');
+    const zoomInElement = viewerElement?.querySelector<HTMLButtonElement>('[data-campus-zoom-in]');
+    const resetElement = viewerElement?.querySelector<HTMLButtonElement>('[data-campus-reset]');
+    const previousElement = viewerElement?.querySelector<HTMLButtonElement>('[data-campus-previous]');
+    const nextElement = viewerElement?.querySelector<HTMLButtonElement>('[data-campus-next]');
+    const experienceDataElement = viewerElement?.querySelector<HTMLScriptElement>('[data-campus-experiences]');
+
+    if (
+      !viewerElement ||
+      !panElement ||
+      !zoomLayerElement ||
+      !imageElement ||
+      !zoomOutElement ||
+      !zoomInElement ||
+      !resetElement ||
+      !previousElement ||
+      !nextElement ||
+      !experienceDataElement
+    ) return;
+
+    const viewer = viewerElement;
+    const panLayer = panElement;
+    const zoomLayer = zoomLayerElement;
+    const image = imageElement;
+    const zoomOutButton = zoomOutElement;
+    const zoomInButton = zoomInElement;
+    const resetButton = resetElement;
+    const previousButton = previousElement;
+    const nextButton = nextElement;
+    const zoomLabel = viewer.querySelector<HTMLElement>('[data-campus-zoom-label]');
+    const zoomStatus = viewer.querySelector<HTMLElement>('[data-campus-zoom-status]');
+    const experienceStatus = viewer.querySelector<HTMLElement>('[data-campus-experience-status]');
+    const spaceName = viewer.querySelector<HTMLElement>('[data-campus-space]');
+    const experienceCount = viewer.querySelector<HTMLElement>('[data-campus-count]');
+    const companyName = viewer.querySelector<HTMLElement>('[data-campus-company]');
+    const companyLogo = viewer.querySelector<HTMLImageElement>('[data-campus-company-logo]');
+    const roleName = viewer.querySelector<HTMLElement>('[data-campus-role]');
+    const brief = viewer.querySelector<HTMLElement>('[data-campus-brief]');
+    const tools = viewer.querySelector<HTMLElement>('[data-campus-tools]');
+    const hotspotButtons = Array.from(viewer.querySelectorAll<HTMLButtonElement>('[data-campus-hotspot]'));
+    const experiences = JSON.parse(experienceDataElement.textContent || '[]') as CampusExperience[];
+
+    if (!experiences.length) return;
+
+    const zoomLevels = [1, 1.35, 1.7] as const;
+    const activePointers = new Map<number, { x: number; y: number }>();
+    let levelIndex = 0;
+    let activeExperienceIndex = 0;
+    let offsetX = 0;
+    let offsetY = 0;
+    let baseWidth = 0;
+    let baseHeight = 0;
+    let hasMeasured = false;
+    let followsExperience = true;
+    let dragStartX = 0;
+    let dragStartY = 0;
+    let dragOffsetX = 0;
+    let dragOffsetY = 0;
+
+    const currentScale = () => zoomLevels[levelIndex];
+
+    function panBounds() {
+      return {
+        x: Math.max(0, (baseWidth * currentScale() - viewer.clientWidth) / 2),
+        y: Math.max(0, (baseHeight * currentScale() - viewer.clientHeight) / 2),
+      };
+    }
+
+    function clampPan() {
+      const bounds = panBounds();
+      offsetX = Math.max(-bounds.x, Math.min(bounds.x, offsetX));
+      offsetY = Math.max(-bounds.y, Math.min(bounds.y, offsetY));
+    }
+
+    function render() {
+      clampPan();
+      panLayer.style.transform = `translate(-50%, -50%) translate3d(${offsetX}px, ${offsetY}px, 0)`;
+      zoomLayer.style.transform = `scale(${currentScale()})`;
+
+      const percentage = Math.round(currentScale() * 100);
+      if (zoomLabel) zoomLabel.textContent = `${percentage}%`;
+      if (zoomStatus) zoomStatus.textContent = `Campus zoom is ${percentage} percent.`;
+      zoomOutButton.disabled = levelIndex === 0;
+      zoomInButton.disabled = levelIndex === zoomLevels.length - 1;
+    }
+
+    function focusExperience(experience: CampusExperience) {
+      levelIndex = 1;
+      const scale = currentScale();
+      const isMobile = window.matchMedia('(max-width: 767px)').matches;
+      const targetX = isMobile ? 0.5 : 0.66;
+      const targetY = isMobile ? 0.22 : 0.36;
+      const hotspotX = (experience.hotspot.x / 100 - 0.5) * baseWidth * scale;
+      const hotspotY = (experience.hotspot.y / 100 - 0.5) * baseHeight * scale;
+
+      offsetX = viewer.clientWidth * targetX - viewer.clientWidth / 2 - hotspotX;
+      offsetY = viewer.clientHeight * targetY - viewer.clientHeight / 2 - hotspotY;
+      render();
+    }
+
+    function createToolChip(tool: CampusTool) {
+      const chip = document.createElement('span');
+      chip.className = 'inline-flex h-8 items-center gap-1.5 rounded-full border border-[#1A0533]/8 bg-white/78 px-2.5 text-xs font-semibold text-[#2F2940]';
+
+      const icon = document.createElement('span');
+      icon.setAttribute('aria-hidden', 'true');
+
+      icon.className = 'flex h-5 w-5 shrink-0 items-center justify-center overflow-hidden rounded-[4px]';
+      const logo = document.createElement('img');
+      logo.className = 'h-4 w-4 object-contain';
+      logo.src = tool.logo;
+      logo.alt = '';
+      icon.append(logo);
+
+      chip.append(icon, document.createTextNode(tool.name));
+      return chip;
+    }
+
+    function updateExperienceCard(experience: CampusExperience, index: number) {
+      if (spaceName) spaceName.textContent = experience.spaceName;
+      if (experienceCount) experienceCount.textContent = `${String(index + 1).padStart(2, '0')} / ${String(experiences.length).padStart(2, '0')}`;
+      if (companyName) companyName.textContent = experience.company;
+      if (companyLogo) companyLogo.src = experience.companyLogo;
+      if (roleName) roleName.textContent = experience.role;
+      if (brief) brief.textContent = experience.brief;
+      if (tools) tools.replaceChildren(...experience.tools.map(createToolChip));
+
+      hotspotButtons.forEach((button, hotspotIndex) => {
+        button.setAttribute('aria-pressed', String(hotspotIndex === index));
+      });
+    }
+
+    function selectExperience(nextIndex: number, announce = true) {
+      activeExperienceIndex = (nextIndex + experiences.length) % experiences.length;
+      const experience = experiences[activeExperienceIndex];
+      updateExperienceCard(experience, activeExperienceIndex);
+      followsExperience = true;
+
+      if (hasMeasured) focusExperience(experience);
+      if (announce && experienceStatus) {
+        experienceStatus.textContent = `${experience.spaceName}, experience ${activeExperienceIndex + 1} of ${experiences.length}.`;
+      }
+    }
+
+    function measureImage() {
+      const naturalWidth = image.naturalWidth || 1672;
+      const naturalHeight = image.naturalHeight || 941;
+      const imageRatio = naturalWidth / naturalHeight;
+      const viewerRatio = viewer.clientWidth / viewer.clientHeight;
+
+      if (viewerRatio > imageRatio) {
+        baseWidth = viewer.clientWidth;
+        baseHeight = baseWidth / imageRatio;
+      } else {
+        baseHeight = viewer.clientHeight;
+        baseWidth = baseHeight * imageRatio;
+      }
+
+      panLayer.style.width = `${baseWidth}px`;
+      panLayer.style.height = `${baseHeight}px`;
+      hasMeasured = true;
+
+      if (followsExperience) focusExperience(experiences[activeExperienceIndex]);
+      else render();
+    }
+
+    function setZoom(nextLevel: number) {
+      followsExperience = false;
+      levelIndex = Math.max(0, Math.min(zoomLevels.length - 1, nextLevel));
+      if (levelIndex === 0) {
+        offsetX = 0;
+        offsetY = 0;
+      }
+      render();
+    }
+
+    function resetView() {
+      followsExperience = false;
+      offsetX = 0;
+      offsetY = 0;
+      setZoom(0);
+    }
+
+    zoomOutButton.addEventListener('click', () => setZoom(levelIndex - 1));
+    zoomInButton.addEventListener('click', () => setZoom(levelIndex + 1));
+    resetButton.addEventListener('click', resetView);
+    previousButton.addEventListener('click', () => selectExperience(activeExperienceIndex - 1));
+    nextButton.addEventListener('click', () => selectExperience(activeExperienceIndex + 1));
+    hotspotButtons.forEach((button) => {
+      button.addEventListener('click', () => selectExperience(Number(button.dataset.campusHotspot)));
+    });
+
+    viewer.addEventListener('pointerdown', (event) => {
+      if ((event.target as Element).closest('button, .campus-brief')) return;
+      if (event.pointerType === 'mouse' && event.button !== 0) return;
+
+      viewer.setPointerCapture(event.pointerId);
+      activePointers.set(event.pointerId, { x: event.clientX, y: event.clientY });
+      viewer.classList.add('is-interacting');
+
+      if (activePointers.size === 1) {
+        followsExperience = false;
+        dragStartX = event.clientX;
+        dragStartY = event.clientY;
+        dragOffsetX = offsetX;
+        dragOffsetY = offsetY;
+      }
+    });
+
+    viewer.addEventListener('pointermove', (event) => {
+      if (!activePointers.has(event.pointerId)) return;
+      activePointers.set(event.pointerId, { x: event.clientX, y: event.clientY });
+
+      if (activePointers.size === 1) {
+        offsetX = dragOffsetX + event.clientX - dragStartX;
+        offsetY = dragOffsetY + event.clientY - dragStartY;
+        render();
+      }
+    });
+
+    function releasePointer(event: PointerEvent) {
+      activePointers.delete(event.pointerId);
+      if (viewer.hasPointerCapture(event.pointerId)) viewer.releasePointerCapture(event.pointerId);
+
+      if (activePointers.size === 1) {
+        const remainingPointer = Array.from(activePointers.values())[0];
+        dragStartX = remainingPointer.x;
+        dragStartY = remainingPointer.y;
+        dragOffsetX = offsetX;
+        dragOffsetY = offsetY;
+      } else if (activePointers.size === 0) {
+        viewer.classList.remove('is-interacting');
+      }
+    }
+
+    viewer.addEventListener('pointerup', releasePointer);
+    viewer.addEventListener('pointercancel', releasePointer);
+
+    viewer.addEventListener('keydown', (event) => {
+      if ((event.target as Element).closest('button')) return;
+      const panStep = 36;
+      let handled = true;
+
+      switch (event.key) {
+        case 'ArrowLeft':
+          offsetX += panStep;
+          break;
+        case 'ArrowRight':
+          offsetX -= panStep;
+          break;
+        case 'ArrowUp':
+          offsetY += panStep;
+          break;
+        case 'ArrowDown':
+          offsetY -= panStep;
+          break;
+        default:
+          handled = false;
+      }
+
+      if (handled) {
+        event.preventDefault();
+        followsExperience = false;
+        render();
+      }
+    });
+
+    const resizeObserver = new ResizeObserver(measureImage);
+    resizeObserver.observe(viewer);
+
+    updateExperienceCard(experiences[0], 0);
+    if (image.complete) measureImage();
+    else image.addEventListener('load', measureImage, { once: true });
+  }
+
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', initCampusViewer, { once: true });
+  } else {
+    initCampusViewer();
+  }
+</script>

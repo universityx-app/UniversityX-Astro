@@ -1,0 +1,52 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import Navbar from '../../components/Navbar.astro';
+import Footer from '../../components/Footer.astro';
+import CourseLearningModes from '../../components/CourseLearningModes.astro';
+import { availableCourses, type Course } from '../../data/courses';
+
+export function getStaticPaths() {
+  return availableCourses.map((course) => ({ params: { slug: course.slug }, props: { course } }));
+}
+
+interface Props { course: Course }
+const { course } = Astro.props;
+---
+
+<Layout title={`${course.title} | UniversityX`} description={course.description} image={course.thumbnail}>
+  <Navbar />
+  <main class="bg-white text-[#1A0533]">
+    <section class="border-b border-[#1A0533]/8 bg-[#F5F2EB]">
+      <div class="mx-auto max-w-7xl px-6 py-12 md:px-12 md:py-16 lg:px-16 xl:px-24">
+        <nav class="mb-8 flex items-center gap-2 text-sm text-gray-500" aria-label="Breadcrumb"><a href="/#courses" class="hover:text-[#8A40F5]">Courses</a><span aria-hidden="true">/</span><span class="font-semibold text-[#1A0533]">{course.path}</span></nav>
+        <div class="grid items-start gap-12 lg:grid-cols-[minmax(0,1fr)_390px] lg:gap-16">
+          <div>
+            <div class="flex flex-wrap gap-2 text-xs font-bold uppercase tracking-widest"><span class="rounded-full bg-white px-3 py-2 text-[#8A40F5]">{course.path}</span><span class="rounded-full bg-white px-3 py-2 text-[#1A0533]/65">{course.track}</span><span class="rounded-full bg-white px-3 py-2 text-[#1A0533]/65">{course.level}</span></div>
+            <h1 class="mt-6 max-w-4xl text-4xl font-extrabold leading-tight md:text-6xl">{course.title}</h1>
+            <p class="mt-6 max-w-3xl text-lg leading-8 text-gray-600 md:text-xl">{course.description}</p>
+          </div>
+          <CourseLearningModes course={course} />
+        </div>
+      </div>
+    </section>
+
+    <section class="py-16 md:py-24">
+      <div class="mx-auto grid max-w-7xl gap-14 px-6 md:px-12 lg:grid-cols-[1.15fr_.85fr] lg:px-16 xl:px-24">
+        <div>
+          <p class="text-sm font-bold uppercase tracking-widest text-[#8A40F5]">What you will build</p>
+          <h2 class="mt-3 text-3xl font-extrabold md:text-4xl">Finish with something useful.</h2>
+          <p class="mt-5 text-lg leading-8 text-gray-600">{course.outcome}</p>
+          <ul class="mt-8 space-y-4">
+            {course.outcomes.map((item) => <li class="flex gap-3 text-base leading-7 text-gray-700"><span class="mt-1 grid h-6 w-6 shrink-0 place-items-center rounded-full bg-[#E9F8EF] text-[#16834A]" aria-hidden="true">✓</span><span>{item}</span></li>)}
+          </ul>
+        </div>
+        <div class="divide-y divide-[#1A0533]/10 border-y border-[#1A0533]/10">
+          <div class="py-6"><h3 class="font-bold">This course is for</h3><p class="mt-2 leading-7 text-gray-600">{course.audience}</p></div>
+          <div class="py-6"><h3 class="font-bold">Before you begin</h3><p class="mt-2 leading-7 text-gray-600">{course.prerequisites}</p></div>
+          <div class="py-6"><h3 class="font-bold">Learning path</h3><p class="mt-2 leading-7 text-gray-600">{course.path} · {course.track} · {course.level}</p></div>
+        </div>
+      </div>
+    </section>
+  </main>
+  <Footer />
+</Layout>

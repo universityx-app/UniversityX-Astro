@@ -1,0 +1,27 @@
+[
+  {
+    "id": "course1to1inq01",
+    "name": "Course_One_To_One_Inquiries",
+    "type": "base",
+    "system": false,
+    "fields": [
+      { "id": "courseid0000001", "name": "course_id", "type": "text", "system": false, "hidden": false, "required": true, "presentable": false, "primaryKey": false, "min": 36, "max": 36, "pattern": "", "autogeneratePattern": "" },
+      { "id": "courseslug00001", "name": "course_slug", "type": "text", "system": false, "hidden": false, "required": true, "presentable": false, "primaryKey": false, "min": 1, "max": 180, "pattern": "", "autogeneratePattern": "" },
+      { "id": "coursetitle0001", "name": "course_title", "type": "text", "system": false, "hidden": false, "required": true, "presentable": false, "primaryKey": false, "min": 1, "max": 240, "pattern": "", "autogeneratePattern": "" },
+      { "id": "fullname0000001", "name": "full_name", "type": "text", "system": false, "hidden": false, "required": true, "presentable": true, "primaryKey": false, "min": 2, "max": 120, "pattern": "", "autogeneratePattern": "" },
+      { "id": "inquiryemail001", "name": "email", "type": "email", "system": false, "hidden": false, "required": true, "presentable": true, "exceptDomains": null, "onlyDomains": null },
+      { "id": "whatsapp0000001", "name": "whatsapp_number", "type": "text", "system": false, "hidden": false, "required": true, "presentable": false, "primaryKey": false, "min": 7, "max": 40, "pattern": "", "autogeneratePattern": "" },
+      { "id": "budgetrange0001", "name": "budget_range", "type": "select", "system": false, "hidden": false, "required": true, "presentable": false, "maxSelect": 1, "values": ["₦25,000–₦50,000", "₦50,000–₦100,000", "₦100,000–₦200,000", "₦200,000+", "Not sure yet"] },
+      { "id": "requestmsg00001", "name": "request_message", "type": "text", "system": false, "hidden": false, "required": true, "presentable": false, "primaryKey": false, "min": 20, "max": 2000, "pattern": "", "autogeneratePattern": "" },
+      { "id": "learningmode001", "name": "learning_mode", "type": "select", "system": false, "hidden": false, "required": true, "presentable": false, "maxSelect": 1, "values": ["one_to_one"] },
+      { "id": "sourceurl000001", "name": "source_url", "type": "url", "system": false, "hidden": false, "required": true, "presentable": false, "exceptDomains": null, "onlyDomains": null },
+      { "id": "inquirystatus01", "name": "inquiry_status", "type": "select", "system": false, "hidden": false, "required": true, "presentable": false, "maxSelect": 1, "values": ["new", "contacted", "qualified", "closed"] }
+    ],
+    "indexes": [],
+    "listRule": null,
+    "viewRule": null,
+    "createRule": "@request.body.inquiry_status = 'new' && @request.body.learning_mode = 'one_to_one'",
+    "updateRule": null,
+    "deleteRule": null
+  }
+]

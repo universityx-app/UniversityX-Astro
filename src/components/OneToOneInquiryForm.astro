@@ -1,0 +1,112 @@
+---
+import type { Course } from '../data/courses';
+
+interface Props { course?: Course }
+const { course } = Astro.props;
+const isCourseInquiry = Boolean(course);
+const returnPath = course ? `/course/${course.slug}/` : '/courses/';
+---
+
+<div class="rounded-2xl border border-[#1A0533]/10 bg-white p-6 shadow-xl shadow-[#1A0533]/8 md:p-10">
+  <div data-inquiry-success class="hidden" role="status" tabindex="-1">
+    <div class="grid h-12 w-12 place-items-center rounded-full bg-[#E9F8EF] text-2xl text-[#16834A]">✓</div>
+    <h2 class="mt-5 text-3xl font-extrabold">Request received.</h2>
+    <p class="mt-3 max-w-xl leading-7 text-gray-600">Thanks for telling us what you need. We’ll review your goals and contact you about the right instructor, session plan, and next steps.</p>
+    <a href={returnPath} class="mt-7 inline-flex font-bold text-[#8A40F5] hover:underline">{course ? 'Return to course' : 'Explore courses'} →</a>
+  </div>
+
+  <form
+    data-inquiry-form
+    data-course-id={course?.id || '00000000-0000-0000-0000-000000000000'}
+    data-course-slug={course?.slug || 'general-one-to-one'}
+    data-course-title={course?.title || ''}
+    novalidate
+  >
+    <div class="mb-8"><h2 class="text-2xl font-extrabold">Tell us what would help.</h2><p class="mt-2 leading-6 text-gray-500">This is an inquiry, not a payment or booking. We’ll recommend the number and frequency of sessions after reviewing your request.</p></div>
+    <div class="grid gap-6 md:grid-cols-2">
+      {!isCourseInquiry && (
+        <div class="md:col-span-2">
+          <label class="field-label" for="inquiry-interest">What do you want to learn?</label>
+          <input class="field-input" id="inquiry-interest" name="learning_interest" type="text" minlength="3" maxlength="240" required placeholder="For example: backend engineering, product design, or building an AI app" />
+          <p class="field-error" data-error-for="learning_interest"></p>
+        </div>
+      )}
+      <div class="md:col-span-2"><label class="field-label" for="inquiry-name">Full name</label><input class="field-input" id="inquiry-name" name="full_name" type="text" autocomplete="name" minlength="2" maxlength="120" required placeholder="Enter your full name" /><p class="field-error" data-error-for="full_name"></p></div>
+      <div><label class="field-label" for="inquiry-email">Email address</label><input class="field-input" id="inquiry-email" name="email" type="email" autocomplete="email" required placeholder="you@example.com" /><p class="field-error" data-error-for="email"></p></div>
+      <div><label class="field-label" for="inquiry-phone">WhatsApp number</label><input class="field-input" id="inquiry-phone" name="whatsapp_number" type="tel" autocomplete="tel" minlength="7" maxlength="40" required placeholder="+234 800 000 0000" /><p class="field-error" data-error-for="whatsapp_number"></p></div>
+      <div class="md:col-span-2"><label class="field-label" for="inquiry-budget">Estimated total budget for this 1-on-1 engagement</label><select class="field-input" id="inquiry-budget" name="budget_range" required><option value="">Choose a range</option><option>₦25,000–₦50,000</option><option>₦50,000–₦100,000</option><option>₦100,000–₦200,000</option><option>₦200,000+</option><option>Not sure yet</option></select><p class="mt-2 text-sm leading-5 text-gray-500">This helps us suggest a suitable format. You will not be charged now.</p><p class="field-error" data-error-for="budget_range"></p></div>
+      <div class="md:col-span-2"><label class="field-label" for="inquiry-message">What would you like help with?</label><textarea class="field-input resize-y" id="inquiry-message" name="request_message" rows="5" minlength="20" maxlength="2000" required placeholder="Share your goals, where you are currently stuck, or what you want to build."></textarea><p class="field-error" data-error-for="request_message"></p></div>
+    </div>
+    <div data-form-error class="mt-6 hidden rounded-lg border border-red-200 bg-red-50 p-4 text-sm text-red-700" role="alert" tabindex="-1">We couldn’t send your request. Your answers are still here, so please try again.</div>
+    <button data-inquiry-submit type="submit" class="mt-7 inline-flex min-h-12 w-full items-center justify-center rounded-full bg-[#8A40F5] px-6 py-3 font-bold text-white transition hover:bg-[#7130D3] focus:outline-none focus-visible:ring-2 focus-visible:ring-[#8A40F5] focus-visible:ring-offset-2 disabled:cursor-wait disabled:opacity-60">Send 1-on-1 request</button>
+  </form>
+</div>
+
+<style>
+  .field-label { display: block; margin-bottom: .5rem; font-size: .875rem; font-weight: 700; color: #1a0533; }
+  .field-input { width: 100%; border: 1px solid rgb(26 5 51 / 14%); border-radius: .65rem; background: #fbfaf8; padding: .8rem 1rem; color: #1a0533; outline: none; transition: border-color .2s, box-shadow .2s; }
+  .field-input:focus { border-color: #8a40f5; box-shadow: 0 0 0 3px rgb(138 64 245 / 14%); }
+  .field-input[aria-invalid="true"] { border-color: #dc2626; }
+  .field-error { min-height: 1.15rem; padding-top: .3rem; font-size: .75rem; color: #dc2626; }
+</style>
+
+<script>
+  import PocketBase from 'pocketbase';
+
+  function initOneToOneInquiryForm() {
+    const form = document.querySelector<HTMLFormElement>('[data-inquiry-form]');
+    if (!form || form.dataset.initialized === 'true') return;
+    form.dataset.initialized = 'true';
+    const submit = form.querySelector<HTMLButtonElement>('[data-inquiry-submit]')!;
+    const errorBox = form.querySelector<HTMLElement>('[data-form-error]')!;
+    const success = document.querySelector<HTMLElement>('[data-inquiry-success]')!;
+    const fields = Array.from(form.querySelectorAll<HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement>('input, select, textarea'));
+    const messages: Record<string, string> = { learning_interest: 'Tell us what you want to learn.', full_name: 'Enter your full name.', email: 'Enter a valid email address.', whatsapp_number: 'Enter a valid WhatsApp number.', budget_range: 'Choose an estimated budget range.', request_message: 'Tell us a little more in at least 20 characters.' };
+    const validate = (field: HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement) => {
+      const valid = field.checkValidity();
+      field.setAttribute('aria-invalid', String(!valid));
+      const output = form.querySelector<HTMLElement>(`[data-error-for="${field.name}"]`);
+      if (output) output.textContent = valid ? '' : messages[field.name] || 'Check this field.';
+      return valid;
+    };
+    fields.forEach((field) => { field.addEventListener('blur', () => validate(field)); field.addEventListener('input', () => { if (field.getAttribute('aria-invalid') === 'true') validate(field); }); });
+    form.addEventListener('submit', async (event) => {
+      event.preventDefault();
+      errorBox.classList.add('hidden');
+      const valid = fields.map(validate).every(Boolean);
+      if (!valid) { fields.find((field) => !field.checkValidity())?.focus(); return; }
+      submit.disabled = true;
+      submit.textContent = 'Sending request...';
+      const data = new FormData(form);
+      const learningInterest = String(data.get('learning_interest') || '').trim();
+      const payload = {
+        course_id: form.dataset.courseId,
+        course_slug: form.dataset.courseSlug,
+        course_title: form.dataset.courseTitle || learningInterest,
+        full_name: String(data.get('full_name') || '').trim(),
+        email: String(data.get('email') || '').trim(),
+        whatsapp_number: String(data.get('whatsapp_number') || '').trim(),
+        budget_range: String(data.get('budget_range') || ''),
+        request_message: String(data.get('request_message') || '').trim(),
+        learning_mode: 'one_to_one',
+        source_url: window.location.href,
+        inquiry_status: 'new',
+      };
+      try {
+        const pb = new PocketBase(import.meta.env.PUBLIC_POCKETBASE_URL);
+        await pb.collection('Course_One_To_One_Inquiries').create(payload);
+        window.posthog?.capture('course_one_to_one_inquiry_submitted', { course_id: payload.course_id, course_slug: payload.course_slug, learning_interest: learningInterest || payload.course_title });
+        form.classList.add('hidden');
+        success.classList.remove('hidden');
+        success.focus();
+      } catch (error) {
+        window.posthog?.captureException(error);
+        errorBox.classList.remove('hidden');
+        errorBox.focus();
+        submit.disabled = false;
+        submit.textContent = 'Send 1-on-1 request';
+      }
+    });
+  }
+  if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', initOneToOneInquiryForm); else initOneToOneInquiryForm();
+</script>

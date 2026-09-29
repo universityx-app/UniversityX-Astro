@@ -18,14 +18,14 @@ const cards = [
   <div class="relative mb-8 pt-10 z-10 grid grid-cols-1 lg:grid-cols-2">
     <!-- Left Column: Text -->
     <div class="px-6 lg:pl-24 lg:pr-0 py-12 lg:py-0 relative">
-      <p class="hero-eyebrow mb-5 inline-flex items-center gap-3 rounded-full border border-white/10 bg-white/7 px-5 py-2.5 text-sm font-semibold text-white/92 backdrop-blur-md">
+      <!-- <p class="hero-eyebrow mb-5 inline-flex items-center gap-3 rounded-full border border-white/10 bg-white/7 px-5 py-2.5 text-sm font-semibold text-white/92 backdrop-blur-md">
         <span class="hero-eyebrow-dot h-2.5 w-2.5 rounded-full bg-[#8A40F5]"></span>
         Tired of watching tutorials?
-      </p>
+      </p> -->
 
       <!-- Heading -->
       <div class="text-5xl md:text-6xl font-extrabold leading-[1.1] tracking-tight mb-6">
-        <span>Build real-world projects that get you hired.</span>
+        <span>Build real-world projects that get you hired</span>
         <!-- <span class="inline-block relative">
           <SideEye class="inline-flex w-15 h-15 align-middle mb-2" />
         </span> -->
@@ -33,27 +33,27 @@ const cards = [
 
       <!-- Subtext -->
       <p class="text-gray-400 text-lg md:text-2xl mb-10">
-        UniversityX combines real projects, expert guidance, daily accountability and AI-powered skill verification so you can build practical skills with evidence employers can trust.
+        Courses and certificates are not enough. UniversityX helps you build practical skills, work on real projects and show employers what you can actually do.
       </p>
 
       <!-- Buttons -->
       <div class="flex flex-wrap items-center gap-4 mb-12">
         <a
           id="browse-courses-btn"
-          href="/cohort/build-and-ship-ai-applications-with-python/"
+          href="/beta/"
           class="inline-flex items-center gap-2 bg-[#8A40F5] hover:bg-[#7434D8] text-white font-semibold px-7 py-3.5 rounded-full transition-colors text-base focus:outline-none focus:ring-2 focus:ring-[#8A40F5] focus:ring-offset-2 focus:ring-offset-black"
         >
-          Join the October Cohort
+          Join Beta
           <svg class="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
             <path d="M5 12h14M12 5l7 7-7 7"/>
           </svg>
         </a>
         <a
           id="how-it-works-btn"
-          href="#career-paths"
+          href="/cohorts/"
           class="inline-flex items-center gap-2 border border-white/20 hover:border-white/40 text-white font-semibold px-7 py-3.5 rounded-full transition-colors text-base focus:outline-none focus:ring-2 focus:ring-white/60 focus:ring-offset-2 focus:ring-offset-black"
         >
-          Explore other programs
+          View Cohorts
         </a>
       </div>
     </div>
@@ -210,13 +210,13 @@ const cards = [
     const howItWorksBtn = document.getElementById('how-it-works-btn');
 
     browseCoursesBtn?.addEventListener('click', () => {
-      window.posthog?.capture('cohort_cta_clicked', {
+      window.posthog?.capture('beta_cta_clicked', {
         location: 'hero_section'
       });
     });
 
     howItWorksBtn?.addEventListener('click', () => {
-      window.posthog?.capture('career_paths_clicked', {
+      window.posthog?.capture('cohorts_cta_clicked', {
         location: 'hero_section'
       });
     });
