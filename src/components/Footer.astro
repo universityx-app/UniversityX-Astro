@@ -39,37 +39,56 @@ const socialLinks = [
         loading="lazy"
       />
 
-      <div class="flex items-center gap-3">
-        {socialLinks.map((link) => (
-          <a
-            href={link.href}
-            aria-label={link.label}
-            class="w-10 h-10 rounded-full border border-gray-600 flex items-center justify-center text-gray-400 hover:text-white hover:border-gray-400 transition-colors duration-200 focus:outline-none focus:ring-2 focus:ring-white/40"
-          >
-            {link.icon && (
-              <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-                <path d={link.icon} />
-              </svg>
-            )}
-            {link.paths && (
-              <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-                {link.paths.map((p) => <path d={p} />)}
-              </svg>
-            )}
-            {link.pathD && (
-              <svg class="w-4 h-4" viewBox={link.viewBox || '0 0 24 24'} aria-hidden="true">
-                <path d={link.pathD} fill="currentColor" />
-              </svg>
-            )}
-          </a>
-        ))}
+      <div class="flex flex-col items-start gap-4 md:items-end">
+        <div class="flex items-center gap-3">
+          {socialLinks.map((link) => (
+            <a
+              href={link.href}
+              aria-label={link.label}
+              class="w-10 h-10 rounded-full border border-gray-600 flex items-center justify-center text-gray-400 hover:text-white hover:border-gray-400 transition-colors duration-200 focus:outline-none focus:ring-2 focus:ring-white/40"
+            >
+              {link.icon && (
+                <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                  <path d={link.icon} />
+                </svg>
+              )}
+              {link.paths && (
+                <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                  {link.paths.map((p) => <path d={p} />)}
+                </svg>
+              )}
+              {link.pathD && (
+                <svg class="w-4 h-4" viewBox={link.viewBox || '0 0 24 24'} aria-hidden="true">
+                  <path d={link.pathD} fill="currentColor" />
+                </svg>
+              )}
+            </a>
+          ))}
+        </div>
+
+        <a
+          href="https://destroy.spritefusion.com/?url=https%3A%2F%2Funiversityx.app%2F"
+          target="_blank"
+          rel="noopener noreferrer"
+          aria-label="Destroy this website"
+          class="block rounded-md opacity-80 transition-opacity duration-200 hover:opacity-100 focus:outline-none focus:ring-2 focus:ring-white/50 focus:ring-offset-2 focus:ring-offset-[#1C1410]"
+          data-destroy-site
+        >
+          <img
+            src="https://destroy.spritefusion.com/badge.svg"
+            alt="Destroy this website"
+            width="180"
+            height="40"
+            loading="lazy"
+          />
+        </a>
       </div>
     </div>
 
     <div class="border-t border-[#2A2420] py-8 flex flex-col lg:flex-row items-start lg:items-center justify-between gap-6">
       <p class="text-gray-400 text-base">© {new Date().getFullYear()} UniversityX. All rights reserved.</p>
       <nav class="flex flex-wrap items-center gap-x-6 gap-y-3" aria-label="Footer">
-        <a href="/#career-paths" class="text-gray-400 text-base hover:text-white transition-colors duration-200">Career Paths</a>
+        <a href="/paths/ai-data-science/" class="text-gray-400 text-base hover:text-white transition-colors duration-200">AI &amp; Data Science</a>
         <a href="/teach" class="text-gray-400 text-base hover:text-white transition-colors duration-200">Teach</a>
         <a href="/#faq" class="text-gray-400 text-base hover:text-white transition-colors duration-200">FAQ</a>
         <a href="/contact" class="text-gray-400 text-base hover:text-white transition-colors duration-200">Contact</a>
@@ -80,3 +99,12 @@ const socialLinks = [
     </div>
   </div>
 </footer>
+
+<script>
+  const destroyLink = document.querySelector<HTMLAnchorElement>('[data-destroy-site]');
+
+  if (destroyLink) {
+    const publicPageUrl = new URL(`${window.location.pathname}${window.location.search}`, 'https://universityx.app');
+    destroyLink.href = `https://destroy.spritefusion.com/?url=${encodeURIComponent(publicPageUrl.href)}`;
+  }
+</script>

@@ -1,0 +1,38 @@
+---
+import type { Course } from '../data/courses';
+import { getSelfPacedUrl } from '../data/courses';
+
+interface Props { course: Course }
+const { course } = Astro.props;
+const modes = [
+  { label: 'Learn at your own pace', description: 'Start now and work through practical lessons and projects on your own schedule.', cta: 'Start self-paced', href: getSelfPacedUrl(course), icon: 'play' },
+  { label: 'Learn with a cohort', description: 'Follow a structured schedule, build with peers, and get guidance from an instructor.', cta: 'View available cohort', href: `/course/${course.slug}/cohorts/`, icon: 'users' },
+  { label: 'Learn 1-on-1 with an instructor', description: 'Get personal guidance shaped around your goals, pace, and experience.', cta: 'Request 1-on-1', href: `/course/${course.slug}/1-1/`, icon: 'person' },
+];
+---
+
+<aside class="lg:sticky lg:top-6" aria-labelledby="learning-mode-heading">
+  <div class="overflow-hidden rounded-2xl border border-[#1A0533]/10 bg-white shadow-xl shadow-[#1A0533]/8">
+    <img src={course.thumbnail} alt="" class="aspect-video w-full object-cover" loading="eager" />
+    <div class="p-5 md:p-6">
+      <p class="text-xs font-bold uppercase tracking-widest text-[#8A40F5]">Choose how you learn</p>
+      <h2 id="learning-mode-heading" class="mt-2 text-2xl font-extrabold text-[#1A0533]">Make it work for you.</h2>
+      <div class="mt-5 divide-y divide-[#1A0533]/10">
+        {modes.map((mode) => (
+          <a href={mode.href} class="group flex gap-4 py-5 first:pt-0 last:pb-0 focus:outline-none focus-visible:ring-2 focus-visible:ring-[#8A40F5] focus-visible:ring-offset-4">
+            <span class="grid h-10 w-10 shrink-0 place-items-center rounded-xl bg-[#F2E9FF] text-[#8A40F5]" aria-hidden="true">
+              {mode.icon === 'play' && <svg class="h-5 w-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m8 5 11 7-11 7V5Z" /></svg>}
+              {mode.icon === 'users' && <svg class="h-5 w-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2M9 11a4 4 0 1 0 0-8 4 4 0 0 0 0 8ZM22 21v-2a4 4 0 0 0-3-3.87M16 3.13a4 4 0 0 1 0 7.75" /></svg>}
+              {mode.icon === 'person' && <svg class="h-5 w-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="8" r="4"/><path d="M4 21a8 8 0 0 1 16 0M19 8h4M21 6v4" /></svg>}
+            </span>
+            <span>
+              <span class="block font-bold text-[#1A0533]">{mode.label}</span>
+              <span class="mt-1 block text-sm leading-5 text-gray-500">{mode.description}</span>
+              <span class="mt-2 inline-flex items-center gap-1 text-sm font-bold text-[#8A40F5] group-hover:underline">{mode.cta} <span aria-hidden="true">→</span></span>
+            </span>
+          </a>
+        ))}
+      </div>
+    </div>
+  </div>
+</aside>

@@ -1,47 +1,35 @@
 ---
-const pathHref = '/paths/ai-data-science/';
-
 const tracks = [
   {
     name: 'Software Engineering',
-    status: 'Coming Soon',
     roles: 'Frontend Developer · Backend Engineer · Full-Stack Developer · Platform Engineer',
   },
   {
     name: 'AI & Data Science',
-    status: 'Now Enrolling',
     roles: 'AI Engineer · Applied AI Developer · Machine Learning Engineer · Data Professional',
-    href: pathHref,
-    active: true,
   },
   {
     name: 'Product',
-    status: 'Coming Soon',
     roles: 'Product Manager · Product Analyst · Product Marketer · Product Engineer',
   },
   {
     name: 'Design',
-    status: 'Coming Soon',
     roles: 'Product Designer · User Experience Designer · Design Engineer · Systems Designer',
   },
   {
     name: 'Marketing',
-    status: 'Coming Soon',
     roles: 'Marketing Analyst · Growth Marketer · Digital Marketing Specialist · Product Marketer · Content Marketer',
   },
   {
     name: 'Sales',
-    status: 'Coming Soon',
     roles: 'Sales Development · Account Executive · Customer Success · Business Development · Solutions Consultant',
   },
   {
     name: 'Business',
-    status: 'Coming Soon',
     roles: 'Management Consultant · Financial Analyst · Operations Associate · Chief of Staff',
   },
   {
     name: 'Security',
-    status: 'Coming Soon',
     roles: 'AI Security Analyst · Security Engineer · Cybersecurity Analyst · SOC Analyst · GRC Analyst',
   },
 ];
@@ -49,43 +37,29 @@ const tracks = [
 
 <section id="career-paths" class="scroll-mt-28 bg-[#F5F2EB] py-20 md:py-28 px-6 md:px-12 lg:px-24">
   <div class="max-w-7xl mx-auto">
-    <div class="max-w-3xl mb-12">
-      <p class="inline-flex items-center gap-2 rounded-full border border-[#1A0533]/10 bg-white px-4 py-2 text-xs font-semibold text-[#1A0533]/50 tracking-widest uppercase mb-6">
-        Career paths
-      </p>
-      <h2 class="text-3xl md:text-5xl font-extrabold text-[#1A0533] leading-tight mb-4">
-        Explore UniversityX Career Paths
-      </h2>
-      <p class="text-gray-600 text-lg md:text-xl leading-relaxed">
-        UniversityX is building practical learning paths across the roles shaping the modern economy. We are launching the AI &amp; Data Science path with a hands-on AI Engineering cohort.
+    <div class="mb-14 grid grid-cols-1 items-end gap-7 lg:grid-cols-[1.25fr_0.75fr] lg:gap-16">
+      <div>
+        <p class="inline-flex items-center rounded-full border border-[#1A0533]/10 bg-white px-4 py-2 text-xs font-semibold uppercase tracking-widest text-[#1A0533]/50">
+          Choose what to learn
+        </p>
+        <h2 class="mt-5 max-w-3xl text-3xl font-extrabold leading-tight text-[#1A0533] md:text-5xl">
+          Practical career paths built around real work.
+        </h2>
+      </div>
+      <p class="max-w-xl text-lg leading-relaxed text-gray-600 md:text-xl">
+        Each path brings together practical courses and projects that move you from learning concepts to completing real work that demonstrates your skills.
       </p>
     </div>
 
-    <div class="bg-white rounded-3xl overflow-hidden border border-[#1A0533]/10">
+    <div class="overflow-hidden rounded-2xl border border-[#1A0533]/10 bg-white">
       {tracks.map((track) => (
-        <div class={`border-b border-[#1A0533]/10 last:border-b-0 ${track.active ? 'bg-white' : 'bg-[#FDFCF8]'}`}>
-          {track.active ? (
-            <a href={track.href} class="grid grid-cols-1 lg:grid-cols-[0.9fr_1.1fr_auto] gap-4 lg:gap-8 p-6 md:p-8 hover:bg-[#F9F8F3] transition-colors focus:outline-none focus:ring-2 focus:ring-[#8A40F5] focus:ring-inset">
-              <div>
-                <span class="inline-flex rounded-full bg-[#8A40F5] text-white text-xs font-semibold px-3 py-1 mb-3">
-                  {track.status}
-                </span>
-                <h3 class="text-2xl md:text-3xl font-extrabold text-[#1A0533]">{track.name}</h3>
-              </div>
-              <p class="text-gray-600 text-base md:text-lg leading-relaxed">{track.roles}</p>
-              <span class="text-[#8A40F5] font-semibold self-center">View path</span>
-            </a>
-          ) : (
-            <div class="grid grid-cols-1 lg:grid-cols-[0.9fr_1.1fr] gap-4 lg:gap-8 p-6 md:p-8">
-              <div>
-                <span class="inline-flex rounded-full bg-[#1A0533]/10 text-[#1A0533]/55 text-xs font-semibold px-3 py-1 mb-3">
-                  {track.status}
-                </span>
-                <h3 class="text-2xl md:text-3xl font-extrabold text-[#1A0533]/70">{track.name}</h3>
-              </div>
-              <p class="text-gray-500 text-base md:text-lg leading-relaxed">{track.roles}</p>
+        <div class="border-b border-[#1A0533]/10 bg-white last:border-b-0">
+          <div class="grid grid-cols-1 gap-4 p-6 md:p-8 lg:grid-cols-[0.9fr_1.1fr] lg:gap-8">
+            <div>
+              <h3 class="text-2xl font-extrabold text-[#1A0533] md:text-3xl">{track.name}</h3>
             </div>
-          )}
+            <p class="text-base leading-relaxed text-gray-600 md:text-lg">{track.roles}</p>
+          </div>
         </div>
       ))}
     </div>

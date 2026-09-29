@@ -1,0 +1,52 @@
+---
+import { AI_COHORT_PATH, aiCohort, formatNaira } from '../data/aiCohort';
+
+interface Props { className?: string }
+const { className = '' } = Astro.props;
+---
+
+<article class:list={['overflow-hidden rounded-3xl bg-white text-[#1A0533] shadow-2xl shadow-black/20', className]}>
+  <div class="grid lg:grid-cols-[minmax(0,1fr)_260px]">
+    <div class="p-7 md:p-8">
+      <div class="flex flex-wrap items-center gap-3">
+        <span class="inline-flex items-center gap-2 rounded-full bg-[#F0E7FF] px-3 py-1.5 text-xs font-bold uppercase tracking-wider text-[#7C31FF]">
+          <span class="h-2 w-2 rounded-full bg-[#8A40F5]" aria-hidden="true"></span>
+          Now enrolling
+        </span>
+        <time datetime={aiCohort.startDate} class="text-sm font-semibold text-gray-500">Starts {aiCohort.startDateLabel}</time>
+      </div>
+
+      <h2 class="mt-4 max-w-3xl text-2xl font-extrabold leading-tight md:text-3xl">{aiCohort.title}</h2>
+      <p class="mt-3 line-clamp-2 max-w-3xl text-lg leading-relaxed text-gray-600">Build AI applications with your own data, tools and multi-step workflows, then deploy a capstone you can confidently show.</p>
+      <p class="mt-4 flex flex-wrap items-center gap-x-2 gap-y-1 text-sm font-medium text-gray-500">
+        <span>{aiCohort.durationWeeks} weeks</span><span class="text-[#1A0533]/25" aria-hidden="true">·</span><span>Live Online Classes</span>
+      </p>
+
+      <div class="mt-5 flex flex-col gap-4 border-t border-[#1A0533]/10 pt-5 sm:flex-row sm:items-center sm:justify-between">
+        <div class="flex items-center gap-3">
+          <img src="/images/abasiodiong-hs.png" alt="Abasiodiong Udofia" class="h-11 w-11 shrink-0 rounded-full object-cover object-top" loading="lazy" />
+          <div><p class="text-xs font-semibold uppercase tracking-wide text-gray-400">Instructor</p><p class="mt-0.5 font-bold text-[#1A0533]">Abasiodiong Udofia</p></div>
+        </div>
+        <div class="flex flex-wrap items-center gap-4" aria-label="Instructor experience">
+          <img src="/images/chatjourno-logo.svg" alt="ChatJourno" class="h-4 w-auto object-contain" loading="lazy" />
+          <img src="/images/3mtt-logo.svg" alt="3MTT Nigeria" class="h-5 w-auto object-contain" loading="lazy" />
+          <img src="/images/paydue-logo.svg" alt="Paydue Technologies" class="h-5 w-auto object-contain" loading="lazy" />
+        </div>
+      </div>
+    </div>
+
+    <aside class="flex flex-col justify-between border-t border-[#1A0533]/10 bg-[#F5F2EB] p-7 lg:border-l lg:border-t-0" aria-label="Cohort enrollment summary">
+      <div>
+        <p class="text-xs font-semibold uppercase tracking-widest text-gray-400">Full payment</p>
+        <div class="mt-2 flex flex-wrap items-baseline gap-x-2 gap-y-1">
+          <strong class="text-3xl font-extrabold tracking-tight text-[#1A0533]">{formatNaira(aiCohort.fullPaymentPrice)}</strong>
+          <span class="text-sm text-gray-400 line-through">{formatNaira(aiCohort.originalPrice)}</span>
+        </div>
+      </div>
+      <a href={AI_COHORT_PATH} class="mt-7 inline-flex w-full items-center justify-center gap-2 whitespace-nowrap rounded-full bg-[#8A40F5] px-5 py-3.5 font-bold text-white transition-colors hover:bg-[#7434D8] focus:outline-none focus-visible:ring-2 focus-visible:ring-[#8A40F5] focus-visible:ring-offset-2 focus-visible:ring-offset-[#F5F2EB]">
+        View Cohort
+        <svg class="h-5 w-5 shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="5" width="18" height="16" rx="2" /><path d="M16 3v4M8 3v4M3 10h18" /></svg>
+      </a>
+    </aside>
+  </div>
+</article>
