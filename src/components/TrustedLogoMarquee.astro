@@ -1,0 +1,124 @@
+---
+const trustedLogos = [
+  { src: '/images/trusted-logos/moniepoint.svg', name: 'Moniepoint', className: 'h-8 md:h-9' },
+  { src: '/images/trusted-logos/google.svg', name: 'Google', className: 'h-7 md:h-8' },
+    { src: '/images/trusted-logos/paystack.svg', name: 'Paystack', className: 'h-6 md:h-7' },
+  { src: '/images/trusted-logos/duolingo.svg', name: 'Duolingo', className: 'h-7 md:h-8' },
+  { src: '/images/trusted-logos/chowdeck.svg', name: 'Chowdeck', className: 'h-5 md:h-6' },
+  { src: '/images/trusted-logos/meta.svg', name: 'Meta', className: 'h-12 md:h-14' },
+  { src: '/images/trusted-logos/wema-bank.png', name: 'Wema Bank', className: 'h-5 md:h-6' },
+  { src: '/images/trusted-logos/linkedin.svg', name: 'LinkedIn', className: 'h-6 md:h-7' },
+  { src: '/images/trusted-logos/interswitch.svg', name: 'Interswitch', className: 'h-8 md:h-9' },
+  { src: '/images/trusted-logos/tech-cabal.png', name: 'TechCabal', className: 'h-7 md:h-8' },
+  { src: '/images/trusted-logos/andela.svg', name: 'Andela', className: 'h-7 md:h-8' },
+  { src: '/images/trusted-logos/piggyvest.svg', name: 'PiggyVest', className: 'h-6 md:h-7' },
+  { src: '/images/trusted-logos/youtube.svg', name: 'YouTube', className: 'h-6 md:h-7' },
+  { src: '/images/trusted-logos/cc-hub.png', name: 'Co-Creation Hub', className: 'h-9 md:h-10' },
+  { src: '/images/trusted-logos/payaza.svg', name: 'Payaza', className: 'h-7 md:h-8' },
+];
+---
+
+<section class="bg-white pb-4 pt-9 md:pb-5 md:pt-11" aria-labelledby="trusted-by-heading">
+  <div class="mx-auto max-w-7xl px-6 md:px-12 lg:px-24">
+    <p
+      id="trusted-by-heading"
+      class="text-base font-medium leading-relaxed text-gray-500 md:text-lg"
+    >
+      Trusted by professionals at <em class="font-['Playfair_Display',serif] font-semibold text-[#1A0533]">leading organizations</em>
+    </p>
+  </div>
+
+  <div class="logo-marquee mt-8 overflow-hidden" data-logo-marquee aria-label="Organizations where UniversityX professionals work">
+    <div class="logo-marquee-track flex w-max items-center">
+      {[0, 1].map((setIndex) => (
+        <div class="logo-marquee-set flex shrink-0 items-center gap-12 pr-12 md:gap-16 md:pr-16" aria-hidden={setIndex === 1 ? 'true' : undefined}>
+          {trustedLogos.map((logo) => (
+            <div class="flex h-16 w-36 shrink-0 items-center justify-center md:w-44">
+              <img
+                src={logo.src}
+                alt={setIndex === 0 ? logo.name : ''}
+                class:list={['max-h-14 max-w-full w-auto object-contain', logo.className]}
+                loading="eager"
+                decoding="async"
+              />
+            </div>
+          ))}
+        </div>
+      ))}
+    </div>
+  </div>
+</section>
+
+<style>
+  .logo-marquee {
+    -webkit-mask-image: linear-gradient(90deg, transparent, #000 8%, #000 92%, transparent);
+    mask-image: linear-gradient(90deg, transparent, #000 8%, #000 92%, transparent);
+  }
+
+  .logo-marquee-track {
+    animation: trusted-logo-scroll 60s linear infinite;
+    animation-play-state: paused;
+  }
+
+  .logo-marquee.is-ready .logo-marquee-track {
+    animation-play-state: running;
+  }
+
+  .logo-marquee:hover .logo-marquee-track {
+    animation-play-state: paused;
+  }
+
+  @keyframes trusted-logo-scroll {
+    to {
+      transform: translateX(-50%);
+    }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .logo-marquee {
+      overflow-x: auto;
+      -webkit-mask-image: none;
+      mask-image: none;
+      scrollbar-width: none;
+    }
+
+    .logo-marquee::-webkit-scrollbar {
+      display: none;
+    }
+
+    .logo-marquee-track {
+      animation: none;
+    }
+
+    .logo-marquee-set[aria-hidden='true'] {
+      display: none;
+    }
+  }
+</style>
+
+<script>
+  function initLogoMarquees() {
+    document.querySelectorAll<HTMLElement>('[data-logo-marquee]').forEach((marquee) => {
+      if (marquee.dataset.initialized === 'true') return;
+      marquee.dataset.initialized = 'true';
+
+      const images = Array.from(marquee.querySelectorAll<HTMLImageElement>('img'));
+      const imageReady = images.map((image) => {
+        if (image.complete) return image.decode?.().catch(() => undefined) ?? Promise.resolve();
+
+        return new Promise<void>((resolve) => {
+          image.addEventListener('load', () => resolve(), { once: true });
+          image.addEventListener('error', () => resolve(), { once: true });
+        });
+      });
+
+      Promise.all(imageReady).then(() => marquee.classList.add('is-ready'));
+    });
+  }
+
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', initLogoMarquees);
+  } else {
+    initLogoMarquees();
+  }
+</script>
