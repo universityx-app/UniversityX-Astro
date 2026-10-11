@@ -7,6 +7,14 @@ export const AI_COHORT_SCHOLARSHIP_PATH = `${AI_COHORT_PATH}scholarship/`;
 
 export type PaymentOption = 'full' | 'installment';
 
+export interface CohortDiscount {
+  code: string;
+  referral: string;
+  label: string;
+  amount: number;
+  paymentUrl: string;
+}
+
 export interface CohortOffer {
   slug: string;
   title: string;
@@ -75,4 +83,16 @@ export const paystackPaymentPages: Record<PaymentOption, string> = {
   installment: validPaystackPaymentPage(
     import.meta.env.PUBLIC_PAYSTACK_INSTALLMENT_PAYMENT_URL || 'https://paystack.shop/pay/ai-cohort-part',
   ),
+};
+
+export const cohortDiscountCodes: Record<string, CohortDiscount> = {
+  CUBBES: {
+    code: 'CUBBES',
+    referral: 'cubbes',
+    label: 'Cubbes',
+    amount: 2_000,
+    paymentUrl: validPaystackPaymentPage(
+      import.meta.env.PUBLIC_PAYSTACK_CUBBES_PAYMENT_URL || 'https://paystack.shop/pay/ai-cohort-cubbes',
+    ),
+  },
 };
