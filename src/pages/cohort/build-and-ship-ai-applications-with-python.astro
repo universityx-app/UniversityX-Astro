@@ -8,9 +8,16 @@ import MeetInstructorSection from '../../components/MeetInstructorSection.astro'
 import {
   AI_COHORT_SCHOLARSHIP_PATH,
   aiCohort,
+  cohortDiscountCodes,
   formatNaira,
   paystackPaymentPages,
 } from '../../data/aiCohort';
+
+const cubbesDiscount = cohortDiscountCodes.CUBBES;
+const clientDiscountCodes = Object.values(cohortDiscountCodes).map((discount) => ({
+  ...discount,
+  total: aiCohort.fullPaymentPrice - discount.amount,
+}));
 
 const outcomes = [
   {
@@ -311,8 +318,8 @@ const faqs = [
             <label class="payment-card relative cursor-pointer rounded-2xl border p-6 transition md:p-7" data-payment-card="full">
               <input type="radio" name="cohort-payment-plan" value="full" class="sr-only" checked />
               <div class="flex items-start justify-between gap-4">
-                <div><p class="text-sm font-bold text-[#D8BDFF]">Pay in full</p><p class="mt-3 text-4xl font-extrabold">{formatNaira(aiCohort.fullPaymentPrice)}</p></div>
-                <span class="rounded-full bg-[#45D694]/15 px-3 py-1 text-xs font-extrabold text-[#76E5B3]">Save {formatNaira(aiCohort.fullPaymentSaving)}</span>
+                <div><p class="text-sm font-bold text-[#D8BDFF]">Pay in full</p><p id="full-payment-price" class="mt-3 text-4xl font-extrabold">{formatNaira(aiCohort.fullPaymentPrice)}</p></div>
+                <span id="full-payment-badge" class="rounded-full bg-[#45D694]/15 px-3 py-1 text-xs font-extrabold text-[#76E5B3]" data-default-label={`Save ${formatNaira(aiCohort.fullPaymentSaving)}`}>Save {formatNaira(aiCohort.fullPaymentSaving)}</span>
               </div>
               <p class="mt-5 text-sm leading-6 text-white/55">Pay once and get the lowest total price.</p>
               <span class="payment-radio mt-7 flex h-6 w-6 items-center justify-center rounded-full border border-white/30"><i class="h-3 w-3 rounded-full bg-[#B98BFF]"></i></span>
@@ -329,6 +336,48 @@ const faqs = [
             </label>
           </div>
         </fieldset>
+
+        <div
+          id="discount-panel"
+          class="mx-auto mt-4 max-w-4xl rounded-2xl border border-white/12 bg-white/5 p-5 md:p-6"
+          data-discounts={JSON.stringify(clientDiscountCodes)}
+          data-regular-price={aiCohort.fullPaymentPrice}
+        >
+          <div class="grid gap-5 md:grid-cols-[minmax(0,1fr)_minmax(240px,0.7fr)] md:items-end">
+            <form id="discount-form" novalidate>
+              <label for="discount-code" class="text-sm font-bold text-white">Discount code</label>
+              <div class="mt-2 flex flex-col gap-2 sm:flex-row">
+                <input
+                  id="discount-code"
+                  name="discount-code"
+                  type="text"
+                  autocomplete="off"
+                  autocapitalize="characters"
+                  placeholder="Enter discount code"
+                  class="min-w-0 flex-1 rounded-xl border border-white/20 bg-white/8 px-4 py-3 text-base font-semibold uppercase text-white placeholder:normal-case placeholder:text-white/35 focus:border-[#B98BFF] focus:outline-none focus:ring-2 focus:ring-[#B98BFF]/40"
+                />
+                <button id="apply-discount" type="submit" class="rounded-xl bg-white px-5 py-3 font-extrabold text-[#1A0533] transition-colors hover:bg-[#F0E8FC] focus:outline-none focus:ring-2 focus:ring-[#B98BFF]">Apply</button>
+                <button id="remove-discount" type="button" class="hidden rounded-xl border border-white/25 px-5 py-3 font-extrabold text-white transition-colors hover:bg-white/10 focus:outline-none focus:ring-2 focus:ring-[#B98BFF]">Remove</button>
+              </div>
+              <p id="discount-message" class="mt-2 min-h-5 text-sm text-white/55" aria-live="polite">Have a partner code? Enter it here.</p>
+            </form>
+
+            <dl class="space-y-2 border-t border-white/12 pt-4 text-sm md:border-l md:border-t-0 md:pl-6 md:pt-0">
+              <div id="original-price-row" class="hidden items-center justify-between gap-4 text-white/60">
+                <dt>Original Price</dt>
+                <dd id="original-price">{formatNaira(aiCohort.fullPaymentPrice)}</dd>
+              </div>
+              <div id="discount-row" class="hidden items-center justify-between gap-4 text-[#76E5B3]">
+                <dt id="discount-label">Cubbes Discount</dt>
+                <dd id="discount-amount">−{formatNaira(cubbesDiscount.amount)}</dd>
+              </div>
+              <div class="flex items-center justify-between gap-4 border-t border-white/12 pt-3 text-base font-extrabold">
+                <dt>Total</dt>
+                <dd id="checkout-total">{formatNaira(aiCohort.fullPaymentPrice)}</dd>
+              </div>
+            </dl>
+          </div>
+        </div>
 
         <div class="mx-auto mt-4 max-w-4xl rounded-2xl border border-white/12 bg-white/5 p-5">
           <div class="flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
@@ -459,6 +508,90 @@ const faqs = [
     const message = document.getElementById('checkout-message');
     if (!continueButton) return;
 
+    const discountPanel = document.getElementById('discount-panel') as HTMLElement | null;
+    const discountForm = document.getElementById('discount-form') as HTMLFormElement | null;
+    const discountInput = document.getElementById('discount-code') as HTMLInputElement | null;
+    const applyDiscountButton = document.getElementById('apply-discount') as HTMLButtonElement | null;
+    const removeDiscountButton = document.getElementById('remove-discount') as HTMLButtonElement | null;
+    const discountMessage = document.getElementById('discount-message');
+    const originalPriceRow = document.getElementById('original-price-row');
+    const discountRow = document.getElementById('discount-row');
+    const discountLabelElement = document.getElementById('discount-label');
+    const discountAmountElement = document.getElementById('discount-amount');
+    const checkoutTotal = document.getElementById('checkout-total');
+    const fullPaymentPrice = document.getElementById('full-payment-price');
+    const fullPaymentBadge = document.getElementById('full-payment-badge') as HTMLElement | null;
+    const installmentRadio = radios.find((radio) => radio.value === 'installment');
+    const fullRadio = radios.find((radio) => radio.value === 'full');
+    const installmentCard = document.querySelector<HTMLElement>('[data-payment-card="installment"]');
+
+    const regularPrice = Number(discountPanel?.dataset.regularPrice || 0);
+    const storageKey = 'universityx-ai-cohort-discount';
+
+    type ClientDiscount = { code: string; referral: string; label: string; amount: number; paymentUrl: string; total: number };
+    const discounts: ClientDiscount[] = (() => {
+      try {
+        return JSON.parse(discountPanel?.dataset.discounts || '[]');
+      } catch {
+        return [];
+      }
+    })();
+    let activeDiscount: ClientDiscount | null = null;
+
+    type StoredDiscountState = { appliedCode?: string; dismissedReferrals?: string[] };
+    const readDiscountState = (): StoredDiscountState => {
+      try {
+        const value = window.sessionStorage.getItem(storageKey);
+        return value ? JSON.parse(value) : {};
+      } catch {
+        return {};
+      }
+    };
+    const writeDiscountState = (state: StoredDiscountState) => {
+      try {
+        window.sessionStorage.setItem(storageKey, JSON.stringify(state));
+      } catch {
+        // The checkout still works when storage is blocked.
+      }
+    };
+    const formatPrice = (amount: number) => new Intl.NumberFormat('en-NG', {
+      style: 'currency',
+      currency: 'NGN',
+      maximumFractionDigits: 0,
+    }).format(amount);
+
+    const renderDiscount = (discount: ClientDiscount | null, feedback?: string) => {
+      activeDiscount = discount;
+      const applied = Boolean(discount);
+      if (discountInput) {
+        discountInput.value = discount?.code || '';
+        discountInput.readOnly = applied;
+      }
+      applyDiscountButton?.classList.toggle('hidden', applied);
+      removeDiscountButton?.classList.toggle('hidden', !applied);
+      originalPriceRow?.classList.toggle('hidden', !applied);
+      originalPriceRow?.classList.toggle('flex', applied);
+      discountRow?.classList.toggle('hidden', !applied);
+      discountRow?.classList.toggle('flex', applied);
+      if (discountLabelElement && discount) discountLabelElement.textContent = `${discount.label} Discount`;
+      if (discountAmountElement && discount) discountAmountElement.textContent = `−${formatPrice(discount.amount)}`;
+      if (checkoutTotal) checkoutTotal.textContent = formatPrice(discount?.total ?? regularPrice);
+      if (fullPaymentPrice) fullPaymentPrice.textContent = formatPrice(discount?.total ?? regularPrice);
+      if (fullPaymentBadge) fullPaymentBadge.textContent = discount ? `${discount.label} price` : (fullPaymentBadge.dataset.defaultLabel || '');
+      if (installmentRadio) installmentRadio.disabled = applied;
+      installmentCard?.classList.toggle('opacity-50', applied);
+      installmentCard?.setAttribute('aria-disabled', applied ? 'true' : 'false');
+      if (applied && fullRadio) {
+        fullRadio.checked = true;
+        fullRadio.dispatchEvent(new Event('change', { bubbles: true }));
+      }
+      if (discountMessage && feedback) {
+        discountMessage.textContent = feedback;
+        discountMessage.className = `mt-2 min-h-5 text-sm ${applied ? 'text-[#76E5B3]' : 'text-white/55'}`;
+      }
+      message?.classList.add('hidden');
+    };
+
     const selectedPlan = () => radios.find((radio) => radio.checked && !radio.disabled)?.value as 'full' | 'installment' | undefined;
     radios.forEach((radio) => {
       radio.addEventListener('change', () => {
@@ -467,16 +600,65 @@ const faqs = [
       });
     });
 
+    discountForm?.addEventListener('submit', (event) => {
+      event.preventDefault();
+      const enteredCode = discountInput?.value.trim().toUpperCase() || '';
+      const discount = discounts.find((candidate) => candidate.code.toUpperCase() === enteredCode);
+      if (!discount) {
+        renderDiscount(null, 'That discount code is not valid. Check the code and try again.');
+        if (discountMessage) discountMessage.className = 'mt-2 min-h-5 text-sm text-rose-300';
+        return;
+      }
+
+      const state = readDiscountState();
+      writeDiscountState({
+        appliedCode: discount.code,
+        dismissedReferrals: (state.dismissedReferrals || []).filter((referral) => referral !== discount.referral.toLowerCase()),
+      });
+      renderDiscount(discount, `${discount.label} discount applied. You save ${formatPrice(discount.amount)}.`);
+      window.posthog?.capture('cohort_discount_applied', { ...cohort, discount_code: discount.code, source: 'manual' });
+    });
+
+    removeDiscountButton?.addEventListener('click', () => {
+      const state = readDiscountState();
+      const currentReferral = new URLSearchParams(window.location.search).get('ref')?.trim().toLowerCase();
+      const dismissedReferrals = new Set(state.dismissedReferrals || []);
+      if (currentReferral && discounts.some((discount) => discount.referral.toLowerCase() === currentReferral)) dismissedReferrals.add(currentReferral);
+      const removedCode = activeDiscount?.code;
+      writeDiscountState({ dismissedReferrals: Array.from(dismissedReferrals) });
+      renderDiscount(null, 'Discount removed. The regular price has been restored.');
+      window.posthog?.capture('cohort_discount_removed', { ...cohort, discount_code: removedCode });
+    });
+
+    const state = readDiscountState();
+    const requestedReferral = new URLSearchParams(window.location.search).get('ref')?.trim().toLowerCase();
+    const referralDiscount = discounts.find((discount) => discount.referral.toLowerCase() === requestedReferral);
+    const referralDismissed = requestedReferral ? (state.dismissedReferrals || []).includes(requestedReferral) : false;
+    const storedDiscount = discounts.find((discount) => discount.code.toUpperCase() === state.appliedCode?.toUpperCase());
+    if (referralDiscount && !referralDismissed) {
+      writeDiscountState({ ...state, appliedCode: referralDiscount.code });
+      renderDiscount(referralDiscount, `${referralDiscount.label} referral discount applied automatically. You save ${formatPrice(referralDiscount.amount)}.`);
+      window.posthog?.capture('cohort_discount_applied', { ...cohort, discount_code: referralDiscount.code, source: 'referral' });
+    } else if (storedDiscount) {
+      renderDiscount(storedDiscount, `${storedDiscount.label} discount applied. You save ${formatPrice(storedDiscount.amount)}.`);
+    }
+
     continueButton.addEventListener('click', () => {
       const plan = selectedPlan();
-      const target = plan === 'full' ? continueButton.dataset.fullUrl : plan === 'installment' ? continueButton.dataset.installmentUrl : '';
+      const target = activeDiscount
+        ? activeDiscount.paymentUrl
+        : plan === 'full'
+          ? continueButton.dataset.fullUrl
+          : plan === 'installment'
+            ? continueButton.dataset.installmentUrl
+            : '';
       if (!plan || !target) {
         message?.classList.remove('hidden');
         if (message) message.textContent = 'That payment option is not available yet. Please choose another option or check back shortly.';
         return;
       }
 
-      window.posthog?.capture('cohort_paystack_page_opened', { ...cohort, payment_option: plan });
+      window.posthog?.capture('cohort_paystack_page_opened', { ...cohort, payment_option: plan, discount_code: activeDiscount?.code });
       window.location.assign(target);
     });
   }

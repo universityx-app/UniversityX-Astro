@@ -10,12 +10,14 @@ Set these variables for the production Astro build:
 | --- | --- |
 | `PUBLIC_PAYSTACK_FULL_PAYMENT_URL` | Paystack Payment Page for the ₦20,000 full payment |
 | `PUBLIC_PAYSTACK_INSTALLMENT_PAYMENT_URL` | Paystack Payment Page for the first ₦10,500 installment |
+| `PUBLIC_PAYSTACK_CUBBES_PAYMENT_URL` | Paystack Payment Page for the ₦18,000 Cubbes referral price |
 | `PUBLIC_POCKETBASE_URL` | Existing PocketBase public API origin |
 
 The cohort defaults to these Paystack pages when the variables are not set:
 
 - full payment: `https://paystack.shop/pay/ai-cohort-full`
 - installment: `https://paystack.shop/pay/ai-cohort-part`
+- Cubbes referral: `https://paystack.shop/pay/ai-cohort-cubbes`
 
 Any configured payment URL must use HTTPS and have a `paystack.com` or `paystack.shop` host, including their subdomains. An invalid override leaves that checkout unavailable instead of exposing an unsafe link.
 
