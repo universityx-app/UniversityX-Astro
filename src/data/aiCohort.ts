@@ -40,7 +40,7 @@ export const aiCohort: CohortOffer = {
   shortTitle: 'Build and Ship AI Applications with Python',
   durationWeeks: 6,
   startDate: '2026-10-03',
-  startDateLabel: '3 October 2026',
+  startDateLabel: '31 October 2026',
   capacity: 30,
   prerequisite: 'Basic Python',
   originalPrice: 25_000,
