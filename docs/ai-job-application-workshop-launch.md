@@ -18,7 +18,7 @@ The form retains required first/last name, email, Python experience, and cohort 
 - On a non-production PocketBase instance, verify a valid registration targets `Build_an_AI_Job_Application_Assistant_with_Python`. Exercise optional WhatsApp, validation errors, and a failed submission followed by a successful retry.
 - Check confirmation, the WhatsApp link, `?ref=...` capture, and PostHog events using the new workshop slug.
 - Inspect desktop/mobile layouts, keyboard focus and FAQ controls, and both countdowns before and after the start time. The hero retains the reference markup/classes; copy and artwork are the permitted differences.
-- Verify the new listing card has no rating, both workshop forms target the renamed collection, and the instructor's original description remains intact on the older page.
+- Verify the new listing card displays the gold star without a numeric rating, both workshop forms target the renamed collection, and the instructor's original description remains intact on the older page.
 - Confirm canonical/social metadata, sitemap inclusion, and the October 31 cohort link/date.
 
 Implementation validation passed Astro check and production build. A local mocked-script check covers registration states, countdowns, analytics, and generated markup. Browser visual checks and live PocketBase access-rule checks remain outstanding because those environments were unavailable. No production test registrations were created.
