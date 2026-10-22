@@ -30,18 +30,8 @@ const {
 
 <section
   id="enroll-form"
-  class="bg-[#FAF9F5] py-16 md:py-24 border-t border-gray-200/70 relative overflow-hidden"
+  class="registration-section bg-[#FAF9F5] py-16 md:py-24 border-t border-gray-200/70 relative overflow-hidden"
 >
-  <!-- Subtle decorative background glow -->
-  <div
-    class="absolute top-0 right-1/4 w-96 h-96 bg-[#8A40F5]/5 rounded-full blur-3xl pointer-events-none"
-  >
-  </div>
-  <div
-    class="absolute bottom-0 left-1/4 w-96 h-96 bg-[#8A40F5]/5 rounded-full blur-3xl pointer-events-none"
-  >
-  </div>
-
   <div class="max-w-7xl mx-auto px-6 md:px-12 lg:px-16 xl:px-24 relative z-10">
     <div class="text-center mb-8 max-w-2xl mx-auto">
       <span
@@ -550,6 +540,14 @@ const {
 </section>
 
 <style>
+  /* Paint the glow without offscreen blur filters, which can produce black
+     compositing artifacts on iOS when this section is below the viewport. */
+  .registration-section {
+    background-image:
+      radial-gradient(ellipse 24rem 24rem at 65% 0%, rgba(138, 64, 245, 0.05), rgba(138, 64, 245, 0) 75%),
+      radial-gradient(ellipse 24rem 24rem at 35% 100%, rgba(138, 64, 245, 0.05), rgba(138, 64, 245, 0) 75%);
+  }
+
   .registration-flex-message:not(.hidden) {
     display: flex;
   }
