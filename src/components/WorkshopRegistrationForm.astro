@@ -504,9 +504,10 @@ const {
           <button
             type="submit"
             id="register-submit-btn"
+            disabled
             class="w-full bg-[#8A40F5] hover:bg-[#7434D8] text-white font-bold text-base md:text-lg rounded-xl py-4.5 px-8 transition-all duration-200 cursor-pointer shadow-md hover:shadow-xl hover:-translate-y-0.5 active:translate-y-0 flex items-center justify-center gap-2"
           >
-            <span id="register-btn-text">Reserve Free Spot</span>
+            <span id="register-btn-text">Loading registration...</span>
             <svg
               id="register-btn-icon"
               class="w-5 h-5 transition-transform group-hover:translate-x-1"
@@ -829,9 +830,30 @@ const {
           destination: "whatsapp_group",
         });
       });
+
+    const readyButton = document.getElementById(
+      "register-submit-btn",
+    ) as HTMLButtonElement | null;
+    const readyButtonText = document.getElementById("register-btn-text");
+    if (readyButton) readyButton.disabled = false;
+    if (readyButtonText) readyButtonText.textContent = "Reserve Free Spot";
   }
 
-  function initCountdown() {
+  if (document.readyState === "loading") {
+    document.addEventListener("DOMContentLoaded", initRegistrationForm);
+  } else {
+    initRegistrationForm();
+  }
+</script>
+
+<!-- Keep the countdown independent of registration SDK loading. -->
+<script is:inline>
+  (() => {
+    // Block native GET submissions even if the registration module fails to load.
+    document.getElementById("register-form")?.addEventListener("submit", (event) => {
+      event.preventDefault();
+    });
+
     const containers = document.querySelectorAll(".countdown-container");
     if (!containers.length) return;
 
@@ -839,30 +861,30 @@ const {
       const now = new Date().getTime();
 
       containers.forEach((container) => {
-        const targetAttr =
-          container.getAttribute("data-target") ||
-          "2026-09-19T16:00:00+01:00";
+        const targetAttr = container.getAttribute("data-target");
+        if (!targetAttr) return;
         const targetDate = new Date(targetAttr).getTime();
+        if (!Number.isFinite(targetDate)) return;
         const distance = targetDate - now;
 
         const daysGroup = container.querySelector(
           ".days-group",
-        ) as HTMLElement | null;
+        );
         const daysSep = container.querySelector(
           ".days-sep",
-        ) as HTMLElement | null;
+        );
         const daysVal = container.querySelector(
           ".days-val",
-        ) as HTMLElement | null;
+        );
         const hoursVal = container.querySelector(
           ".hours-val",
-        ) as HTMLElement | null;
+        );
         const minutesVal = container.querySelector(
           ".minutes-val",
-        ) as HTMLElement | null;
+        );
         const secondsVal = container.querySelector(
           ".seconds-val",
-        ) as HTMLElement | null;
+        );
 
         if (distance <= 0) {
           if (daysGroup) daysGroup.classList.add("hidden");
@@ -894,16 +916,5 @@ const {
 
     updateCounters();
     setInterval(updateCounters, 1000);
-  }
-
-  function initComponent() {
-    initCountdown();
-    initRegistrationForm();
-  }
-
-  if (document.readyState === "loading") {
-    document.addEventListener("DOMContentLoaded", initComponent);
-  } else {
-    initComponent();
-  }
+  })();
 </script>

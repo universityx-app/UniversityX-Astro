@@ -4,6 +4,7 @@ interface Props {
   role: string;
   photo: string;
   background?: 'warm' | 'white';
+  workshopDescription?: string;
 }
 
 const {
@@ -11,6 +12,7 @@ const {
   role,
   photo,
   background = 'warm',
+  workshopDescription = 'In this live workshop, he will walk you step-by-step through building an AI customer support agent that uses company knowledge, tools, and human handoff.',
 } = Astro.props;
 ---
 
@@ -26,7 +28,7 @@ const {
             Abasiodiong Udofia is the Co-Founder &amp; CTO of <strong>ChatJourno</strong>, an AI platform powered by Python, vector search, and production RAG workflows. With deep experience across high-growth fintech platforms, he has architected resilient systems processing $10M+ with zero payment failures, specialized in idempotent webhooks and automated reconciliation.
           </p>
           <p>
-            As a software development mentor at <strong>3MTT Nigeria</strong>, Abasiodiong has guided hundreds of engineers in full-stack engineering, secure APIs, and production readiness. In this live workshop, he will walk you step-by-step through building an AI customer support agent that uses company knowledge, tools, and human handoff.
+            As a software development mentor at <strong>3MTT Nigeria</strong>, Abasiodiong has guided hundreds of engineers in full-stack engineering, secure APIs, and production readiness. {workshopDescription}
           </p>
         </div>
       </div>

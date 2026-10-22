@@ -15,6 +15,9 @@ export default defineConfig({
     '/paths/ai-data/ai-engineering/cohorts': '/paths/ai-data-science/ai-engineering/cohorts',
   },
   vite: {
+    // PocketBase ships as browser-ready ESM. Serve it directly so stale
+    // optimized-dependency URLs cannot prevent registration from loading.
+    optimizeDeps: { exclude: ['pocketbase'] },
     plugins: [tailwindcss()]
   },
 
