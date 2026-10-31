@@ -14,9 +14,9 @@ for (const preview of [false, true]) {
     ${preview ? '<rect width="1200" height="44" fill="#f5db9f"/><text x="60" y="29" font-size="18" font-weight="700" fill="#503410">ILLUSTRATIVE PREVIEW — NOT ACTUAL RESULTS</text>' : ''}
     <text x="60" y="106" fill="#6a407f" font-size="17" letter-spacing="2">UNIVERSITYX · BUILDING IN PUBLIC</text>
     <text x="55" y="239" fill="#241333" font-size="101" font-weight="700" letter-spacing="-5">Mission <tspan fill="#8a40f5">30</tspan></text>
-    <text x="60" y="310" fill="#241333" font-size="31" font-weight="700">30 Instructors. 4 Countries.</text>
+    <text x="60" y="310" fill="#241333" font-size="31" font-weight="700">30 Instructors. 2 Countries.</text>
     <text x="60" y="355" fill="#7640a7" font-size="34" font-weight="700">One Mission.</text>
-    <text x="60" y="434" fill="#695d72" font-size="20">Nigeria · United States · United Kingdom · Canada</text>
+    <text x="60" y="434" fill="#695d72" font-size="20">Nigeria · United States</text>
     <line x1="60" y1="480" x2="685" y2="480" stroke="#d9cfe1"/>
     <text x="60" y="523" fill="#695d72" font-size="18">1 NOV 2026 → 1 JAN 2027</text>
     <text x="60" y="576" fill="#6e2ec4" font-size="20" font-weight="700">universityx.app/mission30</text>

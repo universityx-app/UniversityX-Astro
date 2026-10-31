@@ -11,8 +11,8 @@ const latest = latestSnapshot(data);
 const notes = orderedNotes(data);
 const committed = latest?.metrics.committed;
 const percent = committed === undefined ? undefined : Math.round(committed / campaign.target * 100);
-const title = preview ? `Illustrative ${data.label} preview | Mission 30 | UniversityX` : 'Mission 30 — 30 Instructors. 4 Countries. One Mission. | UniversityX';
-const description = preview ? `${data.label} is an illustrative preview, not actual results. Explore UniversityX’s Mission 30 recruitment dashboard.` : 'Follow our journey to recruit 30 instructors across Nigeria, the US, the UK and Canada for a Q1 2027 launch on UniversityX. Recruitment runs November 1, 2026 to January 1, 2027.';
+const title = preview ? `Illustrative ${data.label} preview | Mission 30 | UniversityX` : 'Mission 30 — 30 Instructors. 2 Countries. One Mission. | UniversityX';
+const description = preview ? `${data.label} is an illustrative preview, not actual results. Explore UniversityX’s Mission 30 recruitment dashboard.` : 'Follow our journey to recruit 30 instructors across Nigeria and the United States for a Q1 2027 launch on UniversityX. Recruitment runs November 1, 2026 to January 1, 2027.';
 const shareUrl = new URL(Astro.url.pathname, Astro.site).href;
 const metricLabel = preview ? 'Illustrative metrics' : latest ? 'Published metrics' : undefined;
 const scoreboardStages = stages.filter(stage => ['contacted', 'positiveReplies', 'discoveryCalls', 'committed'].includes(stage.key));
@@ -25,7 +25,7 @@ const buttonClass = `inline-flex items-center justify-center gap-3 rounded-full 
 const shareButtonClass = 'flex-1 cursor-pointer rounded-full border border-purple-200 px-4 py-3 text-sm font-semibold transition-colors hover:bg-purple-100 motion-reduce:transition-none sm:flex-none';
 ---
 <Layout title={title} description={description} image={preview ? '/images/mission30-preview-social.png' : '/images/mission30-social.png'} url={shareUrl} robots={preview ? 'noindex, nofollow' : undefined}>
-  <div class="bg-[#FBF8F1] text-[#1A0533] [&_[hidden]]:hidden!" data-mission data-frozen-time={data.asOf} data-share-url={shareUrl} data-share-title={title} data-share-text={preview ? 'Illustrative preview — not actual results. Explore Mission 30 on UniversityX.' : '30 Instructors. 4 Countries. One Mission. Follow the journey on UniversityX.'}>
+  <div class="bg-[#FBF8F1] text-[#1A0533] [&_[hidden]]:hidden!" data-mission data-frozen-time={data.asOf} data-share-url={shareUrl} data-share-title={title} data-share-text={preview ? 'Illustrative preview — not actual results. Explore Mission 30 on UniversityX.' : '30 Instructors. 2 Countries. One Mission. Follow the journey on UniversityX.'}>
     <a class:list={['sr-only z-50 rounded-lg bg-white px-5 py-3 focus:not-sr-only focus:absolute focus:top-4 focus:left-4', focusClass]} href="#mission-main">Skip to Mission 30</a>
     {preview && (
       <aside class="border-b border-amber-300 bg-amber-100 py-4 text-sm text-amber-950" aria-label="Preview notice">
@@ -40,22 +40,23 @@ const shareButtonClass = 'flex-1 cursor-pointer rounded-full border border-purpl
     )}
     <header class="pt-3 sm:pt-5"><Navbar /></header>
     <main id="mission-main">
-      <section class:list={[containerClass, 'grid items-center gap-10 py-12 md:py-16 lg:grid-cols-2 lg:gap-12 lg:py-20']} aria-labelledby="mission-title">
+      <section class:list={[containerClass, 'grid items-center gap-10 pt-6 pb-12 md:pt-8 md:pb-16 lg:grid-cols-2 lg:gap-12 lg:pt-10 lg:pb-20']} aria-labelledby="mission-title">
         <div class="min-w-0">
           <h1 class="mb-6 text-5xl font-extrabold leading-tight tracking-tight sm:text-6xl" id="mission-title">
             Mission <span class="whitespace-nowrap text-[#8A40F5]">30<span class="ml-1 inline-block align-top text-2xl" aria-hidden="true">✳</span></span>
           </h1>
-          <p class="max-w-lg text-lg font-semibold leading-relaxed md:text-xl">30 Instructors. 4 Countries. One Mission.</p>
-          <p class="mt-5 max-w-xl text-base leading-relaxed text-gray-600 md:text-lg">We're on a mission to find 30 instructors across four countries who are ready to launch with UniversityX in Q1 2027. From November 1 - January 1, we're sharing the recruitment journey: the conversations, challenges, wins, and everything we learn along the way.</p>
+          <p class="max-w-lg text-lg font-semibold leading-relaxed md:text-xl">30 Instructors. 2 Countries. One Mission.</p>
+          <p class="mt-5 max-w-xl text-base leading-relaxed text-gray-600 md:text-lg">We’re on a mission to bring together 30 experienced instructors across Nigeria and the United States to launch practical workshops and live courses on UniversityX in Q1 2027.</p>
+          <p class="mt-4 max-w-xl text-base leading-relaxed text-gray-600 md:text-lg">From November 1 to January 1, we’re sharing the journey: the conversations, challenges, experiments, wins, and everything we learn along the way.</p>
           <div class="mt-8 flex flex-col gap-5 sm:flex-row sm:flex-wrap sm:items-center">
             <a class:list={[buttonClass, 'bg-[#8A40F5] text-white hover:bg-[#7434D8]']} href="/teach/#apply-to-teach">Teach with Us <span aria-hidden="true">↗</span></a>
             <a class:list={['self-center text-base font-semibold underline-offset-4 hover:underline', focusClass]} href="#field-notes">Read Field Notes <span class="ml-2" aria-hidden="true">↓</span></a>
           </div>
         </div>
         <div class="min-w-0 rounded-3xl bg-[#8A40F5] p-6 text-white shadow-xl shadow-[#8A40F5]/20 sm:p-8">
-          <div class="flex items-center justify-between gap-3 text-xs font-semibold tracking-wider text-white">
+          <!-- <div class="flex items-center justify-between gap-3 text-xs font-semibold tracking-wider text-white">
             <span>THE INSTRUCTOR ROLL CALL</span><span class="text-3xl leading-none" aria-hidden="true">↗</span>
-          </div>
+          </div> -->
           <div class="mt-5 flex items-center gap-4">
             <span class="text-7xl font-extrabold leading-none tracking-tight sm:text-8xl">{committed ?? '0'}</span>
             <span class="text-3xl font-medium text-white">/ 30<span class="mt-1 block text-sm text-white">instructors committed</span></span>
@@ -104,9 +105,9 @@ const shareButtonClass = 'flex-1 cursor-pointer rounded-full border border-purpl
         <dl class:list={[containerClass, 'grid grid-cols-2 gap-y-6 py-8 md:grid-cols-4']}>
           {[
             { value: campaign.target, label: 'Instructors to recruit' },
-            { value: campaign.prospectTarget, label: 'People to reach out to' },
-            { value: campaign.weeklyOutreachTarget, label: 'People per week' },
-            { value: `~${campaign.dailyOutreachTarget}`, label: 'People daily' },
+            { value: campaign.prospectTarget, label: 'Initial qualified outreach' },
+            { value: `~${campaign.weeklyOutreachTarget}`, label: 'People per week' },
+            { value: `~${campaign.dailyOutreachTarget}`, label: 'People per day' },
           ].map((target, index) => (
             <div class:list={['flex flex-col px-3 text-center sm:px-4', index > 0 && 'md:border-l md:border-stone-300', index % 2 === 1 && 'border-l border-stone-300']}>
               <dt class="order-2 mt-2 text-sm leading-relaxed text-gray-600">{target.label}</dt>
@@ -123,7 +124,7 @@ const shareButtonClass = 'flex-1 cursor-pointer rounded-full border border-purpl
             <h2 class={headingClass} id="progress-title">Finding our next<br /><em class={accentClass}>30 instructors.</em></h2>
           </div>
           <div class="max-w-md">
-            <p class="text-lg leading-relaxed text-gray-600">We’re reaching out to people with practical skills to share. Here’s how many have replied, joined a discovery call, and committed to teaching on UniversityX.</p>
+            <p class="text-lg leading-relaxed text-gray-600">We’re connecting with experienced educators and industry professionals who have taught, mentored, or built learning communities. Follow our outreach, replies, discovery calls, and commitments to the Q1 launch.</p>
             {latest && <p class="mt-4 text-xs leading-relaxed text-purple-800">{preview && <>Illustrative preview <span aria-hidden="true">·</span> </>}{`Measured ${formatMissionDate(latest.measuredAt, true)}`}</p>}
           </div>
         </div>
@@ -164,8 +165,8 @@ const shareButtonClass = 'flex-1 cursor-pointer rounded-full border border-purpl
                 </svg>
               </span>
               <h3 class="text-xl font-bold tracking-tight">That’s why we’re building UniversityX</h3>
-              <p class="mt-3 text-base leading-relaxed text-gray-600">We’re bringing structured courses, live cohorts, real-world projects, and personalized AI support into one learning experience. We want learners to have a clear path to follow, space to practise, and people they can turn to when they get stuck.</p>
-              <p class="mt-3 text-base leading-relaxed text-gray-600">Instructors are central to that. They bring the context behind the lesson, feedback on the work, and experience from doing the thing they teach. We’re looking for people who know their craft and want to help others grow in it.</p>
+              <p class="mt-3 text-base leading-relaxed text-gray-600">We’re bringing structured courses, live courses, real-world projects, and personalized AI support into one learning experience. We want learners to have a clear path to follow, space to practise, and people they can turn to when they get stuck.</p>
+              <p class="mt-3 text-base leading-relaxed text-gray-600">Instructors bring the context, feedback, and guidance that help learners apply what they know. Shared learning resources give them a foundation to build on.</p>
             </div>
             <div>
               <span class="mb-4 inline-flex size-12 items-center justify-center rounded-xl bg-purple-100 text-[#8A40F5]" aria-hidden="true">
@@ -174,8 +175,8 @@ const shareButtonClass = 'flex-1 cursor-pointer rounded-full border border-purpl
                   <path d="M3 21v-2a6 6 0 0 1 12 0v2M16 5a3 3 0 0 1 0 6M21 21v-2a6 6 0 0 0-3-5.2" />
                 </svg>
               </span>
-              <h3 class="text-xl font-bold tracking-tight">Mission 30 is how we find those people</h3>
-              <p class="mt-3 text-base leading-relaxed text-gray-600">Between November 1, 2026 and January 1, 2027, we aim to reach {campaign.prospectTarget} potential instructors across Nigeria, the United States, the United Kingdom, and Canada. Our goal is to bring together {campaign.target} instructors committed to launching with UniversityX in Q1 2027.</p>
+              <h3 class="text-xl font-bold tracking-tight">Mission 30 is how we put that idea to the test</h3>
+              <p class="mt-3 text-base leading-relaxed text-gray-600">Between November 1, 2026 and January 1, 2027, we’re starting with {campaign.prospectTarget} qualified prospects across Nigeria and the United States. Our goal is {campaign.target} instructors committed to launching with UniversityX in Q1 2027.</p>
             </div>
             <div>
               <span class="mb-4 inline-flex size-12 items-center justify-center rounded-xl bg-purple-100 text-[#8A40F5]" aria-hidden="true">
@@ -254,7 +255,8 @@ const shareButtonClass = 'flex-1 cursor-pointer rounded-full border border-purpl
           <div class="lg:col-span-2">
             <p class="text-xs font-semibold leading-relaxed tracking-wider text-purple-50">YOUR EXPERIENCE COULD BE SOMEONE’S START.</p>
             <h2 class:list={[headingClass, 'my-6']} id="join-title">There’s a seat<br />with <em class="font-['Playfair_Display',Georgia,serif] text-purple-100">your name on it.</em></h2>
-            <p class="max-w-xl text-base leading-relaxed text-purple-50 md:text-lg">Help learners build practical skills through real projects, share the experience they can’t get from a tutorial, and earn when they enroll. We provide the learning platform, enrollment, and payment tools so you can focus on teaching.</p>
+            <p class="max-w-xl text-base leading-relaxed text-purple-50 md:text-lg">Already teaching or interested in sharing your expertise with more people? Host a practical workshop or teach a live course on UniversityX.</p>
+            <p class="mt-4 max-w-xl text-base leading-relaxed text-purple-50 md:text-lg">Bring your own course, create one with us, or teach using our existing learning resources. We’ll provide the platform, tools, and support to help you bring it to life.</p>
             <a class:list={[buttonClass, 'mt-7 w-full bg-white text-purple-900 hover:bg-purple-50 sm:w-auto']} href="/teach/#apply-to-teach">Teach with Us <span aria-hidden="true">↗</span></a>
           </div>
           <img
