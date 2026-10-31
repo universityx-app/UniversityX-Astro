@@ -1,0 +1,9 @@
+---
+import MissionDashboard from '../../../components/mission30/MissionDashboard.astro';
+import { missionPreviews } from '../../../data/mission30';
+export function getStaticPaths() {
+  return Object.entries(missionPreviews).map(([scenario, data]) => ({ params: { scenario }, props: { data } }));
+}
+const { data } = Astro.props;
+---
+<MissionDashboard data={data} />

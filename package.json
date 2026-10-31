@@ -8,7 +8,8 @@
     "preview": "node scripts/astro.mjs preview",
     "astro": "node scripts/astro.mjs",
     "check": "astro check",
-    "test:cohort-access": "node scripts/verify-cohort-payment-access.mjs"
+    "test:cohort-access": "node scripts/verify-cohort-payment-access.mjs",
+    "test:mission30": "node --experimental-strip-types scripts/verify-mission30.mjs"
   },
   "dependencies": {
     "@astrojs/sitemap": "^3.7.2",

@@ -23,7 +23,7 @@ export default defineConfig({
 
   integrations: [
     sitemap({
-      filter: (page) => !page.endsWith('/build-and-ship-ai-applications-with-python/enrollment/'),
+      filter: (page) => !page.endsWith('/build-and-ship-ai-applications-with-python/enrollment/') && !new URL(page).pathname.startsWith('/mission30/preview/'),
     }),
   ]
 });
