@@ -1,0 +1,334 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import Navbar from '../Navbar.astro';
+import Footer from '../Footer.astro';
+import { campaign, stages, formatMissionDate, latestSnapshot, orderedNotes, validateMissionData, type MissionData } from '../../lib/mission30';
+interface Props { data: MissionData }
+const { data } = Astro.props;
+validateMissionData(data);
+const preview = data.kind === 'illustrative';
+const latest = latestSnapshot(data);
+const notes = orderedNotes(data);
+const committed = latest?.metrics.committed;
+const percent = committed === undefined ? undefined : Math.round(committed / campaign.target * 100);
+const title = preview ? `Illustrative ${data.label} preview | Mission 30 | UniversityX` : 'Mission 30 — 30 Instructors. 4 Countries. One Mission. | UniversityX';
+const description = preview ? `${data.label} is an illustrative preview, not actual results. Explore UniversityX’s Mission 30 recruitment dashboard.` : 'Follow our journey to recruit 30 instructors across Nigeria, the US, the UK and Canada for a Q1 2027 launch on UniversityX. Recruitment runs November 1, 2026 to January 1, 2027.';
+const shareUrl = new URL(Astro.url.pathname, Astro.site).href;
+const metricLabel = preview ? 'Illustrative metrics' : latest ? 'Published metrics' : undefined;
+const scoreboardStages = stages.filter(stage => ['contacted', 'positiveReplies', 'discoveryCalls', 'committed'].includes(stage.key));
+const containerClass = 'mx-auto w-full max-w-7xl px-6 md:px-12 lg:px-16';
+const headingClass = 'text-3xl font-extrabold leading-tight tracking-tight md:text-4xl lg:text-5xl';
+const eyebrowClass = 'mb-4 text-xs font-bold tracking-wider text-purple-800';
+const accentClass = "font-['Playfair_Display',Georgia,serif] text-purple-800";
+const focusClass = 'focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-purple-500';
+const buttonClass = `inline-flex items-center justify-center gap-3 rounded-full px-7 py-3.5 text-base font-semibold transition-colors motion-reduce:transition-none ${focusClass}`;
+const shareButtonClass = 'flex-1 cursor-pointer rounded-full border border-purple-200 px-4 py-3 text-sm font-semibold transition-colors hover:bg-purple-100 motion-reduce:transition-none sm:flex-none';
+---
+<Layout title={title} description={description} image={preview ? '/images/mission30-preview-social.png' : '/images/mission30-social.png'} url={shareUrl} robots={preview ? 'noindex, nofollow' : undefined}>
+  <div class="bg-[#FBF8F1] text-[#1A0533] [&_[hidden]]:hidden!" data-mission data-frozen-time={data.asOf} data-share-url={shareUrl} data-share-title={title} data-share-text={preview ? 'Illustrative preview — not actual results. Explore Mission 30 on UniversityX.' : '30 Instructors. 4 Countries. One Mission. Follow the journey on UniversityX.'}>
+    <a class:list={['sr-only z-50 rounded-lg bg-white px-5 py-3 focus:not-sr-only focus:absolute focus:top-4 focus:left-4', focusClass]} href="#mission-main">Skip to Mission 30</a>
+    {preview && (
+      <aside class="border-b border-amber-300 bg-amber-100 py-4 text-sm text-amber-950" aria-label="Preview notice">
+        <div class:list={[containerClass, 'flex flex-col gap-3 md:flex-row md:items-center md:justify-between']}>
+          <div>
+            <strong class="mb-1 block">Illustrative preview — not actual results</strong>
+            <span>{data.label} · {formatMissionDate(data.asOf!)} · Clock frozen for this scenario</span>
+          </div>
+          <a class:list={['shrink-0 font-semibold underline underline-offset-4', focusClass]} href="/mission30/">View published progress ↗</a>
+        </div>
+      </aside>
+    )}
+    <header class="pt-3 sm:pt-5"><Navbar /></header>
+    <main id="mission-main">
+      <section class:list={[containerClass, 'grid items-center gap-10 py-12 md:py-16 lg:grid-cols-2 lg:gap-12 lg:py-20']} aria-labelledby="mission-title">
+        <div class="min-w-0">
+          <h1 class="mb-6 text-5xl font-extrabold leading-tight tracking-tight sm:text-6xl" id="mission-title">
+            Mission <span class="whitespace-nowrap text-[#8A40F5]">30<span class="ml-1 inline-block align-top text-2xl" aria-hidden="true">✳</span></span>
+          </h1>
+          <p class="max-w-lg text-lg font-semibold leading-relaxed md:text-xl">30 Instructors. 4 Countries. One Mission.</p>
+          <p class="mt-5 max-w-xl text-base leading-relaxed text-gray-600 md:text-lg">We're on a mission to find 30 instructors across four countries who are ready to launch with UniversityX in Q1 2027. From November 1 - January 1, we're sharing the recruitment journey: the conversations, challenges, wins, and everything we learn along the way.</p>
+          <div class="mt-8 flex flex-col gap-5 sm:flex-row sm:flex-wrap sm:items-center">
+            <a class:list={[buttonClass, 'bg-[#8A40F5] text-white hover:bg-[#7434D8]']} href="/teach/#apply-to-teach">Teach with Us <span aria-hidden="true">↗</span></a>
+            <a class:list={['self-center text-base font-semibold underline-offset-4 hover:underline', focusClass]} href="#field-notes">Read Field Notes <span class="ml-2" aria-hidden="true">↓</span></a>
+          </div>
+        </div>
+        <div class="min-w-0 rounded-3xl bg-[#8A40F5] p-6 text-white shadow-xl shadow-[#8A40F5]/20 sm:p-8">
+          <div class="flex items-center justify-between gap-3 text-xs font-semibold tracking-wider text-white">
+            <span>THE INSTRUCTOR ROLL CALL</span><span class="text-3xl leading-none" aria-hidden="true">↗</span>
+          </div>
+          <div class="mt-5 flex items-center gap-4">
+            <span class="text-7xl font-extrabold leading-none tracking-tight sm:text-8xl">{committed ?? '0'}</span>
+            <span class="text-3xl font-medium text-white">/ 30<span class="mt-1 block text-sm text-white">instructors committed</span></span>
+          </div>
+          {metricLabel && (
+            <div class="mt-4 mb-5 flex flex-wrap items-center justify-between gap-2 text-xs text-white">
+              <span class="rounded-full border border-white/40 px-3 py-1">{metricLabel}</span>
+              <span>{percent !== undefined && `${percent}% of the mission`}</span>
+            </div>
+          )}
+          <div class:list={['grid grid-cols-6 gap-2 sm:grid-cols-10', { 'mt-5': !metricLabel }]} aria-hidden="true">
+            {Array.from({ length: 30 }, (_, i) => (
+              <span class:list={[
+                'flex aspect-square items-center justify-center rounded-lg border text-xs font-semibold',
+                committed === undefined ? 'border-dashed border-white/40 bg-white/5 text-white'
+                  : i < committed ? 'border-white bg-white text-lg text-[#8A40F5]'
+                  : 'border-white/40 bg-white/5 text-white',
+              ]}>{committed !== undefined && i < committed ? '✦' : String(i + 1).padStart(2, '0')}</span>
+            ))}
+          </div>
+          {committed !== undefined && (
+            <p class="mt-4 flex items-center gap-2 text-xs leading-relaxed text-white">
+              <span class="size-2 shrink-0 rounded-sm bg-white" aria-hidden="true"></span>
+              {`${committed} committed. ${Math.max(0, 30 - committed)} more to reach the goal.`}
+            </p>
+          )}
+          <div class="mt-6 flex flex-wrap items-center justify-between gap-4 border-t border-white/30 pt-5" aria-label="Campaign deadline">
+            <div>
+              <span class="text-xs font-semibold tracking-wide text-white" data-clock-label>{preview ? 'SCENARIO TIME REMAINING' : 'RECRUITMENT DEADLINE'}</span>
+              <p class="mt-1 text-xs leading-relaxed text-white" data-countdown-fallback>1 January 2027 · 00:00 WAT</p>
+              <p class="mt-1 text-xs leading-relaxed text-white" data-clock-status></p>
+            </div>
+            <div class="flex items-start gap-2" data-countdown hidden>
+              <span class="flex flex-col text-center"><b class="text-3xl font-semibold tabular-nums" data-days></b><small class="text-xs text-white">days</small></span>
+              <span class="text-2xl text-white/80" aria-hidden="true">:</span>
+              <span class="flex flex-col text-center"><b class="text-3xl font-semibold tabular-nums" data-hours></b><small class="text-xs text-white">hrs</small></span>
+              <span class="text-2xl text-white/80" aria-hidden="true">:</span>
+              <span class="flex flex-col text-center"><b class="text-3xl font-semibold tabular-nums" data-minutes></b><small class="text-xs text-white">min</small></span>
+            </div>
+          </div>
+          {preview && <p class="mt-3 text-xs leading-relaxed text-white">Illustrative scenario clock · {formatMissionDate(data.asOf!)}</p>}
+        </div>
+      </section>
+
+      <section class="border-y border-[#1A0533]/10 bg-[#F5F2EB]" aria-label="Mission targets">
+        <dl class:list={[containerClass, 'grid grid-cols-2 gap-y-6 py-8 md:grid-cols-4']}>
+          {[
+            { value: campaign.target, label: 'Instructors to recruit' },
+            { value: campaign.prospectTarget, label: 'People to reach out to' },
+            { value: campaign.weeklyOutreachTarget, label: 'People per week' },
+            { value: `~${campaign.dailyOutreachTarget}`, label: 'People daily' },
+          ].map((target, index) => (
+            <div class:list={['flex flex-col px-3 text-center sm:px-4', index > 0 && 'md:border-l md:border-stone-300', index % 2 === 1 && 'border-l border-stone-300']}>
+              <dt class="order-2 mt-2 text-sm leading-relaxed text-gray-600">{target.label}</dt>
+              <dd class="order-1 text-3xl font-bold tracking-tight sm:text-4xl">{target.value}</dd>
+            </div>
+          ))}
+        </dl>
+      </section>
+
+      <section class:list={[containerClass, 'py-12 md:py-16 lg:py-20']} id="progress" aria-labelledby="progress-title">
+        <div class="mb-8 flex flex-col gap-6 lg:flex-row lg:items-end lg:justify-between lg:gap-12">
+          <div>
+            <p class={eyebrowClass}>01 / RECRUITMENT PROGRESS</p>
+            <h2 class={headingClass} id="progress-title">Finding our next<br /><em class={accentClass}>30 instructors.</em></h2>
+          </div>
+          <div class="max-w-md">
+            <p class="text-lg leading-relaxed text-gray-600">We’re reaching out to people with practical skills to share. Here’s how many have replied, joined a discovery call, and committed to teaching on UniversityX.</p>
+            {latest && <p class="mt-4 text-xs leading-relaxed text-purple-800">{preview && <>Illustrative preview <span aria-hidden="true">·</span> </>}{`Measured ${formatMissionDate(latest.measuredAt, true)}`}</p>}
+          </div>
+        </div>
+        <div class="grid grid-cols-2 overflow-hidden rounded-2xl border border-stone-200 bg-white lg:grid-cols-4" aria-label={metricLabel ?? 'Recruitment funnel'}>
+          {scoreboardStages.map((stage, index) => (
+            <div class:list={['p-5 sm:p-6', index < 2 && 'border-b border-stone-200 lg:border-b-0', index % 2 === 0 && 'border-r border-stone-200', index === 1 && 'lg:border-r lg:border-stone-200']}>
+              <span class="inline-flex size-10 items-center justify-center rounded-xl bg-purple-50 text-[#8A40F5]" aria-hidden="true">
+                <svg class="size-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" focusable="false">
+                  {stage.key === 'contacted' && <><rect x="3" y="5" width="18" height="14" rx="2" /><path d="m3 6 9 7 9-7" /></>}
+                  {stage.key === 'positiveReplies' && <><path d="M21 11.5a8.4 8.4 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.4 8.4 0 0 1-3.8-.9L3 21l1.9-5.7a8.4 8.4 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.4 8.4 0 0 1 3.8-.9h.5a8.5 8.5 0 0 1 8 8v.5Z" /><path d="m9 11 2 2 4-4" /></>}
+                  {stage.key === 'discoveryCalls' && <><rect x="3" y="5" width="12" height="14" rx="2" /><path d="m15 10 6-4v12l-6-4" /></>}
+                  {stage.key === 'committed' && <><circle cx="12" cy="12" r="9" /><path d="m8 12 3 3 5-6" /></>}
+                </svg>
+              </span>
+              <strong class="mt-5 mb-3 block text-5xl font-bold leading-none tracking-tight">{latest?.metrics[stage.key] ?? 0}</strong>
+              <h3 class="text-lg font-semibold">{stage.label}</h3>
+              <p class="mt-2 text-base leading-relaxed text-gray-600">{stage.description}</p>
+              {preview && <span class="mt-3 block text-xs font-semibold text-amber-800">Illustrative</span>}
+            </div>
+          ))}
+        </div>
+        <p class="mt-4 text-sm leading-relaxed text-gray-600">These are cumulative counts of unique instructors at each stage.</p>
+      </section>
+
+      <section class="border-t border-stone-200" aria-labelledby="why-title">
+        <div class:list={[containerClass, 'grid gap-10 py-12 md:py-16 lg:grid-cols-2 lg:gap-16 lg:py-20']}>
+          <div>
+            <p class={eyebrowClass}>02 / OUR STORY</p>
+            <h2 class={headingClass} id="why-title">So much to learn.<br /><em class={accentClass}>Someone to learn with.</em></h2>
+            <p class="mt-6 max-w-xl text-base leading-relaxed text-gray-600 md:text-lg">There’s so much you can learn online. Tutorials, courses, articles, and now AI can help you find an answer in seconds. But when you sit down to apply what you’ve learned, new questions show up: Where do I start? Does this approach make sense? What am I missing?</p>
+            <p class="mt-4 max-w-xl text-base leading-relaxed text-gray-600 md:text-lg">That’s the gap we care about. Having someone who understands the context, looks at your work, explains the trade-offs, and helps you find your next step. Learning with people who can help you make sense of what you’re learning.</p>
+          </div>
+          <div class="space-y-8">
+            <div>
+              <span class="mb-4 inline-flex size-12 items-center justify-center rounded-xl bg-purple-100 text-[#8A40F5]" aria-hidden="true">
+                <svg class="size-6" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" focusable="false">
+                  <path d="M12 7v14M3 3h5a4 4 0 0 1 4 4 4 4 0 0 1 4-4h5v16h-5a4 4 0 0 0-4 2 4 4 0 0 0-4-2H3Z" />
+                </svg>
+              </span>
+              <h3 class="text-xl font-bold tracking-tight">That’s why we’re building UniversityX</h3>
+              <p class="mt-3 text-base leading-relaxed text-gray-600">We’re bringing structured courses, live cohorts, real-world projects, and personalized AI support into one learning experience. We want learners to have a clear path to follow, space to practise, and people they can turn to when they get stuck.</p>
+              <p class="mt-3 text-base leading-relaxed text-gray-600">Instructors are central to that. They bring the context behind the lesson, feedback on the work, and experience from doing the thing they teach. We’re looking for people who know their craft and want to help others grow in it.</p>
+            </div>
+            <div>
+              <span class="mb-4 inline-flex size-12 items-center justify-center rounded-xl bg-purple-100 text-[#8A40F5]" aria-hidden="true">
+                <svg class="size-6" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" focusable="false">
+                  <circle cx="9" cy="8" r="3" />
+                  <path d="M3 21v-2a6 6 0 0 1 12 0v2M16 5a3 3 0 0 1 0 6M21 21v-2a6 6 0 0 0-3-5.2" />
+                </svg>
+              </span>
+              <h3 class="text-xl font-bold tracking-tight">Mission 30 is how we find those people</h3>
+              <p class="mt-3 text-base leading-relaxed text-gray-600">Between November 1, 2026 and January 1, 2027, we aim to reach {campaign.prospectTarget} potential instructors across Nigeria, the United States, the United Kingdom, and Canada. Our goal is to bring together {campaign.target} instructors committed to launching with UniversityX in Q1 2027.</p>
+            </div>
+            <div>
+              <span class="mb-4 inline-flex size-12 items-center justify-center rounded-xl bg-purple-100 text-[#8A40F5]" aria-hidden="true">
+                <svg class="size-6" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" focusable="false">
+                  <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2Z" />
+                  <path d="M7 8h10M7 12h6" />
+                </svg>
+              </span>
+              <h3 class="text-xl font-bold tracking-tight">We’re figuring it out in public</h3>
+              <p class="mt-3 text-base leading-relaxed text-gray-600">Damilare and Ada are leading the search. We’ll share the conversations that move things forward, the questions we haven’t answered, and what we learn as we go. Mission 30 is our way of letting you follow that journey, and become part of it.</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="scroll-mt-6 border-y border-stone-200 bg-stone-100" id="field-notes" aria-labelledby="notes-title">
+        <div class:list={[containerClass, 'py-12 md:py-16 lg:py-20']}>
+          <div class="mb-8 flex flex-col gap-6 lg:flex-row lg:items-end lg:justify-between lg:gap-12">
+            <div>
+              <p class={eyebrowClass}>03 / NOTES FROM THE FIELD</p>
+              <h2 class={headingClass} id="notes-title">The numbers tell half.<br /><em class={accentClass}>Here’s the rest.</em></h2>
+            </div>
+            <div class="max-w-md">
+              <p class="text-lg leading-relaxed text-gray-600">What worked. What didn’t. What we’re trying next. Daily or weekly dispatches from two people figuring it out in public.</p>
+              {preview && <p class="mt-4 text-xs leading-relaxed text-purple-800">ILLUSTRATIVE FIELD NOTES</p>}
+            </div>
+          </div>
+          {notes.length ? (
+            <div>
+              {notes.map(note => (
+                <article class="grid scroll-mt-6 gap-6 border-t border-stone-300 py-8 last:pb-0 md:grid-cols-4 md:gap-8" id={note.id}>
+                  <div class="flex flex-wrap items-center gap-3 text-sm text-gray-600 md:flex-col md:items-start">
+                    <span class="rounded-full bg-purple-100 px-3 py-1.5 text-xs font-semibold text-purple-800">{note.cadence} dispatch</span>
+                    <time datetime={note.publishedAt}>{formatMissionDate(note.publishedAt)}</time>
+                    <span>By {note.author}</span>
+                    {preview && <strong class="basis-full text-xs text-amber-800 md:basis-auto">Illustrative field note</strong>}
+                  </div>
+                  <div class="min-w-0 md:col-span-3">
+                    <h3 class="text-2xl font-bold leading-snug tracking-tight">
+                      <a class:list={['underline-offset-4 hover:underline', focusClass]} href={`#${note.id}`}>{note.title}</a>
+                    </h3>
+                    <p class="mt-4 mb-6 text-base leading-relaxed text-gray-600">{note.introduction}</p>
+                    <div class="grid gap-6 sm:grid-cols-2 sm:gap-8">
+                      {[
+                        { label: 'The wins', value: note.wins, symbol: '↗' },
+                        { label: 'The hard part', value: note.challenges, symbol: '↘' },
+                        { label: 'The experiment', value: note.experiments, symbol: '↻' },
+                        { label: 'The lesson', value: note.lessons, symbol: '✳' },
+                      ].map(item => (
+                        <div>
+                          <h4 class="flex items-center gap-2 text-base font-semibold"><span class="text-[#8A40F5]" aria-hidden="true">{item.symbol}</span>{item.label}</h4>
+                          <p class="mt-2 text-sm leading-relaxed text-gray-600 md:text-base">{item.value}</p>
+                        </div>
+                      ))}
+                    </div>
+                  </div>
+                </article>
+              ))}
+            </div>
+          ) : (
+            <div class="flex items-center gap-8 rounded-2xl border border-dashed border-purple-300 bg-[#FBF8F1] p-6 sm:p-10">
+              <span class="hidden text-5xl text-[#8A40F5] sm:block" aria-hidden="true">✎</span>
+              <div>
+                <span class="text-xs font-semibold tracking-wide text-purple-800">THE FIRST DISPATCH IS STILL AHEAD</span>
+                <h3 class="my-3 text-2xl font-bold tracking-tight">We’re opening the notebook.</h3>
+                <p class="max-w-2xl text-base leading-relaxed text-gray-600">Damilare and Ada will publish the wins, difficult conversations, experiments and lessons here. No updates have been published yet. Come back to follow the journey.</p>
+              </div>
+              <span class="ml-auto hidden text-8xl font-bold leading-none text-purple-200 lg:block" aria-hidden="true">01</span>
+            </div>
+          )}
+        </div>
+      </section>
+
+      <section class:list={[containerClass, 'pt-12 pb-8 md:pt-16 lg:pt-20']} aria-labelledby="join-title">
+        <div class="grid gap-8 overflow-hidden rounded-3xl bg-[#8A40F5] p-6 text-white sm:p-10 lg:grid-cols-3 lg:gap-x-16 lg:p-12">
+          <div class="lg:col-span-2">
+            <p class="text-xs font-semibold leading-relaxed tracking-wider text-purple-50">YOUR EXPERIENCE COULD BE SOMEONE’S START.</p>
+            <h2 class:list={[headingClass, 'my-6']} id="join-title">There’s a seat<br />with <em class="font-['Playfair_Display',Georgia,serif] text-purple-100">your name on it.</em></h2>
+            <p class="max-w-xl text-base leading-relaxed text-purple-50 md:text-lg">Help learners build practical skills through real projects, share the experience they can’t get from a tutorial, and earn when they enroll. We provide the learning platform, enrollment, and payment tools so you can focus on teaching.</p>
+            <a class:list={[buttonClass, 'mt-7 w-full bg-white text-purple-900 hover:bg-purple-50 sm:w-auto']} href="/teach/#apply-to-teach">Teach with Us <span aria-hidden="true">↗</span></a>
+          </div>
+          <img
+            class="h-auto w-full max-w-sm self-center justify-self-center rounded-2xl shadow-lg ring-1 ring-white/20"
+            src="/images/nigerian-man.png"
+            alt="A man wearing glasses and a white shirt, with his arms folded."
+            width="800"
+            height="1000"
+            loading="lazy"
+            decoding="async"
+          />
+        </div>
+        <div class="flex flex-wrap items-center justify-between gap-4 pt-8">
+          <p class="text-sm leading-relaxed text-gray-600">A small team. A big mission. <strong class="font-semibold text-[#1A0533]">Help the story travel.</strong></p>
+          <div class="flex w-full flex-wrap gap-3 sm:w-auto" hidden data-share-controls>
+            <button class:list={[shareButtonClass, focusClass]} type="button" data-share>Share the mission ↗</button>
+            <button class:list={[shareButtonClass, focusClass]} type="button" data-copy>Copy link <span aria-hidden="true">⧉</span></button>
+          </div>
+          <a class:list={['text-sm font-semibold underline-offset-4 hover:underline', focusClass]} href={shareUrl} data-share-fallback>{preview ? 'Illustrative preview permalink' : 'Mission permalink'} ↗</a>
+          <p class="min-h-5 w-full text-sm text-purple-800" role="status" aria-live="polite" data-share-feedback></p>
+          <input class:list={['w-full rounded-lg border border-purple-300 p-3 text-sm', focusClass]} data-manual-copy aria-label="Mission link to copy manually" value={shareUrl} readonly hidden />
+        </div>
+      </section>
+    </main>
+    <Footer />
+  </div>
+</Layout>
+
+<script>
+  import { getCampaignClock } from '../../lib/mission30';
+  const root = document.querySelector<HTMLElement>('[data-mission]');
+  if (root) {
+    const frozen = root.dataset.frozenTime;
+    const updateClock = () => {
+      const clock = getCampaignClock(frozen ? Date.parse(frozen) : Date.now());
+      root.querySelector<HTMLElement>('[data-days]')!.textContent = String(clock.days).padStart(2, '0');
+      root.querySelector<HTMLElement>('[data-hours]')!.textContent = String(clock.hours).padStart(2, '0');
+      root.querySelector<HTMLElement>('[data-minutes]')!.textContent = String(clock.minutes).padStart(2, '0');
+      root.querySelector<HTMLElement>('[data-clock-label]')!.textContent = frozen ? 'SCENARIO TIME REMAINING' : clock.status === 'ended' ? 'THE RECRUITMENT CAMPAIGN HAS ENDED' : 'RECRUITMENT DEADLINE';
+      root.querySelector<HTMLElement>('[data-clock-status]')!.textContent = clock.status === 'scheduled' ? 'Starts 1 November 2026' : clock.status === 'ended' ? 'Deadline reached · 1 Jan 2027' : '1 January 2027 · 00:00 WAT';
+      root.querySelector<HTMLElement>('[data-countdown-fallback]')!.hidden = true;
+      root.querySelector<HTMLElement>('[data-countdown]')!.hidden = false;
+    };
+    updateClock();
+    if (!frozen) {
+      let timer = window.setInterval(updateClock, 60_000);
+      document.addEventListener('visibilitychange', () => { if (!document.hidden) updateClock(); });
+      window.addEventListener('pagehide', () => window.clearInterval(timer));
+      window.addEventListener('pageshow', event => {
+        if (event.persisted) { updateClock(); timer = window.setInterval(updateClock, 60_000); }
+      });
+    }
+    const shareData = { title: root.dataset.shareTitle!, text: root.dataset.shareText!, url: root.dataset.shareUrl! };
+    const feedback = root.querySelector<HTMLElement>('[data-share-feedback]')!;
+    const manual = root.querySelector<HTMLInputElement>('[data-manual-copy]')!;
+    const copy = async () => {
+      try {
+        await navigator.clipboard.writeText(shareData.url);
+        manual.hidden = true;
+        feedback.textContent = 'Link copied. Thanks for helping the story travel!';
+      } catch {
+        feedback.textContent = 'Automatic copying is unavailable. Select and copy the link below.';
+        manual.hidden = false;
+        manual.focus();
+        manual.select();
+      }
+    };
+    root.querySelector<HTMLElement>('[data-share-controls]')!.hidden = false;
+    root.querySelector<HTMLElement>('[data-share-fallback]')!.hidden = true;
+    root.querySelector('[data-copy]')!.addEventListener('click', copy);
+    root.querySelector('[data-share]')!.addEventListener('click', async () => {
+      if (!navigator.share) return copy();
+      try { await navigator.share(shareData); feedback.textContent = 'Mission shared. Thank you!'; }
+      catch (error) { if (error instanceof Error && error.name === 'AbortError') feedback.textContent = 'Sharing cancelled.'; else await copy(); }
+    });
+  }
+</script>
