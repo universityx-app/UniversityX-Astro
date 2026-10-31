@@ -1,7 +1,7 @@
 import assert from 'node:assert/strict';
 import { readFileSync, readdirSync } from 'node:fs';
 import { test } from 'node:test';
-import { campaign, getCampaignClock, latestSnapshot, orderedSnapshots, orderedNotes, validateMissionData } from '../src/lib/mission30.ts';
+import { campaign, countries, getCampaignClock, latestSnapshot, orderedSnapshots, orderedNotes, validateMissionData } from '../src/lib/mission30.ts';
 import { publishedMission, missionPreviews } from '../src/data/mission30.ts';
 
 test('campaign uses an exact 61-day interval and Lagos midnight boundaries', () => {
@@ -28,7 +28,8 @@ test('missing data stays distinct from zero and scenario clocks are frozen indep
   assert.deepEqual(latestSnapshot(missionPreviews['week-2']).metrics, {
     contacted: 121, positiveReplies: 32, discoveryCalls: 16, committed: 6, onboarded: 4, activated: 3, paidEnrollments: 1,
   });
-  assert.deepEqual(latestSnapshot(missionPreviews['week-2']).countries, { NG: 2, US: 1, GB: 0, CA: 0 });
+  assert.deepEqual(latestSnapshot(missionPreviews['week-2']).countries, { NG: 2, US: 1 });
+  assert.deepEqual(countries.map(({ code, outreachShare }) => [code, outreachShare]), [['NG', 70], ['US', 30]]);
 });
 
 test('history is ordered by measurement, independently of note publication', () => {
@@ -69,6 +70,21 @@ test('validation rejects malformed public data and accepts corrected totals', ()
 
 if (process.argv.includes('--built')) {
   const html = path => readFileSync(new URL(`../dist/${path}/index.html`, import.meta.url), 'utf8');
+  test('campaign routes use two markets with clear teaching terminology', () => {
+    for (const path of ['mission30', 'mission30/preview/day-1', 'mission30/preview/week-2']) {
+      const page = html(path);
+      assert.match(page, /30 Instructors\. 2 Countries\. One Mission\./);
+      const missionContent = page.match(/<main id="mission-main">([\s\S]*?)<\/main>/)?.[1]?.replace(/<[^>]*>/g, ' ');
+      assert.ok(missionContent);
+      assert.doesNotMatch(missionContent, /4 Countries|four countries|United Kingdom|Canada|London|\bcohorts?\b|\bintensives?\b/i);
+    }
+    const teachPage = html('teach');
+    // The shared navigation may still link to /cohorts; check visible text, not URL paths.
+    const teachContent = teachPage.match(/<h1[\s\S]*?<footer/)?.[0]?.replace(/<[^>]*>/g, ' ');
+    assert.ok(teachContent);
+    assert.match(teachContent, /workshops.*live courses/i);
+    assert.doesNotMatch(teachContent, /\bcohorts?\b|\bintensives?\b/i);
+  });
   test('built public page never includes illustrative data or notes', () => {
     const page = html('mission30');
     if (!publishedMission.snapshots.length) {

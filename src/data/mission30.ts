@@ -13,17 +13,17 @@ export const publishedMission: MissionData = {
 const kickoff: Snapshot = {
   id: 'sample-nov-01', measuredAt: '2026-11-01T00:00:00+01:00',
   metrics: { contacted: 0, positiveReplies: 0, discoveryCalls: 0, committed: 0, onboarded: 0, activated: 0, paidEnrollments: 0 },
-  countries: { NG: 0, US: 0, GB: 0, CA: 0 },
+  countries: { NG: 0, US: 0 },
 };
 const weekOne: Snapshot = {
   id: 'sample-nov-07', measuredAt: '2026-11-07T00:00:00+01:00',
   metrics: { contacted: 54, positiveReplies: 14, discoveryCalls: 7, committed: 3, onboarded: 2, activated: 1, paidEnrollments: 0 },
-  countries: { NG: 1, US: 0, GB: 0, CA: 0 },
+  countries: { NG: 1, US: 0 },
 };
 const weekTwo: Snapshot = {
   id: 'sample-nov-14', measuredAt: '2026-11-14T00:00:00+01:00',
   metrics: { contacted: 121, positiveReplies: 32, discoveryCalls: 16, committed: 6, onboarded: 4, activated: 3, paidEnrollments: 1 },
-  countries: { NG: 2, US: 1, GB: 0, CA: 0 },
+  countries: { NG: 2, US: 1 },
 };
 const intro: FieldNote = {
   id: 'sample-kickoff', publishedAt: kickoff.measuredAt, cadence: 'Kickoff', author: 'Damilare & Ada',

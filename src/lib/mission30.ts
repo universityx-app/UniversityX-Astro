@@ -3,17 +3,17 @@ export const campaign = {
   end: '2027-01-01T00:00:00+01:00',
   timeZone: 'Africa/Lagos',
   target: 30,
-  prospectTarget: 300,
-  weeklyOutreachTarget: 35,
-  dailyOutreachTarget: 4,
+  // Initial outreach goal, not a cap. Weekly and daily figures are rounded planning averages.
+  prospectTarget: 100,
+  weeklyOutreachTarget: 12,
+  dailyOutreachTarget: 2,
   paidTarget: 5,
 } as const;
 
 export const countries = [
-  { code: 'NG', name: 'Nigeria', target: 18 },
-  { code: 'US', name: 'United States', target: 5 },
-  { code: 'GB', name: 'United Kingdom', target: 4 },
-  { code: 'CA', name: 'Canada', target: 3 },
+  // Outreach allocation, not instructor recruitment quotas.
+  { code: 'NG', name: 'Nigeria', outreachShare: 70 },
+  { code: 'US', name: 'United States', outreachShare: 30 },
 ] as const;
 
 export const stages = [
@@ -22,7 +22,7 @@ export const stages = [
   { key: 'discoveryCalls', label: 'Discovery calls', description: 'Interested prospects who completed a discovery call.' },
   { key: 'committed', label: 'Committed', description: 'Instructors who agreed to launch with UniversityX in Q1 2027.' },
   { key: 'onboarded', label: 'Onboarded', description: 'Committed instructors who completed onboarding.' },
-  { key: 'activated', label: 'Activated', description: 'Onboarded instructors with an approved, enrollment-ready course or cohort.' },
+  { key: 'activated', label: 'Activated', description: 'Onboarded instructors with an approved, enrollment-ready workshop or live course.' },
   { key: 'paidEnrollments', label: 'Generating paid enrollments', description: 'Activated instructors with at least one paid enrollment.' },
 ] as const;
 
