@@ -87,234 +87,115 @@ const digitalSkillsCategories = [
 
 const valueProps = [
   {
-    title: "Ready-made courses & curriculum",
-    description:
-      "Skip months of course creation and syllabus prep. Use our structured video lessons, battle-tested project briefs, milestone rubrics, and industry tracks ready from day one.",
-    icon: "curriculum",
+    title: "Create less from scratch",
+    description: "Access structured learning resources, project briefs, and assessments you can adapt to your teaching style.",
+    icon: "M4 19.5A2.5 2.5 0 0 1 6.5 17H20 M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2Z",
   },
   {
-    title: "Live courses with accountability & office hours",
-    description:
-      "Guide students through live sessions, office hours, and actionable code/project reviews. Your guidance helps learners actually complete.",
-    icon: "cohorts",
+    title: "Give learners more than videos",
+    description: "Combine live teaching with practical projects, AI-powered practice, feedback, and guidance that helps learners apply what they're learning.",
+    icon: "M9 3H5a2 2 0 0 0-2 2v4 M15 3h4a2 2 0 0 1 2 2v4 M21 15v4a2 2 0 0 1-2 2h-4 M9 21H5a2 2 0 0 1-2-2v-4 M8 12l3 3 5-6",
   },
   {
-    title: "Strong revenue share",
-    description:
-      "Earn transparent, high revenue share on every learner enrolled in your live course. We handle payments, billing, and platform ops.",
-    icon: "revenue",
+    title: "Earn from your expertise",
+    description: "Host paid workshops and live courses around topics you know well. We'll work with you on the course structure, pricing, and delivery.",
+    icon: "M12 2v20 M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6",
   },
   {
-    title: "Reach motivated learners",
-    description:
-      "Teach committed professionals and career-switchers who show up every week, engage during live sessions, and actively finish their projects.",
-    icon: "learners",
+    title: "Grow with us",
+    description: "Bring your community, reach new learners, and explore opportunities to teach again. We'll work together on promoting your programmes.",
+    icon: "M3 17l6-6 4 4 8-10 M15 5h6v6",
   },
 ];
 
-const idealInstructorPoints = [
-  "Practitioners with proven real-world industry experience across engineering, AI, product, business, marketing, sales, design, or security.",
-  "Passionate educators who enjoy live discussions, unblocking students during office hours, and giving actionable feedback.",
-  "Accountability drivers who care about actual course completion and student career breakthroughs rather than passive video lectures.",
+const teachingOptions = [
+  {
+    number: "01",
+    title: "Teach an existing course",
+    description: "Choose from our growing library of structured courses. Adapt the resources, bring your own experience, and lead learners through live classes and projects.",
+  },
+  {
+    number: "02",
+    title: "Create something with us",
+    description: "Have an idea for a course or workshop? We'll help you turn it into a structured learning experience, from curriculum planning to projects and materials.",
+  },
+  {
+    number: "03",
+    title: "Bring your own course",
+    description: "Already teaching? Bring your existing programme to UniversityX and explore how our platform and AI-powered learning tools can support your learners.",
+  },
 ];
+
+const containerClass = 'mx-auto max-w-7xl px-6 md:px-12 lg:px-16';
+const headingClass = 'text-3xl font-extrabold leading-tight tracking-tight text-[#1A0533] md:text-4xl lg:text-5xl';
+const copyClass = 'text-lg leading-relaxed text-gray-600';
+const buttonClass = 'inline-flex items-center justify-center gap-3 rounded-full bg-[#8A40F5] px-7 py-3.5 text-base font-semibold text-white transition-colors hover:bg-[#7434D8] focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[#8A40F5] motion-reduce:transition-none';
 ---
 
-<!-- ===== HERO SECTION ===== -->
-<section class="bg-[#FBF8F1] pt-14 pb-16 md:pt-20 md:pb-24 border-b border-gray-200/60 relative overflow-hidden">
-  <!-- Subtle decorative background accents -->
-  <div class="absolute -top-24 -right-24 w-96 h-96 rounded-full bg-[#8A40F5]/5 blur-3xl pointer-events-none"></div>
-  <div class="absolute -bottom-24 -left-24 w-96 h-96 rounded-full bg-[#D4A853]/10 blur-3xl pointer-events-none"></div>
-
-  <div class="max-w-4xl mx-auto text-center px-6 relative z-10">
-    <!-- Eyebrow Pill -->
-    <div class="inline-flex items-center gap-2 rounded-full px-4 py-1.5 text-xs font-bold uppercase tracking-wider bg-[#8A40F5]/10 text-[#8A40F5] mb-6">
-      <span class="w-2 h-2 rounded-full bg-[#8A40F5] animate-pulse"></span>
-      Teach on UniversityX
-    </div>
-
-    <!-- Main Headline -->
-    <h1 class="text-4xl sm:text-5xl md:text-6xl font-extrabold text-[#1A0533] leading-[1.15] tracking-tight">
-      Teach workshops & live courses
-      <br />
-      <em class="font-['Playfair_Display',serif] font-bold">on UniversityX</em>
+<section class="border-b border-gray-200/60 bg-[#FBF8F1] pt-12 pb-16 md:pt-16 md:pb-20" aria-labelledby="teach-title">
+  <div class="mx-auto max-w-4xl px-6 text-center md:px-12">
+    <p class="mb-6 inline-flex rounded-full bg-[#8A40F5]/10 px-4 py-2 text-xs font-bold uppercase tracking-wider text-purple-800">Teach on UniversityX</p>
+    <h1 id="teach-title" class="text-4xl font-extrabold leading-tight tracking-tight text-[#1A0533] sm:text-5xl md:text-6xl">
+      Your expertise deserves <em class="font-['Playfair_Display',serif] font-bold">a bigger classroom.</em>
     </h1>
-
-    <!-- Subheadline -->
-    <p class="mt-6 text-gray-600 text-lg md:text-xl leading-relaxed max-w-2xl mx-auto">
-      Use our ready-made curriculum, add your expertise + live sessions + guidance, help learners finish, and get paid.
-    </p>
-
-    <!-- CTA -->
-    <div class="mt-8 flex items-center justify-center">
-      <a
-        id="hero-apply-btn"
-        href="#apply-to-teach"
-        class="inline-flex items-center justify-center gap-2 bg-[#8A40F5] hover:bg-[#7434D8] text-white font-semibold text-base px-9 py-3.5 rounded-full transition-all duration-200 shadow-sm hover:shadow-md cursor-pointer"
-      >
-        <span>Apply to teach</span>
-        <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
-          <line x1="12" y1="5" x2="12" y2="19"></line>
-          <polyline points="19 12 12 19 5 12"></polyline>
-        </svg>
-      </a>
+    <div class="mx-auto mt-6 max-w-2xl space-y-4 text-lg leading-relaxed text-gray-600 md:text-xl">
+      <p>Turn what you know into practical workshops and live courses. Bring your own course, build one with us, or teach using our existing learning resources. 
+        We'll help with the learning experience, technology, and setup, so you can focus on what you do best: teaching and sharing your expertise.</p>
     </div>
-
-    <!-- Value Badges Row -->
-    <div class="mt-12 pt-8 border-t border-gray-200/70 grid grid-cols-1 sm:grid-cols-3 gap-6 max-w-3xl mx-auto text-left sm:text-center">
-      <div class="flex sm:flex-col items-center gap-3 sm:gap-1.5 justify-start sm:justify-center">
-        <span class="text-2xl sm:text-3xl mb-0.5 sm:mb-1 select-none">📚</span>
-        <div class="flex flex-col sm:items-center">
-          <span class="text-xl sm:text-2xl font-extrabold text-[#1A0533]">Ready-Made</span>
-          <span class="text-xs sm:text-sm text-gray-500 font-medium">Curriculum provided</span>
-        </div>
-      </div>
-      <div class="flex sm:flex-col items-center gap-3 sm:gap-1.5 justify-start sm:justify-center">
-        <span class="text-2xl sm:text-3xl mb-0.5 sm:mb-1 select-none">👥</span>
-        <div class="flex flex-col sm:items-center">
-          <span class="text-xl sm:text-2xl font-extrabold text-[#1A0533]">20-30 Peers</span>
-          <span class="text-xs sm:text-sm text-gray-500 font-medium">Small learning groups</span>
-        </div>
-      </div>
-      <div class="flex sm:flex-col items-center gap-3 sm:gap-1.5 justify-start sm:justify-center">
-        <span class="text-2xl sm:text-3xl mb-0.5 sm:mb-1 select-none">💰</span>
-        <div class="flex flex-col sm:items-center">
-          <span class="text-xl sm:text-2xl font-extrabold text-[#8A40F5]">High Revenue Share</span>
-          <span class="text-xs sm:text-sm text-gray-500 font-medium">Earn per student</span>
-        </div>
-      </div>
-    </div>
+    <a id="hero-apply-btn" href="#teaching-options" class:list={[buttonClass, 'mt-8 w-full sm:w-auto']}>
+      Explore Teaching with Us
+      <svg class="size-4 shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 5v14m-6-6 6 6 6-6" /></svg>
+    </a>
   </div>
 </section>
 
-<!-- ===== VALUE PROPOSITION SECTION ===== -->
-<section class="bg-white py-16 md:py-18">
-  <div class="max-w-7xl mx-auto px-6 md:px-12 lg:px-16 xl:px-24">
-    <!-- Header -->
-    <div class="max-w-3xl mx-auto text-center mb-14 md:mb-16">
-      <h2 class="text-3xl md:text-4xl lg:text-5xl font-extrabold text-[#1A0533] leading-tight">
-        Why Teach on
-        <em class="font-['Playfair_Display',serif] font-bold">UniversityX?</em>
-      </h2>
-      <p class="mt-4 text-gray-500 text-base md:text-lg leading-relaxed max-w-2xl mx-auto">
-        Most pre-recorded online courses have 5% to 10% completion rates. UniversityX changes that with live guidance, accountability, and real human mentorship.
-      </p>
+<section class="bg-white py-16 md:py-20" aria-labelledby="why-teach-title">
+  <div class:list={[containerClass]}>
+    <div class="mx-auto max-w-3xl text-center">
+      <p class="mb-4 text-xs font-bold uppercase tracking-wider text-purple-800">Why teach on UniversityX?</p>
+      <h2 id="why-teach-title" class:list={[headingClass]}>Less time preparing. <span class="block">More time teaching.</span></h2>
+      <div class:list={[copyClass, 'mx-auto mt-5 max-w-2xl space-y-4']}>
+        <p>Creating a great course takes work. From planning lessons to preparing projects and supporting learners, there's a lot to manage.
+          We're building UniversityX to make that process easier.</p>
+      </div>
     </div>
-
-    <!-- 4 Clean Cards -->
-    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+    <div class="mt-10 grid gap-6 md:grid-cols-2 md:mt-12">
       {valueProps.map((item) => (
-        <div class="bg-[#FAF9F5] hover:bg-[#F5F2EB] rounded-3xl p-7 border border-gray-100 transition-all duration-300 flex flex-col">
-          <!-- Icon badge -->
-          <div class="w-12 h-12 rounded-2xl bg-white shadow-xs border border-gray-200/60 flex items-center justify-center text-[#8A40F5] mb-6">
-            {item.icon === 'curriculum' && (
-              <svg class="w-6 h-6" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                <path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"></path>
-                <path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"></path>
-              </svg>
-            )}
-            {item.icon === 'cohorts' && (
-              <svg class="w-6 h-6" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path>
-                <circle cx="9" cy="7" r="4"></circle>
-                <path d="M23 21v-2a4 4 0 0 0-3-3.87"></path>
-                <path d="M16 3.13a4 4 0 0 1 0 7.75"></path>
-              </svg>
-            )}
-            {item.icon === 'revenue' && (
-              <svg class="w-6 h-6 text-[#D4A853]" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                <line x1="12" y1="1" x2="12" y2="23"></line>
-                <path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"></path>
-              </svg>
-            )}
-            {item.icon === 'learners' && (
-              <svg class="w-6 h-6" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                <polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon>
-              </svg>
-            )}
+        <article class="rounded-2xl bg-[#F5F2EB] p-7 md:p-8">
+          <div class="mb-5 flex size-12 items-center justify-center rounded-xl bg-white text-[#8A40F5]">
+            <svg class="size-6" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d={item.icon} /></svg>
           </div>
-
-          <!-- Title -->
-          <h3 class="text-xl font-bold text-[#1A0533] leading-snug mb-3">
-            {item.title}
-          </h3>
-
-          <!-- Description -->
-          <p class="text-sm md:text-base text-gray-500 leading-relaxed">
-            {item.description}
-          </p>
-        </div>
+          <h3 class="text-xl font-bold leading-snug text-[#1A0533] md:text-2xl">{item.title}</h3>
+          <p class:list={[copyClass, 'mt-3']}>{item.description}</p>
+        </article>
       ))}
     </div>
   </div>
 </section>
 
-<!-- ===== WHO WE'RE LOOKING FOR ===== -->
-<section class="bg-white py-12 md:py-16">
-  <div class="max-w-7xl mx-auto px-6 md:px-12 lg:px-16 xl:px-24">
-    <div class="bg-[#1A0533] text-white rounded-3xl p-8 sm:p-10 md:p-12 relative overflow-hidden shadow-xl">
-      <!-- Glow -->
-      <div class="absolute -right-20 -bottom-20 w-80 h-80 rounded-full bg-[#8A40F5]/20 blur-2xl pointer-events-none"></div>
-
-      <div class="relative z-10">
-        <div class="flex flex-col lg:flex-row lg:items-center justify-between gap-8 mb-10">
-          <div class="max-w-2xl">
-            <div class="inline-block text-[11px] font-semibold tracking-widest uppercase text-[#D4A853] border border-[#D4A853]/40 px-3.5 py-1 rounded-full mb-4">
-              Instructor Profile
-            </div>
-            <h2 class="text-3xl md:text-4xl lg:text-5xl font-extrabold text-white leading-tight mb-4">
-              Who We're
-              <em class="font-['Playfair_Display',serif] font-bold text-[#D4A853]"> Looking For</em>
-            </h2>
-            <p class="text-white/80 text-base md:text-lg leading-relaxed">
-              UniversityX workshops and live courses are built for impact. We look for real practitioners who are energized by helping others grow, solving real problems, and sharing current industry standards.
-            </p>
-          </div>
-
-          <!-- Gray Mystery Avatar Image -->
-          <div class="shrink-0 self-center lg:self-auto">
-            <img
-              src="/images/instructor-avatar-mystery.jpg"
-              alt="Who We're Looking For Avatar"
-              class="w-28 h-28 sm:w-32 sm:h-32 md:w-36 md:h-36 rounded-full object-cover border-2 border-white/10 shadow-2xl"
-              loading="lazy"
-            />
-          </div>
-        </div>
-
-        <div class="grid grid-cols-1 md:grid-cols-3 gap-8 pt-8 border-t border-white/10">
-          {idealInstructorPoints.map((point) => (
-            <div class="flex items-start gap-4">
-              <div class="w-8 h-8 rounded-full bg-[#8A40F5] text-white flex items-center justify-center shrink-0 mt-0.5 shadow-sm">
-                <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
-                  <polyline points="20 6 9 17 4 12"></polyline>
-                </svg>
-              </div>
-              <p class="text-base md:text-[17px] text-white/95 leading-relaxed">
-                {point}
-              </p>
-            </div>
-          ))}
-        </div>
-      </div>
+<section id="teaching-options" class="scroll-mt-24 bg-[#FBF8F1] py-16 md:py-20" aria-labelledby="teaching-options-title">
+  <div class:list={[containerClass]}>
+    <div class="max-w-3xl">
+      <h2 id="teaching-options-title" class:list={[headingClass]}>Three ways to teach. Your choice.</h2>
+      <p class:list={[copyClass, 'mt-5']}>You don't have to change how you teach to work with UniversityX.</p>
+    </div>
+    <div class="mt-10 grid gap-6 lg:grid-cols-3">
+      {teachingOptions.map((option) => (
+        <article class="rounded-2xl border border-gray-200/70 bg-white p-7 md:p-8">
+          <span class="mb-6 inline-flex size-11 items-center justify-center rounded-full bg-[#8A40F5]/10 text-sm font-bold text-purple-800" aria-hidden="true">{option.number}</span>
+          <h3 class="text-xl font-bold leading-snug text-[#1A0533] md:text-2xl">{option.title}</h3>
+          <p class:list={[copyClass, 'mt-4']}>{option.description}</p>
+        </article>
+      ))}
     </div>
   </div>
 </section>
 
 <!-- ===== APPLICATION FORM SECTION ===== -->
-<section id="apply-to-teach" class="bg-[#FBF8F1] py-16 md:py-24 scroll-mt-10">
+<section id="apply-to-teach" class="scroll-mt-24 bg-[#FBF8F1] py-16 md:py-20" aria-labelledby="application-title">
   <div class="max-w-4xl mx-auto px-6">
-    <!-- Header -->
-    <div class="text-center mb-10">
-      <div class="inline-flex items-center gap-2 rounded-full px-4 py-1.5 text-xs font-bold uppercase tracking-wider bg-[#8A40F5]/10 text-[#8A40F5] mb-3">
-        Instructor Application
-      </div>
-      <h2 class="text-3xl md:text-4xl lg:text-5xl font-extrabold text-[#1A0533] leading-tight">
-        Apply to Teach on
-        <em class="font-['Playfair_Display',serif] font-bold">UniversityX</em>
-      </h2>
-      <p class="mt-3 text-gray-500 text-base md:text-lg max-w-xl mx-auto leading-relaxed">
-        Fill out this short form to tell us about your expertise. We review every application carefully and our team will get back to you with next steps.
-      </p>
+    <div class="mb-10 text-center">
+      <h2 id="application-title" class:list={[headingClass]}>Tell us about yourself</h2>
     </div>
 
     <!-- Success message (hidden by default) -->
@@ -586,6 +467,28 @@ const idealInstructorPoints = [
           </p>
         </div>
       </form>
+    </div>
+  </div>
+</section>
+
+<section class="bg-white py-16 md:py-20" aria-labelledby="teaching-formats-title">
+  <div class:list={[containerClass, 'grid gap-8 lg:grid-cols-2 lg:gap-16']}>
+    <h2 id="teaching-formats-title" class:list={[headingClass, 'max-w-lg']}>Start with a workshop. <em class="font-['Playfair_Display',serif] font-bold">Or go further.</em></h2>
+    <div class:list={[copyClass, 'max-w-2xl space-y-5']}>
+      <p>You don't need to commit to teaching for months.</p>
+      <p>Host a practical workshop, run a short course, or guide learners through a more comprehensive live programme.</p>
+      <p>We'll work with you to choose a format that makes sense for your expertise, audience, and availability.</p>
+    </div>
+  </div>
+</section>
+
+<section class="bg-[#F5F2EB] py-16 md:py-20" aria-labelledby="instructor-profile-title">
+  <div class:list={[containerClass, 'grid gap-8 lg:grid-cols-2 lg:gap-16']}>
+    <h2 id="instructor-profile-title" class:list={[headingClass, 'max-w-lg']}>Who we're looking for</h2>
+    <div class:list={[copyClass, 'max-w-2xl space-y-5']}>
+      <p>We're bringing together experienced professionals, educators, and creators who have valuable knowledge to share.</p>
+      <p>Whether you've already taught paid courses, run workshops, mentored professionals, or built a community around your expertise, we'd love to explore what we could create together.</p>
+      <p>We're especially interested in people who enjoy teaching practical skills, helping learners build real projects, and bringing their own experience into the classroom.</p>
     </div>
   </div>
 </section>
