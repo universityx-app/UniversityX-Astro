@@ -18,7 +18,8 @@ export const countries = [
 
 export const stages = [
   { key: 'contacted', label: 'Contacted', description: 'Unique prospects contacted about teaching.' },
-  { key: 'positiveReplies', label: 'Positive replies', description: 'Prospects who expressed interest in teaching.' },
+  // Retain the stored key for compatibility; this now counts all unique replies.
+  { key: 'positiveReplies', label: 'Replies', description: 'Unique prospects who have responded to our outreach.' },
   { key: 'discoveryCalls', label: 'Discovery calls', description: 'Interested prospects who completed a discovery call.' },
   { key: 'committed', label: 'Committed', description: 'Instructors who agreed to launch with UniversityX in Q1 2027.' },
   { key: 'onboarded', label: 'Onboarded', description: 'Committed instructors who completed onboarding.' },
@@ -113,9 +114,18 @@ export function validateMissionData(data: MissionData): void {
     }
     if (total !== snapshot.metrics.activated) throw new Error('Mission 30: country totals must match activations');
   }
+  const dispatchDates = new Set<string>();
   for (const note of data.notes) {
     unique(note.id);
     if (timestamp(note.publishedAt) > ceiling) throw new Error('Mission 30: note is newer than preview date');
+    if (data.kind === 'published') {
+      const published = new Date(note.publishedAt);
+      const weekday = new Intl.DateTimeFormat('en-GB', { timeZone: campaign.timeZone, weekday: 'long' }).format(published);
+      const date = formatMissionDate(note.publishedAt);
+      if (note.cadence !== 'Weekly' || weekday !== 'Saturday') throw new Error('Mission 30: published field notes must be weekly Saturday dispatches in Africa/Lagos');
+      if (dispatchDates.has(date)) throw new Error('Mission 30: only one published dispatch per Saturday');
+      dispatchDates.add(date);
+    }
     for (const key of ['title', 'introduction', 'wins', 'challenges', 'experiments', 'lessons'] as const) {
       if (!note[key]?.trim()) throw new Error(`Mission 30: note is missing ${key}`);
     }
