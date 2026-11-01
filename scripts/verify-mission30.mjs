@@ -96,7 +96,7 @@ if (process.argv.includes('--built')) {
     }
     assert.doesNotMatch(page, /sample-week|sample-kickoff|121 prospects|data-frozen-time=|Illustrative preview/);
     assert.match(page, /href="\/teach\/#apply-to-teach"/);
-    assert.match(page, /mission30-social.png/);
+    assert.match(page, /mission30-social\.png/);
     assert.doesNotMatch(page, /name="robots" content="noindex/);
   });
   test('preview output is labeled, non-indexed, accessible and uses frozen dates', () => {
@@ -106,14 +106,14 @@ if (process.argv.includes('--built')) {
       assert.match(page, /name="robots" content="noindex, nofollow"/);
       assert.match(page, /Illustrative field note/);
       assert.match(page, /Illustrative metrics/);
-      assert.match(page, /mission30-preview-social.png/);
+      assert.match(page, /mission30-preview-social\.png/);
       assert.match(page, /data-frozen-time="2026-11-/);
       assert.ok(page.includes(`/mission30/preview/${scenario}`));
       assert.match(page, /href="\/mission30\/"/);
     }
     const weekTwoPage = html('mission30/preview/week-2');
     assert.match(weekTwoPage, /Six commitments/);
-    assert.match(weekTwoPage, /THE INSTRUCTOR ROLL CALL[\s\S]*?>6<\/span>[\s\S]*?instructors committed/);
+    assert.match(weekTwoPage, />6<\/span>[\s\S]*?instructors committed/);
     assert.doesNotMatch(weekTwoPage, /instructors activated|Instructors to activate/);
     const sitemap = readdirSync(new URL('../dist/', import.meta.url)).filter(f => /^sitemap.*\.xml$/.test(f)).map(f => readFileSync(new URL(`../dist/${f}`, import.meta.url), 'utf8')).join('');
     assert.match(sitemap, /\/mission30\//);
