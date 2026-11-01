@@ -1,7 +1,7 @@
 import assert from 'node:assert/strict';
 import { readFileSync, readdirSync } from 'node:fs';
 import { test } from 'node:test';
-import { campaign, countries, getCampaignClock, latestSnapshot, orderedSnapshots, orderedNotes, validateMissionData } from '../src/lib/mission30.ts';
+import { campaign, countries, stages, getCampaignClock, latestSnapshot, orderedSnapshots, orderedNotes, validateMissionData } from '../src/lib/mission30.ts';
 import { publishedMission, missionPreviews } from '../src/data/mission30.ts';
 
 test('campaign uses an exact 61-day interval and Lagos midnight boundaries', () => {
@@ -30,6 +30,42 @@ test('missing data stays distinct from zero and scenario clocks are frozen indep
   });
   assert.deepEqual(latestSnapshot(missionPreviews['week-2']).countries, { NG: 2, US: 1 });
   assert.deepEqual(countries.map(({ code, outreachShare }) => [code, outreachShare]), [['NG', 70], ['US', 30]]);
+});
+
+test('November 2 recruitment counts include pre-launch replies without requiring a dispatch', () => {
+  const snapshot = publishedMission.snapshots.find(s => s.id === 'verified-nov-02');
+  assert.ok(snapshot);
+  assert.deepEqual(snapshot.metrics, {
+    contacted: 7, positiveReplies: 3, discoveryCalls: 0, committed: 0, onboarded: 0, activated: 0, paidEnrollments: 0,
+  });
+  const countersOnly = { ...publishedMission, snapshots: [snapshot], notes: [] };
+  assert.doesNotThrow(() => validateMissionData(countersOnly));
+  assert.equal(latestSnapshot(countersOnly).measuredAt, '2026-11-02T00:00:00+01:00');
+  assert.equal(stages.find(stage => stage.key === 'positiveReplies').label, 'Replies');
+  assert.equal(stages.find(stage => stage.key === 'positiveReplies').description, 'Unique prospects who have responded to our outreach.');
+});
+
+test('published field notes allow one weekly Saturday dispatch in Lagos, independently of counters', () => {
+  const data = structuredClone(publishedMission);
+  const snapshotBefore = latestSnapshot(data);
+  const note = { ...missionPreviews['week-2'].notes[1], id: 'test-weekly-dispatch', publishedAt: '2026-11-06T23:00:00Z' };
+  data.notes = [note];
+  assert.doesNotThrow(() => validateMissionData(data)); // Saturday midnight in Lagos, Friday UTC.
+  assert.deepEqual(latestSnapshot(data), snapshotBefore);
+  for (const publishedAt of ['2026-11-06T22:59:59Z', '2026-11-07T23:00:00Z']) {
+    note.publishedAt = publishedAt;
+    assert.throws(() => validateMissionData(data), /Saturday dispatches/);
+  }
+  note.publishedAt = '2026-11-07T12:00:00+01:00';
+  note.cadence = 'Daily';
+  assert.throws(() => validateMissionData(data), /Saturday dispatches/);
+  note.cadence = 'Weekly';
+  data.notes.push({ ...note, id: 'test-second-dispatch', publishedAt: '2026-11-07T18:00:00+01:00' });
+  assert.throws(() => validateMissionData(data), /one published dispatch/);
+  data.notes[1].publishedAt = '2026-11-14T18:00:00+01:00';
+  assert.doesNotThrow(() => validateMissionData(data));
+  assert.deepEqual(latestSnapshot(data), snapshotBefore);
+  assert.doesNotThrow(() => validateMissionData(missionPreviews['day-1']));
 });
 
 test('history is ordered by measurement, independently of note publication', () => {
@@ -87,6 +123,22 @@ if (process.argv.includes('--built')) {
   });
   test('built public page never includes illustrative data or notes', () => {
     const page = html('mission30');
+    const scoreboard = page.match(/id="progress"[\s\S]*?<\/section>/)?.[0];
+    assert.ok(scoreboard);
+    const counts = [...scoreboard.matchAll(/<strong\b[^>]*>(\d+)<\/strong>/g)].map(match => Number(match[1]));
+    const metrics = latestSnapshot(publishedMission)?.metrics;
+    assert.deepEqual(counts, ['contacted', 'positiveReplies', 'discoveryCalls', 'committed'].map(key => metrics?.[key] ?? 0));
+    assert.match(scoreboard, />Replies<\/h3>/);
+    assert.match(scoreboard, /Unique prospects who have responded to our outreach\./);
+    assert.doesNotMatch(scoreboard, /Positive replies/);
+    const fieldNotes = page.match(/id="field-notes"[\s\S]*?<\/section>/)?.[0];
+    assert.ok(fieldNotes);
+    assert.match(fieldNotes, /Weekly dispatches every Saturday/);
+    assert.doesNotMatch(fieldNotes, /Daily or weekly/);
+    if (!publishedMission.notes.length) {
+      assert.match(fieldNotes, /Saturday, November 7, 2026/);
+      assert.doesNotMatch(fieldNotes, /<article\b/);
+    }
     if (!publishedMission.snapshots.length) {
       const scoreboard = page.match(/id="progress"[\s\S]*?<\/section>/)?.[0];
       assert.ok(scoreboard);

@@ -5,7 +5,14 @@ import { validateMissionData, type MissionData, type Snapshot, type FieldNote } 
 export const publishedMission: MissionData = {
   kind: 'published',
   label: 'Published progress',
-  snapshots: [],
+  snapshots: [{
+    id: 'verified-nov-02',
+    // Date supplied for this update; midnight represents the reporting day in Lagos.
+    measuredAt: '2026-11-02T00:00:00+01:00',
+    // Replies include one pre-launch response, counted once in the cumulative total.
+    metrics: { contacted: 7, positiveReplies: 3, discoveryCalls: 0, committed: 0, onboarded: 0, activated: 0, paidEnrollments: 0 },
+    countries: { NG: 0, US: 0 },
+  }],
   notes: [],
 };
 

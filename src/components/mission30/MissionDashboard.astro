@@ -10,7 +10,6 @@ const preview = data.kind === 'illustrative';
 const latest = latestSnapshot(data);
 const notes = orderedNotes(data);
 const committed = latest?.metrics.committed;
-const percent = committed === undefined ? undefined : Math.round(committed / campaign.target * 100);
 const title = preview ? `Illustrative ${data.label} preview | Mission 30 | UniversityX` : 'Mission 30 — 30 Instructors. 2 Countries. One Mission. | UniversityX';
 const description = preview ? `${data.label} is an illustrative preview, not actual results. Explore UniversityX’s Mission 30 recruitment dashboard.` : 'Follow our journey to recruit 30 instructors across Nigeria and the United States for a Q1 2027 launch on UniversityX. Recruitment runs November 1, 2026 to January 1, 2027.';
 const shareUrl = new URL(Astro.url.pathname, Astro.site).href;
@@ -61,13 +60,7 @@ const shareButtonClass = 'flex-1 cursor-pointer rounded-full border border-purpl
             <span class="text-7xl font-extrabold leading-none tracking-tight sm:text-8xl">{committed ?? '0'}</span>
             <span class="text-3xl font-medium text-white">/ 30<span class="mt-1 block text-sm text-white">instructors committed</span></span>
           </div>
-          {metricLabel && (
-            <div class="mt-4 mb-5 flex flex-wrap items-center justify-between gap-2 text-xs text-white">
-              <span class="rounded-full border border-white/40 px-3 py-1">{metricLabel}</span>
-              <span>{percent !== undefined && `${percent}% of the mission`}</span>
-            </div>
-          )}
-          <div class:list={['grid grid-cols-6 gap-2 sm:grid-cols-10', { 'mt-5': !metricLabel }]} aria-hidden="true">
+          <div class="mt-5 grid grid-cols-6 gap-2 sm:grid-cols-10" aria-hidden="true">
             {Array.from({ length: 30 }, (_, i) => (
               <span class:list={[
                 'flex aspect-square items-center justify-center rounded-lg border text-xs font-semibold',
@@ -77,12 +70,6 @@ const shareButtonClass = 'flex-1 cursor-pointer rounded-full border border-purpl
               ]}>{committed !== undefined && i < committed ? '✦' : String(i + 1).padStart(2, '0')}</span>
             ))}
           </div>
-          {committed !== undefined && (
-            <p class="mt-4 flex items-center gap-2 text-xs leading-relaxed text-white">
-              <span class="size-2 shrink-0 rounded-sm bg-white" aria-hidden="true"></span>
-              {`${committed} committed. ${Math.max(0, 30 - committed)} more to reach the goal.`}
-            </p>
-          )}
           <div class="mt-6 flex flex-wrap items-center justify-between gap-4 border-t border-white/30 pt-5" aria-label="Campaign deadline">
             <div>
               <span class="text-xs font-semibold tracking-wide text-white" data-clock-label>{preview ? 'SCENARIO TIME REMAINING' : 'RECRUITMENT DEADLINE'}</span>
@@ -200,7 +187,7 @@ const shareButtonClass = 'flex-1 cursor-pointer rounded-full border border-purpl
               <h2 class={headingClass} id="notes-title">The numbers tell half.<br /><em class={accentClass}>Here’s the rest.</em></h2>
             </div>
             <div class="max-w-md">
-              <p class="text-lg leading-relaxed text-gray-600">What worked. What didn’t. What we’re trying next. Daily or weekly dispatches from two people figuring it out in public.</p>
+              <p class="text-lg leading-relaxed text-gray-600">What worked. What didn’t. What we’re trying next. Weekly dispatches every Saturday from two people figuring it out in public.</p>
               {preview && <p class="mt-4 text-xs leading-relaxed text-purple-800">ILLUSTRATIVE FIELD NOTES</p>}
             </div>
           </div>
@@ -240,9 +227,9 @@ const shareButtonClass = 'flex-1 cursor-pointer rounded-full border border-purpl
             <div class="flex items-center gap-8 rounded-2xl border border-dashed border-purple-300 bg-[#FBF8F1] p-6 sm:p-10">
               <span class="hidden text-5xl text-[#8A40F5] sm:block" aria-hidden="true">✎</span>
               <div>
-                <span class="text-xs font-semibold tracking-wide text-purple-800">THE FIRST DISPATCH IS STILL AHEAD</span>
+                <span class="text-xs font-semibold tracking-wide text-purple-800">THE FIRST WEEKLY DISPATCH IS COMING</span>
                 <h3 class="my-3 text-2xl font-bold tracking-tight">We’re opening the notebook.</h3>
-                <p class="max-w-2xl text-base leading-relaxed text-gray-600">Damilare and Ada will publish the wins, difficult conversations, experiments and lessons here. No updates have been published yet. Come back to follow the journey.</p>
+                <p class="max-w-2xl text-base leading-relaxed text-gray-600">Our first weekly dispatch is coming on <time datetime="2026-11-07">Saturday, November 7, 2026</time>. Damilare and Ada will share the wins, challenges, experiments and lessons every Saturday. Recruitment counters update independently as new numbers become available.</p>
               </div>
               <span class="ml-auto hidden text-8xl font-bold leading-none text-purple-200 lg:block" aria-hidden="true">01</span>
             </div>

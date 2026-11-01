@@ -6,7 +6,7 @@ The campaign recruits 30 instructors across Nigeria and the United States from N
 
 The initial qualified outreach target is 100 prospects, with rounded planning averages of approximately 12 people per week and 2 per day. These are goals, not caps or a promised conversion rate. Keep the Week 2 illustrative snapshot at 121 contacts and six commitments; exceeding the initial outreach goal is valid.
 
-Allocate initial outreach 70% to Nigeria (70 prospects) and 30% to the United States (30 prospects). These shares are not instructor quotas or reported country results. Nigeria is the home market; the United States tests interest in the model in another market. The campaign country fields now contain only `NG` and `US`; removed countries had zero counts in the illustrative fixtures, and production history is still empty.
+Allocate initial outreach 70% to Nigeria (70 prospects) and 30% to the United States (30 prospects). These shares are not instructor quotas or reported country results. Nigeria is the home market; the United States tests interest in the model in another market. The campaign country fields now contain only `NG` and `US`; removed countries had zero counts in the illustrative fixtures.
 
 The early validation sought is independent instructors in Lagos and New York successfully teaching the same UniversityX course to their respective audiences. Recruitment alone does not validate that model. Pricing, learner demand, and instructor economics must be tested separately in each market. Use “courses” for learning content, “workshops” for focused practical sessions, and “live courses” for structured learning with an instructor and other learners.
 
@@ -28,19 +28,21 @@ Edit `publishedMission` in `src/data/mission30.ts`. Append to `snapshots`; do no
 }
 ```
 
-This is a format example, not permission to publish unverified zeros. Use an offset-bearing timestamp for when the counts were measured, not when the file was edited. Snapshots must fall within the campaign interval. The page chooses the latest measurement even if entries are out of order.
+This is a format example, not permission to publish unverified zeros. Use an offset-bearing timestamp for when the counts were measured, not when the file was edited. Snapshots must fall within the campaign interval. The page chooses the latest measurement even if entries are out of order. Update recruitment counters whenever verified numbers are available, on any day; no field note is required. The November 2, 2026 snapshot records 7 contacted, 3 replies (including one pre-launch reply), 0 discovery calls, and 0 commitments. Its midnight timestamp represents the supplied reporting date rather than a precise measurement time.
 
-Count unique instructors cumulatively at each stage. Each later stage is a subset of the preceding one: contacted → positive replies → completed discovery calls → committed → onboarding complete → activated → at least one paid enrollment. Multiple calls or purchases do not increase a person's count. Assign each activated instructor to one campaign country, consistently, so country totals equal activations. Targets are goals rather than hard caps.
+Count unique instructors cumulatively at each stage. Each later stage is a subset of the preceding one: contacted → replies → completed discovery calls → committed → onboarding complete → activated → at least one paid enrollment. The stored key `positiveReplies` is retained for compatibility but now counts all unique prospects who responded, not only positive responses. Include pre-launch replies in the cumulative total once, not as additional replies on each update. Multiple calls or purchases do not increase a person's count. Assign each activated instructor to one campaign country, consistently, so country totals equal activations. Targets are goals rather than hard caps.
 
 The existing downstream fields (`onboarded`, `activated`, `paidEnrollments`, and the country activation split) remain in the data format for compatibility but do not drive the campaign goal or appear in the scoreboard. Activation tracks a later milestone: completed onboarding, an approved workshop or live course with curriculum and pricing, and a published enrollment page. The paid-enrollment metric counts instructors, not payments or revenue. These are not recruitment requirements for Mission 30.
 
 Correct historical errors explicitly and describe significant corrections in a field note. Validation allows decreases between snapshots. Do not create new observations by copying a stale count to a newer date.
 
-## Publish a daily or weekly field note
+## Publish one weekly field note every Saturday
 
-Append an entry to `publishedMission.notes` with `id`, `publishedAt`, `cadence` (`Daily`, `Weekly`, or `Kickoff`), `author` (`Damilare`, `Ada`, or `Damilare & Ada`), `title`, `introduction`, `wins`, `challenges`, `experiments`, and `lessons`. All prose fields are plain text. Notes sort newest first and have linkable IDs. Use unique lowercase IDs separated by hyphens across both notes and snapshots.
+Append an entry to `publishedMission.notes` with `id`, `publishedAt`, `cadence: 'Weekly'`, `author` (`Damilare`, `Ada`, or `Damilare & Ada`), `title`, `introduction`, `wins`, `challenges`, `experiments`, and `lessons`. All prose fields are plain text. Notes sort newest first and have linkable IDs. Use unique lowercase IDs separated by hyphens across both notes and snapshots.
 
-Only put approved, publication-ready prose in this file. There is no draft/scheduling mechanism: entries are published on deployment. Keep drafts, names of prospects, contact information, conversations, credentials, and private records outside the website repository. Before deploying, review every change for accuracy and public suitability. Publishing a note does not update the displayed metrics measurement date.
+The first weekly dispatch is planned for **Saturday, November 7, 2026**. Keep `publishedMission.notes` empty until that approved dispatch is ready. Production validation requires Saturday publication dates in Africa/Lagos and permits only one dispatch per Saturday; illustrative kickoff notes remain supported only on preview routes. Daily outreach planning targets are unrelated to this publishing cadence.
+
+Only put approved, publication-ready prose in this file. There is no draft/scheduling mechanism: entries are published on deployment. Deploy new field notes on Saturdays only; a future Saturday timestamp does not delay publication. Counter-only deployments may happen on any day. Keep drafts, names of prospects, contact information, conversations, credentials, and private records outside the website repository. Before deploying, review every change for accuracy and public suitability. Publishing a note does not update the displayed metrics measurement date.
 
 ## Preview and verify
 
